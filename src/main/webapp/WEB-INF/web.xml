@@ -4,9 +4,25 @@
         <servlet-name>PutServletHere</servlet-name>
         <servlet-class>Controller.PutServletHere</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EmployeeServlet</servlet-name>
+        <servlet-class>Controller.EmployeeServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EmployeeAdd</servlet-name>
+        <servlet-class>Controller.EmployeeAdd</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PutServletHere</servlet-name>
         <url-pattern>/PutServletHere</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EmployeeServlet</servlet-name>
+        <url-pattern>/EmployeeServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EmployeeAdd</servlet-name>
+        <url-pattern>/EmployeeAdd</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

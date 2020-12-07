@@ -4,7 +4,15 @@
     Author     : ASUS
 --%>
 
+<%@page import="java.util.List"%>
+<%@page import="Dao.EmployeeDao"%>
+<%@page import="Model.Employee"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+
+        List < Employee > listOfEmp = EmployeeDao.getAllEmp();
+        int i=0;
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -25,18 +33,113 @@
             <div class="dashbosr" >
                 <p id="time">???</p>
             </div>
-            <div class="divcon" id="d3">
+            <div class="dashbosl" id='employeetag' >
+                <p >Employee<button class="minibtn" id="btnAd" onclick="miniTable('employeetable','btnAd')">-</button></p>                    
+            </div>   
 
+            <div class="searhbar">
+            <button class="btn" onclick="openForm('form1');FillForm1();"><i class="fas fa-user-plus"></i></button>
+            <button class="btn" id="employeerefresh" value="Refresh"><i class="fas fa-sync" ></i></button> 
+            <input id="empsearchbar" type="text" class="myInput" onkeyup="FilterTable('tableemp','empsearchbar','employeerefresh','empselect')" placeholder="Search for names.." title="Type in a name">
+            <select class="myselect" id="empselect">
+                <option value="0" >EID</option>
+                <option value="1" selected>Name</option>
+                <option value="3" >Email</option>
+                <option value="4" >Phone</option>
+                <option value="5" >Add</option>
+            </select>
             </div>
-            <div class="divcon" id="d3">
 
+            <div id="employeetable" class="divtable">                    
+                <table id="tableemp" class="tabledis">
+                    <tr>
+                        <th>EID</th>
+                        <th>Name</th>
+                        <th>Sex</th>
+                        <th>E-mail</th>
+                        <th>Phone</th>
+                        <th>Address</th> 
+                        <th>Salary</th>
+                        <th>Paycheck</th>
+                        <th colspan="2">Option</th>
+                    </tr>
+                    <%               
+                    try {          
+                            i=0;
+                            while (i<listOfEmp.size()) {
+                            Employee emp_temp=listOfEmp.get(i);
+                            %>
+                            <tr>
+                                <td><%=emp_temp.getEmployeeId()%></td>
+                                <td><%=emp_temp.getEmployeeName()%></td>
+                                <td><%=emp_temp.getSex()%></td>
+                                <td><%=emp_temp.getEmail()%></td>
+                                <td><%=emp_temp.getPhone()%></td>
+                                <td><%=emp_temp.getAddress()%></td>   
+                                <td><%=emp_temp.getSalary()%></td> 
+                                <td><%=emp_temp.getPaycheck()%></td>
+                                <td><button class="btn" id="emp_edit"><i class="fas fa-edit"></i></button></td>
+                                <td><button id ="emp_del" class="btn" style=" background-color: red;"><i class="fa fa-trash"></i></button></td>
+                                <%i++;%>
+                            </tr>                   
+                            <%}
+                        }        
+                        catch (Exception e)
+                        {
+                            e.printStackTrace();
+                        }
+                    %>
+                </table>
             </div>
-            <div class="divcon" id="d3">
-
+             <div class="dashbosl" >
+                <p id='paychecktag'>Attendance<button class="minibtn" id="btnpay" onclick="miniTable('paycheck','btnpay')">-</button></p>
             </div>
-            <div class="divcon" id="d3">
-
-            </div>
+            <div class="searhbar">
+                <button class="btn" id="att-refresh" value="Refresh"><i class="fas fa-sync" ></i></button> 
+                <input id="empattsearchbar" type="text" class="myInput" onkeyup="FilterTable('empatt1','empattsearchbar','att-refresh','empselect2')" placeholder="Search for names.." title="Type in a name">
+                <select class="myselect" id="empselect2">
+                    <option value="0" >EID</option>
+                    <option value="1" selected>Name</option>
+                </select>
+            </div>    
+            <div id="att-table" class="divtable">
+                <table id="empatt1" class="tabledis">
+                    <tr>
+                        <th >EID</th>
+                        <th >Name</th>
+                        <th>Salary</th>
+                        <th>Paycheck</th>
+                        <th>Works Day</th>
+                        <th>Last Attendance</th>
+                        <th colspan="3">Option</th>
+                    </tr>
+                    <%               
+                    try {          
+                            i=0;
+                            while (i<listOfEmp.size()) {
+                            Employee emp_temp=listOfEmp.get(i);
+                            %>
+                            <tr>
+                                <td><%=emp_temp.getEmployeeId()%></td>
+                                <td><%=emp_temp.getEmployeeName()%></td>
+                                <td><%=emp_temp.getSalary()%></td> 
+                                <td><%=emp_temp.getPaycheck()%></td>
+                                <td><%=emp_temp.getWorkdate()%></td>
+                                <td><%=emp_temp.getLastAtt()%></td>
+                                <td><button id="editemp-att" class="btn"><i class="fas fa-edit"></i></button></td>
+                                <td><button id="check-att" class="btn" style=" background-color: yellowgreen;"><i class="fas fa-check"></i></button></td>
+                                <td><button id ="payluong-att" class="btn" style=" background-color: lightskyblue;"><i class="fas fa-hand-holding-usd"></i></button></td>
+                                <%i++;%>
+                            </tr>                   
+                            <%}
+                        }        
+                    catch (Exception e) 
+                        {
+                            e.printStackTrace();
+                        }
+                    %>
+                </table>
+            </div>    
         </div>
         <script>  
             startTime();       

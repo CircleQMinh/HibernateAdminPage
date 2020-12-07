@@ -57,6 +57,19 @@ public class Employee  implements java.io.Serializable {
         this.workdate = workdate;
         this.lastAtt = lastAtt;
     }
+
+    public Employee(Integer employeeId, String employeeName, String sex, String email, String phone, String address, Integer salary, Date paycheck) {
+        this.employeeId = employeeId;
+        this.employeeName = employeeName;
+        this.sex = sex;
+        this.email = email;
+        this.phone = phone;
+        this.address = address;
+        this.salary = salary;
+        this.paycheck = paycheck;
+    }
+
+ 
    
     public Integer getEmployeeId() {
         return this.employeeId;

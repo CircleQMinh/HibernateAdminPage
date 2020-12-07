@@ -452,3 +452,20 @@ opacity: 0.8;
     background: #26b;
     color: #fff;
 }
+
+.divwait {
+justify-content: center;
+font-family: Arial, Helvetica, sans-serif;
+font-size: 12px;
+display: none;
+position: fixed;
+bottom: 50%;
+right: 40%;
+border: 3px solid #f1f1f1;
+z-index: 9;
+background-color: #adaaa1;
+max-width: 40%;
+}
+.divwait form {
+border: 5px solid #f1f1f1;
+}

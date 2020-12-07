@@ -24,51 +24,9 @@
         <script src="https://canvasjs.com/assets/script/canvasjs.min.js" type="text/javascript"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="javascript/jquery.tablePagination.js" type="text/javascript"></script>
+        <script src="javascript/jquery-adminpage.js" type="text/javascript"></script>
         <script>
-            $(document).ready(function(){
-                startTime();
-//                các nút chuyển trang
-                $('#dashboard').click(function(){
-                     $("#home").load( "dashboard.jsp #ds", function() {
-                         startTime();
-                    });
-                });
-                $('#emppage').click(function(){
-                     $("#home").load( "employee.jsp #employee", function() {
-                         startTime();
-                    });
-                });
-                $('#propage').click(function(){
-                     $("#home").load( "product.jsp #product", function() {
-                         startTime();
-                    });
-                });
-                $('#cuspage').click(function(){
-                     $("#home").load( "customer.jsp #customer", function() {
-                         startTime();
-                    });
-                });
-                $('#accpage').click(function(){
-                     $("#home").load( "account.jsp #account", function() {
-                         startTime();
-                    });
-                });
-                $('#salespage').click(function(){
-                     $("#home").load( "sales.jsp #sales", function() {
-                         startTime();
-                    });
-                });
-                $('#blogpage').click(function(){
-                     $("#home").load( "blog.jsp #blog", function() {
-                         startTime();
-                    });
-                });
-                $('#stapage').click(function(){
-                     $("#home").load( "statistic.jsp #statistic", function() {
-                         startTime();
-                    });
-                });
-            });
+            
         </script>
         
     </head>
@@ -148,6 +106,77 @@
                 </div>
 
             </div>
+        </div>
+        <!--Hidden form ở đây-->
+        <div class="divform" id="form1" >
+            <form >
+                <h1>Add a new Employee</h1>
+                <label ><strong>Name</strong></label>
+                <input type="text" placeholder="Enter Name" name="name" id="name-emp">
+                <label ><strong>E-mail</strong></label>
+                <input type="text" placeholder="Enter E-mail" name="mail" id="mail-emp">
+                <label ><strong>Phone</strong></label>
+                <input type="text" placeholder="Enter Phone" name="phone" id="phone-emp">
+                <label ><strong>Address</strong></label>
+                <input type="text" placeholder="Enter Address" name="address" id="add-emp">
+                <label ><strong>Salary</strong></label>
+                <input type="text" placeholder="Enter Salary" name="salary" id="salary-emp">
+                <label ><strong>Sex</strong></label>
+                <select name="sex" id="sex-emp">
+                    <option selected>Nam</option>
+                    <option>Nữ</option>
+                </select><br>
+                <button type="button" id="save_emp"><strong>Add</strong></button>   
+                <button type="button" style="background-color: red;" onclick="closeForm('form1')" ><strong>Close</strong></button>        
+            </form>  
+        </div> 
+        <div class="divform" id="form2" >
+            <form >
+                <h1>Edit Employee</h1>
+                <label ><strong>Name</strong></label>
+                <input type="text" placeholder="Enter Name" name="name" id="name-emp-edit">
+                <label ><strong>E-mail</strong></label>
+                <input type="text" placeholder="Enter E-mail" name="mail" id="mail-emp-edit">
+                <label ><strong>Phone</strong></label>
+                <input type="text" placeholder="Enter Phone" name="phone" id="phone-emp-edit">
+                <label ><strong>Address</strong></label>
+                <input type="text" placeholder="Enter Address" name="address" id="add-emp-edit">
+                <label ><strong>Salary</strong></label>
+                <input type="text" placeholder="Enter Salary" name="salary" id="salary-emp-edit">
+                <label ><strong>Sex</strong></label>
+                <select name="sex" id="sex-emp-edit">
+                    <option selected>Nam</option>
+                    <option>Nữ</option>
+                </select><br>
+                <label ><strong>Paycheck</strong></label>
+                <input type="date" id="paycheck-emp-edit" name="paycheck"><br>
+                <input type="hidden" id="eid-emp-edit">
+                <button type="button" id="edit-emp"><strong>Edit</strong></button>   
+                <button type="button" style="background-color: red;" onclick="closeForm('form2')" ><strong>Close</strong></button>        
+            </form>  
+        </div>
+        <div class="divform" id="form3" >
+            <form >
+                <h1>Edit Employee Attendance</h1>
+                <br>
+                <label ><strong>Works Day</strong></label>
+                <input type="number" id="workdayempatt-edit" name="wd"><br>
+                
+                <label ><strong>Paycheck</strong></label>
+                <input type="date" id="paycheckempatt-edit" name="pay"><br>
+                <label ><strong>Last Attendance</strong></label>
+                <input type="date" id="lastempatt-edit" name="ld"><br>
+                <input type="hidden" id="eidempatt-edit">
+                <button type="button" id="editattemp"><strong>Edit</strong></button>   
+                <button type="button" style="background-color: red;" onclick="closeForm('form3')" ><strong>Close</strong></button>        
+            </form>  
+        </div>
+        
+<!--        // thông báo tải trang -->
+        <div class="divwait" id="formwait" >
+            <form >
+                <h1>Đang tải trang ...</h1>      
+            </form>  
         </div>
     </body>
 </html>

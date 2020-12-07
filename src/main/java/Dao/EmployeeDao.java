@@ -6,6 +6,8 @@
 package Dao;
 
 import Model.Employee;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -77,10 +79,101 @@ public class EmployeeDao {
             }
         }
     }
-    public static void updateEmp(Employee emp) {
+    public static void updateEmp(Employee emp) { //edit toàn bộ các cột
         Transaction transaction = null;
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();
+        try  {
+            // start a transaction
+            transaction = session.beginTransaction();
+            // save the student object
+            session.update(emp);
+            // commit transaction
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        }
+    }
+    // edit 1 số cột
+    public static void editEmp(Integer employeeId, String employeeName, String sex, String email, String phone, String address, Integer salary, Date paycheck){
+        Transaction transaction = null;
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        Employee emp=(Employee)session.get(Employee.class, employeeId);
+        emp.setEmployeeName(employeeName);
+        emp.setEmail(email);
+        emp.setPhone(phone);
+        emp.setAddress(address);
+        emp.setSalary(salary);
+        emp.setPaycheck(paycheck);
+        try  {
+            // start a transaction
+            transaction = session.beginTransaction();
+            // save the student object
+            session.update(emp);
+            // commit transaction
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        }
+    }
+    public static void chamcongEmp(Integer employeeId){
+        Transaction transaction = null;
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        Employee emp=(Employee)session.get(Employee.class, employeeId);
+        emp.setWorkdate(emp.getWorkdate()+1);
+        Calendar c = Calendar.getInstance();
+        c.setTime(new Date()); // Now use today date.
+        emp.setLastAtt(c.getTime());
+        try  {
+            // start a transaction
+            transaction = session.beginTransaction();
+            // save the student object
+            session.update(emp);
+            // commit transaction
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        }
+    }
+    public static void editattEmp(int inteid,Date pay, int intday,Date last){
+        Transaction transaction = null;
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        Employee emp=(Employee)session.get(Employee.class, inteid);
+        emp.setWorkdate(intday);
+        emp.setPaycheck(pay);
+        emp.setLastAtt(last);
+        try  {
+            // start a transaction
+            transaction = session.beginTransaction();
+            // save the student object
+            session.update(emp);
+            // commit transaction
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        }
+    }
+    public static void traluongEmp(Integer employeeId){
+        Transaction transaction = null;
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        Employee emp=(Employee)session.get(Employee.class, employeeId);
+        emp.setWorkdate(0);
+        Calendar c = Calendar.getInstance();
+        c.setTime(new Date()); // Now use today date.
+        c.add(Calendar.DATE, 30);
+        emp.setPaycheck(c.getTime());
         try  {
             // start a transaction
             transaction = session.beginTransaction();

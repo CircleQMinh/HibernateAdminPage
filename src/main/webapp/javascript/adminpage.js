@@ -109,6 +109,36 @@ function FilterTable(name,inputid,btn,sel) {
         }
     }    
 }
+function setMindate(name)
+{
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+    var yyyy = today.getFullYear();
+     if(dd<10){
+            dd='0'+dd;
+        } 
+        if(mm<10){
+            mm='0'+mm;
+        } 
+    today = yyyy+'-'+mm+'-'+dd;
+    document.getElementById(name).setAttribute("min", today);
+}
+function setMaxdate(name)
+{
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+    var yyyy = today.getFullYear();
+     if(dd<10){
+            dd='0'+dd;
+        } 
+        if(mm<10){
+            mm='0'+mm;
+        } 
+    today = yyyy+'-'+mm+'-'+dd;
+    document.getElementById(name).setAttribute("max", today);
+}
 function FillForm1()
 {
     document.getElementById("name-emp").value=" ";

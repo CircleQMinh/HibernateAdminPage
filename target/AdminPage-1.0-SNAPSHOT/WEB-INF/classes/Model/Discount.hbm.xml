@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 7, 2020 8:24:17 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="dbthuongmaidientu" name="Model.Discount" optimistic-lock="version" table="discount">
+    <id name="discountId" type="java.lang.Integer">
+      <column name="DiscountID"/>
+      <generator class="identity"/>
+    </id>
+    <property name="name" type="string">
+      <column length="45" name="Name"/>
+    </property>
+    <property name="percent" type="java.lang.Float">
+      <column name="Percent" precision="12" scale="0"/>
+    </property>
+    <property name="startDate" type="date">
+      <column length="10" name="StartDate"/>
+    </property>
+    <property name="endDate" type="date">
+      <column length="10" name="EndDate"/>
+    </property>
+    <set fetch="select" inverse="false" lazy="true" name="products" table="discountproduct">
+      <key>
+        <column name="DiscountID" not-null="true"/>
+      </key>
+      <many-to-many entity-name="Model.Product">
+        <column name="ProductID" not-null="true"/>
+      </many-to-many>
+    </set>
+  </class>
+</hibernate-mapping>

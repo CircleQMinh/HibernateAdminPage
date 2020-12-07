@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 7, 2020 8:24:17 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="dbthuongmaidientu" name="Model.Category" optimistic-lock="version" table="category">
+    <id name="categoryId" type="java.lang.Integer">
+      <column name="CategoryID"/>
+      <generator class="identity"/>
+    </id>
+    <property name="name" type="string">
+      <column length="45" name="Name"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="products" table="product">
+      <key>
+        <column name="CategoryID"/>
+      </key>
+      <one-to-many class="Model.Product"/>
+    </set>
+  </class>
+</hibernate-mapping>

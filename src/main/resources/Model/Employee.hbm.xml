@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 7, 2020 8:24:17 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="dbthuongmaidientu" name="Model.Employee" optimistic-lock="version" table="employee">
+    <id name="employeeId" type="java.lang.Integer">
+      <column name="EmployeeID"/>
+      <generator class="identity"/>
+    </id>
+    <property name="employeeName" type="string">
+      <column length="45" name="EmployeeName" not-null="true"/>
+    </property>
+    <property name="sex" type="string">
+      <column length="45" name="Sex"/>
+    </property>
+    <property name="email" type="string">
+      <column length="45" name="Email"/>
+    </property>
+    <property name="phone" type="string">
+      <column length="15" name="Phone"/>
+    </property>
+    <property name="address" type="string">
+      <column length="45" name="Address"/>
+    </property>
+    <property name="salary" type="java.lang.Integer">
+      <column name="Salary"/>
+    </property>
+    <property name="paycheck" type="date">
+      <column length="10" name="Paycheck"/>
+    </property>
+    <property name="workdate" type="java.lang.Integer">
+      <column name="Workdate"/>
+    </property>
+    <property name="lastAtt" type="date">
+      <column length="10" name="LastAtt"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="blogs" table="blog">
+      <key>
+        <column name="EmployeeID"/>
+      </key>
+      <one-to-many class="Model.Blog"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="accounts" table="account">
+      <key>
+        <column name="EmployeeID" not-null="true" unique="true"/>
+      </key>
+      <one-to-many class="Model.Account"/>
+    </set>
+  </class>
+</hibernate-mapping>

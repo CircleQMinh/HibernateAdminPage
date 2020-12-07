@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/dbthuongmaidientu?UseUnicode=true&amp;characterEncoding=utf-8</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">QM1234</property>
+    <mapping resource="Model/Customer.hbm.xml"/>
+    <mapping resource="Model/Category.hbm.xml"/>
+    <mapping resource="Model/Discount.hbm.xml"/>
+    <mapping resource="Model/Blog.hbm.xml"/>
+    <mapping resource="Model/Product.hbm.xml"/>
+    <mapping resource="Model/Employee.hbm.xml"/>
+    <mapping resource="Model/Order.hbm.xml"/>
+    <mapping resource="Model/Account.hbm.xml"/>
+    <mapping resource="Model/Orderdetail.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

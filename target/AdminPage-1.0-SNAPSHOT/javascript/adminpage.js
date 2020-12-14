@@ -188,6 +188,21 @@ function FillForm6()
     document.getElementById("phone-cus").value=" ";
     document.getElementById("add-cus").value=" ";
 }
+function FillFormUpdateOrder(id,status)
+{
+    document.getElementById("orderid-edit").value =id;
+    document.getElementById("order-status")
+    if (status === "Đã duyệt"){
+        document.getElementById("order-status").options.selectedIndex=1;
+    } else if (status === "Đang giao"){
+        document.getElementById("order-status").options.selectedIndex=2;
+    } else if (status === "Đã giao"){
+        document.getElementById("order-status").options.selectedIndex=3;
+    }
+    else{
+        document.getElementById("order-status").options.selectedIndex=0;
+    }
+}
 function TinhLuong(sal,wd){
     var a=parseInt(sal);
     var b=parseInt(wd);

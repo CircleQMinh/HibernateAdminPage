@@ -199,7 +199,75 @@ $(document).ready(function(){
          openForm('formwait');
          $("#home").load( "order.jsp #order", function() {
             startTime();
-            closeForm('formwait'); 
+                $('#orderrefresh').click(function(){
+                    
+                    $('#ordertable').load("order.jsp #tableorder",function(){
+                        $('#tableorder').tablePagination({
+                            perPage:7,
+                            showAllButton:false
+                        });
+                        $("button[id|='ord_edit'").click(function(){
+                            openForm("updateOrder");
+                            var order_edit_id =$(this).closest('tr').find('td').eq(0).text();
+                            var order_edit_status=$(this).closest('tr').find('td').eq(5).text();
+                            FillFormUpdateOrder(order_edit_id,order_edit_status);
+                        });
+                        $('#editorder_status').click(function(){
+                            $.ajax({
+                                type: "post",
+                                url: "ajax/order/ajax-edit-ord.jsp", //this is my servlet
+                                data: {
+                                    eid: $('#orderid-edit').val(),
+                                    status: $('#order-status').val()
+                                },
+                                success: function ( response ){   
+                                    //handleData(response);
+                                    var success = $($.parseHTML(response)).filter("#sqlmsg").html();
+                                    console.log(success); // div#success
+                                    alert(success);
+                                    clickme("orderrefresh");
+                                },
+                                error: function(xhr, textStatus, error){
+                                    console.log(xhr.statusText);
+                                    console.log(textStatus);
+                                    console.log(error);
+                                }
+                            });
+                        });
+                        $("button[id|='ord_del']").click(function(){
+                          if (confirm('Xóa hóa đơn khỏi database?')) {
+                                $(this).closest('tr').find('td').eq(0).each(function() {
+                                    var textval = $(this).closest('tr').find('td').eq(0).text(); // this will be the text of each <td>
+                                    console.log(textval);
+                                    $.ajax({
+                                        type: "post",
+                                        url: "ajax/order/ajax-delete-ord.jsp", //this is my servlet
+                                        data: {
+                                            EID:textval               
+                                        },
+                                        success: function ( response ){   
+                                            //handleData(response);
+                                            var success =  $($.parseHTML(response)).filter("#sqlmsg").html(); 
+                                            console.log(success); // div#success
+                                            alert(success);
+                                            clickme("orderrefresh");
+                                        },
+                                        error: function(xhr, textStatus, error){
+                                            console.log(xhr.statusText);
+                                            console.log(textStatus);
+                                            console.log(error);
+                                            console.log("Fail");
+                                        }
+                                    });
+                                }); 
+                            } else {
+
+                            }  
+                        });
+                    });
+                });
+            clickme('orderrefresh');
+            closeForm('formwait');
         });
     });
     $('#blogpage').click(function(){
@@ -325,5 +393,6 @@ $(document).ready(function(){
             }
         });
     });
+    
 });
 

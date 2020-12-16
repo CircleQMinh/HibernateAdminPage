@@ -39,7 +39,7 @@
                  <p >Product<button class="minibtn" id="btnpro" onclick="miniTable('producttable','btnpro')">-</button></p>                    
             </div>   
             <div class="searhbar">
-                <button class="btn" onclick="openForm('form7open')"><i class="fas fa-plus"></i></button>
+                <button class="btn" onclick="openForm('form7open');FillForm7();"><i class="fas fa-plus"></i></button>
                 <button class="btn" id="productrefresh" value="Refresh"><i class="fas fa-sync" ></i></button> 
                 <input id="prosearchbar" type="text" class="myInput" onkeyup="FilterTable('tablepro','prosearchbar','productrefresh','proselect')" placeholder="Search for names.." title="Type in a name">
                 <select class="myselect" id="proselect">
@@ -86,7 +86,9 @@
                     %>
                 </table>
             </div>
+            
         </div>
+                
         <script>  
             startTime();       
         </script>

@@ -141,11 +141,11 @@ function setMaxdate(name)
 }
 function FillForm1()
 {
-    document.getElementById("name-emp").value=" ";
-    document.getElementById("mail-emp").value=" ";
-    document.getElementById("phone-emp").value=" ";
-    document.getElementById("add-emp").value=" ";
-    document.getElementById("salary-emp").value=" ";
+    document.getElementById("name-emp").value="";
+    document.getElementById("mail-emp").value="";
+    document.getElementById("phone-emp").value="";
+    document.getElementById("add-emp").value="";
+    document.getElementById("salary-emp").value="";
   
 }
 function FillForm2(name,sex,email,phone,add,pay,sal,eid)
@@ -183,10 +183,47 @@ function FillForm5(a)
 
 function FillForm6()
 {
-    document.getElementById("name-cus").value=" ";
-    document.getElementById("mail-cus").value=" ";
-    document.getElementById("phone-cus").value=" ";
-    document.getElementById("add-cus").value=" ";
+    document.getElementById("name-cus").value="";
+    document.getElementById("mail-cus").value="";
+    document.getElementById("phone-cus").value="";
+    document.getElementById("add-cus").value="";
+}
+function FillForm7()
+{
+    document.getElementById("name-pro-add").value="";
+    document.getElementById("mota-pro-add").value="";
+    document.getElementById("price-pro-add").value="";
+    document.getElementById("qua-pro-add").value="";
+    document.getElementById("category-pro-add").value="";
+    document.getElementById("url-pro-add").value="";
+    document.getElementById("uploaded-pro").scr="https://res.cloudinary.com/dkmk9tdwx/image/upload/v1607672014/1_kkeis8.png";
+}
+function FillForm7edit(name,mota,price,qua,cate,url,id)
+{
+    document.getElementById("name-pro-edit").value=name;
+    document.getElementById("mota-pro-edit").value=mota;
+    document.getElementById("price-pro-edit").value=price;
+    document.getElementById("qua-pro-edit").value=qua;
+    document.getElementById("category-pro-edit").value=cate;
+    document.getElementById("url-pro-edit").value=url;
+    document.getElementById("id-pro-edit").value=id;
+    var img = document.getElementById("uploaded-pro-edit");
+    img.setAttribute("src",url);
+}
+function FillFormaccedit(id,name,uid)
+{
+    document.getElementById("name-acc-emp-edit").value=name;
+    document.getElementById("id-acc-emp-edit").value=id;
+    document.getElementById("uid-acc-emp-edit").value=uid;
+    document.getElementById("pass-acc-emp-edit").value="";
+    document.getElementById("passagain-acc-emp-edit").value="";
+}
+function FillFormempnoacc(id)
+{
+    document.getElementById("name-acc-empnoacc").value="";
+    document.getElementById("pass-acc-empnoacc").value="";
+    document.getElementById("passagain-acc-empnoacc").value="";
+    document.getElementById('id-acc-empnoacc').value=id;
 }
 function TinhLuong(sal,wd){
     var a=parseInt(sal);
@@ -200,6 +237,7 @@ function SubmitMe(name)
 }
 
 //hàm up ảnh //xài cho form khác thì copy rồi đổi tên
+// của add pro duct
 function ajaxSuccess() {
     response = JSON.parse(this.responseText);
     console.log("ajaxSuccess", typeof this.responseText);
@@ -216,13 +254,36 @@ function ajaxSuccess() {
 };
 function AJAXSubmit(name) {
     var formElement=document.getElementById(name);
-    console.log("starting AJAXSubmit");
     if (!formElement.action) { return; }
     var xhr = new XMLHttpRequest();
     xhr.onload = ajaxSuccess;
     xhr.open("post", "https://api.cloudinary.com/v1_1/dkmk9tdwx/image/upload");
     xhr.send(new FormData(formElement));
 };
+// của edit pro duct
+function ajaxSuccess_edit_product() {
+    response = JSON.parse(this.responseText);
+    console.log("ajaxSuccess", typeof this.responseText);
+    if(typeof(response["secure_url"]) === 'undefined')
+    {
+        alert("File chọn không hợp lệ");
+    }
+    else
+    {
+        document.getElementById('uploaded-pro-edit').setAttribute("src", response["secure_url"]);//bỏ ảnh vào id nào đó
+        document.getElementById('url-pro-edit').value=response["secure_url"];
+        //alert(response["secure_url"]);
+    }
+};
+function AJAXSubmit_edit_product(name) {
+    var formElement=document.getElementById(name);
+    if (!formElement.action) { return; }
+    var xhr = new XMLHttpRequest();
+    xhr.onload = ajaxSuccess_edit_product;
+    xhr.open("post", "https://api.cloudinary.com/v1_1/dkmk9tdwx/image/upload");
+    xhr.send(new FormData(formElement));
+};
+//-----------------------------------------------------------------
 function creatchart1() {    
     var chart = new CanvasJS.Chart("chartContainer1", {
 //        width:320,

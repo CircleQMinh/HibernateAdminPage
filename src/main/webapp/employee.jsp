@@ -38,7 +38,9 @@
             </div>   
 
             <div class="searhbar">
+                <!--quan trọng-->
             <button class="btn" onclick="openForm('form1');FillForm1();"><i class="fas fa-user-plus"></i></button>
+            <!--quan trọng-->
             <button class="btn" id="employeerefresh" value="Refresh"><i class="fas fa-sync" ></i></button> 
             <input id="empsearchbar" type="text" class="myInput" onkeyup="FilterTable('tableemp','empsearchbar','employeerefresh','empselect')" placeholder="Search for names.." title="Type in a name">
             <select class="myselect" id="empselect">
@@ -92,7 +94,7 @@
                 </table>
             </div>
              <div class="dashbosl" >
-                <p id='paychecktag'>Attendance<button class="minibtn" id="btnpay" onclick="miniTable('paycheck','btnpay')">-</button></p>
+                <p id='paychecktag'>Attendance<button class="minibtn" id="btnpay" onclick="miniTable('att-table','btnpay')">-</button></p>
             </div>
             <div class="searhbar">
                 <button class="btn" id="att-refresh" value="Refresh"><i class="fas fa-sync" ></i></button> 

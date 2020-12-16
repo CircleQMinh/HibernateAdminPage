@@ -25,21 +25,21 @@ public class EmployeeDao {
         Employee emp = null;
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();
-        try  {
+        try {
             // start a transaction
             transaction = session.beginTransaction();
             // get an user object
             emp = (Employee) session.get(Employee.class, id);
             // commit transaction
             transaction.commit();
-        } catch (Exception e) {
+            session.close();sessionFactory.close();
+        } 
+        catch (Exception e) {
             if (transaction != null) {
-                transaction.rollback();
+                transaction.rollback();session.close();sessionFactory.close();
             }
         }
-        finally{
-            session.close();
-        }
+        sessionFactory.close();
         return emp;
     }
     
@@ -49,7 +49,7 @@ public class EmployeeDao {
         List < Employee > listOfUser = null;
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();
-        try  {
+        try {
             // start a transaction
             transaction = session.beginTransaction();
             // get an user object
@@ -58,14 +58,37 @@ public class EmployeeDao {
 
             // commit transaction
             transaction.commit();
+            session.close();sessionFactory.close();
         } catch (Exception e) {
             if (transaction != null) {
-                transaction.rollback();
+                transaction.rollback(); session.close();sessionFactory.close();
             }
         }
-        finally{
-            session.close();
+        sessionFactory.close();
+        return listOfUser;
+    }
+    public static List < Employee > getAllEmpWithNoAcc() {
+
+        Transaction transaction = null;
+        List < Employee > listOfUser = null;
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        try {
+            // start a transaction
+            transaction = session.beginTransaction();
+            // get an user object
+
+            listOfUser = session.createQuery("from Employee e where e.employeeId not in (select a.userId from Account a where a.type='employee')").list();
+
+            // commit transaction
+            transaction.commit();
+            session.close();sessionFactory.close();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();session.close();sessionFactory.close();
+            }
         }
+        sessionFactory.close();
         return listOfUser;
     }
     public static void saveEmp(Employee emp) {
@@ -79,33 +102,31 @@ public class EmployeeDao {
             session.save(emp);
             // commit transaction
             transaction.commit();
+            session.close();
+            sessionFactory.close();
         } catch (Exception e) {
             if (transaction != null) {
-                transaction.rollback();
+                transaction.rollback();session.close();sessionFactory.close();
             }
-        }
-        finally{
-            session.close();
         }
     }
     public static void updateEmp(Employee emp) { //edit toàn bộ các cột
         Transaction transaction = null;
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();
-        try  {
+        try{
             // start a transaction
             transaction = session.beginTransaction();
             // save the student object
             session.update(emp);
             // commit transaction
             transaction.commit();
+            session.close();sessionFactory.close();
         } catch (Exception e) {
             if (transaction != null) {
-                transaction.rollback();
+                transaction.rollback();      
+                session.close();sessionFactory.close();
             }
-        }
-        finally{
-            session.close();
         }
     }
     // edit 1 số cột
@@ -127,13 +148,12 @@ public class EmployeeDao {
             session.update(emp);
             // commit transaction
             transaction.commit();
+            session.close();sessionFactory.close();
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
+                session.close();sessionFactory.close();
             }
-        }
-        finally{
-            session.close();
         }
     }
     public static void chamcongEmp(Integer employeeId){
@@ -151,14 +171,12 @@ public class EmployeeDao {
             // save the student object
             session.update(emp);
             // commit transaction
-            transaction.commit();
+            transaction.commit();session.close();sessionFactory.close();
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
+                session.close();sessionFactory.close();
             }
-        }
-        finally{
-            session.close();
         }
     }
     public static void editattEmp(int inteid,Date pay, int intday,Date last){
@@ -175,14 +193,11 @@ public class EmployeeDao {
             // save the student object
             session.update(emp);
             // commit transaction
-            transaction.commit();
+            transaction.commit();session.close();sessionFactory.close();
         } catch (Exception e) {
             if (transaction != null) {
-                transaction.rollback();
+                transaction.rollback();session.close();sessionFactory.close();
             }
-        }
-        finally{
-            session.close();
         }
     }
     public static void traluongEmp(Integer employeeId){
@@ -201,10 +216,10 @@ public class EmployeeDao {
             // save the student object
             session.update(emp);
             // commit transaction
-            transaction.commit();
+            transaction.commit();session.close();sessionFactory.close();
         } catch (Exception e) {
             if (transaction != null) {
-                transaction.rollback();
+                transaction.rollback();session.close();sessionFactory.close();
             }
         }
         finally{
@@ -216,26 +231,23 @@ public class EmployeeDao {
         Transaction transaction = null;
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();
-        try {
+        try{
             // start a transaction
             transaction = session.beginTransaction();
 
             // Delete a user object
             Employee emp = session.get(Employee.class, id);
+            session.createSQLQuery("delete from account a where a.Type='employee' and a.UserID=" +String.valueOf(id)).executeUpdate();
             if (emp != null) {
                 session.delete(emp);
-
             }
 
             // commit transaction
-            transaction.commit();
+            transaction.commit();session.close();sessionFactory.close();
         } catch (Exception e) {
             if (transaction != null) {
-                transaction.rollback();
+                transaction.rollback();session.close();sessionFactory.close();
             }
-        }
-        finally{
-            session.close();
         }
     }
 }

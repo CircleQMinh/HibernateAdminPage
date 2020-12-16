@@ -3,8 +3,10 @@ Model\Orderdetail.class
 Model\Order.class
 Model\Blog.class
 Dao\CategoryDao.class
+Model\Revenue.class
 Controller\PutServletHere.class
 Model\Admin.class
+Dao\DashboardDao.class
 Controller\EmployeeAdd.class
 Model\Product.class
 Dao\EmployeeDao.class
@@ -12,4 +14,5 @@ Model\Account.class
 Dao\ProductDao.class
 Model\Customer.class
 Model\Employee.class
+Dao\AccountDao.class
 Hibernate\HibernateUtil.class

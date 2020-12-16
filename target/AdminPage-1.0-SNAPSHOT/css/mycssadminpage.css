@@ -459,15 +459,20 @@ font-family: Arial, Helvetica, sans-serif;
 font-size: 12px;
 display: none;
 position: fixed;
-bottom: 50%;
-right: 40%;
-border: 3px solid #f1f1f1;
-z-index: 9;
-background-color: #adaaa1;
-max-width: 40%;
+top:  50%;
+left: 50%;
+transform: translate(-50%,-50%);
+border: 16px solid #f3f3f3; /* Light grey */
+border-top: 16px solid blue;
+border-bottom: 16px solid blue;
+border-radius: 50%;
+width: 120px;
+height: 120px;
+animation: spin 2s linear infinite;
 }
-.divwait form {
-border: 5px solid #f1f1f1;
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .divupanh {
@@ -491,6 +496,53 @@ border: 5px solid #f1f1f1;
     height: 50px;
 }
 .productimgupload{
-    width: 200px;
-    height: 200px;
+    width: 100px;
+    height: 100px;
+}
+
+.divformupanh {
+justify-content: center;
+font-family: Arial, Helvetica, sans-serif;
+font-size: 12px;
+border: 3px solid #f1f1f1;
+z-index: 9;
+background-color: #adaaa1;
+display: inline-block;
+}
+.divformupanh form {
+border: 5px solid #f1f1f1;
+}
+.divformupanh input[type=text], input[type=password] {
+width: 100%;
+padding: 16px 8px;
+margin: 8px 0;
+display: inline-block;
+border: 1px solid #ccc;
+box-sizing: border-box;
+height: 20px;
+background-color: #cfc7b0;
+}
+.divformupanh form input[type=text], input[type=password] {
+width: 100%;
+padding: 16px 8px;
+margin: 8px 0;
+display: inline-block;
+border: 1px solid #ccc;
+box-sizing: border-box;
+height: 20px;
+background-color: #cfc7b0;
+}
+.divformupanh button {
+background-color: #4286f4;
+color: white;
+padding: 14px 0;
+margin: 10px 0;
+border: none;
+cursor: grab;
+width: 48%;
+font-family: Arial, Helvetica, sans-serif;
+}
+.divformupanh h1 {
+text-align:center;
+font-size:18px;
 }

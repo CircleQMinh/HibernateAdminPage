@@ -16,21 +16,20 @@ import org.hibernate.SessionFactory;
  */
 public class HibernateUtil {
 
-    private static final SessionFactory sessionFactory;
-    
-    static {
-        try {
-            // Create the SessionFactory from standard (hibernate.cfg.xml) 
-            // config file.
-            sessionFactory = new Configuration().configure().buildSessionFactory();
-        } catch (Throwable ex) {
-            // Log the exception. 
-            System.err.println("Initial SessionFactory creation failed." + ex);
-            throw new ExceptionInInitializerError(ex);
-        }
+    public static SessionFactory factory;
+//to disallow creating objects by other classes.
+
+    private HibernateUtil() {
+        
     }
-    
-    public static SessionFactory getSessionFactory() {
-        return sessionFactory;
+//maling the Hibernate SessionFactory object as singleton
+
+    public static synchronized SessionFactory getSessionFactory() {
+
+        if (factory == null) {
+            factory = new Configuration().configure("hibernate.cfg.xml").
+                    buildSessionFactory();
+        }
+        return factory;
     }
 }

@@ -7,6 +7,12 @@
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/dbthuongmaidientu?characterEncoding=UTF-8</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">QM1234</property>
+    <property name="connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
+    <property name="hibernate.c3p0.min_size">5</property>
+    <property name="hibernate.c3p0.max_size">20</property>
+    <property name="hibernate.c3p0.acquire_increment">5</property>
+    <property name="hibernate.c3p0.timeout">1800</property>
+    <mapping resource="Model/Revenue.hbm.xml"/>
     <mapping resource="Model/Blog.hbm.xml"/>
     <mapping resource="Model/Order.hbm.xml"/>
     <mapping resource="Model/Orderdetail.hbm.xml"/>

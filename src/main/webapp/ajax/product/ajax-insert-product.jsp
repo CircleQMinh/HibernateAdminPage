@@ -69,6 +69,11 @@
             {
                 errorsql="Lỗi : Chưa chọn ảnh";
             }
+            String cate = request.getParameter("category");
+            if(cate==""||cate==null)
+            {
+                errorsql="Lỗi : Chưa nhập loại sản phẩm";
+            }
             String qua = request.getParameter("qua").trim();
             if(qua==""||qua==null)
             {
@@ -94,23 +99,16 @@
             catch(Exception e){
                 errorsql="Lỗi : Giá không hợp lệ";
             }
-            String name = request.getParameter("name").trim();
-            if(name==""||name==null)
-            {
-                errorsql="Lỗi : Chưa nhập tên sản phẩm";
-            }
             String des = request.getParameter("des").trim();
             if(des==""||des==null)
             {
                 errorsql="Lỗi : Chưa nhập mô tả";
             }
-
-            String cate = request.getParameter("category");
-            if(cate==""||cate==null)
+            String name = request.getParameter("name").trim();
+            if(name==""||name==null)
             {
-                errorsql="Lỗi : Chưa nhập loại sản phẩm";
+                errorsql="Lỗi : Chưa nhập tên sản phẩm";
             }
-            
             Calendar c = Calendar.getInstance();
             c.setTime(new Date()); 
             Date today=c.getTime();
@@ -119,19 +117,19 @@
 
                 try {
                         Product  pro = new Product(name,des,intprice,intqua,cate,url,today);
-                        ProductDao.saveEmp(pro);
+                        ProductDao.savePro(pro);
                         errorsql="Thêm sản phẩm thành công";
                     }        
                 catch (Exception e) 
-                    {
-                        e.printStackTrace();
-                        errorsql=String.valueOf(e);
-                        errorsql="Không thành công";
-                    }
+                {
+                    e.printStackTrace();
+                    errorsql=String.valueOf(e);
+                    errorsql="Không thành công";
+                }
             }
             
         %>
-        <p id="msg">
+        <p id="sqlsmsg">
         <%=name%><br>   
         <%=des%><br> 
         <%=price%><br> 

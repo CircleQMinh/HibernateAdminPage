@@ -6,14 +6,18 @@
 
 
 
+<%@page import="Dao.DashboardDao"%>
 <%@page import="Dao.CategoryDao"%>
 <%@page import="java.util.List"%>
 <%@page import="Model.Employee"%>
 <%@page import="Dao.EmployeeDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-    int i=0;
-
+    int sonv = DashboardDao.SoNhanVien();
+    int sosp = DashboardDao.SoSanPham();
+    int sokh = DashboardDao.SoKhachHang();
+    int sotk = DashboardDao.SoTaiKhoan();
+    int soord = DashboardDao.SoOrder();
 %>    
 <!DOCTYPE html>
 <html>
@@ -28,7 +32,11 @@
         <script src="javascript/jquery.tablePagination.js" type="text/javascript"></script>
         <script src="javascript/jquery-adminpage.js" type="text/javascript"></script>
         <script>
-            
+            console.log(<%=sonv%>);
+            console.log(<%=sosp%>);
+            console.log(<%=sokh%>);
+            console.log(<%=sotk%>);
+            console.log(<%=soord%>);
         </script>
         
     </head>
@@ -44,7 +52,6 @@
             <button title="View Product"  id = 'propage'><i class="fas fa-shopping-bag"></i></button>
             <button title="View Customer"  id = 'cuspage'><i class="fas fa-users"></i></button>
             <button title="View Account"  id = 'accpage'><i class="fas fa-key"></i></button>
-            <button title="View Sales" id = 'salespage'><i class="fas fa-money-check-alt"></i></button>
             <button title="View Order" id = 'orderpage'><i class="fas fa-tasks"></i></button>
             <button title="View Blog" id = 'blogpage'><i class="fab fa-blogger"></i></button>
             <button title="View Statistic" id="stapage"><i class="fas fa-chart-line"></i></button>
@@ -60,51 +67,45 @@
                     <p id="time">???</p>
                 </div>
                 <div class="card">
-                    <p><i class="fas fa-user-tie"></i></p>
-                    <h3>2</h3>
-                    <p>Admin</p>
-                    <a>View</a>
-                </div>
-                <div class="card">
                     <p><i class="fas fa-id-card"></i></p>
-                    <h3>55</h3>
+                    <h3><%=sonv%></h3>
                     <p>Employee</p>
                     <a>View</a>
                 </div>
                 <div class="card">
                     <p><i class="fas fa-money-bill-wave"></i></p>
-                    <h3>10</h3>
-                    <p>Paycheck</p>   
-                    <a>View</a>
-                </div>
-                <div class="card">
-                    <p><i class="fas fa-envelope-square"></i></p>
-                    <h3>3</h3>
-                    <p>Mail</p>
+                    <h3><%=sosp%></h3>
+                    <p>Product</p>   
                     <a>View</a>
                 </div>
                 <div class="card">
                     <p><i class="fa fa-user"></i></p>
-                    <h3>11</h3>
+                    <h3><%=sokh%></h3>
                     <p>Customer</p>
                     <a>View</a>
                 </div>
                 <div class="card">
+                    <p><i class="fas fa-key"></i></p>
+                    <h3><%=sotk%></h3>
+                    <p>Account</p>
+                    <a>View</a>
+                </div>
+                <div class="card">
                     <p><i class="fa fa-check"></i></p>
-                    <h3>25</h3>
+                    <h3><%=soord%></h3>
                     <p>Order</p>
                     <a>View</a>
                 </div>
                 <div class="card">
-                    <p><i class="fas fa-tshirt"></i></p>
+                    <p><i class="fab fa-blogger"></i></p>
                     <h3>128</h3>
-                    <p>Product</p>   
+                    <p>Blog</p>   
                     <a>View</a>
                 </div>
                 <div class="card">
                     <p><i class="fas fa-comment-dollar"></i></p>
                     <h3>3</h3>
-                    <p>Sales</p>
+                    <p>Statistic</p>
                     <a>View</a>
                 </div>
 
@@ -174,8 +175,8 @@
                 <button type="button" style="background-color: red;" onclick="closeForm('form3')" ><strong>Close</strong></button>        
             </form>  
         </div>
-        <div class="divform" id="form7open">
-            <div class="divform" id="form7" style="display: block">
+        <div class="divform" id="form7open" style="max-width: 80%">
+            <div class="divformupanh" id="form7" style="display: block">
                 <form >
                     <h1>Add Product</h1>
                     <br>
@@ -195,34 +196,105 @@
                         <option >Cao dược liệu</option>
                         <option>Thực phẩm chức năng</option>
                     </datalist>
-                    <input type="text" id="url-pro-add" readonly>
-                    <button type="button" id="save_pro"><strong>Add</strong></button>   
-                    <button type="button" style="background-color: red;" onclick="closeForm('form7open')" ><strong>Close</strong></button>        
+                    <input type="hidden" id="url-pro-add" readonly>
+                          
                 </form>  
             </div>
-            <div class="divupanh" id="form7upanh" style="display: block">
+            <div class="divupanhupanh" id="form7upanh" style="display: block">
                 <form action="" method="post" enctype="multipart/form-data" onsubmit="" id="uploaded-pro-form">
                 <fieldset>
                     <legend><b>Upload Picture</b></legend>
-                     <p>
-                         <label for="upload_preset">Unsigned upload Preset: <input type="text" name="upload_preset" readonly value="v0q5hczm" max="10"></label>
-                     </p>
+                        <input type="hidden" name="upload_preset" readonly value="v0q5hczm" max="10">
                      <p>
                     <label >Select your photo:
                         <input type="file" name="file" accept="image/*" onchange="AJAXSubmit('uploaded-pro-form'); return false;"></label>
                       </p>
-                      <img id="uploaded-pro" class="productimgupload">
+                      <img id="uploaded-pro" class="productimgupload" src="https://res.cloudinary.com/dkmk9tdwx/image/upload/v1607672014/1_kkeis8.png">
                 </fieldset>
+                <button type="button" id="save_pro"><strong>Add</strong></button>   
+                <button type="button" style="background-color: red;" onclick="closeForm('form7open')" ><strong>Close</strong></button> 
                 </form>
             </div>
         </div>
-           
-        
+        <div class="divform" id="form7edit" style="max-width: 80%">
+            <div class="divformupanh" id="form7" style="display: block">
+                <form >
+                    <h1>Edit Product</h1>
+                    <br>
+                    <label ><strong>Name</strong></label>
+                    <input type="text" placeholder="Enter Name" name="name" id="name-pro-edit">
+                    <label ><strong>Mô tả sản phẩm</strong></label><br>
+                    <textarea name="mota" cols="50" rows="3" id="mota-pro-edit" ></textarea><br>
+                    <label ><strong>Price</strong></label>
+                    <input type="text" placeholder="Enter Price" name="phone" id="price-pro-edit">
+                    <label ><strong>Quantity</strong></label>
+                    <input type="text" placeholder="Enter Quantity" name="address" id="qua-pro-edit">
+                    <label ><strong>Catagory</strong></label><br>
+                    <input type="text" list="category-pro" id="category-pro-edit" />
+                    <datalist id="category-pro">
+                        <option selected>Dược liệu</option>
+                        <option>Thực phẩm chức năng</option>
+                        <option >Cao dược liệu</option>
+                        <option>Thực phẩm chức năng</option>
+                    </datalist>
+                    <input type="text" id="url-pro-edit" readonly>
+                    <input type="hidden" id="id-pro-edit" readonly>      
+                </form>  
+            </div>
+            <div class="divupanhupanh" id="form7upanh" style="display: block">
+                <form action="" method="post" enctype="multipart/form-data" onsubmit="" id="uploaded-pro-form-edit">
+                <fieldset>
+                    <legend><b>Upload Picture</b></legend>
+                        <input type="hidden" name="upload_preset" readonly value="v0q5hczm" max="10">
+                     <p>
+                    <label >Select your photo:
+                        <input type="file" name="file" accept="image/*" onchange="AJAXSubmit_edit_product('uploaded-pro-form-edit'); return false;"></label>
+                      </p>
+                      <img id="uploaded-pro-edit" class="productimgupload" >
+                </fieldset>
+                <button type="button" id="edit_pro"><strong>Edit</strong></button>   
+                <button type="button" style="background-color: red;" onclick="closeForm('form7edit')" ><strong>Close</strong></button> 
+                </form>
+            </div>
+        </div>
+        <div class="divform" id="formeditaccemp" >
+            <form >
+                <h1>Edit Employee Account</h1>
+                <br>
+                <label ><strong>Username</strong></label>
+                <input type="text" id="name-acc-emp-edit" name="wd" readonly><br>
+                
+                <label ><strong>Type New Password</strong></label>
+                <input type="password" id="pass-acc-emp-edit" name="pay"><br>
+                <label ><strong>Type Password Again</strong></label>
+                <input type="password" id="passagain-acc-emp-edit" name="pay"><br>
+                <span id='message-edit-emp-acc'></span><br>
+                <input type="hidden" id="id-acc-emp-edit">
+                <input type="hidden" id="uid-acc-emp-edit">
+                <button type="button" id="edit-acc-emp"><strong>Edit</strong></button>   
+                <button type="button" style="background-color: red;" onclick="closeForm('formeditaccemp')" ><strong>Close</strong></button>        
+            </form>  
+        </div>
+        <div class="divform" id="formempnoacc" >
+            <form >
+                <h1>Create Employee Account</h1>
+                <br>
+                <label ><strong>Username</strong></label>
+                <input type="text" id="name-acc-empnoacc" name="wd"><br>
+                
+                <label ><strong>Type New Password</strong></label>
+                <input type="password" id="pass-acc-empnoacc" name="pay"><br>
+                <label ><strong>Type Password Again</strong></label>
+                <input type="password" id="passagain-acc-empnoacc" name="pay"><br>
+                <span id='message-create-emp-acc'></span><br>
+                <input type="hidden" id="id-acc-empnoacc">
+                <button type="button" id="acc-empnoacc"><strong>Create</strong></button>   
+                <button type="button" style="background-color: red;" onclick="closeForm('formempnoacc')" ><strong>Close</strong></button>        
+            </form>  
+        </div>
 <!--        // thông báo tải trang -->
         <div class="divwait" id="formwait" >
-            <form >
-                <h1>Đang tải trang ...</h1>      
-            </form>  
+
         </div>
     </body>
 </html>

@@ -12,6 +12,10 @@
         <servlet-name>EmployeeAdd</servlet-name>
         <servlet-class>Controller.EmployeeAdd</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CartServlet</servlet-name>
+        <servlet-class>Controller.CartServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PutServletHere</servlet-name>
         <url-pattern>/PutServletHere</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>EmployeeAdd</servlet-name>
         <url-pattern>/EmployeeAdd</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CartServlet</servlet-name>
+        <url-pattern>/CartServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -12,17 +12,27 @@ package Model;
 public class CartItem {
     private int productID;
     private String productName;
+    private String pictureString;
     private int quantity;
     private int price;
     
     public CartItem(){
         
     }
-    public CartItem(int productID,String productName,int quntity)
+    public CartItem(int productID,String productName,String pictureString ,int quantity)
     {
         this.productID = productID;
         this.productName = productName;
         this.quantity = quantity;
+        this.pictureString =pictureString;
+    }
+
+    public String getPictureString() {
+        return pictureString;
+    }
+
+    public void setPictureString(String pictureString) {
+        this.pictureString = pictureString;
     }
     public int getProductID() {
         return productID;

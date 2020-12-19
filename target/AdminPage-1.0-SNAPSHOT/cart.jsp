@@ -79,7 +79,7 @@
                     <tr>
                         <td>
                             <div class="cart-info">
-                                <img src="images/prd6.jpg" alt="">
+                                <img src="<%= listItems.get(i).getPictureString() %>" alt="">
                                 <div>
                                     <p><%= listItems.get(i).getProductName()%></p>
                                     <small>Price: <%= listItems.get(i).getPrice()%></small>
@@ -110,7 +110,7 @@
             </table>
         </div>
         <form class="row">
-            <a href="" class="btn btn-tt">Thanh toán</a>
+            <a href="checkout.jsp" class="btn btn-tt">Thanh toán</a>
         </form>
         <% } %>
     </div>

@@ -60,6 +60,7 @@ public class CartServlet extends HttpServlet {
                                 item.setProductName(prd.getProductName());
                                 item.setPrice(prd.getPrice());
                                 item.setQuantity(quantity);
+                                item.setPictureString(prd.getPicture());
                                 listItems.add(item);
                                 cart.setItems(listItems);
                                 session.setAttribute("cart", cart);

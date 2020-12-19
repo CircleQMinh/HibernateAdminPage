@@ -1,5 +1,5 @@
 package Model;
-// Generated Dec 14, 2020 1:23:06 PM by Hibernate Tools 4.3.1
+// Generated Dec 11, 2020 10:38:08 AM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -28,7 +28,9 @@ public class Customer  implements java.io.Serializable {
      private String address;
      private String phone;
      private String email;
-     private String sex;
+     private Integer accountId;
+     private String username;
+     private String password;
      private Set<Order> orders = new HashSet<Order>(0);
 
     public Customer() {
@@ -38,13 +40,26 @@ public class Customer  implements java.io.Serializable {
     public Customer(String customerName) {
         this.customerName = customerName;
     }
-    public Customer(String customerName, String address, String phone, String email, String sex, Set<Order> orders) {
+    public Customer(String customerName, String address, String phone, String email, Integer accountId, String username, String password, Set<Order> orders) {
        this.customerName = customerName;
        this.address = address;
        this.phone = phone;
        this.email = email;
-       this.sex = sex;
+       this.accountId = accountId;
+       this.username = username;
+       this.password = password;
        this.orders = orders;
+    }
+    
+    //customer không cần oder
+    public Customer(String customerName, String address, String phone, String email, Integer accountId, String username, String password) {
+       this.customerName = customerName;
+       this.address = address;
+       this.phone = phone;
+       this.email = email;
+       this.accountId = accountId;
+       this.username = username;
+       this.password = password;
     }
    
      @Id @GeneratedValue(strategy=IDENTITY)
@@ -100,13 +115,33 @@ public class Customer  implements java.io.Serializable {
     }
 
     
-    @Column(name="Sex", length=45)
-    public String getSex() {
-        return this.sex;
+    @Column(name="AccountID")
+    public Integer getAccountId() {
+        return this.accountId;
     }
     
-    public void setSex(String sex) {
-        this.sex = sex;
+    public void setAccountId(Integer accountId) {
+        this.accountId = accountId;
+    }
+
+    
+    @Column(name="Username", length=45)
+    public String getUsername() {
+        return this.username;
+    }
+    
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    
+    @Column(name="Password", length=45)
+    public String getPassword() {
+        return this.password;
+    }
+    
+    public void setPassword(String password) {
+        this.password = password;
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="customer")
@@ -116,6 +151,14 @@ public class Customer  implements java.io.Serializable {
     
     public void setOrders(Set<Order> orders) {
         this.orders = orders;
+    }
+
+    public void getCustomerName(String address) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void getAddress(String address) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 

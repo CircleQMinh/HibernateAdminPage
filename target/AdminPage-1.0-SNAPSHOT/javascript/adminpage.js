@@ -198,6 +198,18 @@ function FillForm7()
     document.getElementById("url-pro-add").value="";
     document.getElementById("uploaded-pro").scr="https://res.cloudinary.com/dkmk9tdwx/image/upload/v1607672014/1_kkeis8.png";
 }
+function FillForm12(name,add,email,phone,accountid,username, pass,cid)
+{
+    document.getElementById("name-cus-edit").value=name;
+    document.getElementById("add-cus-edit").value=add;
+    document.getElementById("mail-cus-edit").value=email;
+    document.getElementById("phone-cus-edit").value=phone;
+    document.getElementById("accountid-cus-edit").value=accountid;
+    document.getElementById("username-cus-edit").value=username;
+    document.getElementById("pass-cus-edit").value=pass;
+    document.getElementById("cid-cus-edit").value=cid;
+      
+}
 function FillForm7edit(name,mota,price,qua,cate,url,id)
 {
     document.getElementById("name-pro-edit").value=name;

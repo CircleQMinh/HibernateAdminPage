@@ -175,6 +175,131 @@ $(document).ready(function(){
         });
 
     });
+    
+    //jqury cua blog
+    $('#blogpage').click(function(){
+        openForm('formwait');
+        $("#home").load( "blog.jsp #blog", function() {
+            startTime();            
+            $('#blogrefresh').click(function(){
+                $("#blogtable").load( "blog.jsp #tableblog",function(){
+                    $('#tableblog').tablePagination({
+                        perPage: 2,
+                        showAllButton:false
+                    });
+                    $("button[id|='blog_edit']").click(function() {
+                        openForm("form10");
+                        var emp_edit_bid=$(this).closest('tr').find('td').eq(0).text();
+                        var emp_edit_name=$(this).closest('tr').find('td').eq(1).text();
+                        var emp_edit_content=$(this).closest('tr').find('td').eq(2).text();
+                        var emp_edit_picture=$(this).closest('tr').find('td').eq(3).text();
+                        
+                        FillForm10(emp_edit_name,emp_edit_name,emp_edit_content,emp_edit_bid);
+                    });
+                    $("button[id|='blog_del']").click(function() {
+                        if (confirm('Xóa blog n khỏi database?')) {
+                            $(this).closest('tr').find('td').eq(0).each(function() {
+                                var textval = $(this).text(); // this will be the text of each <td>
+                                console.log(textval);
+                                $.ajax({
+                                    type: "post",
+                                    url: "ajax/blog/ajax-delete-blog.jsp", //this is my servlet
+                                    data: {
+                                        BID:textval               
+                                    },
+                                    success: function ( response ){   
+                                        //handleData(response);
+                                        var success =  $($.parseHTML(response)).filter("#sqlmsg").html(); 
+                                        console.log(success); // div#success
+                                        alert(success);
+                                        clickme("blogrefresh");
+                                    },
+                                    error: function(xhr, textStatus, error){
+                                        console.log(xhr.statusText);
+                                        console.log(textStatus);
+                                        console.log(error);
+                                        console.log("Fail");
+                                    }
+                                });
+                            }); 
+                        } else {
+
+                        }                   
+                    });
+                });
+            });          
+            clickme('blogrefresh');
+            closeForm('formwait');
+        });
+    });
+    
+    
+    
+    
+    //jquery của customer
+    $('#cuspage').click(function(){
+        openForm('formwait');
+        $("#home").load( "customer.jsp #customer", function() {
+            startTime();            
+            $('#customerrefresh').click(function(){
+                $("#customertable").load( "customer.jsp #tablecus",function(){
+                    $('#tablecus').tablePagination({ //phan trang
+                        perPage: 7,
+                        showAllButton:false
+                    });
+                    $("button[id|='cus_edit']").click(function() {
+                        openForm("form12"); ////////
+                        var cus_edit_cid=$(this).closest('tr').find('td').eq(0).text();
+                        var cus_edit_name=$(this).closest('tr').find('td').eq(1).text();
+                        var cus_edit_add=$(this).closest('tr').find('td').eq(2).text();
+                        var cus_edit_phone=$(this).closest('tr').find('td').eq(3).text();
+                        var cus_edit_email=$(this).closest('tr').find('td').eq(4).text();
+                        var cus_edit_accountid=$(this).closest('tr').find('td').eq(5).text();
+                        var cus_edit_username=$(this).closest('tr').find('td').eq(6).text();
+                        var cus_edit_pass=$(this).closest('tr').find('td').eq(7).text();
+                        FillForm12(cus_edit_name,cus_edit_add,cus_edit_email,cus_edit_phone,cus_edit_accountid,
+                                cus_edit_username,cus_edit_pass,cus_edit_cid);
+                    });
+                    $("button[id|='cus_del']").click(function() {
+                        if (confirm('Xóa khách hàng này ra khỏi database?')) {
+                            $(this).closest('tr').find('td').eq(0).each(function() {
+                                var textval = $(this).text(); // this will be the text of each <td>
+                                console.log(textval);
+                                $.ajax({
+                                    type: "post",
+                                    url: "ajax/customer/ajax-delete-customer.jsp", //this is my servlet
+                                    data: {
+                                        CID:textval               
+                                    },
+                                    success: function ( response ){   
+                                        //handleData(response);
+                                        var success =  $($.parseHTML(response)).filter("#sqlmsg").html(); 
+                                        console.log(success); // div#success
+                                        alert(success);
+                                        clickme("customerrefresh");
+                                    },
+                                    error: function(xhr, textStatus, error){
+                                        console.log(xhr.statusText);
+                                        console.log(textStatus);
+                                        console.log(error);
+                                        console.log("Fail");
+                                    }
+                                });
+                            }); 
+                        } else {
+
+                        }                   
+                    });
+                });
+            });           
+            clickme('customerrefresh');
+            closeForm('formwait');
+        });
+
+    });
+    
+    
+    
 //                jquery của pro
     $('#propage').click(function(){
          openForm('formwait');
@@ -493,6 +618,39 @@ $(document).ready(function(){
             }
         });
     });
+    
+    
+    $('#edit-cus').click(function (){
+        $.ajax({
+            type: "post",
+            url: "ajax/customer/ajax-edit-customer.jsp", //this is my servlet
+            data: {
+                cid: $('#cid-cus-edit').val(),
+                name: $('#name-cus-edit').val(), 
+                mail: $('#mail-cus-edit').val(),
+                phone: $('#phone-cus-edit').val(), 
+                address: $('#add-cus-edit').val(), 
+                accountid: $('#accountid-cus-edit').val(), 
+                username: $('#username-cus-edit').val(),
+                pass: $('#pass-cus-edit').val()
+            },
+            success: function ( response ){   
+                //handleData(response);
+                var success = $($.parseHTML(response)).filter("#sqlmsg").html();
+                console.log(success); // div#success
+                alert(success);
+                clickme("customerrefresh");
+            },
+            error: function(xhr, textStatus, error){
+                console.log(xhr.statusText);
+                console.log(textStatus);
+                console.log(error);
+            }
+        });
+    });
+    //////////////////////het phan cua khoa
+    
+    
     //                    form 2 - edit nv
     $('#edit-emp').click(function (){
         openForm('formwait');

@@ -28,7 +28,7 @@ public class EmployeeDao {
         try {
             // start a transaction
             transaction = session.beginTransaction();
-            // get an user object
+            //query get an user object
             emp = (Employee) session.get(Employee.class, id);
             // commit transaction
             transaction.commit();
@@ -52,7 +52,7 @@ public class EmployeeDao {
         try {
             // start a transaction
             transaction = session.beginTransaction();
-            // get an user object
+            //query get an user object
 
             listOfUser = session.createQuery("from Employee").list();
 
@@ -76,7 +76,7 @@ public class EmployeeDao {
         try {
             // start a transaction
             transaction = session.beginTransaction();
-            // get an user object
+            //query get an user object
 
             listOfUser = session.createQuery("from Employee e where e.employeeId not in (select a.userId from Account a where a.type='employee')").list();
 

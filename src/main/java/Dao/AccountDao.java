@@ -49,7 +49,7 @@ public class AccountDao {
         try{
             // start a transaction
             transaction = session.beginTransaction();
-            // get an user object
+            // query get an user object
 
             listOfAcc = session.createQuery("select e,a from Employee e,Account a where e.employeeId=a.userId and a.type='employee'").list();
 

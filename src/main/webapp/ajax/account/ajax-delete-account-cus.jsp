@@ -56,7 +56,7 @@
     </head>
     <body>
         <%
-            String errorsql="";
+            String errorsql="Hello";
             int ID = Integer.valueOf(request.getParameter("ID"));
             int UID = Integer.valueOf(request.getParameter("UID"));
             if(AccountDao.CheckCusInUse(UID))

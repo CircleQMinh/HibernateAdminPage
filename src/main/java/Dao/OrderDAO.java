@@ -5,6 +5,7 @@
  */
 package Dao;
 
+import Hibernate.HibernateUtil;
 import Model.*;
 import java.util.Calendar;
 import java.util.Date;
@@ -22,7 +23,7 @@ public class OrderDAO {
 
         Transaction transaction = null;
         Order ord = null;
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         try  {
             // start a transaction
@@ -30,10 +31,10 @@ public class OrderDAO {
             // get an user object
             ord = (Order) session.get(Order.class, id);
             // commit transaction
-            transaction.commit();
+            transaction.commit();session.close();
         } catch (Exception e) {
             if (transaction != null) {
-                transaction.rollback();
+                transaction.rollback();session.close();
             }
         }
         return ord;
@@ -43,7 +44,7 @@ public class OrderDAO {
     
     public static void saveOrder(Order ord) {
         Transaction transaction = null;
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         try {
             // start a transaction
@@ -51,10 +52,10 @@ public class OrderDAO {
             // save the student object
             session.save(ord);
             // commit transaction
-            transaction.commit();
+            transaction.commit();session.close();
         } catch (Exception e) {
             if (transaction != null) {
-                transaction.rollback();
+                transaction.rollback();session.close();
             }
         }
         finally{
@@ -66,7 +67,7 @@ public class OrderDAO {
 
         Transaction transaction = null;
         List < Order > listOfOrders = null;
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         try  {
             // start a transaction
@@ -76,10 +77,10 @@ public class OrderDAO {
             listOfOrders = session.createQuery("from Order").list();
 
             // commit transaction
-            transaction.commit();
+            transaction.commit();session.close();
         } catch (Exception e) {
             if (transaction != null) {
-                transaction.rollback();
+                transaction.rollback();session.close();
             }
         }
         return listOfOrders;
@@ -87,7 +88,7 @@ public class OrderDAO {
     
     public static void updateEmp(Order ord) { //edit toàn bộ các cột
         Transaction transaction = null;
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         try  {
             // start a transaction
@@ -95,17 +96,17 @@ public class OrderDAO {
             // save the student object
             session.update(ord);
             // commit transaction
-            transaction.commit();
+            transaction.commit();session.close();
         } catch (Exception e) {
             if (transaction != null) {
-                transaction.rollback();
+                transaction.rollback();session.close();
             }
         }
     }
     // edit status
     public static void editOrd(int ordID,int status){
         Transaction transaction = null;
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         Order ord=(Order)session.get(Order.class, ordID);
         ord.setStatus(status);
@@ -115,10 +116,10 @@ public class OrderDAO {
             // save the student object
             session.update(ord);
             // commit transaction
-            transaction.commit();
+            transaction.commit();session.close();
         } catch (Exception e) {
             if (transaction != null) {
-                transaction.rollback();
+                transaction.rollback();session.close();
             }
         }
     }
@@ -126,7 +127,7 @@ public class OrderDAO {
     public static void deleteOrd(int id) {
 
         Transaction transaction = null;
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         try {
             // start a transaction
@@ -139,17 +140,17 @@ public class OrderDAO {
                 System.err.println("Delete success");
             }
             // commit transaction
-            transaction.commit();
+            transaction.commit();session.close();
         } catch (Exception e) {
             if (transaction != null) {
-                transaction.rollback();
+                transaction.rollback();session.close();
             }
         }
     }
     
     public static void deleteAllShippedOrder(){
         Transaction transaction = null;
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         List<Order> listofOrders = getAllOrders();
         Session session = sessionFactory.openSession();
         try{
@@ -164,11 +165,11 @@ public class OrderDAO {
                     }
                 }
             }
-            transaction.commit();
+            transaction.commit();session.close();
         }
         catch(Exception e){
             if (transaction != null) {
-                transaction.rollback();
+                transaction.rollback();session.close();
             }
         }
     }

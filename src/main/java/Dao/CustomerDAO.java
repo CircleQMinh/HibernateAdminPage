@@ -5,6 +5,7 @@
  */
 package Dao;
 
+import Hibernate.HibernateUtil;
 import Model.Customer;
 import java.util.Calendar;
 import java.util.Date;
@@ -23,17 +24,20 @@ public class CustomerDAO {
     public static Customer getCus(int id){
         Transaction transaction = null;
         Customer cus = null;
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
-        try  (Session session = sessionFactory.openSession()) {
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session session = sessionFactory.openSession();
+        try   {
             // start a transaction
             transaction = session.beginTransaction();
             // get an user object
             cus = (Customer) session.get(Customer.class, id);
             // commit transaction
             transaction.commit();
+            session.close();
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
+                session.close();
             }
         }
         return cus;
@@ -45,8 +49,9 @@ public class CustomerDAO {
 
         Transaction transaction = null;
         List < Customer > listOfcus = null;
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
-        try  (Session session = sessionFactory.openSession()) {
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session session = sessionFactory.openSession();
+        try {
             // start a transaction
             transaction = session.beginTransaction();
             // get an user object
@@ -55,9 +60,11 @@ public class CustomerDAO {
 
             // commit transaction
             transaction.commit();
+            session.close();
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
+                session.close();
             }
         }
         return listOfcus;
@@ -66,7 +73,7 @@ public class CustomerDAO {
     ////////////////////////////////////////////////
     public static void updateCus(Customer cus) { //edit toàn bộ các cột trong customer
         Transaction transaction = null;
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         try  {
             // start a transaction
@@ -74,10 +81,10 @@ public class CustomerDAO {
             // save the student object
             session.update(cus);
             // commit transaction
-            transaction.commit();
+            transaction.commit();session.close();
         } catch (Exception e) {
             if (transaction != null) {
-                transaction.rollback();
+                transaction.rollback();session.close();
             }
         }
         finally{
@@ -92,7 +99,7 @@ public class CustomerDAO {
      // edit 1 số cột
     public static void editCus(Integer customerId, String CustomerName, String address, String phone, String email,String sex){
         Transaction transaction = null;
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         Customer cus=(Customer)session.get(Customer.class, customerId);   
         cus.setCustomerName(CustomerName);
@@ -108,10 +115,10 @@ public class CustomerDAO {
             // save the student object
             session.update(cus);
             // commit transaction
-            transaction.commit();
+            transaction.commit();session.close();
         } catch (Exception e) {
             if (transaction != null) {
-                transaction.rollback();
+                transaction.rollback();session.close();
             }
         }
         finally{
@@ -124,7 +131,7 @@ public class CustomerDAO {
      public static void deleteCus(int id) {
 
         Transaction transaction = null;
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         try {
             // start a transaction
@@ -138,21 +145,18 @@ public class CustomerDAO {
             }
 
             // commit transaction
-            transaction.commit();
+            transaction.commit();session.close();
         } catch (Exception e) {
             if (transaction != null) {
-                transaction.rollback();
+                transaction.rollback();session.close();
             }
-        }
-        finally{
-            session.close();
         }
     }
     
     //
     public static void saveCus(Customer cus) {
         Transaction transaction = null;
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         try {
             // start a transaction
@@ -160,14 +164,11 @@ public class CustomerDAO {
             // save the student object
             session.save(cus);
             // commit transaction
-            transaction.commit();
+            transaction.commit();session.close();
         } catch (Exception e) {
             if (transaction != null) {
-                transaction.rollback();
+                transaction.rollback();session.close();
             }
-        }
-        finally{
-            session.close();
         }
     }
 }

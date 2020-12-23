@@ -1,21 +1,21 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Dec 14, 2020 1:23:07 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated Dec 23, 2020 3:48:17 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="Model.Blog" table="blog" catalog="dbthuongmaidientu" optimistic-lock="version">
-        <id name="blogId" type="int">
+        <id name="blogId" type="java.lang.Integer">
             <column name="BlogID" />
-            <generator class="assigned" />
+            <generator class="identity" />
         </id>
         <property name="blogName" type="string">
-            <column name="BlogName" length="45" />
+            <column name="BlogName" length="200" />
         </property>
         <property name="blogContent" type="string">
-            <column name="BlogContent" length="20000" />
+            <column name="BlogContent" length="10000" />
         </property>
-        <property name="picture" type="string">
-            <column name="Picture" length="500" />
+        <property name="synopsis" type="string">
+            <column name="Synopsis" length="500" />
         </property>
     </class>
 </hibernate-mapping>

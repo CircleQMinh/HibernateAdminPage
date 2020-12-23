@@ -5,6 +5,7 @@
  */
 package Dao;
 
+import Hibernate.HibernateUtil;
 import Model.Account;
 import java.util.List;
 import org.hibernate.Session;
@@ -22,7 +23,7 @@ public class AccountDao {
 
         Transaction transaction = null;
         List < Account > listOfAcc = null;
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         try{
             // start a transaction
@@ -32,10 +33,12 @@ public class AccountDao {
             listOfAcc = session.createQuery(" from Account acc where acc.type='employee'").list();
 
             // commit transaction
-            transaction.commit();session.close();sessionFactory.close();
+            transaction.commit();
+            session.close();
         } catch (Exception e) {
             if (transaction != null) {
-                transaction.rollback();session.close();sessionFactory.close();
+                transaction.rollback();
+                session.close();
             }
         }
         return listOfAcc;
@@ -44,7 +47,7 @@ public class AccountDao {
 
         Transaction transaction = null;
         List < Object[] > listOfAcc = null;
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         try{
             // start a transaction
@@ -54,10 +57,12 @@ public class AccountDao {
             listOfAcc = session.createQuery("select e,a from Employee e,Account a where e.employeeId=a.userId and a.type='employee'").list();
 
             // commit transaction
-            transaction.commit();session.close();sessionFactory.close();
+            transaction.commit();
+            session.close();
         } catch (Exception e) {
             if (transaction != null) {
-                transaction.rollback();session.close();sessionFactory.close();
+                transaction.rollback();
+                session.close();
             }
         }
         return listOfAcc;
@@ -66,7 +71,7 @@ public class AccountDao {
 
         Transaction transaction = null;
         List < Account > listOfAcc = null;
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         try{
             // start a transaction
@@ -76,10 +81,13 @@ public class AccountDao {
             listOfAcc = session.createQuery(" from Account acc where acc.type='customer'").list();
 
             // commit transaction
-            transaction.commit();session.close();sessionFactory.close();
+            transaction.commit();
+            session.close();
+            
         } catch (Exception e) {
             if (transaction != null) {
-                transaction.rollback();session.close();sessionFactory.close();
+                transaction.rollback();
+                session.close();
             }
         }
         return listOfAcc;
@@ -88,7 +96,7 @@ public class AccountDao {
 
         Transaction transaction = null;
         List < Object[] > listOfAcc = null;
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         try{
             // start a transaction
@@ -98,17 +106,19 @@ public class AccountDao {
             listOfAcc = session.createQuery("select c,a from Customer c,Account a where c.customerId=a.userId and a.type='customer'").list();
 
             // commit transaction
-            transaction.commit();session.close();sessionFactory.close();
+            transaction.commit();
+            session.close();
         } catch (Exception e) {
             if (transaction != null) {
-                transaction.rollback();session.close();sessionFactory.close();
+                transaction.rollback();
+                session.close();
             }
         }
         return listOfAcc;
     }
     public static void saveAcc(Account Acc) {
         Transaction transaction = null;
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         try {
             // start a transaction
@@ -116,16 +126,18 @@ public class AccountDao {
             // save the student object
             session.save(Acc);
             // commit transaction
-            transaction.commit();session.close();sessionFactory.close();
+            transaction.commit();
+            session.close();
         } catch (Exception e) {
             if (transaction != null) {
-                transaction.rollback();session.close();sessionFactory.close();
+                transaction.rollback();
+                session.close();
             }
         }
     }
      public static void updateAcc(Account Acc) { //edit toàn bộ các cột
         Transaction transaction = null;
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         try  {
             // start a transaction
@@ -133,20 +145,19 @@ public class AccountDao {
             // save the student object
             session.update(Acc);
             // commit transaction
-            transaction.commit();session.close();sessionFactory.close();
+            transaction.commit();
+            session.close();
         } catch (Exception e) {
             if (transaction != null) {
-                transaction.rollback();session.close();sessionFactory.close();
+                transaction.rollback();
+                session.close();
             }
-        }
-        finally{
-            session.close();
         }
     }
     public static void editAccEmp(int id,String pass)
     {
         Transaction transaction = null;
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         Account acc=(Account)session.get(Account.class, id);
         acc.setPassword(pass);
@@ -156,17 +167,19 @@ public class AccountDao {
             // save the student object
             session.update(acc);
             // commit transaction
-            transaction.commit();session.close();sessionFactory.close();
+            transaction.commit();
+            session.close();
         } catch (Exception e) {
             if (transaction != null) {
-                transaction.rollback();session.close();sessionFactory.close();
+                transaction.rollback();
+                session.close();
             }
         }
     }
     public static void deleteAcc(int id) {
 
         Transaction transaction = null;
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         try{
             // start a transaction
@@ -180,30 +193,28 @@ public class AccountDao {
             }
 
             // commit transaction
-            transaction.commit();session.close();sessionFactory.close();
+            transaction.commit();
+            session.close();
         } catch (Exception e) {
             if (transaction != null) {
-                transaction.rollback();session.close();sessionFactory.close();
+                transaction.rollback();
+                session.close();
             }
         }
     }
     public static boolean CheckCusInUse(int id)
     {
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
-        try{
-            String stringquery="select 1 from Order m where m.customer.customerId="+String.valueOf(id);
-            Query query = session.createQuery(stringquery);session.close();
-            return (query.uniqueResult() != null);
-        } catch (Exception e) {
-            session.close();
-            return false;
-        }
+        String stringquery="select 1 from Order m where m.customer.customerId="+String.valueOf(id);
+        Query query = session.createQuery(stringquery);
+        session.close();
+        return (query.uniqueResult() != null);
     }
     public static void deleteAccCus(int id,int uid) {
 
         Transaction transaction = null;
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         try{
             // start a transaction
@@ -218,10 +229,12 @@ public class AccountDao {
             }
 
             // commit transaction
-            transaction.commit();session.close();sessionFactory.close();
+            transaction.commit();
+            session.close();
         } catch (Exception e) {
             if (transaction != null) {
-                transaction.rollback();session.close();sessionFactory.close();
+                transaction.rollback();
+                session.close();
             }
         }
     }

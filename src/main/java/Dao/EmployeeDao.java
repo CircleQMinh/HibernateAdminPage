@@ -5,6 +5,7 @@
  */
 package Dao;
 
+import Hibernate.HibernateUtil;
 import Model.Employee;
 import java.util.Calendar;
 import java.util.Date;
@@ -23,7 +24,7 @@ public class EmployeeDao {
 
         Transaction transaction = null;
         Employee emp = null;
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         try {
             // start a transaction
@@ -32,14 +33,13 @@ public class EmployeeDao {
             emp = (Employee) session.get(Employee.class, id);
             // commit transaction
             transaction.commit();
-            session.close();sessionFactory.close();
+            session.close();
         } 
         catch (Exception e) {
             if (transaction != null) {
-                transaction.rollback();session.close();sessionFactory.close();
+                transaction.rollback();session.close();
             }
         }
-        sessionFactory.close();
         return emp;
     }
     
@@ -47,7 +47,7 @@ public class EmployeeDao {
 
         Transaction transaction = null;
         List < Employee > listOfUser = null;
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         try {
             // start a transaction
@@ -57,21 +57,20 @@ public class EmployeeDao {
             listOfUser = session.createQuery("from Employee").list();
 
             // commit transaction
-            transaction.commit();
-            session.close();sessionFactory.close();
+            transaction.commit();session.close();
+            
         } catch (Exception e) {
             if (transaction != null) {
-                transaction.rollback(); session.close();sessionFactory.close();
+                transaction.rollback(); session.close();
             }
         }
-        sessionFactory.close();
         return listOfUser;
     }
     public static List < Employee > getAllEmpWithNoAcc() {
 
         Transaction transaction = null;
         List < Employee > listOfUser = null;
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         try {
             // start a transaction
@@ -81,19 +80,18 @@ public class EmployeeDao {
             listOfUser = session.createQuery("from Employee e where e.employeeId not in (select a.userId from Account a where a.type='employee')").list();
 
             // commit transaction
-            transaction.commit();
-            session.close();sessionFactory.close();
+            transaction.commit();session.close();
+            
         } catch (Exception e) {
             if (transaction != null) {
-                transaction.rollback();session.close();sessionFactory.close();
+                transaction.rollback();session.close();
             }
         }
-        sessionFactory.close();
         return listOfUser;
     }
     public static void saveEmp(Employee emp) {
         Transaction transaction = null;
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         try {
             // start a transaction
@@ -103,16 +101,15 @@ public class EmployeeDao {
             // commit transaction
             transaction.commit();
             session.close();
-            sessionFactory.close();
         } catch (Exception e) {
             if (transaction != null) {
-                transaction.rollback();session.close();sessionFactory.close();
+                transaction.rollback();session.close();
             }
         }
     }
     public static void updateEmp(Employee emp) { //edit toàn bộ các cột
         Transaction transaction = null;
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         try{
             // start a transaction
@@ -120,19 +117,19 @@ public class EmployeeDao {
             // save the student object
             session.update(emp);
             // commit transaction
-            transaction.commit();
-            session.close();sessionFactory.close();
+            transaction.commit();session.close();
+            
         } catch (Exception e) {
             if (transaction != null) {
-                transaction.rollback();      
-                session.close();sessionFactory.close();
+                transaction.rollback();  session.close();    
+                
             }
         }
     }
     // edit 1 số cột
     public static void editEmp(Integer employeeId, String employeeName, String sex, String email, String phone, String address, Integer salary, Date paycheck){
         Transaction transaction = null;
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         Employee emp=(Employee)session.get(Employee.class, employeeId);
         emp.setEmployeeName(employeeName);
@@ -147,18 +144,18 @@ public class EmployeeDao {
             // save the student object
             session.update(emp);
             // commit transaction
-            transaction.commit();
-            session.close();sessionFactory.close();
+            transaction.commit();session.close();
+            
         } catch (Exception e) {
             if (transaction != null) {
-                transaction.rollback();
-                session.close();sessionFactory.close();
+                transaction.rollback();session.close();
+                
             }
         }
     }
     public static void chamcongEmp(Integer employeeId){
         Transaction transaction = null;
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         Employee emp=(Employee)session.get(Employee.class, employeeId);
         emp.setWorkdate(emp.getWorkdate()+1);
@@ -171,17 +168,17 @@ public class EmployeeDao {
             // save the student object
             session.update(emp);
             // commit transaction
-            transaction.commit();session.close();sessionFactory.close();
+            transaction.commit();session.close();
         } catch (Exception e) {
             if (transaction != null) {
-                transaction.rollback();
-                session.close();sessionFactory.close();
+                transaction.rollback();session.close();
+                
             }
         }
     }
     public static void editattEmp(int inteid,Date pay, int intday,Date last){
         Transaction transaction = null;
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         Employee emp=(Employee)session.get(Employee.class, inteid);
         emp.setWorkdate(intday);
@@ -193,16 +190,16 @@ public class EmployeeDao {
             // save the student object
             session.update(emp);
             // commit transaction
-            transaction.commit();session.close();sessionFactory.close();
+            transaction.commit();session.close();
         } catch (Exception e) {
             if (transaction != null) {
-                transaction.rollback();session.close();sessionFactory.close();
+                transaction.rollback();session.close();
             }
         }
     }
     public static void traluongEmp(Integer employeeId){
         Transaction transaction = null;
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         Employee emp=(Employee)session.get(Employee.class, employeeId);
         emp.setWorkdate(0);
@@ -216,20 +213,17 @@ public class EmployeeDao {
             // save the student object
             session.update(emp);
             // commit transaction
-            transaction.commit();session.close();sessionFactory.close();
+            transaction.commit();session.close();
         } catch (Exception e) {
             if (transaction != null) {
-                transaction.rollback();session.close();sessionFactory.close();
+                transaction.rollback();session.close();
             }
-        }
-        finally{
-            session.close();
         }
     }
     public static void deleteEmp(int id) {
 
         Transaction transaction = null;
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         try{
             // start a transaction
@@ -243,10 +237,10 @@ public class EmployeeDao {
             }
 
             // commit transaction
-            transaction.commit();session.close();sessionFactory.close();
+            transaction.commit();session.close();
         } catch (Exception e) {
             if (transaction != null) {
-                transaction.rollback();session.close();sessionFactory.close();
+                transaction.rollback();session.close();
             }
         }
     }

@@ -3,6 +3,7 @@
     Created on : Dec 14, 2020, 5:06:54 PM
     Author     : KHOAPHAN
 --%>
+<%@page import="Dao.AccountDao"%>
 <%@page import="Dao.CustomerDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -56,18 +57,28 @@
         <%
             String errorsql="";
             String CID = request.getParameter("CID");
+            int intcid=Integer.parseInt(CID);
+            if(AccountDao.CheckCusInUse(intcid))
+            {
+                errorsql="Khách hàng đang trong giao dịch";
+            }
+            if(errorsql=="")
+            {
+                try {
+                    int id=Integer.valueOf(CID);
+                    CustomerDAO.deleteCus(id);
+                    errorsql="Xóa thành công";
+                }
+                catch(Exception e){
+                    errorsql="Xóa không thành công";
+                }    
+            }
             
-            try {
-                int id=Integer.valueOf(CID);
-                CustomerDAO.deleteCus(id);
-                errorsql="Xóa thành công";
-            }
-            catch(Exception e){
-                errorsql="Xóa không thành công";
-            }
         %>
         <p id="sqlmsg"> <%=errorsql%></p>
-        
+        <div id="errormsg">
+            <%=CID%>
+        </div>
         
     </body>
 </html>

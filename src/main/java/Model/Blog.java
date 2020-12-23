@@ -1,5 +1,5 @@
 package Model;
-// Generated Dec 11, 2020 10:38:08 AM by Hibernate Tools 4.3.1
+// Generated Dec 23, 2020 3:48:16 PM by Hibernate Tools 4.3.1
 
 
 import javax.persistence.Column;
@@ -22,15 +22,15 @@ public class Blog  implements java.io.Serializable {
      private Integer blogId;
      private String blogName;
      private String blogContent;
-     private String picture;
+     private String synopsis;
 
     public Blog() {
     }
 
-    public Blog(String blogName, String blogContent, String picture) {
+    public Blog(String blogName, String blogContent, String synopsis) {
        this.blogName = blogName;
        this.blogContent = blogContent;
-       this.picture = picture;
+       this.synopsis = synopsis;
     }
    
      @Id @GeneratedValue(strategy=IDENTITY)
@@ -46,7 +46,7 @@ public class Blog  implements java.io.Serializable {
     }
 
     
-    @Column(name="BlogName", length=45)
+    @Column(name="BlogName", length=200)
     public String getBlogName() {
         return this.blogName;
     }
@@ -56,7 +56,7 @@ public class Blog  implements java.io.Serializable {
     }
 
     
-    @Column(name="BlogContent", length=20000)
+    @Column(name="BlogContent", length=10000)
     public String getBlogContent() {
         return this.blogContent;
     }
@@ -66,13 +66,13 @@ public class Blog  implements java.io.Serializable {
     }
 
     
-    @Column(name="Picture", length=500)
-    public String getPicture() {
-        return this.picture;
+    @Column(name="Synopsis", length=500)
+    public String getSynopsis() {
+        return this.synopsis;
     }
     
-    public void setPicture(String picture) {
-        this.picture = picture;
+    public void setSynopsis(String synopsis) {
+        this.synopsis = synopsis;
     }
 
 

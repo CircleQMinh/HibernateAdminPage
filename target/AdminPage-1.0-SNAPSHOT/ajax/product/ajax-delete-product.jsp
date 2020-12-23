@@ -68,7 +68,6 @@
             {
                 errorsql="Lỗi : Sản phẩm đang sử dụng trong giao dịch";
             }
-
             if(errorsql=="")
             { 
                 try {

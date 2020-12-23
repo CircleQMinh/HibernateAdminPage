@@ -6,6 +6,7 @@
 package Dao;
 
 
+import Hibernate.HibernateUtil;
 import Model.Product;
 import java.util.List;
 import org.hibernate.Session;
@@ -23,7 +24,7 @@ public class ProductDao {
 
         Transaction transaction = null;
         Product pro = null;
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         try{
             // start a transaction
@@ -31,10 +32,10 @@ public class ProductDao {
             // get an user object
             pro = (Product) session.get(Product.class, id);
             // commit transaction
-            transaction.commit();session.close();sessionFactory.close();
+            transaction.commit();session.close();
         } catch (Exception e) {
             if (transaction != null) {
-                transaction.rollback();session.close();sessionFactory.close();
+                transaction.rollback();session.close();
             }
         }
         return pro;
@@ -43,7 +44,7 @@ public class ProductDao {
 
         Transaction transaction = null;
         List < Product > listOfpro = null;
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         try{
             // start a transaction
@@ -53,10 +54,10 @@ public class ProductDao {
             listOfpro = session.createQuery("from Product ").list();
 
             // commit transaction
-            transaction.commit();session.close();sessionFactory.close();
+            transaction.commit();session.close();
         } catch (Exception e) {
             if (transaction != null) {
-                transaction.rollback();session.close();sessionFactory.close();
+                transaction.rollback();session.close();
             }
         }
         return listOfpro;
@@ -64,7 +65,7 @@ public class ProductDao {
     
     public static void savePro(Product pro) {
         Transaction transaction = null;
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         try {
             // start a transaction
@@ -72,16 +73,16 @@ public class ProductDao {
             // save the student object
             session.save(pro);
             // commit transaction
-            transaction.commit();session.close();sessionFactory.close();
+            transaction.commit();session.close();
         } catch (Exception e) {
             if (transaction != null) {
-                transaction.rollback();session.close();sessionFactory.close();
+                transaction.rollback();session.close();
             }
         }
     }
      public static void updatePro(Product pro) { //edit toàn bộ các cột
         Transaction transaction = null;
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         try  {
             // start a transaction
@@ -89,17 +90,17 @@ public class ProductDao {
             // save the student object
             session.update(pro);
             // commit transaction
-            transaction.commit();session.close();sessionFactory.close();
+            transaction.commit();session.close();
         } catch (Exception e) {
             if (transaction != null) {
-                transaction.rollback();session.close();sessionFactory.close();
+                transaction.rollback();session.close();
             }
         }
     }
     public static void deletePro(int id) {
 
         Transaction transaction = null;
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         try {
             // start a transaction
@@ -113,24 +114,20 @@ public class ProductDao {
             }
 
             // commit transaction
-            transaction.commit();session.close();sessionFactory.close();
+            transaction.commit();session.close();
         } catch (Exception e) {
             if (transaction != null) {
-                transaction.rollback();session.close();sessionFactory.close();
+                transaction.rollback();session.close();
             }
         }
     }
     public static boolean CheckProInUse(int id)
     {
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
-        try{
-            String stringquery="select 1 from Orderdetail m where m.product.id="+String.valueOf(id);
-            Query query = session.createQuery(stringquery);session.close();sessionFactory.close();
-            return (query.uniqueResult() != null);
-        } catch (Exception e) {
-            session.close();sessionFactory.close();
-            return false;
-        }
+        String stringquery="select 1 from Orderdetail m where m.product.id="+String.valueOf(id);
+        Query query = session.createQuery(stringquery);session.close();
+        return (query.uniqueResult() != null);
+
     }
 }

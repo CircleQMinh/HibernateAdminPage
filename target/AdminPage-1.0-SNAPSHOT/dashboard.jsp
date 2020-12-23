@@ -194,7 +194,7 @@
                         <option selected>Dược liệu</option>
                         <option>Thực phẩm chức năng</option>
                         <option >Cao dược liệu</option>
-                        <option>Thực phẩm chức năng</option>
+                        <option>Trà cốm thuốc</option>
                     </datalist>
                     <input type="hidden" id="url-pro-add" readonly>
                           
@@ -235,7 +235,7 @@
                         <option selected>Dược liệu</option>
                         <option>Thực phẩm chức năng</option>
                         <option >Cao dược liệu</option>
-                        <option>Thực phẩm chức năng</option>
+                        <option>Trà cốm thuốc</option>
                     </datalist>
                     <input type="text" id="url-pro-edit" readonly>
                     <input type="hidden" id="id-pro-edit" readonly>      

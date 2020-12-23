@@ -5,7 +5,7 @@
  */
 function add_to_cart(pid,pname,price)
 {
-    let cart=sessionStorage.getItem("cart");
+    let cart = sessionStorage.getItem("cart");
     if (cart === null)
     {
         let products =[];

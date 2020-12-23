@@ -5,6 +5,7 @@
  */
 package Dao;
 
+import Hibernate.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -19,18 +20,18 @@ public class DashboardDao {
     {
         int count=99;
         Transaction transaction = null;
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         try {
             // start a transaction
             transaction = session.beginTransaction();
             Number c = (Number) session.createQuery("select count(*) from Employee").uniqueResult();
             count=c.intValue();
-            session.close();sessionFactory.close();
+            session.close();
         } 
         catch (Exception e) {
             if (transaction != null) {
-                transaction.rollback();session.close();sessionFactory.close();
+                transaction.rollback();session.close();
             }
         }      
         return count;
@@ -39,18 +40,18 @@ public class DashboardDao {
     {
         int count=99;
         Transaction transaction = null;
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         try {
             // start a transaction
             transaction = session.beginTransaction();
             Number c = (Number) session.createQuery("select count(*) from Product").uniqueResult();
             count=c.intValue();
-            session.close();sessionFactory.close();
+            session.close();
         } 
         catch (Exception e) {
             if (transaction != null) {
-                transaction.rollback();session.close();sessionFactory.close();
+                transaction.rollback();session.close();
             }
         }      
         return count;
@@ -59,18 +60,17 @@ public class DashboardDao {
     {
         int count=99;
         Transaction transaction = null;
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         try {
             // start a transaction
             transaction = session.beginTransaction();
             Number c = (Number) session.createQuery("select count(*) from Customer").uniqueResult();
-            count=c.intValue();
-            session.close();sessionFactory.close();
+            count=c.intValue();session.close();
         } 
         catch (Exception e) {
             if (transaction != null) {
-                transaction.rollback();session.close();sessionFactory.close();
+                transaction.rollback();session.close();
             }
         }      
         return count;
@@ -79,18 +79,18 @@ public class DashboardDao {
     {
         int count=99;
         Transaction transaction = null;
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         try {
             // start a transaction
             transaction = session.beginTransaction();
             Number c = (Number) session.createQuery("select count(*) from Account").uniqueResult();
             count=c.intValue();
-            session.close();sessionFactory.close();
+            session.close();
         } 
         catch (Exception e) {
             if (transaction != null) {
-                transaction.rollback();session.close();sessionFactory.close();
+                transaction.rollback();session.close();
             }
         }      
         return count;
@@ -99,18 +99,18 @@ public class DashboardDao {
     {
         int count=99;
         Transaction transaction = null;
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         try {
             // start a transaction
             transaction = session.beginTransaction();
             Number c = (Number) session.createQuery("select count(*) from Order").uniqueResult();
-            count=c.intValue();
-            session.close();sessionFactory.close();
+            count=c.intValue();session.close();
+            
         } 
         catch (Exception e) {
             if (transaction != null) {
-                transaction.rollback();session.close();sessionFactory.close();
+                transaction.rollback();session.close();
             }
         }      
         return count;

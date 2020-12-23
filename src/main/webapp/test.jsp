@@ -4,6 +4,8 @@
     Author     : ASUS
 --%>
 
+<%@page import="Hibernate.HibernateUtil"%>
+<%@page import="Dao.ProductDao"%>
 <%@page import="Model.Account"%>
 <%@page import="Model.Employee"%>
 <%@page import="Dao.AccountDao"%>
@@ -12,9 +14,10 @@
 <!DOCTYPE html>
 
 <%
-    List <Object [] > listEmpAcc=AccountDao.getAllEmpAccount();
-    
-    
+    boolean a = ProductDao.CheckProInUse(13);
+    int b1 = HibernateUtil.getSessionFactory().hashCode();
+    int b2 = HibernateUtil.getSessionFactory().hashCode();
+    int b3 = HibernateUtil.getSessionFactory().hashCode();
 %>
 <html>
     <head>
@@ -25,20 +28,16 @@
         <script src="https://canvasjs.com/assets/script/canvasjs.min.js" type="text/javascript"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="javascript/jquery.tablePagination.js" type="text/javascript"></script>
+        
         <title>JSP Page</title>
+        <script>
+            alert(<%=b1%>);
+            alert(<%=b2%>);
+            alert(<%=b3%>);
+        </script>
     </head>
     <body>
         <h1>Hello World!</h1>
-        <%
-            for (Object[] result : listEmpAcc) {
-                Employee emp = (Employee) result[0];
-                Account acc = (Account) result[1];
-                %>
-                <p><%=emp.getEmployeeName()%>  </p>
-                <p><%=acc.getUsername()%>  </p>
-            <%    
-            }
-            %>
         
         
 

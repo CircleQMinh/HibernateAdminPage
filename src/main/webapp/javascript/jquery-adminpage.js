@@ -214,7 +214,7 @@ $(document).ready(function(){
                                     type: "post",
                                     url: "ajax/customer/ajax-delete-customer.jsp", //this is my servlet
                                     data: {
-                                        EID:textval               
+                                        CID:textval               
                                     },
                                     success: function ( response ){   
                                         //handleData(response);
@@ -407,12 +407,12 @@ $(document).ready(function(){
                             openForm('formwait');
                             $(this).closest('tr').find('td').eq(0).each(function() {
                                 var textval = $(this).text(); // this will be the text of each <td>
-                                console.log(textval);
+                                console.log(textval);console.log(uid);
                                 $.ajax({
                                     type: "post",
                                     url: "ajax/account/ajax-delete-account-cus.jsp", //this is my servlet
                                     data: {
-                                        ID:textval    ,
+                                        ID:textval ,
                                         UID:uid
                                     },
                                     success: function ( response ){   

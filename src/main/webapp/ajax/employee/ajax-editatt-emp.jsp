@@ -24,12 +24,16 @@
             String last = request.getParameter("last");
             Date payday=Date.valueOf(pay);
             Date lastd=Date.valueOf(last);
-       
+            int inteid=Integer.valueOf(eid);
+            int intday=Integer.valueOf(wd);
+            if(intday<0)
+            {
+                errorsql="Số ngày công không hợp lệ";
+            }
             if(errorsql=="")
             {
                 try{
-                    int inteid=Integer.valueOf(eid);
-                    int intday=Integer.valueOf(wd);
+                    
                     EmployeeDao.editattEmp(inteid, payday, intday, lastd);
                     errorsql="Chỉnh sửa thành công";
                 }

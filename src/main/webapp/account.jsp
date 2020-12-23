@@ -15,7 +15,6 @@
 <%
     int i=0;
     List < Employee > listEmpnoacc=EmployeeDao.getAllEmpWithNoAcc();
-    List < Account > listAccCus=AccountDao.getAllCusAcc();
     List <Object [] > listEmpAcc=AccountDao.getAllEmpAccount();
     List <Object [] > listCusAcc=AccountDao.getAllCusAccount();
 %>

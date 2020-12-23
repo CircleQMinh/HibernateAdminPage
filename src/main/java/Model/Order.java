@@ -1,5 +1,5 @@
 package Model;
-// Generated Dec 14, 2020 12:54:47 PM by Hibernate Tools 4.3.1
+// Generated Dec 23, 2020 3:48:16 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -34,17 +34,32 @@ public class Order  implements java.io.Serializable {
      private Date requiredDate;
      private Date shippedDate;
      private Integer status;
+     private String orderName;
+     private String orderAdress;
+     private String orderPhone;
+     private String orderEmail;
      private Set<Orderdetail> orderdetails = new HashSet<Orderdetail>(0);
 
     public Order() {
     }
-
     public Order(Customer customer, Date orderDate, Date requiredDate, Date shippedDate, Integer status, Set<Orderdetail> orderdetails) {
        this.customer = customer;
        this.orderDate = orderDate;
        this.requiredDate = requiredDate;
        this.shippedDate = shippedDate;
        this.status = status;
+       this.orderdetails = orderdetails;
+    }
+    public Order(Customer customer, Date orderDate, Date requiredDate, Date shippedDate, Integer status, String orderName, String orderAdress, String orderPhone, String orderEmail, Set<Orderdetail> orderdetails) {
+       this.customer = customer;
+       this.orderDate = orderDate;
+       this.requiredDate = requiredDate;
+       this.shippedDate = shippedDate;
+       this.status = status;
+       this.orderName = orderName;
+       this.orderAdress = orderAdress;
+       this.orderPhone = orderPhone;
+       this.orderEmail = orderEmail;
        this.orderdetails = orderdetails;
     }
    
@@ -108,6 +123,46 @@ public class Order  implements java.io.Serializable {
     
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    
+    @Column(name="OrderName", length=45)
+    public String getOrderName() {
+        return this.orderName;
+    }
+    
+    public void setOrderName(String orderName) {
+        this.orderName = orderName;
+    }
+
+    
+    @Column(name="OrderAdress", length=200)
+    public String getOrderAdress() {
+        return this.orderAdress;
+    }
+    
+    public void setOrderAdress(String orderAdress) {
+        this.orderAdress = orderAdress;
+    }
+
+    
+    @Column(name="OrderPhone", length=45)
+    public String getOrderPhone() {
+        return this.orderPhone;
+    }
+    
+    public void setOrderPhone(String orderPhone) {
+        this.orderPhone = orderPhone;
+    }
+
+    
+    @Column(name="OrderEmail", length=200)
+    public String getOrderEmail() {
+        return this.orderEmail;
+    }
+    
+    public void setOrderEmail(String orderEmail) {
+        this.orderEmail = orderEmail;
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="order")

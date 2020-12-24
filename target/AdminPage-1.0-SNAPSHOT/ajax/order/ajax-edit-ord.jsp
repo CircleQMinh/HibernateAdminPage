@@ -19,6 +19,7 @@
         <%
             String errorsql = "";
             String eid=request.getParameter("eid").trim();
+            ////GetID to edit
             String status = request.getParameter("status").trim();
             if(errorsql=="")
             {

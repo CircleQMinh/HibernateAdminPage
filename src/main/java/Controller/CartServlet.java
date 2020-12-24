@@ -40,7 +40,7 @@ public class CartServlet extends HttpServlet {
          try {
             String strAction = request.getParameter("action");
             if (strAction != null && !strAction.equals("")) {
-                // Xu li them vao gio hang
+                // Add Cart
                 if (strAction.equals("add")) {
                     int quantity = 1;
                     int id;

@@ -54,10 +54,11 @@
         <title>Testing</title>
     </head>
     <body>
+        
          <%
             String errorsql="";
             String EID = request.getParameter("EID");
-            
+        //GetID to delete     
             try {
                 int id=Integer.valueOf(EID);
                 OrderDAO.deleteOrd(id);

@@ -28,7 +28,7 @@ public class AccountDao {
         try{
             // start a transaction
             transaction = session.beginTransaction();
-            // get an user object
+            // query get an user object
 
             listOfAcc = session.createQuery(" from Account acc where acc.type='employee'").list();
 
@@ -43,7 +43,7 @@ public class AccountDao {
         }
         return listOfAcc;
     }
-    public static List < Object[] > getAllEmpAccount() {//join 2 bang lai voi nhau
+    public static List < Object[] > getAllEmpAccount() {//join 2 bang lai
 
         Transaction transaction = null;
         List < Object[] > listOfAcc = null;
@@ -52,7 +52,7 @@ public class AccountDao {
         try{
             // start a transaction
             transaction = session.beginTransaction();
-            // get an user object
+            // query get an user object
 
             listOfAcc = session.createQuery("select e,a from Employee e,Account a where e.employeeId=a.userId and a.type='employee'").list();
 
@@ -76,7 +76,7 @@ public class AccountDao {
         try{
             // start a transaction
             transaction = session.beginTransaction();
-            // get an user object
+            // query get an user object
 
             listOfAcc = session.createQuery(" from Account acc where acc.type='customer'").list();
 
@@ -101,7 +101,7 @@ public class AccountDao {
         try{
             // start a transaction
             transaction = session.beginTransaction();
-            // get an user object
+            // query get an user object
 
             listOfAcc = session.createQuery("select c,a from Customer c,Account a where c.customerId=a.userId and a.type='customer'").list();
 

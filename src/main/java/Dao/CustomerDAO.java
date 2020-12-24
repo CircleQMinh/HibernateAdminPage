@@ -29,7 +29,7 @@ public class CustomerDAO {
         try   {
             // start a transaction
             transaction = session.beginTransaction();
-            // get an user object
+            // query get an user object
             cus = (Customer) session.get(Customer.class, id);
             // commit transaction
             transaction.commit();
@@ -54,7 +54,7 @@ public class CustomerDAO {
         try {
             // start a transaction
             transaction = session.beginTransaction();
-            // get an user object
+            // query get an user object
 
             listOfcus = session.createQuery("from Customer ").list();
 

@@ -136,7 +136,7 @@
         </div> 
         <div class="divform" id="form2" >
             <form >
-                <h1>Edit Employee</h1>
+                <h1>Edit Employee</h1>          
                 <label ><strong>Name</strong></label>
                 <input type="text" placeholder="Enter Name" name="name" id="name-emp-edit">
                 <label ><strong>E-mail</strong></label>
@@ -178,7 +178,7 @@
         <div class="divform" id="form7open" style="max-width: 80%">
             <div class="divformupanh" id="form7" style="display: block">
                 <form >
-                    <h1>Add Product</h1>
+                    <h1>Add Product</h1>  
                     <br>
                     <label ><strong>Name</strong></label>
                     <input type="text" placeholder="Enter Name" name="name" id="name-pro-add">
@@ -275,6 +275,7 @@
                 <button type="button" style="background-color: red;" onclick="closeForm('formeditaccemp')" ><strong>Close</strong></button>        
             </form>  
         </div>
+        
         <div class="divform" id="formempnoacc" >
             <form >
                 <h1>Create Employee Account</h1>

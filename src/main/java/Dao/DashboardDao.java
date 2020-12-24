@@ -28,6 +28,7 @@ public class DashboardDao {
             Number c = (Number) session.createQuery("select count(*) from Employee").uniqueResult();
             count=c.intValue();
             session.close();
+            // end a=transaction
         } 
         catch (Exception e) {
             if (transaction != null) {
@@ -48,6 +49,7 @@ public class DashboardDao {
             Number c = (Number) session.createQuery("select count(*) from Product").uniqueResult();
             count=c.intValue();
             session.close();
+            // end a=transaction
         } 
         catch (Exception e) {
             if (transaction != null) {
@@ -67,6 +69,7 @@ public class DashboardDao {
             transaction = session.beginTransaction();
             Number c = (Number) session.createQuery("select count(*) from Customer").uniqueResult();
             count=c.intValue();session.close();
+            // end a=transaction
         } 
         catch (Exception e) {
             if (transaction != null) {
@@ -87,6 +90,7 @@ public class DashboardDao {
             Number c = (Number) session.createQuery("select count(*) from Account").uniqueResult();
             count=c.intValue();
             session.close();
+            // end a=transaction
         } 
         catch (Exception e) {
             if (transaction != null) {
@@ -106,6 +110,7 @@ public class DashboardDao {
             transaction = session.beginTransaction();
             Number c = (Number) session.createQuery("select count(*) from Order").uniqueResult();
             count=c.intValue();session.close();
+            // end a=transaction
             
         } 
         catch (Exception e) {

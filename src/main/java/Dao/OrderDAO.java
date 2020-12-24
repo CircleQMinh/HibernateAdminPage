@@ -28,7 +28,7 @@ public class OrderDAO {
         try  {
             // start a transaction
             transaction = session.beginTransaction();
-            // get an user object
+            // query get an user object
             ord = (Order) session.get(Order.class, id);
             // commit transaction
             transaction.commit();session.close();
@@ -72,7 +72,7 @@ public class OrderDAO {
         try  {
             // start a transaction
             transaction = session.beginTransaction();
-            // get an user object
+            // query get an user object
 
             listOfOrders = session.createQuery("from Order").list();
 

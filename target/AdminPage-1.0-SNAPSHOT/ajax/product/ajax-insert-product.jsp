@@ -65,6 +65,7 @@
         <%
             String errorsql="";
             String url = request.getParameter("url").trim();
+            //Validate
             if(url==""||url==null)
             {
                 errorsql="Lỗi : Chưa chọn ảnh";

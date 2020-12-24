@@ -29,7 +29,7 @@ public class ProductDao {
         try{
             // start a transaction
             transaction = session.beginTransaction();
-            // get an user object
+            // query get an user object
             pro = (Product) session.get(Product.class, id);
             // commit transaction
             transaction.commit();session.close();
@@ -49,7 +49,7 @@ public class ProductDao {
         try{
             // start a transaction
             transaction = session.beginTransaction();
-            // get an user object
+            // query get an user object
 
             listOfpro = session.createQuery("from Product ").list();
 
@@ -80,7 +80,7 @@ public class ProductDao {
             }
         }
     }
-     public static void updatePro(Product pro) { //edit toàn bộ các cột
+     public static void updatePro(Product pro) { //edit toàn bộ các cột sản phẩm
         Transaction transaction = null;
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();

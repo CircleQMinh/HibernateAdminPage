@@ -77,6 +77,7 @@ public class EmployeeAdd extends HttpServlet {
             throws ServletException, IOException {
             String errorsql="Không có lỗi ";
             String salary = request.getParameter("salary").trim();
+            //Validate EmployeeAdd
             if("".equals(salary)||salary==null)
             {
                 errorsql="Lỗi : Chưa nhập lương nhân viên";

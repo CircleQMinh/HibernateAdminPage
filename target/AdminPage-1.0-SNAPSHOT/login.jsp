@@ -13,6 +13,7 @@
         <link rel="stylesheet" href="css/login.css">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     </head>
+    
     <body>
         <div class="hero">
             <div class="form-box">
@@ -20,7 +21,7 @@
                     <div id="btn"></div>
                     <button type="button" class="toggle-btn" onclick="login()">Log In</button>
                     <button type="button" class="toggle-btn" onclick="register()">Register</button>
-                </div>
+                </div>               
                 <form class="input-group" id="login" method="POST" action="">
                     <input type="text" name="" id="" class="input-feild" placeholder="User Id" required>
                     <input type="password" name="" id="" class="input-feild" placeholder="Enter Password" required>

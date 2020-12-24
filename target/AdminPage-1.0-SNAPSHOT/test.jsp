@@ -4,6 +4,8 @@
     Author     : ASUS
 --%>
 
+<%@page import="Model.Revenue"%>
+<%@page import="Dao.StatisticDao"%>
 <%@page import="Hibernate.HibernateUtil"%>
 <%@page import="Dao.ProductDao"%>
 <%@page import="Model.Account"%>
@@ -14,10 +16,8 @@
 <!DOCTYPE html>
 
 <%
-    boolean a = ProductDao.CheckProInUse(13);
-    int b1 = HibernateUtil.getSessionFactory().hashCode();
-    int b2 = HibernateUtil.getSessionFactory().hashCode();
-    int b3 = HibernateUtil.getSessionFactory().hashCode();
+   List < Revenue > listOfRev = StatisticDao.getRevenue("2020-12-01", "2020-12-31");
+   Revenue r = listOfRev.get(0);
 %>
 <html>
     <head>
@@ -31,9 +31,7 @@
         
         <title>JSP Page</title>
         <script>
-            alert(<%=b1%>);
-            alert(<%=b2%>);
-            alert(<%=b3%>);
+            alert("<%=r.getRevenue()%>");
         </script>
     </head>
     <body>

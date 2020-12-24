@@ -528,11 +528,39 @@ $(document).ready(function(){
         });
     });
     // jquery của sta
+    
     $('#stapage').click(function(){
-         openForm('formwait');
-         $("#home").load( "statistic.jsp #statistic", function() {
-             startTime();
-             closeForm('formwait');
+        openForm('formwait');
+        $("#home").load( "statistic.jsp #statistic", function() {
+            startTime();
+            closeForm('formwait');
+            setMindate('to-date');
+            setMaxdate('from-date');
+            SetDateToday('to-date');
+            $('#reload-sta').click(function(){           
+                $("#statable").load("statistic.jsp #tablesta" , {
+                    FD: document.getElementById("from-date").value,
+                    TD: document.getElementById("to-date").value
+                },function(){
+                    myStaData=[];
+                    $('#tablesta tr').each(function(){
+//                        console.log($(this).find('td').eq(0).text());
+//                        console.log($(this).find('td').eq(1).text());
+                        var date=$(this).find('td').eq(0).text();
+                        var rev=$(this).find('td').eq(1).text();
+                        var foo = {key:date,value:rev};
+                        myStaData.push(foo);
+                    });
+                    myStaData.shift();
+                    console.log(myStaData);
+                    $('#sta-gra').simpleBarGraph({
+                        data: myStaData,
+                        height: '500px',
+                        rowCaptionsWidth: '32px',
+                        barsColor: '#70e6e2'
+                    });
+                });            
+            });
         });
     });
 
@@ -715,7 +743,7 @@ $(document).ready(function(){
            }
        });
    });
-   $('#edit_pro').click(function (){
+    $('#edit_pro').click(function (){
        openForm('formwait');
         $.ajax({
             type: "post",

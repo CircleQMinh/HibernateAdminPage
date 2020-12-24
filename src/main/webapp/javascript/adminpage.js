@@ -311,60 +311,19 @@ function AJAXSubmit_edit_product(name) {
     xhr.send(new FormData(formElement));
 };
 //-----------------------------------------------------------------
-function creatchart1() {    
-    var chart = new CanvasJS.Chart("chartContainer1", {
-//        width:320,
-        title:{
-        text: "Top Sell"              
-        },
-        data: [//array of dataSeries              
-                { //dataSeries object
 
-                     /*** Change type "column" to "bar", "area", "line" or "pie"***/
-                    type: "column",
-                    dataPoints: [
-                        { label: "Tháng 7", y: 18000 },
-                        { label: "Tháng 8", y: 29000 },
-                        { label: "Tháng 9", y: 40000 },                                    
-                        { label: "Tháng 10", y: 34000 },
-                        { label: "Tháng 11", y: 24000 }
-                    ]
-                }
-        ],
-        options: {
-                maintainAspectRatio:false,
-                responsive: false
-        }
-        }
-        );
-    chart.render();
-//    alert("AAAAAAAAAAAAAAAAAAA");
-}
 
-function creatchart2() {
-     var chart = new CanvasJS.Chart("chartContainer2", {
-
-         title:{
-         text: "Top Sell"              
-         },
-         data: [//array of dataSeries              
-                     { //dataSeries object
-
-                     /*** Change type "column" to "bar", "area", "line" or "pie"***/
-                     type: "column",
-                     dataPoints: [
-                         { label: "Tháng 7", y: 18000 },
-                         { label: "Tháng 8", y: 29000 },
-                         { label: "Tháng 9", y: 40000 },                                    
-                         { label: "Tháng 10", y: 34000 },
-                         { label: "Tháng 11", y: 24000 }
-                                 ]
-                 }
-         ],
-         options: {
-             responsive: false
-         }
-         }
-         );
-         chart.render();
+function SetDateToday(name){
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+    var yyyy = today.getFullYear();
+     if(dd<10){
+            dd='0'+dd;
+        } 
+        if(mm<10){
+            mm='0'+mm;
+        } 
+    today = yyyy+'-'+mm+'-'+dd;
+    document.getElementById(name).value = today;
 }

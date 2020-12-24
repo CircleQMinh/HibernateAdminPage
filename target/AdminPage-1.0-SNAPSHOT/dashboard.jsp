@@ -31,12 +31,26 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="javascript/jquery.tablePagination.js" type="text/javascript"></script>
         <script src="javascript/jquery-adminpage.js" type="text/javascript"></script>
+        <!------------------------------------------------------->
+        <link rel="stylesheet" href="css/jquery.simple-bar-graph.css" type="text/css">
+        <link rel="stylesheet" href="css/jquery.simple-bar-graph.min.css" type="text/css">
+        <script src="javascript/jquery.simple-bar-graph.js" type="text/javascript"></script>
+        <script src="javascript/jquery.simple-bar-graph.min.js" type="text/javascript"></script>
         <script>
             console.log(<%=sonv%>);
             console.log(<%=sosp%>);
             console.log(<%=sokh%>);
             console.log(<%=sotk%>);
             console.log(<%=soord%>);
+            var myStaData = [
+                { key: 'jQuery', value: 100 },
+                { key: 'JavaScript', value: 95 },
+                { key: 'HTML', value: 96 },
+                { key: 'CSS', value: 44 },
+                { key: 'AngularJS', value: 32 },
+                { key: 'ReactJS', value: 130 },
+                { key: 'VueJS', value: 91 }
+            ];
         </script>
         
     </head>

@@ -13,6 +13,7 @@ Controller\PutServletHere.class
 Model\Admin.class
 Dao\DashboardDao.class
 Controller\EmployeeAdd.class
+Dao\StatisticDao.class
 Model\Cart.class
 Model\Product.class
 Dao\EmployeeDao.class

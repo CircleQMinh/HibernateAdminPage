@@ -40,7 +40,32 @@ public class OrderDAO {
         return ord;
     }
     
-  
+    public static Order getOrderByStatus(int status,int id){
+        Transaction transaction = null;
+        List<Order> ord =null;
+        String query = "from Order ord where ord.status = :ord_status";
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session session = sessionFactory.openSession();
+        System.out.println("Startb get order");
+        try {
+            transaction = session.beginTransaction();
+            ord = session.createQuery(query).setParameter("ord_status",status).getResultList();
+            transaction.commit();
+            session.close();
+            }
+        catch (Exception e){
+            if (transaction != null) {
+                transaction.rollback();session.close();
+            }
+        }
+        System.out.println(ord.size());
+        for(int i=0;i<ord.size();i++){
+            System.out.println(ord.get(i).toString());
+            if(ord.get(i).getCustomer().getCustomerId()==id)
+                return ord.get(i);
+        }
+        return null;
+    }
     
     public static void saveOrder(Order ord) {
         Transaction transaction = null;

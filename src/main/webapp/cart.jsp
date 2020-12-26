@@ -75,11 +75,12 @@
                 Cart cart = (Cart)session.getAttribute("cart");
                 List<CartItem> listItems = cart.getItems();     
                 for (int i=0;i<listItems.size();i++)
-                    { %>
+                    { 
+System.out.println(listItems.get(i).toString());%>
                     <tr>
                         <td>
                             <div class="cart-info">
-                                <img src="images/prd6.jpg" alt="">
+                                <img src="<%= listItems.get(i).getPictureString()%>" alt="">
                                 <div>
                                     <p><%= listItems.get(i).getProductName()%></p>
                                     <small>Price: <%= listItems.get(i).getPrice()%></small>
@@ -110,7 +111,7 @@
             </table>
         </div>
         <form class="row">
-            <a href="" class="btn btn-tt">Thanh toán</a>
+            <a href="checkout.jsp" class="btn btn-tt">Thanh toán</a>
         </form>
         <% } %>
     </div>

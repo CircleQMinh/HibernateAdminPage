@@ -12,18 +12,22 @@ package Model;
 public class CartItem {
     private int productID;
     private String productName;
+    private String pictureString;
     private int quantity;
     private int price;
     
     public CartItem(){
         
     }
-    public CartItem(int productID,String productName,int quntity)
-    {
+
+    public CartItem(int productID, String productName, String pictureString, int quantity, int price) {
         this.productID = productID;
         this.productName = productName;
+        this.pictureString = pictureString;
         this.quantity = quantity;
+        this.price = price;
     }
+    
     public int getProductID() {
         return productID;
     }
@@ -39,6 +43,15 @@ public class CartItem {
     public void setProductName(String productName) {
         this.productName = productName;
     }
+
+    public String getPictureString() {
+        return pictureString;
+    }
+
+    public void setPictureString(String pictureString) {
+        this.pictureString = pictureString;
+    }
+    
     public void setQuantity(int quantity){
         this.quantity=quantity;
     }
@@ -49,4 +62,10 @@ public class CartItem {
     public void setPrice(int price) {
         this.price = price;
     }
+
+    @Override
+    public String toString() {
+        return "CartItem{" + "productID=" + productID + ", productName=" + productName + ", pictureString=" + pictureString + ", quantity=" + quantity + '}';
+    }
+    
 }

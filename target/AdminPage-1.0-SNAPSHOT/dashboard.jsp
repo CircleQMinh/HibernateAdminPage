@@ -52,7 +52,6 @@
                 { key: 'VueJS', value: 91 }
             ];
         </script>
-        
     </head>
     <body>
         <div class="topnav" >

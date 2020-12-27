@@ -43,6 +43,28 @@ public class Order  implements java.io.Serializable {
 
     public Order() {
     }
+
+    public Order(Date orderDate, Date requiredDate, Integer status, String orderName, String orderAdress, String orderPhone, String orderEmail) {
+        this.orderDate = orderDate;
+        this.requiredDate = requiredDate;
+        this.status = status;
+        this.orderName = orderName;
+        this.orderAdress = orderAdress;
+        this.orderPhone = orderPhone;
+        this.orderEmail = orderEmail;
+    }
+    
+    public Order(Customer customer, Date orderDate, Date requiredDate, Integer status, String orderName, String orderAdress, String orderPhone, String orderEmail) {
+        this.customer = customer;
+        this.orderDate = orderDate;
+        this.requiredDate = requiredDate;
+        this.status = status;
+        this.orderName = orderName;
+        this.orderAdress = orderAdress;
+        this.orderPhone = orderPhone;
+        this.orderEmail = orderEmail;
+    }
+    
     public Order(Customer customer, Date orderDate, Date requiredDate, Date shippedDate, Integer status, Set<Orderdetail> orderdetails) {
        this.customer = customer;
        this.orderDate = orderDate;
@@ -186,5 +208,16 @@ public class Order  implements java.io.Serializable {
     public void setOrderdetails(Set<Orderdetail> orderdetails) {
         this.orderdetails = orderdetails;
     }
+
+
+    @Override
+    public String toString() {
+        return "Order{" + "orderId=" + orderId + ", customer=" + customer + ", orderDate=" + orderDate + ", requiredDate=" + requiredDate + ", shippedDate=" + shippedDate + ", status=" + status + ", orderName=" + orderName + ", orderAdress=" + orderAdress + ", orderPhone=" + orderPhone + ", orderEmail=" + orderEmail + '}';
+    }
+
+
+
+
+
 }
 

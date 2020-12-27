@@ -4,6 +4,8 @@
     Author     : ASUS
 --%>
 
+<%@page import="Model.Order"%>
+<%@page import="Dao.OrderDAO"%>
 <%@page import="Model.Revenue"%>
 <%@page import="Dao.StatisticDao"%>
 <%@page import="Hibernate.HibernateUtil"%>
@@ -16,8 +18,12 @@
 <!DOCTYPE html>
 
 <%
-   List < Revenue > listOfRev = StatisticDao.getRevenue("2020-12-01", "2020-12-31");
-   Revenue r = listOfRev.get(0);
+    String error="";
+    Order ord=OrderDAO.getOrder(11);
+    if(ord.getShipperId()==null)
+    {
+        error = " null rồi ";
+    }
 %>
 <html>
     <head>
@@ -31,7 +37,9 @@
         
         <title>JSP Page</title>
         <script>
-            alert("<%=r.getRevenue()%>");
+                alert('<%=error%>');
+                alert(<%=ord.getShipperId()%>);
+                alert(<%=ord.getOrderId()%>);
         </script>
     </head>
     <body>

@@ -1,5 +1,5 @@
 package Model;
-// Generated Dec 23, 2020 3:48:16 PM by Hibernate Tools 4.3.1
+// Generated Dec 27, 2020 2:50:09 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -38,6 +38,7 @@ public class Order  implements java.io.Serializable {
      private String orderAdress;
      private String orderPhone;
      private String orderEmail;
+     private Integer shipperId;
      private Set<Orderdetail> orderdetails = new HashSet<Orderdetail>(0);
 
     public Order() {
@@ -50,7 +51,8 @@ public class Order  implements java.io.Serializable {
        this.status = status;
        this.orderdetails = orderdetails;
     }
-    public Order(Customer customer, Date orderDate, Date requiredDate, Date shippedDate, Integer status, String orderName, String orderAdress, String orderPhone, String orderEmail, Set<Orderdetail> orderdetails) {
+
+    public Order(Customer customer, Date orderDate, Date requiredDate, Date shippedDate, Integer status, String orderName, String orderAdress, String orderPhone, String orderEmail, Integer shipperId, Set<Orderdetail> orderdetails) {
        this.customer = customer;
        this.orderDate = orderDate;
        this.requiredDate = requiredDate;
@@ -60,6 +62,7 @@ public class Order  implements java.io.Serializable {
        this.orderAdress = orderAdress;
        this.orderPhone = orderPhone;
        this.orderEmail = orderEmail;
+       this.shipperId = shipperId;
        this.orderdetails = orderdetails;
     }
    
@@ -165,6 +168,16 @@ public class Order  implements java.io.Serializable {
         this.orderEmail = orderEmail;
     }
 
+    
+    @Column(name="ShipperID")
+    public Integer getShipperId() {
+        return this.shipperId;
+    }
+    
+    public void setShipperId(Integer shipperId) {
+        this.shipperId = shipperId;
+    }
+
 @OneToMany(fetch=FetchType.LAZY, mappedBy="order")
     public Set<Orderdetail> getOrderdetails() {
         return this.orderdetails;
@@ -173,10 +186,5 @@ public class Order  implements java.io.Serializable {
     public void setOrderdetails(Set<Orderdetail> orderdetails) {
         this.orderdetails = orderdetails;
     }
-
-
-
-
 }
-
 

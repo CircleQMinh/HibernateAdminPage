@@ -27,10 +27,6 @@
                     int intstt=Integer.valueOf(status);
                     OrderDAO.editOrd(inteid, intstt);
                     errorsql="Chỉnh sửa thành công";
-                    if (intstt == 4){
-                        OrderDAO.deleteOrd(inteid);
-                        errorsql = "Chỉnh sửa và xóa thành công";
-                    }
                 }
                 catch(Exception e)
                 {

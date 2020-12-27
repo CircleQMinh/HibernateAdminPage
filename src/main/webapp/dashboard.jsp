@@ -32,10 +32,10 @@
         <script src="javascript/jquery.tablePagination.js" type="text/javascript"></script>
         <script src="javascript/jquery-adminpage.js" type="text/javascript"></script>
         <!------------------------------------------------------->
-        <link rel="stylesheet" href="css/jquery.simple-bar-graph.css" type="text/css">
+<!--        <link rel="stylesheet" href="css/jquery.simple-bar-graph.css" type="text/css">-->
         <link rel="stylesheet" href="css/jquery.simple-bar-graph.min.css" type="text/css">
         <script src="javascript/jquery.simple-bar-graph.js" type="text/javascript"></script>
-        <script src="javascript/jquery.simple-bar-graph.min.js" type="text/javascript"></script>
+        <!--<script src="javascript/jquery.simple-bar-graph.min.js" type="text/javascript"></script>-->
         <script>
             console.log(<%=sonv%>);
             console.log(<%=sosp%>);
@@ -83,31 +83,31 @@
                     <p><i class="fas fa-id-card"></i></p>
                     <h3><%=sonv%></h3>
                     <p>Employee</p>
-                    <a>View</a>
+                    <a onclick="clickme('emppage')">View</a>
                 </div>
                 <div class="card">
                     <p><i class="fas fa-money-bill-wave"></i></p>
                     <h3><%=sosp%></h3>
                     <p>Product</p>   
-                    <a>View</a>
+                    <a onclick="clickme('propage')">View</a>
                 </div>
                 <div class="card">
                     <p><i class="fa fa-user"></i></p>
                     <h3><%=sokh%></h3>
                     <p>Customer</p>
-                    <a>View</a>
+                    <a onclick="clickme('cuspage')">View</a>
                 </div>
                 <div class="card">
                     <p><i class="fas fa-key"></i></p>
                     <h3><%=sotk%></h3>
                     <p>Account</p>
-                    <a>View</a>
+                    <a onclick="clickme('accpage')">View</a>
                 </div>
                 <div class="card">
                     <p><i class="fa fa-check"></i></p>
                     <h3><%=soord%></h3>
-                    <p>Order</p>
-                    <a>View</a>
+                    <p >Order</p>
+                    <a onclick="clickme('orderpage')">View</a>
                 </div>
                 <div class="card">
                     <p><i class="fab fa-blogger"></i></p>
@@ -119,7 +119,7 @@
                     <p><i class="fas fa-comment-dollar"></i></p>
                     <h3>3</h3>
                     <p>Statistic</p>
-                    <a>View</a>
+                    <a onclick="clickme('stapage')">View</a>
                 </div>
 
             </div>
@@ -348,6 +348,22 @@
                 <button type="button" id="edit-cus"><strong>Edit</strong></button>   
                 <button type="button" style="background-color: red;" onclick="closeForm('form11')" ><strong>Close</strong></button>        
             </form>             
+        </div>
+        <div class="divform" id="updateOrder" >
+            <form >
+                <h1>Update Order Status</h1>
+                <br>
+                <label ><strong>Order ID</strong></label>
+                <input type="number" id="orderid-edit" name="wd"><br>
+                
+                <label ><strong>Status</strong></label>
+                <select name="orderStatus" id="order-status">
+                    <option selected value="1">Chưa duyệt</option>
+                    <option value="2">Đã duyệt</option>
+                </select><br>
+                <button type="button" id="editorder_status"><strong>Edit</strong></button>   
+                <button type="button" style="background-color: red;" onclick="closeForm('updateOrder')" ><strong>Close</strong></button>        
+            </form>  
         </div>
 <!--        // thông báo tải trang -->
         <div class="divwait" id="formwait" >

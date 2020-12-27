@@ -452,37 +452,15 @@ $(document).ready(function(){
                     
                     $('#ordertable').load("order.jsp #tableorder",function(){
                         $('#tableorder').tablePagination({
-                            perPage:7,
-                            showAllButton:false
+                            perPage:15,
+                            showAllButton:true
                         });
                         $("button[id|='ord_edit'").click(function(){
                             openForm("updateOrder");
                             var order_edit_id =$(this).closest('tr').find('td').eq(0).text();
                             var order_edit_status=$(this).closest('tr').find('td').eq(5).text();
                             FillFormUpdateOrder(order_edit_id,order_edit_status);
-                        });
-                        $('#editorder_status').click(function(){
-                            $.ajax({
-                                type: "post",
-                                url: "ajax/order/ajax-edit-ord.jsp", //this is my servlet
-                                data: {
-                                    eid: $('#orderid-edit').val(),
-                                    status: $('#order-status').val()
-                                },
-                                success: function ( response ){   
-                                    //handleData(response);
-                                    var success = $($.parseHTML(response)).filter("#sqlmsg").html();
-                                    console.log(success); // div#success
-                                    alert(success);
-                                    clickme("orderrefresh");
-                                },
-                                error: function(xhr, textStatus, error){
-                                    console.log(xhr.statusText);
-                                    console.log(textStatus);
-                                    console.log(error);
-                                }
-                            });
-                        });
+                        });                    
                         $("button[id|='ord_del']").click(function(){
                           if (confirm('Xóa hóa đơn khỏi database?')) {
                                 $(this).closest('tr').find('td').eq(0).each(function() {
@@ -548,7 +526,8 @@ $(document).ready(function(){
 //                        console.log($(this).find('td').eq(1).text());
                         var date=$(this).find('td').eq(0).text();
                         var rev=$(this).find('td').eq(1).text();
-                        var foo = {key:date,value:rev};
+                        var intrev = parseInt(rev);
+                        var foo = {key:date,value:intrev};
                         myStaData.push(foo);
                     });
                     myStaData.shift();
@@ -556,7 +535,8 @@ $(document).ready(function(){
                     $('#sta-gra').simpleBarGraph({
                         data: myStaData,
                         height: '500px',
-                        rowCaptionsWidth: '32px',
+                        rowsCount: 10,
+                        rowCaptionsWidth: '8px',
                         barsColor: '#70e6e2'
                     });
                 });            
@@ -828,6 +808,28 @@ $(document).ready(function(){
            }
        });
    });
+   $('#editorder_status').click(function(){
+        $.ajax({
+            type: "post",
+            url: "ajax/order/ajax-edit-ord.jsp", //this is my servlet
+            data: {
+                eid: $('#orderid-edit').val(),
+                status: $('#order-status').val()
+            },
+            success: function ( response ){   
+                //handleData(response);
+                var success = $($.parseHTML(response)).filter("#sqlmsg").html();
+                console.log(success); // div#success
+                alert(success);
+                clickme("orderrefresh");
+            },
+            error: function(xhr, textStatus, error){
+                console.log(xhr.statusText);
+                console.log(textStatus);
+                console.log(error);
+            }
+        });
+    });
    ////hàm kiểm tra nhập lại pass co dúng
     $('#pass-acc-empnoacc, #passagain-acc-empnoacc').on('keyup', function () {
         if ($('#pass-acc-empnoacc').val() === $('#passagain-acc-empnoacc').val()) {

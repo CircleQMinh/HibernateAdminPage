@@ -5,7 +5,22 @@
  */
 
 $(document).ready(function(){
-    $('#order-view').click(function(){
-        alert('AAA');
+    $('#myorder-refresh').click(function(){
+        $('#myordertable').load("shipper.jsp #tablemyorder",function(){
+            $('#tablemyorder').tablePagination({
+                perPage:15,
+                showAllButton:true
+            });
+        });
     });
+    $('#new-order-refresh').click(function(){
+        $('#ordertable').load("shipper.jsp #tableorder",function(){
+            $('#tableorder').tablePagination({
+                perPage:15,
+                showAllButton:true
+            });
+        });
+    });
+    clickme('myorder-refresh');
+    clickme('new-order-refresh');
 });    

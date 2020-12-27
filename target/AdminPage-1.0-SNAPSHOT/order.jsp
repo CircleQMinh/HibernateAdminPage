@@ -38,7 +38,7 @@
                 </select>
             </div>
             <%
-            OrderDAO.deleteAllShippedOrder();
+          //  OrderDAO.deleteAllShippedOrder();
             List<Order> listOfOrders = OrderDAO.getAllOrders();
             %>
             <div id="ordertable" class="divtable">                    
@@ -48,8 +48,8 @@
                         <th>Customer Name</th>
                         <th>Order Date</th>
                         <th>Required Date</th>
-                        <th>Shipped date</th>
                         <th>Status</th>
+                        <th>Order Info</th>
                         <th colspan="2">Option</th>
                     </tr>
                     <%               
@@ -61,9 +61,8 @@
                             <tr>
                                 <td><%= ord.getOrderId() %></td>
                                 <td><%= ord.getCustomer().getCustomerName()  %></td>
-                                <td><%= ord.getOrderDate() %></td>
-                                <td><%= ord.getRequiredDate() %></td>
-                                <td><%= ord.getShippedDate() %></td>
+                                <td><%= OrderDAO.returnDate(ord.getOrderDate()) %></td>
+                                <td><%= OrderDAO.returnDate(ord.getRequiredDate()) %></td>
                                 <%
                                 if (ord.getStatus()==1){
                                 %>
@@ -84,6 +83,32 @@
                                 %>
                                     <td>Đã giao</td>
                                 <% } %>
+                                <td>
+                                    <table class="tabledis">
+                                        <%
+                                            try 
+                                            {
+                                                int j=0;
+                                                List<?> prolist = OrderDAO.getProductListofOrder(ord.getOrderId());
+                                                while(j<prolist.size())
+                                                {
+                                                    Object[] row = (Object[])prolist.get(j);
+                                                %>
+                                                <tr>
+                                                    <td><%=row[0]%></td>
+                                                    <td><img src="<%=row[2]%>" class="productimg"></td>
+                                                    <td><%=row[3]%></td>
+                                                    <%j++;%>
+                                                </tr>
+                                                <% }
+                                            }
+                                            catch(Exception e)
+                                            {
+
+                                            }
+                                        %>
+                                    </table>
+                                </td>
                                 <td><button class="btn" id="ord_edit"><i class="fas fa-edit"></i></button></td>
                                 <td><button id ="ord_del" class="btn" style=" background-color: red;"><i class="fa fa-trash"></i></button></td>
                                 <%i++;%>
@@ -96,26 +121,7 @@
                         }
                     %>
                 </table>
-            </div>
-        <div class="divform" id="updateOrder" >
-            <form >
-                <h1>Update Order Status</h1>
-                <br>
-                <label ><strong>Order ID</strong></label>
-                <input type="number" id="orderid-edit" name="wd"><br>
-                
-                <label ><strong>Status</strong></label>
-                <select name="orderStatus" id="order-status">
-                    <option selected value="1">Chưa duyệt</option>
-                    <option value="2">Đã duyệt</option>
-                    <option value="3">Đang giao</option>
-                    <option value="4">Đã giao</option>
-                </select><br>
-                <button type="button" id="editorder_status"><strong>Edit</strong></button>   
-                <button type="button" style="background-color: red;" onclick="closeForm('updateOrder')" ><strong>Close</strong></button>        
-            </form>  
-        </div>
-            
+            </div>      
         </div>
         <script>  
             startTime();       

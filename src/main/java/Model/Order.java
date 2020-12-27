@@ -186,5 +186,10 @@ public class Order  implements java.io.Serializable {
     public void setOrderdetails(Set<Orderdetail> orderdetails) {
         this.orderdetails = orderdetails;
     }
+    
+@Override
+    public String toString() {
+        return "Order{" + "orderId=" + orderId + ", customer=" + customer + ", orderDate=" + orderDate + ", requiredDate=" + requiredDate + ", shippedDate=" + shippedDate + ", status=" + status + ", orderName=" + orderName + ", orderAdress=" + orderAdress + ", orderPhone=" + orderPhone + ", orderEmail=" + orderEmail + '}';
+    }
 }
 

@@ -31,6 +31,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="javascript/jquery.tablePagination.js" type="text/javascript"></script>
         <script src="javascript/jquery-adminpage.js" type="text/javascript"></script>
+        <link href='https://fonts.googleapis.com/css?family=Fredoka One' rel='stylesheet'>
         <!------------------------------------------------------->
 <!--        <link rel="stylesheet" href="css/jquery.simple-bar-graph.css" type="text/css">-->
         <link rel="stylesheet" href="css/jquery.simple-bar-graph.min.css" type="text/css">

@@ -121,6 +121,27 @@ public class ProductDao {
             }
         }
     }
+     public static void editProCount(int proID,int count){
+        Transaction transaction = null;
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session session = sessionFactory.openSession();
+        Product pro=(Product)session.get(Product.class, proID);
+        pro.setQuantity(pro.getQuantity()-count);
+        try  {
+            // start a transaction
+            transaction = session.beginTransaction();
+            // save the student object
+            session.update(pro);
+            // commit transaction
+            transaction.commit();
+            session.close();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();session.close();
+            }
+        }
+    }
+    
     public static boolean CheckProInUse(int id)
     {
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();

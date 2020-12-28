@@ -448,11 +448,10 @@ $(document).ready(function(){
          openForm('formwait');
          $("#home").load( "order.jsp #order", function() {
             startTime();
-                $('#orderrefresh').click(function(){
-                    
+                $('#orderrefresh').click(function(){ 
                     $('#ordertable').load("order.jsp #tableorder",function(){
                         $('#tableorder').tablePagination({
-                            perPage:15,
+                            perPage:10,
                             showAllButton:true
                         });
                         $("button[id|='ord_edit'").click(function(){
@@ -493,7 +492,52 @@ $(document).ready(function(){
                         });
                     });
                 });
+                $('#orderrefreshCk').click(function(){ 
+                    $('#ordertableCk').load("order.jsp #tableorderCk",function(){
+                        $('#tableorderCk').tablePagination({
+                            perPage:10,
+                            showAllButton:true
+                        });
+                        $("button[id|='ord_edit_Ck'").click(function(){
+                            openForm("updateOrder");
+                            var order_edit_id =$(this).closest('tr').find('td').eq(0).text();
+                            var order_edit_status=$(this).closest('tr').find('td').eq(5).text();
+                            FillFormUpdateOrder(order_edit_id,order_edit_status);
+                        });                    
+                        $("button[id|='ord_del_Ck']").click(function(){
+                          if (confirm('Xóa hóa đơn khỏi database?')) {
+                                $(this).closest('tr').find('td').eq(0).each(function() {
+                                    var textval = $(this).closest('tr').find('td').eq(0).text(); // this will be the text of each <td>
+                                    console.log(textval);
+                                    $.ajax({
+                                        type: "post",
+                                        url: "ajax/order/ajax-delete-ord.jsp", //this is my servlet
+                                        data: {
+                                            EID:textval               
+                                        },
+                                        success: function ( response ){   
+                                            //handleData(response);
+                                            var success =  $($.parseHTML(response)).filter("#sqlmsg").html(); 
+                                            console.log(success); // div#success
+                                            alert(success);
+                                            clickme("orderrefreshCk");
+                                        },
+                                        error: function(xhr, textStatus, error){
+                                            console.log(xhr.statusText);
+                                            console.log(textStatus);
+                                            console.log(error);
+                                            console.log("Fail");
+                                        }
+                                    });
+                                }); 
+                            } else {
+
+                            }  
+                        });
+                    });
+                });
             clickme('orderrefresh');
+            clickme('orderrefreshCk');
             closeForm('formwait');
         });
     });

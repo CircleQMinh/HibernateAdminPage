@@ -261,10 +261,11 @@ html {
     font-size: 14px;
 }
 .tabledis td,th{
-    border: 1px solid #ddd;
+    border: 4px solid #ddd;
     padding: 8px;
 }
 .tabledis tr:nth-child(even){background-color: #f2f2f2;}
+.tabledis tr:nth-child(odd){background-color: #f2f2f2;}
 .tabledis tr:hover{background-color: #ddd;}
 .tabledis th{
     padding-top: 12px;

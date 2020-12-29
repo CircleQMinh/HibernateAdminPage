@@ -5,6 +5,7 @@
 --%>
 
 
+<%@page import="Model.Unapprovedproduct"%>
 <%@page import="Dao.CategoryDao"%>
 <%@page import="Model.Product"%>
 <%@page import="java.util.List"%>
@@ -14,6 +15,7 @@
 
 <%
     List < Product > listpro=ProductDao.getAllPro();
+    List < Unapprovedproduct > listunpro=ProductDao.getAllUnPro();
     int i=0;
 %>
 <html>
@@ -57,6 +59,7 @@
                         <th>Quantity</th> 
                         <th>Category</th> 
                         <th>Picture</th>
+                        <th>Date Added</th>
                         <th colspan="2">Option</th>
                     </tr>
                     <%               
@@ -73,6 +76,7 @@
                                 <td><%=pro.getQuantity()%></td>
                                 <td><%=pro.getCategory()%></td>
                                 <td><img src="<%=pro.getPicture()%>" class="productimg"></td>
+                                <td><%=pro.getDateAdded()  %></td>
                                 <td><button class="btn" id="pro_edit"><i class="fas fa-edit"></i></button></td>
                                 <td><button id ="pro_del" class="btn" style=" background-color: red;"><i class="fa fa-trash"></i></button></td>
                                 <%i++;%>
@@ -86,7 +90,57 @@
                     %>
                 </table>
             </div>
-            
+            <div class="dashbosl"  >
+                 <p > Unapprovedproduct <button class="minibtn" id="btnunpro" onclick="miniTable('unproducttable','btnunpro')">-</button></p>                    
+            </div>   
+            <div class="searhbar">
+                <button class="btn" id="unproductrefresh" value="Refresh"><i class="fas fa-sync" ></i></button> 
+                <input id="unprosearchbar" type="text" class="myInput" onkeyup="FilterTable('tableunpro','unprosearchbar','unproductrefresh','unproselect')" placeholder="Search for names.." title="Type in a name">
+                <select class="myselect" id="unproselect">
+                    <option value="0" >ID</option>
+                    <option value="1" selected>Name</option>
+                </select>
+            </div>
+            <div id="unproducttable" class="divtable">                    
+                <table id="tableunpro" class="tabledis">
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Quantity</th> 
+                        <th>Category</th> 
+                        <th>Picture</th>
+                        <th>Date Added</th>
+                        <th colspan="1">Option</th>
+                    </tr>
+                    <%               
+                    try {          
+                            i=0;
+                            while (i<listunpro.size()) {
+                            Unapprovedproduct pro=listunpro.get(i);
+                            %>
+                            <tr>
+                                <td><%=pro.getProductId()%></td>
+                                <td><%=pro.getProductName()%></td>
+                                <td><%=pro.getProductDescription()%></td>
+                                <td><%=pro.getPrice()%></td>
+                                <td><%=pro.getQuantity()%></td>
+                                <td><%=pro.getCategory()%></td>
+                                <td><img src="<%=pro.getPicture()%>" class="productimg"></td>
+                                <td><%=pro.getDateAdded()  %></td>
+                                <td><button class="btn" id="pro_OK"><i class="fas fa-edit"></i></button></td>
+                                <%i++;%>
+                            </tr>                   
+                            <%}
+                        }        
+                        catch (Exception e)
+                        {
+                            e.printStackTrace();
+                        }
+                    %>
+                </table>
+            </div>
         </div>
                 
         <script>  

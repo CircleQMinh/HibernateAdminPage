@@ -87,7 +87,7 @@
                                     <td><%= ord.getOrderAdress() %></td>
                                     <td><%= ord.getOrderPhone() %></td>
                                     <td>
-                                        <table class="tabledis">
+                                        <table class="tablediss">
                                             <%
                                                 try 
                                                 {
@@ -162,7 +162,7 @@
                                     <td><%= ord.getOrderAdress() %></td>
                                     <td><%= ord.getOrderPhone() %></td>    
                                     <td>
-                                        <table class="tabledis">
+                                        <table class="tablediss">
                                             <%
                                                 try 
                                                 {
@@ -238,7 +238,7 @@
                                     <td><%= ord.getOrderAdress() %></td>
                                     <td><%= ord.getOrderPhone() %></td>
                                     <td>
-                                        <table class="tabledis">
+                                        <table class="tablediss">
                                             <%
                                                 try 
                                                 {

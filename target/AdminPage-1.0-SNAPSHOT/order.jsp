@@ -63,7 +63,7 @@
                                 <td><%= ord.getOrderAdress() %></td>
                                 <td><%= ord.getOrderPhone() %></td>
                                 <td>
-                                    <table class="tabledis">
+                                    <table class="tablediss">
                                         <%
                                             try 
                                             {
@@ -139,7 +139,7 @@
                                 <td><%= ord.getOrderAdress() %></td>
                                 <td><%= ord.getOrderPhone() %></td>
                                 <td>
-                                    <table class="tabledis">
+                                    <table class="tablediss">
                                         <%
                                             try 
                                             {
@@ -202,6 +202,7 @@
                         <th>Phone</th>
                         <th>Shipper Name</th>
                         <th>Order Info</th>
+                        <th>Option</th>
                     </tr>
                     <%               
                     try {          
@@ -218,7 +219,7 @@
                                 <td><%= ord.getOrderPhone() %></td>
                                 <td><%= emp.getEmployeeName() %></td>
                                 <td>
-                                    <table class="tabledis">
+                                    <table class="tablediss">
                                         <%
                                             try 
                                             {
@@ -243,6 +244,7 @@
                                         %>
                                     </table>
                                 </td>
+                                <td><button id ="ord_del_Dv" class="btn" style=" background-color: red;"><i class="fa fa-trash"></i></button></td>
                             </tr>                   
                             <%}
                         }        
@@ -269,10 +271,12 @@
                         <th>Customer Name</th>
                         <th>Order Date</th>
                         <th>Required Date</th>
+                        <th>Shipped Date</th>
                         <th>Address</th>
                         <th>Phone</th>
                         <th>Shipper Name</th>
                         <th>Order Info</th>
+                        <th>Option</th>
                     </tr>
                     <%               
                     try {          
@@ -285,11 +289,12 @@
                                 <td><%= ord.getCustomer().getCustomerName()  %></td>
                                 <td><%= OrderDAO.returnDate(ord.getOrderDate()) %></td>
                                 <td><%= OrderDAO.returnDate(ord.getRequiredDate()) %></td>
+                                <td><%= OrderDAO.returnDate(ord.getShippedDate()) %></td>
                                 <td><%= ord.getOrderAdress() %></td>
                                 <td><%= ord.getOrderPhone() %></td>
                                 <td><%= emp.getEmployeeName() %></td>
                                 <td>
-                                    <table class="tabledis">
+                                    <table class="tablediss">
                                         <%
                                             try 
                                             {
@@ -314,6 +319,7 @@
                                         %>
                                     </table>
                                 </td>
+                                <td><button id ="ord_del_His" class="btn" style=" background-color: red;"><i class="fa fa-trash"></i></button></td>
                             </tr>                   
                             <%}
                         }        

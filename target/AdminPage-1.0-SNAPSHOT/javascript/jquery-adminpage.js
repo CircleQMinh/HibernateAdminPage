@@ -308,7 +308,50 @@ $(document).ready(function(){
                     });
                 });                   
             }); 
+            
+            $('#unproductrefresh').click(function(){
+                $("#unproducttable").load( "product.jsp #tableunpro",function(){
+                    $('#tableunpro').tablePagination({
+                        perPage: 7,
+                        initPage:protable_count,
+                        showAllButton:false
+                    });           
+                    $("button[id|='pro_OK']").click(function() {
+                        if (confirm('Duyệt sản phẩm ?')) {
+                            openForm('formwait');
+                            $(this).closest('tr').find('td').eq(0).each(function() {
+                                var textval = $(this).text(); // this will be the text of each <td>
+                                console.log(textval);
+                                $.ajax({
+                                    type: "post",
+                                    url: "ajax/product/ajax-approve-product.jsp", //this is my servlet
+                                    data: {
+                                        ID:textval               
+                                    },
+                                    success: function ( response ){   
+                                        //handleData(response);
+                                        var success =  $($.parseHTML(response)).filter("#sqlmsg").html(); 
+                                        console.log(success); // div#success
+                                        closeForm('formwait');
+                                        alert(success);
+                                        clickme("productrefresh");
+                                        clickme("unproductrefresh");
+                                    },
+                                    error: function(xhr, textStatus, error){
+                                        console.log(xhr.statusText);closeForm('formwait');
+                                        console.log(textStatus);
+                                        console.log(error);
+                                        console.log("Fail");
+                                    }
+                                });
+                            }); 
+                        }
+                    });
+                                 
+                });                   
+            }); 
             clickme('productrefresh');
+            clickme('unproductrefresh');
             closeForm('formwait');
         });
     });
@@ -464,7 +507,7 @@ $(document).ready(function(){
                           if (confirm('Xóa hóa đơn khỏi database?')) {
                                 $(this).closest('tr').find('td').eq(0).each(function() {
                                     var textval = $(this).closest('tr').find('td').eq(0).text(); // this will be the text of each <td>
-                                    console.log(textval);
+                                    console.log(textval);openForm('formwait');
                                     $.ajax({
                                         type: "post",
                                         url: "ajax/order/ajax-delete-ord.jsp", //this is my servlet
@@ -476,13 +519,13 @@ $(document).ready(function(){
                                             var success =  $($.parseHTML(response)).filter("#sqlmsg").html(); 
                                             console.log(success); // div#success
                                             alert(success);
-                                            clickme("orderrefresh");
+                                            clickme("orderrefresh");closeForm('formwait');
                                         },
                                         error: function(xhr, textStatus, error){
                                             console.log(xhr.statusText);
                                             console.log(textStatus);
                                             console.log(error);
-                                            console.log("Fail");
+                                            console.log("Fail");closeForm('formwait');
                                         }
                                     });
                                 }); 
@@ -508,7 +551,7 @@ $(document).ready(function(){
                           if (confirm('Xóa hóa đơn khỏi database?')) {
                                 $(this).closest('tr').find('td').eq(0).each(function() {
                                     var textval = $(this).closest('tr').find('td').eq(0).text(); // this will be the text of each <td>
-                                    console.log(textval);
+                                    console.log(textval);openForm('formwait');
                                     $.ajax({
                                         type: "post",
                                         url: "ajax/order/ajax-delete-ord.jsp", //this is my servlet
@@ -520,10 +563,86 @@ $(document).ready(function(){
                                             var success =  $($.parseHTML(response)).filter("#sqlmsg").html(); 
                                             console.log(success); // div#success
                                             alert(success);
-                                            clickme("orderrefreshCk");
+                                            clickme("orderrefreshCk");closeForm('formwait');
                                         },
                                         error: function(xhr, textStatus, error){
                                             console.log(xhr.statusText);
+                                            console.log(textStatus);
+                                            console.log(error);
+                                            console.log("Fail");closeForm('formwait');
+                                        }
+                                    });
+                                }); 
+                            } else {
+
+                            }  
+                        });
+                    });
+                });
+                $('#orderrefreshDv').click(function(){ 
+                    $('#ordertableDv').load("order.jsp #tableorderDv",function(){
+                        $('#tableorderDv').tablePagination({
+                            perPage:10,
+                            showAllButton:true
+                        });                 
+                        $("button[id|='ord_del_Dv']").click(function(){
+                          if (confirm('Xóa hóa đơn khỏi database?')) {
+                                $(this).closest('tr').find('td').eq(0).each(function() {
+                                    var textval = $(this).closest('tr').find('td').eq(0).text(); // this will be the text of each <td>
+                                    console.log(textval);openForm('formwait');
+                                    $.ajax({
+                                        type: "post",
+                                        url: "ajax/order/ajax-delete-ord.jsp", //this is my servlet
+                                        data: {
+                                            EID:textval               
+                                        },
+                                        success: function ( response ){   
+                                            //handleData(response);
+                                            var success =  $($.parseHTML(response)).filter("#sqlmsg").html(); 
+                                            console.log(success); // div#success
+                                            alert(success);
+                                            clickme("orderrefreshDv");closeForm('formwait');
+                                        },
+                                        error: function(xhr, textStatus, error){
+                                            console.log(xhr.statusText);closeForm('formwait');
+                                            console.log(textStatus);
+                                            console.log(error);
+                                            console.log("Fail");
+                                        }
+                                    });
+                                }); 
+                            } else {
+
+                            }  
+                        });
+                    });
+                });
+                $('#orderrefreshHis').click(function(){ 
+                    $('#ordertableHis').load("order.jsp #tableorderHis",function(){
+                        $('#tableorderHis').tablePagination({
+                            perPage:10,
+                            showAllButton:true
+                        });                 
+                        $("button[id|='ord_del_His']").click(function(){
+                          if (confirm('Xóa hóa đơn khỏi database?')) {
+                                $(this).closest('tr').find('td').eq(0).each(function() {
+                                    var textval = $(this).closest('tr').find('td').eq(0).text(); // this will be the text of each <td>
+                                    console.log(textval);openForm('formwait');
+                                    $.ajax({
+                                        type: "post",
+                                        url: "ajax/order/ajax-delete-ord.jsp", //this is my servlet
+                                        data: {
+                                            EID:textval               
+                                        },
+                                        success: function ( response ){   
+                                            //handleData(response);
+                                            var success =  $($.parseHTML(response)).filter("#sqlmsg").html(); 
+                                            console.log(success); // div#success
+                                            alert(success);
+                                            clickme("orderrefreshHis");closeForm('formwait');
+                                        },
+                                        error: function(xhr, textStatus, error){
+                                            console.log(xhr.statusText);closeForm('formwait');
                                             console.log(textStatus);
                                             console.log(error);
                                             console.log("Fail");
@@ -538,6 +657,8 @@ $(document).ready(function(){
                 });
             clickme('orderrefresh');
             clickme('orderrefreshCk');
+            clickme('orderrefreshDv');
+            clickme('orderrefreshHis');
             closeForm('formwait');
         });
     });

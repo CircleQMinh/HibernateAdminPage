@@ -63,7 +63,15 @@
     <body>      
         <%
             String errorsql="";
-            int Id=Integer.valueOf(request.getParameter("ID"));
+            int Id=0;
+            
+            try{
+                Id=Integer.parseInt(request.getParameter("ID"));
+            }
+            catch(Exception e)
+            {
+                errorsql="wtf";
+            }
             if(ProductDao.CheckProInUse(Id))
             {
                 errorsql="Lỗi : Sản phẩm đang sử dụng trong giao dịch";
@@ -88,6 +96,6 @@
         <div id="errormsg">
             <%=errorsql%>
         </div>
-        <p id="sqlmsg"> <%=errorsql%></p>
+        <p id="sqlmsg"> <%=errorsql%> </p>
     </body>
 </html>

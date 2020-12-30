@@ -5,6 +5,7 @@ Dao\CustomerDAO.class
 Model\Order.class
 Model\Blog.class
 Model\Unapprovedproduct.class
+Controller\SaveOrder.class
 Service\CartService.class
 Service\UserService.class
 Dao\CategoryDao.class
@@ -21,6 +22,7 @@ Dao\OrderDAO.class
 Model\CartItem.class
 Model\Account.class
 Dao\ProductDao.class
+Dao\OrderdetailDAO.class
 Model\Customer.class
 Dao\RevenueDao.class
 Model\Employee.class

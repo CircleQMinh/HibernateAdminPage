@@ -7,8 +7,14 @@ package Dao;
 
 
 import Hibernate.HibernateUtil;
+import Model.FeaProduct;
 import Model.Product;
 import Model.Unapprovedproduct;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -60,6 +66,72 @@ public class ProductDao {
             }
         }
         return pro;
+    }
+    public static List<FeaProduct> getFeaturedProduct(){
+        Transaction transaction = null;
+        List <?> listofFea = null;
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session session = sessionFactory.openSession();
+        System.out.println("Start get Featured product");
+        try{
+            // start a transaction
+            transaction = session.beginTransaction();
+            // get an user object
+
+            listofFea = session.createQuery("select a.id.productId,SUM(a.quantityOrdered) from Orderdetail a GROUP BY a.id.productId ").list();
+
+            // commit transaction
+            transaction.commit();session.close();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();session.close();
+            }
+        }
+        System.out.println(listofFea.size() + "alo alo alo");
+        List<FeaProduct> lists = new ArrayList<FeaProduct>();
+        for(int i=0;i<listofFea.size();i++){
+            Object[] object = (Object[])listofFea.get(i);
+            FeaProduct fea = new FeaProduct(Integer.parseInt(String.valueOf(object[0])),Integer.parseInt(String.valueOf(object[1])));
+            lists.add(fea);
+        }
+        Collections.sort(lists, new FeaProduct());
+        for(int j=0;j<lists.size();j++){
+            System.out.println(lists.get(j).getId() + "  ");
+        }
+        System.out.println(lists.size() + "alo alo alo");
+        return lists;
+    }
+    public static List<Product> getAllProSortbyDate(){
+        Transaction transaction = null;
+        List < Product > listOfpro = null;
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session session = sessionFactory.openSession();
+        try{
+            // start a transaction
+            transaction = session.beginTransaction();
+            // get an user object
+
+            listOfpro = session.createQuery("from Product ").list();
+
+            // commit transaction
+            transaction.commit();session.close();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();session.close();
+            }
+        }
+        for (int i=0;i<listOfpro.size();i++)
+            for(int j=i;j<listOfpro.size();j++){
+                Date a = listOfpro.get(i).getDateAdded();
+                Date b = listOfpro.get(j).getDateAdded();
+                if(a.compareTo(b)<0){
+                    Product t = listOfpro.get(i);
+                    listOfpro.set(i, listOfpro.get(j));
+                    listOfpro.set(j, t);
+                }
+            }
+        
+        return listOfpro;
     }
     public static List < Product > getAllPro() {
 

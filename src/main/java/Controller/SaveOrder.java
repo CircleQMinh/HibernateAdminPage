@@ -53,6 +53,7 @@ public class SaveOrder extends HttpServlet {
         String address = request.getParameter("AddressShip");
         String phone  = request.getParameter("PhoneShip");
         String email = request.getParameter("EmailShip");
+        /* Customer saved in Session  --- demo 10 */
         Customer csm = CustomerDAO.getCus(10);
         Order ord = new Order();
         Date orderDate = new Date();
@@ -67,6 +68,7 @@ public class SaveOrder extends HttpServlet {
         OrderDAO.saveOrder(ord);
         int csmid = csm.getCustomerId();
         int status = 5;
+        /* Cutomer saved in Session  */
         Order ordcsm = OrderDAO.getOrderByStatus(5, 10);
         Cart cart = (Cart)session.getAttribute("cart");
         List<CartItem> cit = cart.getItems();
@@ -77,9 +79,11 @@ public class SaveOrder extends HttpServlet {
             orddetail.setOrder(ordcsm);
             orddetail.setProduct(ProductDao.getPro(cit.get(i).getProductID()));
             orddetail.setQuantityOrdered(cit.get(i).getQuantity());
-            System.err.println(orddetail.toString());
             OrderdetailDAO.saveOrderdetail(orddetail);
         }
+        ordcsm.setStatus(1);
+        System.out.println(ordcsm);
+        OrderDAO.updateEmp(ordcsm);
         response.sendRedirect(request.getContextPath() + "/products.jsp");
     }
 

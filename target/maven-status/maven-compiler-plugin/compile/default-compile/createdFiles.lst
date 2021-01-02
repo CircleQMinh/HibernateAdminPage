@@ -24,10 +24,12 @@ Dao\OrderDAO.class
 Model\CartItem.class
 Model\Account.class
 Dao\ProductDao.class
+Service\SendEmailService.class
 Dao\OrderdetailDAO.class
 Model\Customer.class
 Dao\RevenueDao.class
 Model\Employee.class
 Controller\LoginController.class
+Service\SendEmailService$1.class
 Dao\AccountDao.class
 Hibernate\HibernateUtil.class

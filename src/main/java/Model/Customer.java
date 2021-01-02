@@ -29,6 +29,7 @@ public class Customer  implements java.io.Serializable {
      private String phone;
      private String email;
      private String sex;
+     private Integer money;
      private Set<Order> orders = new HashSet<Order>(0);
 
     public Customer() {
@@ -54,7 +55,15 @@ public class Customer  implements java.io.Serializable {
        this.email = email;
        this.sex = sex;
     }
-   
+   public Customer(String customerName, String address, String phone, String email, String sex, Integer money, Set<Order> orders) {
+       this.customerName = customerName;
+       this.address = address;
+       this.phone = phone;
+       this.email = email;
+       this.sex = sex;
+       this.money = money;
+       this.orders = orders;
+    }
      @Id @GeneratedValue(strategy=IDENTITY)
 
     
@@ -116,7 +125,14 @@ public class Customer  implements java.io.Serializable {
     public void setSex(String sex) {
         this.sex = sex;
     }
-
+    @Column(name="Money")
+    public Integer getMoney() {
+        return this.money;
+    }
+    
+    public void setMoney(Integer money) {
+        this.money = money;
+    }
 @OneToMany(fetch=FetchType.LAZY, mappedBy="customer")
     public Set<Order> getOrders() {
         return this.orders;

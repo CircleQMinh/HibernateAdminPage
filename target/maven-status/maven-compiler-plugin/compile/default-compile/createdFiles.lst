@@ -18,6 +18,7 @@ Dao\StatisticDao.class
 Model\Cart.class
 Model\Product.class
 Dao\EmployeeDao.class
+Model\FeaProduct.class
 Dao\OrderDAO.class
 Model\CartItem.class
 Model\Account.class

@@ -21,9 +21,9 @@
                     <button type="button" class="toggle-btn" onclick="login()">Log In</button>
                     <button type="button" class="toggle-btn" onclick="register()">Register</button>
                 </div>
-                <form class="input-group" id="login" method="POST" action="">
-                    <input type="text" name="" id="" class="input-feild" placeholder="User Id" required>
-                    <input type="password" name="" id="" class="input-feild" placeholder="Enter Password" required>
+                <form class="input-group" id="login" method="POST" action="login">
+                    <input type="text" name="username" id="" class="input-feild" placeholder="User Id: ${usernameError}" required>
+                    <input type="password" name="password" id="" class="input-feild" placeholder="Enter Password: ${passwordError}" required>
                     <input type="checkbox" class="check-box"><span>Remember Me</span>
                     <button type="submit" class="submit-btn">Log in</button>
                 </form>
@@ -32,7 +32,7 @@
                     <input type="email" name="" id="" class="input-feild" placeholder="Email" required>
                     <input type="password" name="" id="" class="input-feild" placeholder="Enter Password" required>
                     <input type="password" name="" id="" class="input-feild" placeholder="Enter Password Repeat" required>
-                    <input type="checkbox" class="check-box"><span>I agree to the terms & consitions</span>
+                    <input type="checkbox" class="check-box"><span>I agree to the terms & conditions</span>
                     <button type="submit" class="submit-btn">Register</button>
                 </form>
             </div>

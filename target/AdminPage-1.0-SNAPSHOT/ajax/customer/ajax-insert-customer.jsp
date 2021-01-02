@@ -65,7 +65,7 @@
     <body>
         <%
             String errorsql="";
-            
+ 
             String add = request.getParameter("address").trim();
             if(add==""||add==null)
             {

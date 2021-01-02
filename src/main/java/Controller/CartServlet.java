@@ -58,10 +58,8 @@ public class CartServlet extends HttpServlet {
                                 CartItem item = new CartItem();
                                 item.setProductID(prd.getProductId());
                                 item.setProductName(prd.getProductName());
-                                item.setPictureString(prd.getPicture());
-                                item.setQuantity(quantity);
                                 item.setPrice(prd.getPrice());
-                                System.out.println(item.toString());
+                                item.setQuantity(quantity);
                                 listItems.add(item);
                                 cart.setItems(listItems);
                                 session.setAttribute("cart", cart);
@@ -79,7 +77,6 @@ public class CartServlet extends HttpServlet {
                                     CartItem item = new CartItem();
                                     item.setProductID(prd.getProductId());
                                     item.setProductName(prd.getProductName());
-                                    item.setPictureString(prd.getPicture());
                                     item.setPrice(prd.getPrice());
                                     item.setQuantity(quantity);
                                     listItems.add(item);

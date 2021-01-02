@@ -41,6 +41,7 @@
           maxValue = element.value;
         }
       });
+      console.log(maxValue);
       return maxValue;
     },
     bindBar: function(bar) {

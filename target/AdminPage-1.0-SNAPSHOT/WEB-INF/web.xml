@@ -16,10 +16,6 @@
         <servlet-name>CartServlet</servlet-name>
         <servlet-class>Controller.CartServlet</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>SaveOrder</servlet-name>
-        <servlet-class>Controller.SaveOrder</servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>PutServletHere</servlet-name>
         <url-pattern>/PutServletHere</url-pattern>
@@ -35,10 +31,6 @@
     <servlet-mapping>
         <servlet-name>CartServlet</servlet-name>
         <url-pattern>/CartServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>SaveOrder</servlet-name>
-        <url-pattern>/SaveOrder</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

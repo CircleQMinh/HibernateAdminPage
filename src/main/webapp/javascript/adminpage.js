@@ -222,19 +222,6 @@ function FillForm11(name,sex,email,phone,add,cid)
         document.getElementById("sex-cus-edit").options.selectedIndex =1;
     }   
 }
-function FillForm100()
-{
-    document.getElementById("name-blo").value="";
-    document.getElementById("content-blo").value="";
-    document.getElementById("synopsis-blo").value="";   
-}
-function FillForm101(name,content,synopsis,bid)
-{
-    document.getElementById("name-blo-edit").value=name;
-    document.getElementById("content-blo-edit").value=content;
-    document.getElementById("synopsis-blo-edit").value=synopsis;
-    document.getElementById("bid-blo-edit").value=bid;
-}
 function FillFormaccedit(id,name,uid)
 {
     document.getElementById("name-acc-emp-edit").value=name;
@@ -253,13 +240,9 @@ function FillFormempnoacc(id)
 function FillFormUpdateOrder(id,status)
 {
     document.getElementById("orderid-edit").value =id;
-    document.getElementById("order-status")
+    document.getElementById("order-status");
     if (status === "Đã duyệt"){
         document.getElementById("order-status").options.selectedIndex=1;
-    } else if (status === "Đang giao"){
-        document.getElementById("order-status").options.selectedIndex=2;
-    } else if (status === "Đã giao"){
-        document.getElementById("order-status").options.selectedIndex=3;
     }
     else{
         document.getElementById("order-status").options.selectedIndex=0;

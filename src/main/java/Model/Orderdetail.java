@@ -87,11 +87,6 @@ public class Orderdetail  implements java.io.Serializable {
         this.quantityOrdered = quantityOrdered;
     }
 
-    @Override
-    public String toString() {
-        return "Orderdetail{" + "id=" + id + ", order=" + order + ", product=" + product + ", quantityOrdered=" + quantityOrdered + '}';
-    }
-
 
 
 

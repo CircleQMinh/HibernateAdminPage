@@ -47,7 +47,7 @@ public class Unapprovedproduct  implements java.io.Serializable {
        this.picture = picture;
        this.dateAdded = dateAdded;
     }
-   
+    
      @Id @GeneratedValue(strategy=IDENTITY)
 
     

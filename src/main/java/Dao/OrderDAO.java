@@ -7,6 +7,8 @@ package Dao;
 
 import Hibernate.HibernateUtil;
 import Model.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -40,32 +42,7 @@ public class OrderDAO {
         return ord;
     }
     
-    public static Order getOrderByStatus(int status,int id){
-        Transaction transaction = null;
-        List<Order> ord =null;
-        String query = "from Order ord where ord.status = :ord_status";
-        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-        Session session = sessionFactory.openSession();
-        System.out.println("Startb get order");
-        try {
-            transaction = session.beginTransaction();
-            ord = session.createQuery(query).setParameter("ord_status",status).getResultList();
-            transaction.commit();
-            session.close();
-            }
-        catch (Exception e){
-            if (transaction != null) {
-                transaction.rollback();session.close();
-            }
-        }
-        System.out.println(ord.size());
-        for(int i=0;i<ord.size();i++){
-            System.out.println(ord.get(i).toString());
-            if(ord.get(i).getCustomer().getCustomerId()==id)
-                return ord.get(i);
-        }
-        return null;
-    }
+  
     
     public static void saveOrder(Order ord) {
         Transaction transaction = null;
@@ -83,9 +60,6 @@ public class OrderDAO {
                 transaction.rollback();session.close();
             }
         }
-        finally{
-            session.close();
-        }
     }
     
     public static List < Order > getAllOrders() {
@@ -99,7 +73,7 @@ public class OrderDAO {
             transaction = session.beginTransaction();
             // get an user object
 
-            listOfOrders = session.createQuery("from Order").list();
+            listOfOrders = session.createQuery("from Order f ORDER BY f.status").list();
 
             // commit transaction
             transaction.commit();session.close();
@@ -110,7 +84,50 @@ public class OrderDAO {
         }
         return listOfOrders;
     }
-    
+    public static List < Order > getAllMyOrders(int id) {
+
+        Transaction transaction = null;
+        List < Order > listOfOrders = null;
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session session = sessionFactory.openSession();
+        try  {
+            // start a transaction
+            transaction = session.beginTransaction();
+            // get an user object
+
+            listOfOrders = session.createQuery("from Order o where o.shipperId="+String.valueOf(id)+" and o.status=3").list();
+
+            // commit transaction
+            transaction.commit();session.close();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();session.close();
+            }
+        }
+        return listOfOrders;
+    }
+    public static List < Order > getAllMyOrdersHistory(int id) {
+
+        Transaction transaction = null;
+        List < Order > listOfOrders = null;
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session session = sessionFactory.openSession();
+        try  {
+            // start a transaction
+            transaction = session.beginTransaction();
+            // get an user object
+
+            listOfOrders = session.createQuery("from Order o where o.shipperId="+String.valueOf(id)+" and o.status=4").list();
+
+            // commit transaction
+            transaction.commit();session.close();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();session.close();
+            }
+        }
+        return listOfOrders;
+    }
     public static void updateEmp(Order ord) { //edit toàn bộ các cột
         Transaction transaction = null;
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
@@ -141,14 +158,55 @@ public class OrderDAO {
             // save the student object
             session.update(ord);
             // commit transaction
-            transaction.commit();session.close();
+            transaction.commit();
+            session.close();
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();session.close();
             }
         }
     }
-
+    public static void editOrdShipper(int ordID,int shipperID){
+        Transaction transaction = null;
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session session = sessionFactory.openSession();
+        Order ord=(Order)session.get(Order.class, ordID);
+        ord.setShipperId(shipperID);
+        ord.setStatus(3);
+        try  {
+            // start a transaction
+            transaction = session.beginTransaction();
+            // save the student object
+            session.update(ord);
+            // commit transaction
+            transaction.commit();
+            session.close();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();session.close();
+            }
+        }
+    }
+    public static void editOrdShippedDate(int ordID,Date date){
+        Transaction transaction = null;
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session session = sessionFactory.openSession();
+        Order ord=(Order)session.get(Order.class, ordID);
+        ord.setShippedDate(date);
+        try  {
+            // start a transaction
+            transaction = session.beginTransaction();
+            // save the student object
+            session.update(ord);
+            // commit transaction
+            transaction.commit();
+            session.close();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();session.close();
+            }
+        }
+    }
     public static void deleteOrd(int id) {
 
         Transaction transaction = null;
@@ -197,5 +255,169 @@ public class OrderDAO {
                 transaction.rollback();session.close();
             }
         }
+    }
+    public static List < Order > getAllOrdersDaDuyet() {
+
+        Transaction transaction = null;
+        List < Order > listOfOrders = null;
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session session = sessionFactory.openSession();
+        try  {
+            // start a transaction
+            transaction = session.beginTransaction();
+            // get an user object
+
+            listOfOrders = session.createQuery("from Order o where o.status=2").list();
+
+            // commit transaction
+            transaction.commit();session.close();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();session.close();
+            }
+        }
+        return listOfOrders;
+    }
+    public static List < Order > getAllOrdersChuaDuyet() {
+
+        Transaction transaction = null;
+        List < Order > listOfOrders = null;
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session session = sessionFactory.openSession();
+        try  {
+            // start a transaction
+            transaction = session.beginTransaction();
+            // get an user object
+
+            listOfOrders = session.createQuery("from Order o where o.status=1").list();
+
+            // commit transaction
+            transaction.commit();session.close();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();session.close();
+            }
+        }
+        return listOfOrders;
+    }
+    public static List < Order > getAllOrdersDangGiao() {
+
+        Transaction transaction = null;
+        List < Order > listOfOrders = null;
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session session = sessionFactory.openSession();
+        try  {
+            // start a transaction
+            transaction = session.beginTransaction();
+            // get an user object
+
+            listOfOrders = session.createQuery("from Order o where o.status=3").list();
+
+            // commit transaction
+            transaction.commit();session.close();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();session.close();
+            }
+        }
+        return listOfOrders;
+    }
+    public static List < Order > getAllOrdersDaGiao() {
+
+        Transaction transaction = null;
+        List < Order > listOfOrders = null;
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session session = sessionFactory.openSession();
+        try  {
+            // start a transaction
+            transaction = session.beginTransaction();
+            // get an user object
+
+            listOfOrders = session.createQuery("from Order o where o.status=4").list();
+
+            // commit transaction
+            transaction.commit();session.close();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();session.close();
+            }
+        }
+        return listOfOrders;
+    }
+    public static List < ? > getProductListofOrder(int id){
+        Transaction transaction = null;
+        List < ? > listOfRev = null;
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session session = sessionFactory.openSession();
+        try{
+            // start a transaction
+            transaction = session.beginTransaction();
+            // get an user object
+
+            listOfRev = session.createQuery("Select d.product.id,d.product.productName,d.product.category,d.product.picture,d.quantityOrdered from Orderdetail d where d.order.id="+String.valueOf(id)).list();
+
+            // commit transaction
+            transaction.commit();
+            session.close();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+                session.close();
+            }
+        }
+        return listOfRev;
+    }
+    public static String returnDate(Date date)
+    {
+        DateFormat df = new SimpleDateFormat("dd-MM-yyyy");          
+        return df.format(date);
+    }
+    public static List < Object[] > getOrderDangGiao() {//join 2 bang lai voi nhau
+
+        Transaction transaction = null;
+        List < Object[] > listOfAcc = null;
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session session = sessionFactory.openSession();
+        try{
+            // start a transaction
+            transaction = session.beginTransaction();
+            // get an user object
+
+            listOfAcc = session.createQuery("select o,e  from Order o,Employee e where o.status=3 and o.shipperId=e.id").list();
+
+            // commit transaction
+            transaction.commit();
+            session.close();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+                session.close();
+            }
+        }
+        return listOfAcc;
+    }
+    public static List < Object[] > getOrderDaGiao() {//join 2 bang lai voi nhau
+
+        Transaction transaction = null;
+        List < Object[] > listOfAcc = null;
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session session = sessionFactory.openSession();
+        try{
+            // start a transaction
+            transaction = session.beginTransaction();
+            // get an user object
+
+            listOfAcc = session.createQuery("select o,e  from Order o,Employee e where o.status=4 and o.shipperId=e.id").list();
+
+            // commit transaction
+            transaction.commit();
+            session.close();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+                session.close();
+            }
+        }
+        return listOfAcc;
     }
 }

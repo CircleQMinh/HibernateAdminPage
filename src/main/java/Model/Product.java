@@ -166,14 +166,9 @@ public class Product  implements java.io.Serializable {
         this.orderdetails = orderdetails;
     }
 
-    @Override
-    public String toString() {
-        return "Product{" + "productId=" + productId + ", productName=" + productName + ", productDescription=" + productDescription + ", price=" + price + ", quantity=" + quantity + ", category=" + category + ", picture=" + picture + ", dateAdded=" + dateAdded + '}';
-    }
 
 
 
-    
 }
 
 

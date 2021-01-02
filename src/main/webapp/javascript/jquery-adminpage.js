@@ -10,7 +10,6 @@ var protable_count = 1;
 var custable_count = 1;
 var empacctable_count = 1;
 var cusacctable_count = 1;
-var blotable_count = 1;
 
 $(document).ready(function(){
     startTime();
@@ -249,73 +248,6 @@ $(document).ready(function(){
     
     
     
-    $('#blogpage').click(function(){
-        openForm('formwait');
-        $("#home").load( "blog.jsp #blog", function() {
-            startTime();            
-            $('#blogrefresh').click(function(){
-                $("#blogtable").load( "blog.jsp #tableblo",function(){
-                    $('#tableblo').tablePagination({
-                        perPage: 7,
-                        initPage:blotable_count,                      
-                        showAllButton:false
-                    });
-                    blotable_count=1;
-                    $("button[id|='blo_edit']").click(function() {
-                        openForm("form101");
-                        getId_blotable(this);
-                        var blo_edit_bid=$(this).closest('tr').find('td').eq(0).text();
-                        var blo_edit_name=$(this).closest('tr').find('td').eq(1).text();
-                        var blo_edit_content=$(this).closest('tr').find('td').eq(2).text();
-                        var blo_edit_synopsys=$(this).closest('tr').find('td').eq(3).text();                                        
-                        FillForm101(blo_edit_name,blo_edit_content,blo_edit_synopsys,
-                                blo_edit_bid);
-                    });
-                    $("button[id|='blo_del']").click(function() {
-                        if (confirm('Xóa blog khỏi database?')) {
-                            getId_blotable(this);
-                            $(this).closest('tr').find('td').eq(0).each(function() {
-                                
-                                var textval = $(this).text(); // this will be the text of each <td>
-                                console.log(textval);openForm('formwait');
-                                $.ajax({
-                                    type: "post",
-                                    url: "ajax/blog/ajax-delete-blog.jsp", //this is my servlet
-                                    data: {
-                                        BID:textval               
-                                    },
-                                    success: function ( response ){   
-                                        //handleData(response);
-                                        var success =  $($.parseHTML(response)).filter("#sqlmsg").html(); 
-                                        console.log(success); // div#success
-                                        closeForm('formwait');
-                                        alert(success);
-                                        clickme("blogrefresh");
-                                    },
-                                    error: function(xhr, textStatus, error){
-                                        console.log(xhr.statusText);
-                                        console.log(textStatus);
-                                        console.log(error);
-                                        console.log("Fail");
-                                    }
-                                });
-                            }); 
-                        } else {
-
-                        }                   
-                    });
-                });
-            });
-            
-            clickme('blogrefresh');         
-            closeForm('formwait');
-        });
-
-    });
-    ////kết thúc
-    
-    
-    
 //                jquery của pro
     $('#propage').click(function(){
          openForm('formwait');
@@ -376,7 +308,50 @@ $(document).ready(function(){
                     });
                 });                   
             }); 
+            
+            $('#unproductrefresh').click(function(){
+                $("#unproducttable").load( "product.jsp #tableunpro",function(){
+                    $('#tableunpro').tablePagination({
+                        perPage: 7,
+                        initPage:protable_count,
+                        showAllButton:false
+                    });           
+                    $("button[id|='pro_OK']").click(function() {
+                        if (confirm('Duyệt sản phẩm ?')) {
+                            openForm('formwait');
+                            $(this).closest('tr').find('td').eq(0).each(function() {
+                                var textval = $(this).text(); // this will be the text of each <td>
+                                console.log(textval);
+                                $.ajax({
+                                    type: "post",
+                                    url: "ajax/product/ajax-approve-product.jsp", //this is my servlet
+                                    data: {
+                                        ID:textval               
+                                    },
+                                    success: function ( response ){   
+                                        //handleData(response);
+                                        var success =  $($.parseHTML(response)).filter("#sqlmsg").html(); 
+                                        console.log(success); // div#success
+                                        closeForm('formwait');
+                                        alert(success);
+                                        clickme("productrefresh");
+                                        clickme("unproductrefresh");
+                                    },
+                                    error: function(xhr, textStatus, error){
+                                        console.log(xhr.statusText);closeForm('formwait');
+                                        console.log(textStatus);
+                                        console.log(error);
+                                        console.log("Fail");
+                                    }
+                                });
+                            }); 
+                        }
+                    });
+                                 
+                });                   
+            }); 
             clickme('productrefresh');
+            clickme('unproductrefresh');
             closeForm('formwait');
         });
     });
@@ -516,46 +491,23 @@ $(document).ready(function(){
          openForm('formwait');
          $("#home").load( "order.jsp #order", function() {
             startTime();
-                $('#orderrefresh').click(function(){
-                    
+                $('#orderrefresh').click(function(){ 
                     $('#ordertable').load("order.jsp #tableorder",function(){
                         $('#tableorder').tablePagination({
-                            perPage:7,
-                            showAllButton:false
+                            perPage:10,
+                            showAllButton:true
                         });
                         $("button[id|='ord_edit'").click(function(){
                             openForm("updateOrder");
                             var order_edit_id =$(this).closest('tr').find('td').eq(0).text();
                             var order_edit_status=$(this).closest('tr').find('td').eq(5).text();
                             FillFormUpdateOrder(order_edit_id,order_edit_status);
-                        });
-                        $('#editorder_status').click(function(){
-                            $.ajax({
-                                type: "post",
-                                url: "ajax/order/ajax-edit-ord.jsp", //this is my servlet
-                                data: {
-                                    eid: $('#orderid-edit').val(),
-                                    status: $('#order-status').val()
-                                },
-                                success: function ( response ){   
-                                    //handleData(response);
-                                    var success = $($.parseHTML(response)).filter("#sqlmsg").html();
-                                    console.log(success); // div#success
-                                    alert(success);
-                                    clickme("orderrefresh");
-                                },
-                                error: function(xhr, textStatus, error){
-                                    console.log(xhr.statusText);
-                                    console.log(textStatus);
-                                    console.log(error);
-                                }
-                            });
-                        });
+                        });                    
                         $("button[id|='ord_del']").click(function(){
                           if (confirm('Xóa hóa đơn khỏi database?')) {
                                 $(this).closest('tr').find('td').eq(0).each(function() {
                                     var textval = $(this).closest('tr').find('td').eq(0).text(); // this will be the text of each <td>
-                                    console.log(textval);
+                                    console.log(textval);openForm('formwait');
                                     $.ajax({
                                         type: "post",
                                         url: "ajax/order/ajax-delete-ord.jsp", //this is my servlet
@@ -567,10 +519,130 @@ $(document).ready(function(){
                                             var success =  $($.parseHTML(response)).filter("#sqlmsg").html(); 
                                             console.log(success); // div#success
                                             alert(success);
-                                            clickme("orderrefresh");
+                                            clickme("orderrefresh");closeForm('formwait');
                                         },
                                         error: function(xhr, textStatus, error){
                                             console.log(xhr.statusText);
+                                            console.log(textStatus);
+                                            console.log(error);
+                                            console.log("Fail");closeForm('formwait');
+                                        }
+                                    });
+                                }); 
+                            } else {
+
+                            }  
+                        });
+                    });
+                });
+                $('#orderrefreshCk').click(function(){ 
+                    $('#ordertableCk').load("order.jsp #tableorderCk",function(){
+                        $('#tableorderCk').tablePagination({
+                            perPage:10,
+                            showAllButton:true
+                        });
+                        $("button[id|='ord_edit_Ck'").click(function(){
+                            openForm("updateOrder");
+                            var order_edit_id =$(this).closest('tr').find('td').eq(0).text();
+                            var order_edit_status=$(this).closest('tr').find('td').eq(5).text();
+                            FillFormUpdateOrder(order_edit_id,order_edit_status);
+                        });                    
+                        $("button[id|='ord_del_Ck']").click(function(){
+                          if (confirm('Xóa hóa đơn khỏi database?')) {
+                                $(this).closest('tr').find('td').eq(0).each(function() {
+                                    var textval = $(this).closest('tr').find('td').eq(0).text(); // this will be the text of each <td>
+                                    console.log(textval);openForm('formwait');
+                                    $.ajax({
+                                        type: "post",
+                                        url: "ajax/order/ajax-delete-ord.jsp", //this is my servlet
+                                        data: {
+                                            EID:textval               
+                                        },
+                                        success: function ( response ){   
+                                            //handleData(response);
+                                            var success =  $($.parseHTML(response)).filter("#sqlmsg").html(); 
+                                            console.log(success); // div#success
+                                            alert(success);
+                                            clickme("orderrefreshCk");closeForm('formwait');
+                                        },
+                                        error: function(xhr, textStatus, error){
+                                            console.log(xhr.statusText);
+                                            console.log(textStatus);
+                                            console.log(error);
+                                            console.log("Fail");closeForm('formwait');
+                                        }
+                                    });
+                                }); 
+                            } else {
+
+                            }  
+                        });
+                    });
+                });
+                $('#orderrefreshDv').click(function(){ 
+                    $('#ordertableDv').load("order.jsp #tableorderDv",function(){
+                        $('#tableorderDv').tablePagination({
+                            perPage:10,
+                            showAllButton:true
+                        });                 
+                        $("button[id|='ord_del_Dv']").click(function(){
+                          if (confirm('Xóa hóa đơn khỏi database?')) {
+                                $(this).closest('tr').find('td').eq(0).each(function() {
+                                    var textval = $(this).closest('tr').find('td').eq(0).text(); // this will be the text of each <td>
+                                    console.log(textval);openForm('formwait');
+                                    $.ajax({
+                                        type: "post",
+                                        url: "ajax/order/ajax-delete-ord.jsp", //this is my servlet
+                                        data: {
+                                            EID:textval               
+                                        },
+                                        success: function ( response ){   
+                                            //handleData(response);
+                                            var success =  $($.parseHTML(response)).filter("#sqlmsg").html(); 
+                                            console.log(success); // div#success
+                                            alert(success);
+                                            clickme("orderrefreshDv");closeForm('formwait');
+                                        },
+                                        error: function(xhr, textStatus, error){
+                                            console.log(xhr.statusText);closeForm('formwait');
+                                            console.log(textStatus);
+                                            console.log(error);
+                                            console.log("Fail");
+                                        }
+                                    });
+                                }); 
+                            } else {
+
+                            }  
+                        });
+                    });
+                });
+                $('#orderrefreshHis').click(function(){ 
+                    $('#ordertableHis').load("order.jsp #tableorderHis",function(){
+                        $('#tableorderHis').tablePagination({
+                            perPage:10,
+                            showAllButton:true
+                        });                 
+                        $("button[id|='ord_del_His']").click(function(){
+                          if (confirm('Xóa hóa đơn khỏi database?')) {
+                                $(this).closest('tr').find('td').eq(0).each(function() {
+                                    var textval = $(this).closest('tr').find('td').eq(0).text(); // this will be the text of each <td>
+                                    console.log(textval);openForm('formwait');
+                                    $.ajax({
+                                        type: "post",
+                                        url: "ajax/order/ajax-delete-ord.jsp", //this is my servlet
+                                        data: {
+                                            EID:textval               
+                                        },
+                                        success: function ( response ){   
+                                            //handleData(response);
+                                            var success =  $($.parseHTML(response)).filter("#sqlmsg").html(); 
+                                            console.log(success); // div#success
+                                            alert(success);
+                                            clickme("orderrefreshHis");closeForm('formwait');
+                                        },
+                                        error: function(xhr, textStatus, error){
+                                            console.log(xhr.statusText);closeForm('formwait');
                                             console.log(textStatus);
                                             console.log(error);
                                             console.log("Fail");
@@ -584,11 +656,20 @@ $(document).ready(function(){
                     });
                 });
             clickme('orderrefresh');
+            clickme('orderrefreshCk');
+            clickme('orderrefreshDv');
+            clickme('orderrefreshHis');
             closeForm('formwait');
         });
     });
     // jquery của blog
-    
+    $('#blogpage').click(function(){
+         openForm('formwait');
+         $("#home").load( "blog.jsp #blog", function() {
+             startTime();
+             closeForm('formwait');
+        });
+    });
     // jquery của sta
     
     $('#stapage').click(function(){
@@ -610,7 +691,8 @@ $(document).ready(function(){
 //                        console.log($(this).find('td').eq(1).text());
                         var date=$(this).find('td').eq(0).text();
                         var rev=$(this).find('td').eq(1).text();
-                        var foo = {key:date,value:rev};
+                        var intrev = parseInt(rev);
+                        var foo = {key:date,value:intrev};
                         myStaData.push(foo);
                     });
                     myStaData.shift();
@@ -618,7 +700,8 @@ $(document).ready(function(){
                     $('#sta-gra').simpleBarGraph({
                         data: myStaData,
                         height: '500px',
-                        rowCaptionsWidth: '32px',
+                        rowsCount: 10,
+                        rowCaptionsWidth: '8px',
                         barsColor: '#70e6e2'
                     });
                 });            
@@ -748,66 +831,6 @@ $(document).ready(function(){
             }
         });
     });
-    
-    
-    
-    $('#save_blo').click(function(){
-        openForm('formwait');
-         $.ajax({
-            type: "post",
-            url: "ajax/blog/ajax-insert-blog.jsp", //this is my servlet
-            data: {
-                name: $('#name-blo').val(), 
-                content: $('#content-blo').val(),
-                synopsis: $('#synopsis-blo').val()
-      
-            },
-            success: function ( response ){   
-                //handleData(response);
-                var success =  $($.parseHTML(response)).filter("#sqlmsg").html(); 
-                console.log(success); // div#success
-                closeForm('formwait');
-                alert(success);
-                clickme("blogrefresh");
-            },
-            error: function(xhr, textStatus, error){
-                console.log(xhr.statusText);
-                console.log(textStatus);
-                console.log(error);
-            }
-        });
-    });
-    
-    $('#edit-blo').click(function (){
-        openForm('formwait');
-        $.ajax({
-            type: "post",
-            url: "ajax/blog/ajax-edit-blog.jsp", //this is my servlet
-            data: {
-                bid: $('#bid-blo-edit').val(),
-                name: $('#name-blo-edit').val(), 
-                content: $('#content-blo-edit').val(),
-                synopsis: $('#synopsis-blo-edit').val() 
-                
-            },
-            success: function ( response ){   
-                //handleData(response);
-                var success = $($.parseHTML(response)).filter("#sqlmsg").html();
-                console.log(success); // div#success
-                closeForm('formwait');
-                alert(success);
-                clickme("blogrefresh");
-            },
-            error: function(xhr, textStatus, error){
-                console.log(xhr.statusText);
-                console.log(textStatus);
-                console.log(error);
-            }
-        });
-    });
-    
-    
-    
     
     
 //                form 3 - emp att
@@ -950,6 +973,28 @@ $(document).ready(function(){
            }
        });
    });
+   $('#editorder_status').click(function(){
+        $.ajax({
+            type: "post",
+            url: "ajax/order/ajax-edit-ord.jsp", //this is my servlet
+            data: {
+                eid: $('#orderid-edit').val(),
+                status: $('#order-status').val()
+            },
+            success: function ( response ){   
+                //handleData(response);
+                var success = $($.parseHTML(response)).filter("#sqlmsg").html();
+                console.log(success); // div#success
+                alert(success);
+                clickme("orderrefresh");
+            },
+            error: function(xhr, textStatus, error){
+                console.log(xhr.statusText);
+                console.log(textStatus);
+                console.log(error);
+            }
+        });
+    });
    ////hàm kiểm tra nhập lại pass co dúng
     $('#pass-acc-empnoacc, #passagain-acc-empnoacc').on('keyup', function () {
         if ($('#pass-acc-empnoacc').val() === $('#passagain-acc-empnoacc').val()) {
@@ -971,9 +1016,6 @@ $(document).ready(function(){
 // hàm ghi lại trang đang xem
 function  getId_emptable(element) {
     emptable_count =  Math.floor((element.parentNode.parentNode.rowIndex-0.5)/7)+1;
-}
-function  getId_blotable(element) {
-    blotable_count =  Math.floor((element.parentNode.parentNode.rowIndex-0.5)/7)+1;
 }
 function  getId_custable(element) {
     custable_count =  Math.floor((element.parentNode.parentNode.rowIndex-0.5)/7)+1;

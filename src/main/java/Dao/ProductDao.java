@@ -8,6 +8,7 @@ package Dao;
 
 import Hibernate.HibernateUtil;
 import Model.Product;
+import Model.Unapprovedproduct;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -40,6 +41,26 @@ public class ProductDao {
         }
         return pro;
     }
+    public static Unapprovedproduct getUnPro(int id) {
+
+        Transaction transaction = null;
+        Unapprovedproduct pro = null;
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session session = sessionFactory.openSession();
+        try{
+            // start a transaction
+            transaction = session.beginTransaction();
+            // get an user object
+            pro = (Unapprovedproduct) session.get(Unapprovedproduct.class, id);
+            // commit transaction
+            transaction.commit();session.close();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();session.close();
+            }
+        }
+        return pro;
+    }
     public static List < Product > getAllPro() {
 
         Transaction transaction = null;
@@ -62,8 +83,47 @@ public class ProductDao {
         }
         return listOfpro;
     }
+    public static List < Unapprovedproduct > getAllUnPro() {
+
+        Transaction transaction = null;
+        List < Unapprovedproduct > listOfpro = null;
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session session = sessionFactory.openSession();
+        try{
+            // start a transaction
+            transaction = session.beginTransaction();
+            // get an user object
+
+            listOfpro = session.createQuery("from Unapprovedproduct").list();
+
+            // commit transaction
+            transaction.commit();session.close();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();session.close();
+            }
+        }
+        return listOfpro;
+    }
     
     public static void savePro(Product pro) {
+        Transaction transaction = null;
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session session = sessionFactory.openSession();
+        try {
+            // start a transaction
+            transaction = session.beginTransaction();
+            // save the student object
+            session.save(pro);
+            // commit transaction
+            transaction.commit();session.close();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();session.close();
+            }
+        }
+    }
+    public static void saveunPro(Unapprovedproduct pro) {
         Transaction transaction = null;
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
@@ -121,6 +181,51 @@ public class ProductDao {
             }
         }
     }
+    public static void deleteUnPro(int id) {
+
+        Transaction transaction = null;
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session session = sessionFactory.openSession();
+        try {
+            // start a transaction
+            transaction = session.beginTransaction();
+
+            // Delete a user object
+            Unapprovedproduct pro = session.get(Unapprovedproduct.class, id);
+            if (pro != null) {
+                session.delete(pro);
+
+            }
+
+            // commit transaction
+            transaction.commit();session.close();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();session.close();
+            }
+        }
+    }
+     public static void editProCount(int proID,int count){
+        Transaction transaction = null;
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session session = sessionFactory.openSession();
+        Product pro=(Product)session.get(Product.class, proID);
+        pro.setQuantity(pro.getQuantity()-count);
+        try  {
+            // start a transaction
+            transaction = session.beginTransaction();
+            // save the student object
+            session.update(pro);
+            // commit transaction
+            transaction.commit();
+            session.close();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();session.close();
+            }
+        }
+    }
+    
     public static boolean CheckProInUse(int id)
     {
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();

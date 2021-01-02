@@ -1,4 +1,5 @@
 Model\OrderdetailId.class
+Controller\RegisterController.class
 Controller\CartServlet.class
 Model\Orderdetail.class
 Dao\CustomerDAO.class
@@ -27,5 +28,6 @@ Dao\OrderdetailDAO.class
 Model\Customer.class
 Dao\RevenueDao.class
 Model\Employee.class
+Controller\LoginController.class
 Dao\AccountDao.class
 Hibernate\HibernateUtil.class

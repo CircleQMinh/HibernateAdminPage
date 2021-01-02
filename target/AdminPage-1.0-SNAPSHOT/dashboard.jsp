@@ -355,7 +355,7 @@
                 <h1>Update Order Status</h1>
                 <br>
                 <label ><strong>Order ID</strong></label>
-                <input type="number" id="orderid-edit" name="wd"><br>
+                <input type="number" id="orderid-edit" name="wd" readonly><br>
                 
                 <label ><strong>Status</strong></label>
                 <select name="orderStatus" id="order-status">

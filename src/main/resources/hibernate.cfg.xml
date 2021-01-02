@@ -6,9 +6,9 @@
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/dbthuongmaidientu?characterEncoding=UTF-8</property>
     <property name="hibernate.connection.username">root</property>
-    <property name="hibernate.connection.password">kunpro2000@@</property>
+    <property name="hibernate.connection.password">QM1234</property>
     <property name="hibernate.enable_lazy_load_no_trans">true</property>
-    <property name="connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
+<!--    <property name="connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
     <property name="hibernate.c3p0.min_size">10</property>
     <property name="hibernate.c3p0.max_size">20</property>
     <property name="hibernate.c3p0.acquire_increment">1</property>
@@ -17,7 +17,7 @@
     <property name="hibernate.c3p0.timeout">1800</property>
     <property name="hibernate.c3p0.validate">1800</property>  
     <property name="hibernate.c3p0.unreturnedConnectionTimeout">30</property>
-    <property name="hibernate.c3p0.debugUnreturnedConnectionStackTraces">true</property>
+    <property name="hibernate.c3p0.debugUnreturnedConnectionStackTraces">true</property>-->
     <mapping resource="Model/Revenue.hbm.xml"/>
     <mapping resource="Model/Blog.hbm.xml"/>
     <mapping resource="Model/Order.hbm.xml"/>

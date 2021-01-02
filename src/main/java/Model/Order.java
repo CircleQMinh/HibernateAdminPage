@@ -39,6 +39,7 @@ public class Order  implements java.io.Serializable {
      private String orderPhone;
      private String orderEmail;
      private Integer shipperId;
+     private String paymentType;
      private Set<Orderdetail> orderdetails = new HashSet<Orderdetail>(0);
 
     public Order() {
@@ -87,7 +88,20 @@ public class Order  implements java.io.Serializable {
        this.shipperId = shipperId;
        this.orderdetails = orderdetails;
     }
-   
+   public Order(Customer customer, Date orderDate, Date requiredDate, Date shippedDate, Integer status, String orderName, String orderAdress, String orderPhone, String orderEmail, Integer shipperId, String paymentType, Set<Orderdetail> orderdetails) {
+       this.customer = customer;
+       this.orderDate = orderDate;
+       this.requiredDate = requiredDate;
+       this.shippedDate = shippedDate;
+       this.status = status;
+       this.orderName = orderName;
+       this.orderAdress = orderAdress;
+       this.orderPhone = orderPhone;
+       this.orderEmail = orderEmail;
+       this.shipperId = shipperId;
+       this.paymentType = paymentType;
+       this.orderdetails = orderdetails;
+    }
      @Id @GeneratedValue(strategy=IDENTITY)
 
     
@@ -199,7 +213,15 @@ public class Order  implements java.io.Serializable {
     public void setShipperId(Integer shipperId) {
         this.shipperId = shipperId;
     }
-
+    
+    @Column(name="PaymentType", length=45)
+    public String getPaymentType() {
+        return this.paymentType;
+    }
+    
+    public void setPaymentType(String paymentType) {
+        this.paymentType = paymentType;
+    }
 @OneToMany(fetch=FetchType.LAZY, mappedBy="order")
     public Set<Orderdetail> getOrderdetails() {
         return this.orderdetails;

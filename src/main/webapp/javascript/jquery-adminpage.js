@@ -200,8 +200,8 @@ $(document).ready(function(){
                         var cus_edit_email=$(this).closest('tr').find('td').eq(4).text();
                         var cus_edit_phone=$(this).closest('tr').find('td').eq(3).text();
                         var cus_edit_add=$(this).closest('tr').find('td').eq(2).text();                    
-                        FillForm11(cus_edit_name,cus_edit_sex,cus_edit_email,cus_edit_phone,cus_edit_add,
-                                cus_edit_cid);
+//                        FillForm11(cus_edit_name,cus_edit_sex,cus_edit_email,cus_edit_phone,cus_edit_add,
+//                                cus_edit_cid);
                     });
                     $("button[id|='cus_del']").click(function() {
                         if (confirm('Xóa khách hàng khỏi database?')) {
@@ -519,7 +519,7 @@ $(document).ready(function(){
                                             var success =  $($.parseHTML(response)).filter("#sqlmsg").html(); 
                                             console.log(success); // div#success
                                             alert(success);
-                                            clickme("orderrefresh");closeForm('formwait');
+                                            clickme("orderrefresh");clickme('orderrefreshCk');closeForm('formwait');
                                         },
                                         error: function(xhr, textStatus, error){
                                             console.log(xhr.statusText);
@@ -563,7 +563,7 @@ $(document).ready(function(){
                                             var success =  $($.parseHTML(response)).filter("#sqlmsg").html(); 
                                             console.log(success); // div#success
                                             alert(success);
-                                            clickme("orderrefreshCk");closeForm('formwait');
+                                          clickme("orderrefresh");  clickme("orderrefreshCk");closeForm('formwait');
                                         },
                                         error: function(xhr, textStatus, error){
                                             console.log(xhr.statusText);

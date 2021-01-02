@@ -33,7 +33,9 @@
             
             <a> <i class="fas fa-sign-out-alt"></i></a>
             <a style="margin-right: 23.5%;font-family: Showcard Gothic,serif;width: 30%">Business Manager Overview </a>
+            
         </div>
+        
         <nav>
             <button title="View Product"  id = 'propage'><i class="fas fa-shopping-bag"></i></button>
             <button title="View Order" id = 'orderpage'><i class="fas fa-tasks"></i></button>
@@ -41,7 +43,8 @@
             <button title="Logout" ><i class="fas fa-sign-out-alt"></i></button>
         </nav>
         
-        <div class="divcontent" id="home">            
+        <div class="divcontent" id="home">       
+            
             <div class="divchua" id="ds">
                 <div class="dashbo" id="d1">
                     <p>Dashboard</p>
@@ -49,12 +52,11 @@
                 <div class="dashbosr" >
                     <p id="time">???</p>
                 </div>
+                
             </div>
         </div>
-        <div class="divcontent" id="home">            
-            <div class="divchua" id="ds">
-
-            </div>
+        <div class="dashbosr" >
+             <p style="font-family: sans-serif"> Nhân viên đang đăng nhập : <%=me.getEmployeeName()     %></p>
         </div>
         <div class="divform" id="updateOrder" >
             <form >

@@ -4,6 +4,8 @@
     Author     : ASUS
 --%>
 
+<%@page import="Dao.EmployeeDao"%>
+<%@page import="Model.Employee"%>
 <%@page import="Dao.OrderDAO"%>
 <%@page import="Model.Order"%>
 <%@page import="java.util.List"%>
@@ -13,7 +15,7 @@
     <%
 //        Hiện tại xài cứng 1 nhân viên , làm đăng nhập thì lấy int này từ session
         int shipperID=1;
-        
+        Employee me = EmployeeDao.getEmployee(shipperID);
     
     
     %>
@@ -50,6 +52,9 @@
                 </div>
                 <div class="dashbosr" >
                     <p id="time">???</p>
+                </div>
+                <div class="dashbosr" >
+                    <p style="font-family: sans-serif"> Nhân viên đang đăng nhập : <%=me.getEmployeeName()     %></p>
                 </div>
                 <div class="dashbosl" id='employeetag' >
                     <p >My Order<button class="minibtn" id="btnAdd" onclick="miniTable('myordertable','btnAdd')">-</button></p>                    
@@ -126,6 +131,7 @@
                     </table>
                 </div>
                     <!------------------------------------------------------------------------------------------>
+                
                 <div class="dashbosl" id='employeetag' >
                     <p >List of Order<button class="minibtn" id="btnAd" onclick="miniTable('ordertable','btnAd')">-</button></p>                    
                 </div>

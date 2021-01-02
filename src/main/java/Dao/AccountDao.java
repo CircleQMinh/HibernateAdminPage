@@ -204,12 +204,32 @@ public class AccountDao {
     }
     public static boolean CheckCusInUse(int id)
     {
+//        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+//        Session session = sessionFactory.openSession();
+//        String stringquery="select 1 from Order m where m.customer.customerId="+String.valueOf(id);
+//        Query query = session.createQuery(stringquery);
+//        session.close();
+//        return (query.uniqueResult() != null);
+        
+        Transaction transaction = null;
+        boolean rs = true;
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
-        String stringquery="select 1 from Order m where m.customer.customerId="+String.valueOf(id);
-        Query query = session.createQuery(stringquery);
-        session.close();
-        return (query.uniqueResult() != null);
+        try{
+            // start a transaction
+            transaction = session.beginTransaction();
+            // get an user object
+            String stringquery="select 1 from Order m where m.customer.customerId="+String.valueOf(id);
+            Query query = session.createQuery(stringquery);
+            rs = (query.uniqueResult() != null);
+            // commit transaction
+            transaction.commit();session.close();
+        } catch (Exception e) {
+            if (transaction != null) {
+                session.close();
+            }
+        }
+        return rs;
     }
     public static void deleteAccCus(int id,int uid) {
 

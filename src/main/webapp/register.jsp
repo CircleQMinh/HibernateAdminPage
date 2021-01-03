@@ -163,8 +163,8 @@
                             <li><a href="index.jsp">Home</a></li>
                             <li><a href="products.jsp">Products</a></li>
                             <li><a href="">About</a></li>
-                            <li><a href="">Blog</a></li>
-                            <li><a href="">Account</a></li>
+                            <li><a href="login">Blog</a></li>
+                            <li><a href="customer-account.jsp">Account</a></li>
                             <c:choose>
                                 <c:when test="${sessionScope.account==null}" >
                                     <li><a href="" class="btn-login">Log In</a></li>
@@ -209,9 +209,9 @@
                     </div>
                     <div>
                         <div class="col-md-6 col-sm-12" style="float: left">
-                            <input type="radio" name="cusGender" class="gender"  value="Male" checked >Male
-                            <input type="radio" name="cusGender" class="gender"  value="Female" 
-                                   <c:if test="${gender=='Female'}">checked</c:if>>Female
+                            <input type="radio" name="cusGender" class="gender"  value="Nam" checked >Male
+                            <input type="radio" name="cusGender" class="gender"  value="Nữ" 
+                                   <c:if test="${gender=='Nữ'}">checked</c:if>>Female
                         </div>
                         <div class="col-md-6 col-sm-12" style="float: right">
                             <div class="styled-input" style="float:right;">

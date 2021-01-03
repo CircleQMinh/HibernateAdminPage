@@ -10,11 +10,13 @@
 <html>   
 <head>  
 <meta name="viewport" content="width=device-width, initial-scale=1">  
-<title> Login Admin Page </title>  
+<title> Login </title>  
+<link rel="stylesheet" href="css/login.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>   
 Body {  
   font-family: 'Poppins', sans-serif;  
-  background: linear-gradient(to right,#ff105f,#ffad06);  
+  background: linear-gradient(to right,#ff105fad,#0681ff5e);  
 }  
 button {   
         background-color: #924caf87;   
@@ -56,15 +58,15 @@ button {
 </style>   
 </head>    
 <body>    
-    <center> <h1> Employee Login </h1> </center>   
+    <center> <h1> Employee </h1> </center>   
     <form  id="login" method="POST" action="employee">  
         <div class="container">   
             <label>Username : ${usernameError}</label>   
-            <input type="text" placeholder="Enter Username" name="username" required>
+            <input type="text" placeholder="Enter Username" name="username" value="${username}" required>
             <label>Password : ${passwordError}</label>   
-            <input type="password" placeholder="Enter Password" name="password" required> 
+            <input type="password" placeholder="Enter Password" name="password"  required> 
             <button type="submit" >LOGIN</button>   
-            <input type="checkbox" > Remember me   
+            <a href="<c:url value="/forget-password"></c:url>" style="color: #333">Forgot your password?</a> 
         </div>   
     </form>     
 </body>     

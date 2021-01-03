@@ -186,6 +186,8 @@ public class LoginController extends HttpServlet {
         }
         if(url.startsWith("/login"))
         {
+            request.setAttribute("username",userName);
+            request.setAttribute("password",password);
             request.setAttribute("usernameError", userNameError);
             request.setAttribute("passwordError", passwordError);
             RequestDispatcher dp=getServletContext().getRequestDispatcher(url);

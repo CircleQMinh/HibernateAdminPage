@@ -124,7 +124,11 @@ public class RegisterController extends HttpServlet {
             Account account = new Account(username, password, "customer", idCus,"");
             userService.addAccount(account);
             request.setAttribute("cus", customer);
-            sendEmailService.sendEmail("Thanks for signing up", email, "cám ơn nha má");
+            String thanksMes="Thank you "+customer.getCustomerName()+", for signing up to be our member \n"
+                            +"We will keep you up to date with our latest products and promotions! \n"
+                            +"If you need any assistance please contact us at ... "
+                            +"Team16STORE ♥";
+            sendEmailService.sendEmail("Thanks for signing up", email, thanksMes);
             url="/login";
             response.sendRedirect(request.getContextPath()+url);
         }

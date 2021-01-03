@@ -41,7 +41,8 @@
                                 <li><a href="register" class="btn-register">Register</a></li>
                             </c:when>
                             <c:otherwise>
-                            <li><a href="" class="btn-login"><c:out value="${sessionScope.account.username}"/></a></li>
+                                <li><a href="" class="btn-login"><c:out value="${sessionScope.account.username}"/></a></li>
+                                <li><a href="register" class="btn-register">Register</a></li>
                             </c:otherwise>
                         </c:choose>
                     </ul>

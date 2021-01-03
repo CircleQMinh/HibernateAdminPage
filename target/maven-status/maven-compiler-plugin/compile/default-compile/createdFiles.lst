@@ -22,6 +22,7 @@ Dao\EmployeeDao.class
 Model\FeaProduct.class
 Dao\OrderDAO.class
 Model\CartItem.class
+Controller\ForgetPasswordController.class
 Model\Account.class
 Dao\ProductDao.class
 Service\SendEmailService.class

@@ -148,6 +148,7 @@
                 color: #f00;
                 font-style: normal;
             }
+            form{ padding: 0px 300px;}
         </style>
     </head>
     <body >
@@ -167,12 +168,12 @@
                                 <c:choose>
                                     <c:when test="${sessionScope.account==null}" >
                                     <li><a href="login" class="btn-login">Log In</a></li>
-                                    <li><a href="register" class="btn-register">Register</a></li>
                                     </c:when>
                                     <c:otherwise>
                                     <li><a href="" class="btn-login"><c:out value="${sessionScope.account.username}"/></a></li>
                                     </c:otherwise>
                                 </c:choose>
+                            <li><a href="register" class="btn-register">Register</a></li>
                         </ul>
                     </nav>
                     <a href="cart.jsp"><img src="images/cart.png" width="30px" height="30px" class="imgcard"></a>
@@ -185,7 +186,7 @@
             <form style="background: #ccc" >
                 <div class="container">
                     <div class="row">
-                        <h1>Contact</h1>
+                        <h1 style="color:black">Contact</h1>
                     </div>
                     <div class="row">
                         <h3 style="text-align:center;color :red" >♥</h3>
@@ -211,9 +212,16 @@
                                 <label>Phone</label> 
                             </div>
                         </div>
-                        <div class="col-md-6 col-sm-12">
-                            <div class="styled-input">
-                                <input type="text" value="${sessionScope.account.username}"required inputmode=""/>
+                        <div style="width:40%; float:left;">
+                            <input style="width:50%" type="radio" name="cusGender" class="gender" value="Nam" checked >Male
+                        </div>
+                        <div style="width:40%; float:right;">
+                            <input style="width:50%"type="radio" name="cusGender" class="gender"  value="Nữ" 
+                                   <c:if test="${sessionScope.userInfo.sex=='Nữ'}">checked</c:if>>Female 
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <div class="styled-input">
+                                    <input type="text" value="${sessionScope.account.username}"required inputmode=""/>
                                 <label>Username</label> 
                             </div>
                         </div>
@@ -233,7 +241,7 @@
                                 <label>Address</label>
                             </div>
                         </div>                
-                        
+
                     </div>
             </form>
         </div>
@@ -242,7 +250,7 @@
         <form style="background: #ccc">
             <div class="container">
                 <div class="row">
-                    <h1>Contact</h1>
+                    <h1 style="color:black">Contact</h1>
                 </div>
                 <div class="row">
                     <h3 style="text-align:center;color :red" >♥</h3>
@@ -267,9 +275,16 @@
                             <label>Phone</label> 
                         </div>
                     </div>
-                    <div class="col-md-6 col-sm-12">
-                        <div class="styled-input">
-                            <input type="text" value="${sessionScope.account.username}"required inputmode=""/>
+                    <div style="width:40%; float:left;">
+                        <input style="width:50%" type="radio" name="cusGender" class="gender" value="Nam" checked >Male
+                    </div>
+                    <div style="width:40%; float:right;">
+                        <input style="width:50%"type="radio" name="cusGender" class="gender"  value="Nữ" 
+                               <c:if test="${sessionScope.userInfo.sex=='Nữ'}">checked</c:if>>Female 
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <div class="styled-input">
+                                <input type="text" value="${sessionScope.account.username}"required inputmode=""/>
                             <label>Username</label> 
                         </div>
                     </div>
@@ -284,12 +299,12 @@
                     </div>                
                     <div class="col-xs-12">
                         <div class="styled-input wide">
-                             <input type="text"required style="height: 250px;" value="${sessionScope.userInfo.address}">                           
-                                </input>
-                                <label>Address</label>
+                            <input type="text"required style="height: 250px;" value="${sessionScope.userInfo.address}">                           
+                            </input>
+                            <label>Address</label>
                         </div>
                     </div>                
-                    
+
                 </div>
             </div>
         </form>
@@ -298,7 +313,7 @@
         <form style="background: #ccc">
             <div class="container">
                 <div class="row">
-                    <h1>Contact</h1>
+                    <h1 style="color:black">Contact</h1>
                 </div>
                 <div class="row">
                     <h3 style="text-align:center;color :red" >♥</h3>
@@ -323,9 +338,16 @@
                             <label>Phone</label> 
                         </div>
                     </div>
-                    <div class="col-md-6 col-sm-12">
-                        <div class="styled-input">
-                            <input type="text" value="${sessionScope.account.username}"required inputmode=""/>
+                    <div style="width:40%; float:left;">
+                        <input style="width:50%" type="radio" name="cusGender" class="gender" value="Nam" checked >Male
+                    </div>
+                    <div style="width:40%; float:right;">
+                        <input style="width:50%"type="radio" name="cusGender" class="gender"  value="Nữ" 
+                               <c:if test="${sessionScope.userInfo.sex=='Nữ'}">checked</c:if>>Female 
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <div class="styled-input">
+                                <input type="text" value="${sessionScope.account.username}"required inputmode=""/>
                             <label>Username</label> 
                         </div>
                     </div>

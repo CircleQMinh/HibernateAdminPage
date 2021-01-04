@@ -46,6 +46,7 @@
                         <th>Required Date</th>
                         <th>Address</th>
                         <th>Phone</th>
+                        <th>Payment Method</th>
                         <th>Order Info</th>
                         <th colspan="2">Option</th>
                     </tr>
@@ -62,6 +63,7 @@
                                 <td><%= OrderDAO.returnDate(ord.getRequiredDate()) %></td>
                                 <td><%= ord.getOrderAdress() %></td>
                                 <td><%= ord.getOrderPhone() %></td>
+                                <td><%= ord.getPaymentType()            %></td>
                                 <td>
                                     <table class="tablediss">
                                         <%
@@ -122,6 +124,7 @@
                         <th>Required Date</th>
                         <th>Address</th>
                         <th>Phone</th>
+                        <th>Payment Method</th>
                         <th>Order Info</th>
                         <th colspan="2">Option</th>
                     </tr>
@@ -138,6 +141,7 @@
                                 <td><%= OrderDAO.returnDate(ord.getRequiredDate()) %></td>
                                 <td><%= ord.getOrderAdress() %></td>
                                 <td><%= ord.getOrderPhone() %></td>
+                                <td><%= ord.getPaymentType()            %></td>
                                 <td>
                                     <table class="tablediss">
                                         <%
@@ -200,6 +204,7 @@
                         <th>Required Date</th>
                         <th>Address</th>
                         <th>Phone</th>
+                        <th>Payment Method</th>
                         <th>Shipper Name</th>
                         <th>Order Info</th>
                         <th>Option</th>
@@ -217,6 +222,7 @@
                                 <td><%= OrderDAO.returnDate(ord.getRequiredDate()) %></td>
                                 <td><%= ord.getOrderAdress() %></td>
                                 <td><%= ord.getOrderPhone() %></td>
+                                <td><%= ord.getPaymentType()            %></td>
                                 <td><%= emp.getEmployeeName() %></td>
                                 <td>
                                     <table class="tablediss">
@@ -274,6 +280,7 @@
                         <th>Shipped Date</th>
                         <th>Address</th>
                         <th>Phone</th>
+                        <th>Payment Method</th>
                         <th>Shipper Name</th>
                         <th>Order Info</th>
                         <th>Option</th>
@@ -292,6 +299,7 @@
                                 <td><%= OrderDAO.returnDate(ord.getShippedDate()) %></td>
                                 <td><%= ord.getOrderAdress() %></td>
                                 <td><%= ord.getOrderPhone() %></td>
+                                <td><%= ord.getPaymentType()            %></td>
                                 <td><%= emp.getEmployeeName() %></td>
                                 <td>
                                     <table class="tablediss">

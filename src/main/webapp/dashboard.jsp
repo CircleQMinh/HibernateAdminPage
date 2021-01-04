@@ -68,6 +68,7 @@
             <button title="View Account"  id = 'accpage'><i class="fas fa-key"></i></button>
             <button title="View Order" id = 'orderpage'><i class="fas fa-tasks"></i></button>
             <button title="View Blog" id = 'blogpage'><i class="fab fa-blogger"></i></button>
+            <button title="Nạp tài khoản" id = 'bankpage'><i class="far fa-money-bill-alt"></i></button>
             <button title="View Statistic" id="stapage"><i class="fas fa-chart-line"></i></button>
             <button title="Logout" ><i class="fas fa-sign-out-alt"></i></button>
         </nav>
@@ -364,6 +365,21 @@
                 </select><br>
                 <button type="button" id="editorder_status"><strong>Edit</strong></button>   
                 <button type="button" style="background-color: red;" onclick="closeForm('updateOrder')" ><strong>Close</strong></button>        
+            </form>  
+        </div>
+        <div class="divform" id="bankform" >
+            <form >
+                <h1>Input Money</h1>
+                <br>
+                <label ><strong>Customer ID</strong></label>
+                <input type="number" id="bank-id" name="wd" readonly><br>
+                
+                <label ><strong>Money</strong></label>
+                <input type="number" id="bank-money" name="wd"><br>
+                
+                <br>
+                <button type="button" id="bank_add_money"><strong>Add</strong></button>   
+                <button type="button" style="background-color: red;" onclick="closeForm('bankform')" ><strong>Close</strong></button>        
             </form>  
         </div>
 <!--        // thông báo tải trang -->

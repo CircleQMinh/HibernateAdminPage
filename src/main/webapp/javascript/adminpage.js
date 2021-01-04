@@ -230,6 +230,20 @@ function FillFormaccedit(id,name,uid)
     document.getElementById("pass-acc-emp-edit").value="";
     document.getElementById("passagain-acc-emp-edit").value="";
 }
+
+function FillForm100()
+{
+    document.getElementById("name-blo").value="";
+    document.getElementById("content-blo").value="";
+    document.getElementById("synopsis-blo").value="";   
+}
+function FillForm101(name,content,synopsis,bid)
+{
+    document.getElementById("name-blo-edit").value=name;
+    document.getElementById("content-blo-edit").value=content;
+    document.getElementById("synopsis-blo-edit").value=synopsis;
+    document.getElementById("bid-blo-edit").value=bid;
+}
 function FillFormempnoacc(id)
 {
     document.getElementById("name-acc-empnoacc").value="";

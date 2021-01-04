@@ -13,7 +13,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
-
+import javax.persistence.NoResultException;
+import Model.Account;import Model.Customer;import Model.Employee;import Model.Admin;
 /**
  *
  * @author ASUS
@@ -258,4 +259,249 @@ public class AccountDao {
             }
         }
     }
+     public Account getAccountByUsername(String username) // all account 
+    {
+        Transaction transaction = null;
+        Account account = new Account();
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        try {
+            System.out.print(username);
+            // start a transaction
+            transaction = session.beginTransaction();
+            // get an account object           
+            Query<Account> query = session.createQuery("from Account acc where acc.username=:username ");
+            query.setParameter("username", username);
+            account = query.uniqueResult();
+            // commit transaction
+            transaction.commit();
+            session.close();
+            sessionFactory.close();
+            return account;
+        } catch (NoResultException nrs) {
+            System.out.println("NoRS CustomerDAO getAccCusbyUsername exception");
+            if (transaction != null) {
+                transaction.rollback();
+                session.close();
+                sessionFactory.close();
+            }
+            return null;
+        }
+    }
+    public Account getAccountByEmail(String email)
+    {
+        if(getAccountCustomerByEmail(email)!=null)
+            return getAccountCustomerByEmail(email);
+        else if(getAccountAdminByEmail(email)!=null)
+            return getAccountAdminByEmail(email);
+        else if(getAccountEmployeeByEmail(email)!=null)
+            return getAccountEmployeeByEmail(email);        
+        return null;
+    }
+    public Account getAccountAdminEmployeeByUsername(String username) //admin + employee account
+    {
+        Transaction transaction = null;
+        Account account = new Account();
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        try {
+            //begin transaction
+            transaction = session.beginTransaction();
+            //get object 
+            Query<Account> query = session.createQuery("from Account acc WHERE acc.username=:username and not acc.type='customer'", Account.class);
+            query.setParameter("username", username);
+            account = query.uniqueResult();
+            //close transaction
+            transaction.commit();
+            session.close();
+            sessionFactory.close();
+            return account;
+        }catch (NoResultException e) {
+            System.out.println("NoRS CustomerDAO getAccAdminbyUsername exception");
+            if (transaction != null) {
+                transaction.rollback();
+                session.close();
+                sessionFactory.close();
+            }
+            return null;
+        }
+    }
+    public Account getAccountAdminByUsername(String username) {
+        Transaction transaction = null;
+        Account account = new Account();
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        try {
+            //begin transaction
+            transaction = session.beginTransaction();
+            //get object 
+            Query<Account> query = session.createQuery("from Account acc WHERE acc.username=:username and acc.type='admin'", Account.class);
+            query.setParameter("username", username);
+            account = query.uniqueResult();
+            //close transaction
+            transaction.commit();
+            session.close();
+            sessionFactory.close();
+            return account;
+        } catch (NoResultException e) {
+            System.out.println("NoRS CustomerDAO getAccAdminbyUsername exception");
+            if (transaction != null) {
+                transaction.rollback();
+                session.close();
+                sessionFactory.close();
+            }
+            return null;
+        }
+    }
+    public Account getAccountCustomerByEmail(String email)//chưa test
+    {
+        Transaction transaction = null;
+        Account account = new Account();
+        String hql = "";
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        try {
+            transaction = session.beginTransaction();
+            hql = "select acc" //customer
+                    + " from Account acc,Customer cus"
+                    + " where acc.userId=cus.customerId and cus.email=:email and acc.type='customer'";
+            Query<Account> query = session.createQuery(hql, Account.class);
+            query.setParameter("email", email);
+            account = query.uniqueResult();
+            transaction.commit();session.close();sessionFactory.close();
+            if(account!=null)
+                return account;
+        } catch (Exception e) {
+            System.out.println("no customer email");
+            if (transaction != null) {
+                transaction.rollback();session.close();sessionFactory.close();
+            }
+        }        
+        return null;
+    }
+    public Account getAccountEmployeeByEmail(String email)
+    {
+        Transaction transaction = null;
+        Account account = new Account();
+        String hql = "";
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        try {
+            transaction = session.beginTransaction();
+            hql = "select acc" //customer
+                    + " from Account acc,Employee emp"
+                    + " where acc.userId=emp.employeeId and emp.email=:email and acc.type='employee'";
+            Query<Account> query = session.createQuery(hql, Account.class);
+            query.setParameter("email", email);
+            account = query.uniqueResult();
+            transaction.commit();session.close();sessionFactory.close();
+            if(account!=null)
+                return account;
+        } catch (Exception e) {
+            System.out.println("no employee email");
+            if (transaction != null) {
+                transaction.rollback();session.close();sessionFactory.close();
+            }
+        }
+        return null;
+    }
+    public Account getAccountAdminByEmail(String email)
+    {
+        Transaction transaction = null;
+        Account account = new Account();
+        String hql = "";
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        try {
+            transaction = session.beginTransaction();
+            hql = "select acc" //admin
+                    + " from Account acc,Admin adm"
+                    + " where acc.userId=adm.id and adm.email=:email and acc.type='admin' ";
+            Query<Account> query = session.createQuery(hql, Account.class);
+            query.setParameter("email", email);
+            account = query.uniqueResult();
+            transaction.commit();session.close();sessionFactory.close();
+            if(account!=null)
+                return account;
+        } catch (Exception e) {
+            System.out.println("no admin email");
+            if (transaction != null) {
+                transaction.rollback();session.close();sessionFactory.close();
+            }
+        }       
+        return null;
+    }
+    public Object getAccountInformation(Account acc) {
+        String role = acc.getType();
+        Transaction transaction = null;
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        try {
+            
+            transaction = session.beginTransaction();
+            if(role.equals("admin"))
+            {
+                String hql = "select adm "
+                        + "from Admin adm,Account acc "
+                        + "where adm.id=acc.userId and acc.username=:username and acc.type='admin'";
+                Query<Admin> query = session.createQuery(hql, Admin.class);
+                query.setParameter("username", acc.getUsername());
+                Admin adm = query.uniqueResult();
+                transaction.commit();session.close();sessionFactory.close();
+                return adm;         
+            }
+            else if(role.equals("employee"))
+            {
+                 String hql = "select emp "
+                        + "from Employee emp,Account acc "
+                        + "where emp.employeeId=acc.userId and acc.username=:username and acc.type='employee'";
+                Query<Employee> query = session.createQuery(hql, Employee.class);
+                query.setParameter("username", acc.getUsername());
+                Employee emp = query.uniqueResult();
+                transaction.commit();session.close();sessionFactory.close();               
+                return emp;            
+            }
+            else if(role.equals("customer"))
+            {
+                String hql = "select cus " 
+                        + "from Customer cus,Account acc "
+                        + "where cus.customerId=acc.userId and acc.username=:username and acc.type='customer'";
+                Query<Customer> query = session.createQuery(hql,Customer.class);
+                query.setParameter("username", acc.getUsername());
+                Customer cus = query.uniqueResult();
+                transaction.commit();session.close();sessionFactory.close();                
+                return cus;          
+            }
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();session.close();sessionFactory.close();                
+            }
+            System.out.println("get account info exception");
+        }
+        return null;
+    }
+    public boolean addAccount(Account acc) {
+        Transaction transaction = null;
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        try {
+            // start a transaction
+            transaction = session.beginTransaction();
+            // save the student object
+            session.save(acc);
+            // commit transaction
+            transaction.commit();
+            session.close();
+            sessionFactory.close();
+            return true;
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+                session.close();
+                sessionFactory.close();
+            }
+            System.out.println("add account exception");
+            return false;
+        }
+    }    
 }

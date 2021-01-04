@@ -14,6 +14,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 /**
  *
  * @author KHOAPHAN
@@ -170,5 +171,77 @@ public class CustomerDAO {
                 transaction.rollback();session.close();
             }
         }
+    }
+    ////////////////////////////
+    public boolean addCustomerInformation(Customer customer)
+    {
+        Transaction transaction = null;
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        try 
+        {
+            //transaction
+            transaction= session.beginTransaction();
+            //add
+            session.save(customer);
+            System.out.println("save customer ok");
+            //
+            transaction.commit();session.close();sessionFactory.close();
+            return true;
+        } 
+        catch (Exception e) 
+        {
+            System.out.println("add customer information exception");
+        }
+        return false;
+    }
+    //////////////////////////////
+    public boolean updateCustomerInformation(Customer customer)
+    {
+        Transaction transaction = null;
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        try 
+        {
+            //transaction
+            transaction= session.beginTransaction();
+            //add
+            session.update(customer);
+            //
+            transaction.commit();session.close();sessionFactory.close();
+        } 
+        catch (Exception e) 
+        {
+            System.out.println("update customer information exception");
+        }
+        return false;
+    }
+    /////////////////////////////
+    public Customer getCustomerInformationByEmail(String email)
+    {
+        Transaction transaction = null;
+        Customer  customer = null;
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        try{
+            System.out.print(email);
+            // start a transaction
+            transaction = session.beginTransaction();
+            // get an account object          
+            Query<Customer> query = session.createQuery("from Customer cus where cus.email=:email");
+            query.setParameter("email", email);
+            customer=query.uniqueResult();
+            // commit transaction
+            transaction.commit();session.close();sessionFactory.close();
+            return customer;
+        }
+        catch(Exception e)
+        {
+            System.out.println("CustomerDAO getCusbyEmail exception");
+            if (transaction != null) {
+                transaction.rollback();session.close();sessionFactory.close();
+            }
+            return null;
+        }               
     }
 }

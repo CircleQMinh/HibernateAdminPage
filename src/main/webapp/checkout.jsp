@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,6 +18,9 @@
     <title>Check out</title>
 </head>
 <body>
+    <c:if test="${(sessionScope.account==null)}">
+        <c:redirect url="login-employee"></c:redirect>
+    </c:if>
     <div class="container">
         <div class="header">
             <h2>Nhập thông tin khách hàng : </h2>

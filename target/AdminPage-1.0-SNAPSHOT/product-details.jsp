@@ -43,8 +43,8 @@
                         <li><a href="">About</a></li>
                         <li><a href="">Blog</a></li>
                         <li><a href="">Account</a></li>
-                        <li><a href="" class="btn-login">Log In</a></li>
-                        <li><a href="" class="btn-register">Register</a></li>
+                        <li><a href="login" class="btn-login">Log In</a></li>
+                        <li><a href="register" class="btn-register">Register</a></li>
                     </ul>
                 </nav>
                 <a href="cart.jsp"><img src="images/cart.png" width="30px" height="30px" class="imgcard"></a>

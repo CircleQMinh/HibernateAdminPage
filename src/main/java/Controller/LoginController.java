@@ -21,7 +21,6 @@ import Service.UserService;
  *
  * @author Nhat Minh
  */
-@WebServlet(name = "LoginController", urlPatterns = {"/login","/login/admin","/login/employee"})
 public class LoginController extends HttpServlet {    
 
     private UserService userService = new UserService();
@@ -33,18 +32,17 @@ public class LoginController extends HttpServlet {
         HttpSession session = request.getSession();
         if (session.getAttribute("account") == null) // nếu session đang ko có account
         {
-            if (request.getRequestURI().endsWith("/admin")) {
+            if (request.getRequestURI().endsWith("admin")) {
                 page = "/loginadmin.jsp";
-            } else if (request.getRequestURI().endsWith("/employee")) {
+            } else if (request.getRequestURI().endsWith("employee")) {
                 page = "/loginemp.jsp";
             } else if (request.getRequestURI().endsWith("/login")) {
                 page = "/login.jsp";
             }
-           RequestDispatcher dp = getServletContext().getRequestDispatcher(page);
+            RequestDispatcher dp = getServletContext().getRequestDispatcher(page);
             dp.forward(request, response);           
         } else {
-            RequestDispatcher dp = getServletContext().getRequestDispatcher("/index.jsp");
-            dp.forward(request, response);
+            response.sendRedirect(request.getContextPath()+"/index.jsp");
         }
     }
 

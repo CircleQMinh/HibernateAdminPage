@@ -22,7 +22,6 @@ import Model.Account;
  *
  * @author Nhat Minh
  */
-@WebServlet(name = "ForgetPassController", urlPatterns = {"/forget-password","/send-otp","/check-otp","/change-password"})
 
 public class ForgetPasswordController extends HttpServlet {
 

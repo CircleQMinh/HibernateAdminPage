@@ -10,6 +10,7 @@
 <%@page import="Model.Order"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
     <%
@@ -34,6 +35,9 @@
         
     </head>
     <body>
+        <c:if test="${(sessionScope.account==null) || (sessionScope.account.type=='customer')}">
+            <c:redirect url="login-employee"></c:redirect>
+        </c:if>
         <input type="hidden" id="shipperid" value="<%=shipperID%>">
         <div class="topnav" >  
             <a> <i class="fas fa-sign-out-alt"></i></a>

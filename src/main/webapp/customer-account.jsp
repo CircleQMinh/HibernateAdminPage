@@ -146,7 +146,7 @@
                             <li><a href="products.jsp">Products</a></li>
                             <li><a href="">About</a></li>
                             <li><a href="">Blog</a></li>
-                            <li><a href="">Account</a></li>
+                            <li><a href="customer-account.jsp">Account</a></li>
                                 <c:choose>
                                     <c:when test="${sessionScope.account==null}" >
                                     <li><a href="login" class="btn-login">Log In</a></li>

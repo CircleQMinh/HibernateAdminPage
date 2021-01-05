@@ -11,7 +11,7 @@
         <center>
             <h1 style="margin-top: 200px;">Submit Your Code</h1>       
             <form method="POST" action="check-otp">
-                OTP Code : <input name="otp" placeholder="" >${otpError} <br>           
+                OTP Code : <input name="otp" placeholder="" ><br> ${otpError} <br>           
                 <button type="submit" style="width: 100px;background-color: whitesmoke  ;border-radius: 3px;font-family:'Poppins' " >Submit</button>
             </form>
         </center>

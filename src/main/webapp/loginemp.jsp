@@ -59,7 +59,7 @@ button {
 </head>    
 <body>    
     <center> <h1> Employee </h1> </center>   
-    <form  id="login" method="POST" action="employee">  
+    <form  id="login" method="POST" action="login-employee">  
         <div class="container">   
             <label>Username : ${usernameError}</label>   
             <input type="text" placeholder="Enter Username" name="username" value="${username}" required>

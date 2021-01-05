@@ -16,41 +16,17 @@
     <body>
         <div class="hero">
             <div class="form-box">
-                <div class="button-box">
-                    <div id="btn"></div>
-                    <button type="button" class="toggle-btn" onclick="login()">Log In</button>
-                    <button type="button" class="toggle-btn" onclick="register()">Register</button>
-                </div>
-                <form class="input-group" id="login" method="POST" action="login">
-                    <input type="text" name="username" id="" class="input-feild" placeholder="User Id: ${usernameError}" required>
-                    <input type="password" name="password" id="" class="input-feild" placeholder="Enter Password: ${passwordError}" required>
-                    <input type="checkbox" class="check-box"><span>Remember Me</span>
-                    <button type="submit" class="submit-btn">Log in</button>
-                </form>
-                <form class="input-group" id="register" method="POST" action="">
-                    <input type="text" name="" id="" class="input-feild" placeholder="User Id" required>
-                    <input type="email" name="" id="" class="input-feild" placeholder="Email" required>
-                    <input type="password" name="" id="" class="input-feild" placeholder="Enter Password" required>
-                    <input type="password" name="" id="" class="input-feild" placeholder="Enter Password Repeat" required>
-                    <input type="checkbox" class="check-box"><span>I agree to the terms & consitions</span>
-                    <button type="submit" class="submit-btn">Register</button>
+                <center style="margin-top: 50px;">Sign In</center>
+                <form class="input-group" id="login" method="POST" action="login" style="height:300px; ">
+                    <input type="text" name="username" id="" class="input-feild" placeholder="User Id:" value="${username}"
+                           style="margin-bottom: 10px;"required>${usernameError}
+                    <input type="password" name="password" id="" class="input-feild" placeholder="Enter Password:"
+                           style="margin-bottom: 10px;"required>${passwordError}
+                    <button type="submit" class="submit-btn" style="margin-top: 20px;width: 50%; ">Log in</button>
+                        <a href="forget-password" style="padding-top: 20px;">Forgot your password?</a>
                 </form>
             </div>
         </div>
-        <script>
-            var x=document.getElementById("login");
-            var y=document.getElementById("register");
-            var z=document.getElementById("btn");
-            function register(){
-                x.style.left="-400px";
-                y.style.left="50px";
-                z.style.left="110px";
-            }
-            function login(){
-                x.style.left="50px";
-                y.style.left="450px";
-                z.style.left="0px";
-            }
-        </script>
+        
     </body>
 </html>

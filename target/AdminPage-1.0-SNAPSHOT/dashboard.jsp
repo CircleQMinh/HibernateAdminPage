@@ -12,6 +12,7 @@
 <%@page import="Model.Employee"%>
 <%@page import="Dao.EmployeeDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
     int sonv = DashboardDao.SoNhanVien();
     int sosp = DashboardDao.SoSanPham();
@@ -55,6 +56,9 @@
         </script>
     </head>
     <body>
+    <c:if test="${(sessionScope.account==null) || (sessionScope.account.type=='customer')}">
+        <c:redirect url="login-employee"></c:redirect>
+    </c:if>
         <div class="topnav" >
             
             <a> <i class="fas fa-sign-out-alt"></i></a>

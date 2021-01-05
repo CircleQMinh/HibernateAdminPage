@@ -23,7 +23,6 @@ import Model.Customer;
  *
  * @author Nhat Minh
  */
-@WebServlet(name = "RegisterController", urlPatterns = {"/register"})
 public class RegisterController extends HttpServlet {
 
     private SendEmailService sendEmailService = new SendEmailService();

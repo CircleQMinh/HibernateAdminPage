@@ -18,6 +18,7 @@
 <%@page import="java.util.List" %>
 <%@page import="javax.servlet.http.HttpSession" %>
 <%@ page import="java.security.Provider" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,6 +32,9 @@
     <script src="js/cart.js" type="text/javascript"></script>
 </head>
 <body>
+    <c:if test="${sessionScope.account==null}">
+        <c:redirect url="login"></c:redirect>
+    </c:if>
     <div class="container">
         <div class="navbar">
                 <div class="gogo">
@@ -43,8 +47,8 @@
                         <li><a href="">About</a></li>
                         <li><a href="">Blog</a></li>
                         <li><a href="">Account</a></li>
-                        <li><a href="" class="btn-login">Log In</a></li>
-                        <li><a href="" class="btn-register">Register</a></li>
+                        <li><a href="login" class="btn-login">Log In</a></li>
+                        <li><a href="register" class="btn-register">Register</a></li>
                     </ul>
                 </nav>
                 <a href="cart.jsp"><img src="images/cart.png" width="30px" height="30px" class="imgcard"></a>

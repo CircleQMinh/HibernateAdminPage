@@ -41,7 +41,7 @@ public class SendEmailService {
         Session session= Session.getInstance(properties, new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication(){ // dùng để đăng nhập gmail
-                return new PasswordAuthentication("minh15randommail@gmail.com","sphinxkbb4"); //check pls
+                return new PasswordAuthentication("minh15randommail@gmail.com","Sphinxkbb4"); //check pls
             }
         });
         System.out.println("session getinstance ok");

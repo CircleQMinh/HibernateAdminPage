@@ -8,6 +8,7 @@
 <%@page import="java.util.List"%>
 <%@page import="Dao.StatisticDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -41,6 +42,9 @@
         
     </head>
     <body>
+        <c:if test="${(sessionScope.account==null) || (sessionScope.account.type=='customer')}">
+            <c:redirect url="login-employee"></c:redirect>
+        </c:if>
         <div class="divchua" id="statistic">
             <div class="dashbo" id="d1">
                 <p>Statistic</p>

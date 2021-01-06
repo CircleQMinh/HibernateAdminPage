@@ -11,7 +11,6 @@ import javax.servlet.http.HttpSession;
 import java.util.Random;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -33,7 +32,7 @@ public class ForgetPasswordController extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         if (request.getRequestURI().endsWith("/forget-password")) {
-            RequestDispatcher dp = request.getServletContext().getRequestDispatcher("/forgetpassword.jsp");
+            RequestDispatcher dp = request.getServletContext().getRequestDispatcher("/Dn-Dky-QMk/forgetpassword.jsp");
             dp.forward(request, response);
         } else if (request.getRequestURI().endsWith("/check-otp")) {
 
@@ -41,7 +40,7 @@ public class ForgetPasswordController extends HttpServlet {
                 response.sendRedirect(request.getContextPath()+"/forget-password");
             else
             {
-                RequestDispatcher dp = request.getServletContext().getRequestDispatcher("/fp-confirmotp.jsp");
+                RequestDispatcher dp = request.getServletContext().getRequestDispatcher("/Dn-Dky-QMk/fp-confirmotp.jsp");
                 dp.forward(request, response);
             }            
         } else if (request.getRequestURI().endsWith("/change-password")) 
@@ -50,7 +49,7 @@ public class ForgetPasswordController extends HttpServlet {
                 response.sendRedirect(request.getContextPath()+"/check-otp");
             else
             {
-                RequestDispatcher dp = request.getServletContext().getRequestDispatcher("/fp-changepassword.jsp");
+                RequestDispatcher dp = request.getServletContext().getRequestDispatcher("/Dn-Dky-QMk/fp-changepassword.jsp");
                 dp.forward(request, response);
             }
         }
@@ -81,7 +80,7 @@ public class ForgetPasswordController extends HttpServlet {
                 emailError="No Email Found!";
                 request.setAttribute("emailError", emailError);
                 request.setAttribute("email", email);
-                RequestDispatcher dp=getServletContext().getRequestDispatcher("/forgetpassword.jsp");
+                RequestDispatcher dp=getServletContext().getRequestDispatcher("/Dn-Dky-QMk/forgetpassword.jsp");
                 dp.forward(request, response);
             }
         }
@@ -95,7 +94,7 @@ public class ForgetPasswordController extends HttpServlet {
             {
                 otpError="Incorrect code! Please check again!";
                 request.setAttribute("otpError", otpError);
-                RequestDispatcher dp=getServletContext().getRequestDispatcher("/fp-confirmotp.jsp");
+                RequestDispatcher dp=getServletContext().getRequestDispatcher("/Dn-Dky-QMk/fp-confirmotp.jsp");
                 dp.forward(request, response);
             }
         }

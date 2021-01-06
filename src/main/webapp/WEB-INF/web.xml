@@ -20,6 +20,10 @@
         <servlet-name>SaveOrder</servlet-name>
         <servlet-class>Controller.SaveOrder</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LogoutController</servlet-name>
+        <servlet-class>Controller.LogoutController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PutServletHere</servlet-name>
         <url-pattern>/PutServletHere</url-pattern>
@@ -67,7 +71,11 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>RegisterController</servlet-name>
-        <url-pattern>/register</url-pattern>   
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogoutController</servlet-name>
+        <url-pattern>/logout</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

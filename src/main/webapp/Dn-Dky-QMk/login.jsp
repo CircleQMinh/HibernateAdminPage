@@ -23,7 +23,7 @@
                     <input type="password" name="password" id="" class="input-feild" placeholder="Enter Password:"
                            style="margin-bottom: 10px;"required>${passwordError}
                     <button type="submit" class="submit-btn" style="margin-top: 20px;width: 50%; ">Log in</button>
-                        <a href="forget-password" style="padding-top: 20px;">Forgot your password?</a>
+                     <a href="forget-password" style="margin-top: 50px;">Forgot your password?</a>
                 </form>
             </div>
         </div>

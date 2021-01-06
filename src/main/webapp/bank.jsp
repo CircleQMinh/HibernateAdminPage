@@ -7,7 +7,6 @@
 <%@page import="Dao.CustomerDAO"%>
 <%@page import="Model.Customer"%>
 <%@page import="java.util.List"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
@@ -27,10 +26,7 @@
         <script src="javascript/jquery.tablePagination.js" type="text/javascript"></script>
         <title>Employee Page</title>
     </head>
-    <body>
-        <c:if test="${(sessionScope.account==null) || (sessionScope.account.type=='customer')}">
-            <c:redirect url="login-employee"></c:redirect>
-        </c:if>
+    <body>        
         <div class="divchua" id="bank">
             <div class="dashbo" id="d1">
                 <p>Banking</p>

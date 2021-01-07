@@ -4,6 +4,7 @@
     Author     : ASUS
 --%>
 
+<%@page import="Model.Account"%>
 <%@page import="Dao.EmployeeDao"%>
 <%@page import="Model.Employee"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -30,9 +31,16 @@
         <title>Employee Page</title>
     </head>
     <body>
-        <c:if test="${(sessionScope.account==null) || (sessionScope.account.type=='customer')}">
+        <c:if test="${(sessionScope.account==null) || (sessionScope.account.type=='customer')|| (sessionScope.account.type=='admin')}">
             <c:redirect url="login-employee"></c:redirect>
         </c:if>
+        <%
+                Account acc = (Account)request.getSession().getAttribute("account");
+                String abc = acc.getUsername();
+                Employee emp = (Employee)request.getSession().getAttribute("userInfo");
+                
+        %>
+        
         <div class="topnav" >
             
             <a> <i class="fas fa-sign-out-alt"></i></a>
@@ -60,7 +68,7 @@
             </div>
         </div>
         <div class="dashbosr" >
-             <p style="font-family: sans-serif"> Nhân viên đang đăng nhập : <%=me.getEmployeeName()     %></p>
+             <p style="font-family: sans-serif"> Nhân viên đang đăng nhập : <%=abc    %></p>
         </div>
         <div class="divform" id="updateOrder" >
             <form >

@@ -150,12 +150,25 @@
                                 <c:choose>
                                     <c:when test="${sessionScope.account==null}" >
                                     <li><a href="login" class="btn-login">Log In</a></li>
+                                    <li><a href="register" class="btn-register">Register</a></li>
                                     </c:when>
                                     <c:otherwise>
-                                    <li><a href="" class="btn-login"><c:out value="${sessionScope.account.username}"/></a></li>
+                                        <c:choose>
+                                            <c:when test="${sessionScope.account.type=='customer'}">
+                                            <li><a href="" class="btn-login"><c:out value="${sessionScope.userInfo.customerName}"/></a></li>
+                                            <li><a href="logout" class="btn-register">Logout</a></li>
+                                            </c:when>
+                                            <c:when test="${sessionScope.account.type=='employee'}">
+                                            <li><a href="" class="btn-login"><c:out value="${sessionScope.userInfo.employeeName}"/></a></li>                                   
+                                            <li><a href="logout" class="btn-register">Logout</a></li>
+                                            </c:when>  
+                                            <c:otherwise>
+                                            <li><a href="" class="btn-login"><c:out value="${sessionScope.userInfo.name}"/></a></li>
+                                            <li><a href="logout" class="btn-register">Logout</a></li>
+                                            </c:otherwise>
+                                        </c:choose>
                                     </c:otherwise>
                                 </c:choose>
-                            <li><a href="register" class="btn-register">Register</a></li>
                         </ul>
                     </nav>
                     <a href="cart.jsp"><img src="images/cart.png" width="30px" height="30px" class="imgcard"></a>
@@ -165,7 +178,7 @@
             </div>
         </div>
         <c:if test="${sessionScope.account.type=='customer'}">
-            <form style="background: #ccc" >
+            <form style="background: radial-gradient(#fff,#ffd6d6)" >
                 <div class="container">
                     <div class="row">
                         <h1 style="color:black">Contact</h1>
@@ -229,7 +242,7 @@
         </div>
     </c:if>
     <c:if test="${sessionScope.account.type=='employee'}">
-        <form style="background: #ccc">
+        <form style="background: radial-gradient(#fff,#ffd6d6)">
             <div class="container">
                 <div class="row">
                     <h1 style="color:black">Contact</h1>
@@ -292,7 +305,7 @@
         </form>
     </c:if>
     <c:if test="${sessionScope.account.type=='admin'}">
-        <form style="background: #ccc">
+        <form style="background: radial-gradient(#fff,#ffd6d6)">
             <div class="container">
                 <div class="row">
                     <h1 style="color:black">Contact</h1>

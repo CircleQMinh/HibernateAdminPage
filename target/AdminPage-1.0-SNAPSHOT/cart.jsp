@@ -32,9 +32,6 @@
     <script src="js/cart.js" type="text/javascript"></script>
 </head>
 <body>
-    <c:if test="${sessionScope.account==null}">
-        <c:redirect url="login"></c:redirect>
-    </c:if>
     <div class="container">
         <div class="navbar">
                 <div class="gogo">
@@ -46,9 +43,29 @@
                         <li><a href="products.jsp">Products</a></li>
                         <li><a href="">About</a></li>
                         <li><a href="">Blog</a></li>
-                        <li><a href="">Account</a></li>
-                        <li><a href="login" class="btn-login">Log In</a></li>
-                        <li><a href="register" class="btn-register">Register</a></li>
+                        <li><a href="customer-account.jsp">Account</a></li>
+                        <c:choose>
+                            <c:when test="${sessionScope.account==null}" >
+                                <li><a href="login" class="btn-login">Log In</a></li>
+                                <li><a href="register" class="btn-register">Register</a></li>
+                            </c:when>
+                            <c:otherwise>
+                                <c:choose>
+                                    <c:when test="${sessionScope.account.type=='customer'}">
+                                        <li><a href="" class="btn-login"><c:out value="${sessionScope.userInfo.customerName}"/></a></li>
+                                        <li><a href="logout" class="btn-register">Logout</a></li>
+                                    </c:when>
+                                    <c:when test="${sessionScope.account.type=='employee'}">
+                                        <li><a href="" class="btn-login"><c:out value="${sessionScope.userInfo.employeeName}"/></a></li>                                   
+                                        <li><a href="logout" class="btn-register">Logout</a></li>
+                                    </c:when>  
+                                    <c:otherwise>
+                                         <li><a href="" class="btn-login"><c:out value="${sessionScope.userInfo.name}"/></a></li>
+                                          <li><a href="logout" class="btn-register">Logout</a></li>
+                                    </c:otherwise>
+                                </c:choose>
+                            </c:otherwise>
+                        </c:choose>
                     </ul>
                 </nav>
                 <a href="cart.jsp"><img src="images/cart.png" width="30px" height="30px" class="imgcard"></a>

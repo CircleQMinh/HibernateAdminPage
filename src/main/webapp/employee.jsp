@@ -27,9 +27,6 @@
         <title>Employee Page</title>
     </head>
     <body>
-        <c:if test="${(sessionScope.account==null) || (sessionScope.account.type=='customer')}">
-            <c:redirect url="login-employee"></c:redirect>
-        </c:if>
         <div class="divchua" id="employee">
             <div class="dashbo" id="d1">
                 <p>Employee</p>

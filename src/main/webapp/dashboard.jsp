@@ -56,8 +56,8 @@
         </script>
     </head>
     <body>
-    <c:if test="${(sessionScope.account==null) || (sessionScope.account.type=='customer')}">
-        <c:redirect url="login-employee"></c:redirect>
+    <c:if test="${(sessionScope.account==null) || !(sessionScope.account.type=='admin')}">
+        <c:redirect url="login-admin"></c:redirect>
     </c:if>
         <div class="topnav" >
             

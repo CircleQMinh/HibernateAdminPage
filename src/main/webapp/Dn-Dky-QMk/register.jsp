@@ -163,12 +163,12 @@
                             <li><a href="index.jsp">Home</a></li>
                             <li><a href="products.jsp">Products</a></li>
                             <li><a href="">About</a></li>
-                            <li><a href="login">Blog</a></li>
+                            <li><a href="">Blog</a></li>
                             <li><a href="customer-account.jsp">Account</a></li>
                             <c:choose>
                                 <c:when test="${sessionScope.account==null}" >
-                                    <li><a href="" class="btn-login">Log In</a></li>
-                                    <li><a href="" class="btn-register">Register</a></li>
+                                    <li><a href="login" class="btn-login">Log In</a></li>
+                                    <li><a href="register" class="btn-register">Register</a></li>
                                 </c:when>
                                 <c:otherwise>
                                     <li><a href="" class="btn-login"><c:out value="${sessionScope.account.username}"/></a></li>
@@ -183,7 +183,7 @@
             </div>
         </div>
         <!-- end header -->       
-        <form action="register" method="post" style="background: #ccc">
+        <form action="register" method="post" style="background: radial-gradient(#fff,#ffd6d6)">
             <div class="container">
                 <div class="row">
                     <h1 style="text-align:center;color :red" >♥</h1>
@@ -247,7 +247,8 @@
 
                     <div class="col-xs-12">
                         <input type="checkbox" name="agreeTerms"style="color: red">
-                        Agree to terms and conditions ${agreeError}<br>        
+                        <center>Agree to terms and conditions</center><br> 
+                        <center>${agreeError}</center><br>        
                         <center> <button type="submit "class="btn-lrg submit-btn">Register</button>    </center>    
                     </div>         
                 </div>

@@ -382,6 +382,37 @@
                 <button type="button" style="background-color: red;" onclick="closeForm('bankform')" ><strong>Close</strong></button>        
             </form>  
         </div>
+        
+        
+        <div class="divform" id="form100">
+            <form >
+                <h1>Add a new Blog</h1>
+                <label ><strong>Blog Name</strong></label>
+                <input type="text" placeholder="Enter Name" name="name" id="name-blo">
+                <label ><strong>Content</strong></label>
+                <input type="text" placeholder="Enter Content" name="content" id="content-blo">
+                <label ><strong>Synopsis</strong></label>
+                <input type="text" placeholder="Enter Sysopsis" name="sysopsis" id="synopsis-blo">
+                <button type="button" id="save_blo"><strong>Add</strong></button>   
+                <button type="button" style="background-color: red;" onclick="closeForm('form100')" ><strong>Close</strong></button>        
+            </form>  
+        </div>
+        
+        <div class="divform" id="form101" >
+            <form >
+                <h1>Edit Blog</h1>
+                <label ><strong>Blog Name</strong></label>
+                <input type="text" placeholder="Enter Name" name="name" id="name-blo-edit">
+                <label ><strong>Content</strong></label>
+                <input type="text" placeholder="Enter Content" name="content" id="content-blo-edit">
+                <label ><strong>Synopsis</strong></label>
+                <input type="text" placeholder="Enter Sysopsis" name="sysopsis" id="synopsis-blo-edit">
+                
+                <input type="hidden" id="bid-blo-edit">
+                <button type="button" id="edit-blo"><strong>Edit</strong></button>   
+                <button type="button" style="background-color: red;" onclick="closeForm('form101')" ><strong>Close</strong></button>        
+            </form>             
+        </div>
 <!--        // thông báo tải trang -->
         <div class="divwait" id="formwait" >
 

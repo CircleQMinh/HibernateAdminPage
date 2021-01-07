@@ -10,6 +10,7 @@ var protable_count = 1;
 var custable_count = 1;
 var empacctable_count = 1;
 var cusacctable_count = 1;
+var blotable_count = 1;
 
 $(document).ready(function(){
     startTime();
@@ -176,8 +177,73 @@ $(document).ready(function(){
         });
 
     });
-    
-    
+    $('#blogpage').click(function(){
+        openForm('formwait');
+        $("#home").load( "blog.jsp #blog", function() {
+            startTime();            
+            $('#blogrefresh').click(function(){
+                $("#blogtable").load( "blog.jsp #tableblo",function(){
+                    $('#tableblo').tablePagination({
+                        perPage: 4,
+                        initPage:blotable_count,                      
+                        showAllButton:false
+                    });
+                    blotable_count=1;
+                    $("button[id|='blo_edit']").click(function() {
+                        openForm("form101");
+                        getId_blotable(this);
+                        var blo_edit_bid=$(this).closest('tr').find('td').eq(0).text();
+                        var blo_edit_name=$(this).closest('tr').find('td').eq(1).text();
+                        var blo_edit_content=$(this).closest('tr').find('td').eq(2).text();
+                        var blo_edit_synopsys=$(this).closest('tr').find('td').eq(3).text();                                        
+                        FillForm101(blo_edit_name,blo_edit_content,blo_edit_synopsys,
+                                blo_edit_bid);
+                    });
+                    $("button[id|='blo_del']").click(function() {
+                        if (confirm('Xóa blog khỏi database?')) {
+                            getId_blotable(this);
+                            $(this).closest('tr').find('td').eq(0).each(function() {
+                                
+                                var textval = $(this).text(); // this will be the text of each <td>
+                                console.log(textval);openForm('formwait');
+                                $.ajax({
+                                    type: "post",
+                                    url: "ajax/blog/ajax-delete-blog.jsp", //this is my servlet
+                                    data: {
+                                        BID:textval               
+                                    },
+                                    success: function ( response ){   
+                                        //handleData(response);
+                                        var success =  $($.parseHTML(response)).filter("#sqlmsg").html(); 
+                                        console.log(success); // div#success
+                                        closeForm('formwait');
+                                        alert(success);
+                                        clickme("blogrefresh");
+                                    },
+                                    error: function(xhr, textStatus, error){
+                                        console.log(xhr.statusText);
+                                        console.log(textStatus);
+                                        console.log(error);
+                                        console.log("Fail");
+                                    }
+                                });
+                            }); 
+                        } else {
+
+                        }                   
+                    });
+                });
+            });
+            
+            clickme('blogrefresh');         
+            closeForm('formwait');
+        });
+
+    });
+    ////kết thúc
+    //
+    //
+    //
     //                jquery của customer
     $('#cuspage').click(function(){
         openForm('formwait');
@@ -247,7 +313,60 @@ $(document).ready(function(){
     ////kết thúc
     
     
+    $('#save_blo').click(function(){
+        openForm('formwait');
+         $.ajax({
+            type: "post",
+            url: "ajax/blog/ajax-insert-blog.jsp", //this is my servlet
+            data: {
+                name: $('#name-blo').val(), 
+                content: $('#content-blo').val(),
+                synopsis: $('#synopsis-blo').val()
+      
+            },
+            success: function ( response ){   
+                //handleData(response);
+                var success =  $($.parseHTML(response)).filter("#sqlmsg").html(); 
+                console.log(success); // div#success
+                closeForm('formwait');
+                alert(success);
+                clickme("blogrefresh");
+            },
+            error: function(xhr, textStatus, error){
+                console.log(xhr.statusText);
+                console.log(textStatus);
+                console.log(error);
+            }
+        });
+    });
     
+    $('#edit-blo').click(function (){
+        openForm('formwait');
+        $.ajax({
+            type: "post",
+            url: "ajax/blog/ajax-edit-blog.jsp", //this is my servlet
+            data: {
+                bid: $('#bid-blo-edit').val(),
+                name: $('#name-blo-edit').val(), 
+                content: $('#content-blo-edit').val(),
+                synopsis: $('#synopsis-blo-edit').val() 
+                
+            },
+            success: function ( response ){   
+                //handleData(response);
+                var success = $($.parseHTML(response)).filter("#sqlmsg").html();
+                console.log(success); // div#success
+                closeForm('formwait');
+                alert(success);
+                clickme("blogrefresh");
+            },
+            error: function(xhr, textStatus, error){
+                console.log(xhr.statusText);
+                console.log(textStatus);
+                console.log(error);
+            }
+        });
+    });
 //                jquery của pro
     $('#propage').click(function(){
          openForm('formwait');
@@ -1069,6 +1188,9 @@ $(document).ready(function(){
 // hàm ghi lại trang đang xem
 function  getId_emptable(element) {
     emptable_count =  Math.floor((element.parentNode.parentNode.rowIndex-0.5)/7)+1;
+}
+function  getId_blotable(element) {
+    blotable_count =  Math.floor((element.parentNode.parentNode.rowIndex-0.5)/7)+1;
 }
 function  getId_custable(element) {
     custable_count =  Math.floor((element.parentNode.parentNode.rowIndex-0.5)/7)+1;

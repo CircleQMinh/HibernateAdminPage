@@ -32,8 +32,8 @@
                     <ul id="MenuItems">
                         <li><a href="index.jsp">Home</a></li>
                         <li><a href="products.jsp">Products</a></li>
-                        <li><a href="">About</a></li>
-                        <li><a href="">Blog</a></li>
+                        <li><a href="aboutus.jsp">About</a></li>
+                        <li><a href="myblog.jsp">Blog</a></li>
                         <li><a href="customer-account.jsp">Account</a></li>
                         <c:choose>
                             <c:when test="${sessionScope.account==null}" >

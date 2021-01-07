@@ -8,6 +8,7 @@
 <%@page import="java.util.List"%>
 <%@page import="Dao.ProductDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,11 +32,19 @@
                     <ul id="MenuItems">
                         <li><a href="index.jsp">Home</a></li>
                         <li><a href="products.jsp">Products</a></li>
-                        <li><a href="">About</a></li>
-                        <li><a href="">Blog</a></li>
-                        <li><a href="">Account</a></li>
-                        <li><a href="" class="btn-login">Log In</a></li>
-                        <li><a href="" class="btn-register">Register</a></li>
+                        <li><a href="aboutus.jsp">About</a></li>
+                        <li><a href="myblog.jsp">Blog</a></li>
+                        <li><a href="customer-account.jsp">Account</a></li>
+                        <c:choose>
+                            <c:when test="${sessionScope.account==null}" >
+                                <li><a href="login" class="btn-login">Log In</a></li>
+                                <li><a href="register" class="btn-register">Register</a></li>
+                            </c:when>
+                            <c:otherwise>
+                                <li><a href="" class="btn-login"><c:out value="${sessionScope.account.username}"/></a></li>
+                                <li><a href="register" class="btn-register">Register</a></li>
+                            </c:otherwise>
+                        </c:choose>
                     </ul>
                 </nav>
                 <a href="cart.jsp"><img src="images/cart.png" width="30px" height="30px" class="imgcard"></a>

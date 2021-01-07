@@ -210,7 +210,19 @@ function FillForm7edit(name,mota,price,qua,cate,url,id)
     var img = document.getElementById("uploaded-pro-edit");
     img.setAttribute("src",url);
 }
-
+function FillForm100()
+{
+    document.getElementById("name-blo").value="";
+    document.getElementById("content-blo").value="";
+    document.getElementById("synopsis-blo").value="";   
+}
+function FillForm101(name,content,synopsis,bid)
+{
+    document.getElementById("name-blo-edit").value=name;
+    document.getElementById("content-blo-edit").value=content;
+    document.getElementById("synopsis-blo-edit").value=synopsis;
+    document.getElementById("bid-blo-edit").value=bid;
+}
 function FillForm11(name,sex,email,phone,add,cid)
 {
     document.getElementById("name-cus-edit").value=name;

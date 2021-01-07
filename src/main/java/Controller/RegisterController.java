@@ -34,7 +34,7 @@ public class RegisterController extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
-        RequestDispatcher dp = getServletContext().getRequestDispatcher("/register.jsp");
+        RequestDispatcher dp = getServletContext().getRequestDispatcher("/Dn-Dky-QMk/register.jsp");
         dp.forward(request, response);
     }
 
@@ -70,32 +70,32 @@ public class RegisterController extends HttpServlet {
         if (agree==null) 
         {
             agreeError = "Must agree to terms and conditions to continue";
-            url = "/register.jsp";
+            url = "/Dn-Dky-QMk/register.jsp";
         }
         if (!password.equals(confirmPassword)) 
         {
             confirmPasswordError = "Not Match";
-            url = "/register.jsp";
+            url = "/Dn-Dky-QMk/register.jsp";
         }
 
         if (!phoneMatcher.matches()) 
         {
             phoneError = "Phone number must be 10 digits";
-            url = "/register.jsp";
+            url = "/Dn-Dky-QMk/register.jsp";
         }
         if (userService.getAccountByUsername(username) != null) //chưa có gmail nào đăng ký
         {
             usernameError = "Username already existed";
-            url = "/register.jsp";
+            url = "/Dn-Dky-QMk/register.jsp";
         }
         if (userService.getAccountByEmail(email) != null) 
         {
             emailError = "Email already assigned";
-            url = "/register.jsp";
+            url = "/Dn-Dky-QMk/register.jsp";
         }
         System.out.println(url);
         System.out.println(name+" "+address+" "+phone+" "+email+" "+sex);
-        if (url.equals("/register.jsp")) 
+        if (url.equals("/Dn-Dky-QMk/register.jsp")) 
         {
             //user's input
             request.setAttribute("username", username);
@@ -119,7 +119,7 @@ public class RegisterController extends HttpServlet {
             Customer customer = new Customer(name, address, phone,email,sex);
             if(!userService.addCustomerInformation(customer))
                 System.out.println("add customer fail");
-            int idCus =userService.getCustomerInformationByEmail(email).getCustomerId(); // sai 
+            int idCus =userService.getCustomerInformationByEmail(email).getCustomerId(); 
             Account account = new Account(username, password, "customer", idCus,"");
             userService.addAccount(account);
             request.setAttribute("cus", customer);

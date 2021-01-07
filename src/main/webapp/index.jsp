@@ -41,8 +41,20 @@
                                 <li><a href="register" class="btn-register">Register</a></li>
                             </c:when>
                             <c:otherwise>
-                                <li><a href="" class="btn-login"><c:out value="${sessionScope.account.username}"/></a></li>
-                                <li><a href="register" class="btn-register">Register</a></li>
+                                <c:choose>
+                                    <c:when test="${sessionScope.account.type=='customer'}">
+                                        <li><a href="" class="btn-login"><c:out value="${sessionScope.userInfo.customerName}"/></a></li>
+                                        <li><a href="logout" class="btn-register">Logout</a></li>
+                                    </c:when>
+                                    <c:when test="${sessionScope.account.type=='employee'}">
+                                        <li><a href="" class="btn-login"><c:out value="${sessionScope.userInfo.employeeName}"/></a></li>                                   
+                                        <li><a href="logout" class="btn-register">Logout</a></li>
+                                    </c:when>  
+                                    <c:otherwise>
+                                         <li><a href="" class="btn-login"><c:out value="${sessionScope.userInfo.name}"/></a></li>
+                                          <li><a href="logout" class="btn-register">Logout</a></li>
+                                    </c:otherwise>
+                                </c:choose>
                             </c:otherwise>
                         </c:choose>
                     </ul>

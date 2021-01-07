@@ -19,7 +19,7 @@
 </head>
 <body>
     <c:if test="${(sessionScope.account==null)}">
-        <c:redirect url="login-employee"></c:redirect>
+        <c:redirect url="login"></c:redirect>
     </c:if>
     <div class="container">
         <div class="header">

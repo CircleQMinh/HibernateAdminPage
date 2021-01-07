@@ -16,6 +16,7 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.RequestDispatcher;
 import Model.Account;import Model.Customer;import Model.Admin;import Model.Employee;
 import Service.UserService;
+import javax.servlet.jsp.PageContext;
 
 /**
  *
@@ -33,11 +34,11 @@ public class LoginController extends HttpServlet {
         if (session.getAttribute("account") == null) // nếu session đang ko có account
         {
             if (request.getRequestURI().endsWith("admin")) {
-                page = "/loginadmin.jsp";
+                page = "/Dn-Dky-QMk/loginadmin.jsp";
             } else if (request.getRequestURI().endsWith("employee")) {
-                page = "/loginemp.jsp";
+                page = "/Dn-Dky-QMk/loginemp.jsp";
             } else if (request.getRequestURI().endsWith("/login")) {
-                page = "/login.jsp";
+                page = "/Dn-Dky-QMk/login.jsp";
             }
             RequestDispatcher dp = getServletContext().getRequestDispatcher(page);
             dp.forward(request, response);           
@@ -67,7 +68,7 @@ public class LoginController extends HttpServlet {
                 if (password.equals("")) {
                     passwordError = "Password must not be empty";
                 }
-                url = "/login.jsp";
+                url = "/Dn-Dky-QMk/login.jsp";
             } else {
                 try {                    
                     Account account = userService.getAccountByUsername(userName);
@@ -89,13 +90,13 @@ public class LoginController extends HttpServlet {
                             url = "/index.jsp";
                         } else {
                             passwordError = "Wrong Password";
-                            url = "/login.jsp";
+                            url = "/Dn-Dky-QMk/login.jsp";
                         }
                     } 
                     else // ko tồn tại username
                     {
                         userNameError = "Username Not Found";
-                        url = "/login.jsp";
+                        url = "/Dn-Dky-QMk/login.jsp";
                     }                    
                 } catch (Exception e) {
                     System.out.println("customer Login Exception ");
@@ -112,7 +113,7 @@ public class LoginController extends HttpServlet {
                 if (password.equals("")) {
                     passwordError = "Password must not be empty";
                 }
-                url = "/login.jsp";
+                url = "/Dn-Dky-QMk/login.jsp";
             } 
             else {
                 try {                    
@@ -132,12 +133,12 @@ public class LoginController extends HttpServlet {
                             url="/nhanvien.jsp";
                         } else {
                             passwordError = "Wrong Password";
-                            url = "/loginemp.jsp";
+                            url = "/Dn-Dky-QMk/loginemp.jsp";
                         }
                     } else // ko tồn tại username
                     {
                         userNameError = "Username Not Found";
-                        url = "/loginemp.jsp";
+                        url = "/Dn-Dky-QMk/loginemp.jsp";
                     }                    
                 } catch (Exception e) {
                     System.out.println("employee Login Exception ");
@@ -154,7 +155,7 @@ public class LoginController extends HttpServlet {
                 if (password.equals("")) {
                     passwordError = "Password must not be empty";
                 }
-                url = "/login.jsp";
+                url = "/Dn-Dky-QMk/login.jsp";
             } 
             else {
                 try {                    
@@ -170,19 +171,19 @@ public class LoginController extends HttpServlet {
                             url="/dashboard.jsp";
                         } else {
                             passwordError = "Wrong Password";
-                            url = "/loginadmin.jsp";
+                            url = "/Dn-Dky-QMk/loginadmin.jsp";
                         }
                     } else // ko tồn tại username
                     {
                         userNameError = "Username Not Found";
-                        url = "/loginadmin.jsp";
+                        url = "/Dn-Dky-QMk/loginadmin.jsp";
                     }                    
                 } catch (Exception e) {
                     System.out.println("Admin Login Exception ");
                 }                
             }
         }
-        if(url.startsWith("/login"))
+        if(url.startsWith("/Dn-Dky-QMk/login"))
         {
             request.setAttribute("username",userName);
             request.setAttribute("password",password);

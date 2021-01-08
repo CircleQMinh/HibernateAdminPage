@@ -4,18 +4,13 @@
     Author     : ASUS
 --%>
 
+<%@page import="Model.Account"%>
 <%@page import="Dao.EmployeeDao"%>
 <%@page import="Model.Employee"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <%
-//           Hiện tại xài cứng 1 nhân viên , làm đăng nhập thì lấy int này từ session
-        int EmployeeID=1;
-        Employee me = EmployeeDao.getEmployee(EmployeeID);
-    
-    %>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/mycssadminpage.css" type="text/css">
@@ -30,12 +25,18 @@
         <title>Employee Page</title>
     </head>
     <body>
-        <c:if test="${(sessionScope.account==null) || (sessionScope.account.type=='customer')}">
+        <c:if test="${(sessionScope.account==null) || (sessionScope.account.type=='customer')|| (sessionScope.account.type=='admin')}">
             <c:redirect url="login-employee"></c:redirect>
         </c:if>
+        <%
+                Account acc = (Account)request.getSession().getAttribute("account");
+                Employee emp = (Employee)request.getSession().getAttribute("userInfo");
+                
+        %>
+        
         <div class="topnav" >
             
-            <a> <i class="fas fa-sign-out-alt"></i></a>
+            <a href="logout"> <i class="fas fa-sign-out-alt"></i></a>
             <a style="margin-right: 23.5%;font-family: Showcard Gothic,serif;width: 30%">Business Manager Overview </a>
             
         </div>
@@ -43,8 +44,8 @@
         <nav>
             <button title="View Product"  id = 'propage'><i class="fas fa-shopping-bag"></i></button>
             <button title="View Order" id = 'orderpage'><i class="fas fa-tasks"></i></button>
-            <button title="View Blog" id = 'blogpage'><i class="fab fa-blogger"></i></button>
-            <button title="Logout" ><i class="fas fa-sign-out-alt"></i></button>
+            <button title="Nạp tài khoản" id = 'bankpage'><i class="far fa-money-bill-alt"></i></button>
+            <button title="Logout" id="logoutbut"><i class="fas fa-sign-out-alt"></i></button>
         </nav>
         
         <div class="divcontent" id="home">       
@@ -60,7 +61,7 @@
             </div>
         </div>
         <div class="dashbosr" >
-             <p style="font-family: sans-serif"> Nhân viên đang đăng nhập : <%=me.getEmployeeName()     %></p>
+             <p style="font-family: sans-serif"> Nhân viên đang đăng nhập : <%=emp.getEmployeeName()    %></p>
         </div>
         <div class="divform" id="updateOrder" >
             <form >
@@ -159,6 +160,21 @@
                 <button type="button" style="background-color: red;" onclick="closeForm('form7edit')" ><strong>Close</strong></button> 
                 </form>
             </div>
+        </div>
+        <div class="divform" id="bankform" >
+            <form >
+                <h1>Input Money</h1>
+                <br>
+                <label ><strong>Customer ID</strong></label>
+                <input type="number" id="bank-id" name="wd" readonly><br>
+                
+                <label ><strong>Money</strong></label>
+                <input type="number" id="bank-money" name="wd"><br>
+                
+                <br>
+                <button type="button" id="bank_add_money"><strong>Add</strong></button>   
+                <button type="button" style="background-color: red;" onclick="closeForm('bankform')" ><strong>Close</strong></button>        
+            </form>  
         </div>
         <div class="divwait" id="formwait" >
 

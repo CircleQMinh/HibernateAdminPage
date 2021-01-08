@@ -61,6 +61,9 @@
         <url-pattern>/login</url-pattern>
         <url-pattern>/login-admin</url-pattern>
         <url-pattern>/login-employee</url-pattern>
+        <url-pattern>/Dn-Dky-QMk/login</url-pattern>
+        <url-pattern>/Dn-Dky-QMk/login-admin</url-pattern>
+        <url-pattern>/Dn-Dky-QMk/login-employee</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ForgetPasswordController</servlet-name>

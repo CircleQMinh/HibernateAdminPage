@@ -36,9 +36,9 @@ public class LogoutController extends HttpServlet {
                 if(account.getType().equals("customer"))
                     url="/index.jsp";
                 else if(account.getType().equals("employee"))
-                    url="/login-employee";
+                    url="/index.jsp";
                 else if(account.getType().equals("admin"))
-                    url="/login-admin";
+                    url="/index.jsp";
                 System.out.println("logout ok");
                 response.sendRedirect(request.getContextPath()+url);
                     }

@@ -13,13 +13,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
-    <%
-//        Hiện tại xài cứng 1 nhân viên , làm đăng nhập thì lấy int này từ session
-        int shipperID=1;
-        Employee me = EmployeeDao.getEmployee(shipperID);
-    
-    
-    %>
+  
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/mycssadminpage.css" type="text/css">
@@ -38,7 +32,15 @@
         <c:if test="${(sessionScope.account==null) || (sessionScope.account.type=='customer')}">
             <c:redirect url="login-employee"></c:redirect>
         </c:if>
-        <input type="hidden" id="shipperid" value="<%=shipperID%>">
+        <%
+                Employee emp = (Employee)request.getSession().getAttribute("userInfo");
+                int shipperID=emp.getEmployeeId();  
+        
+        %>
+        
+        
+        
+        <input type="hidden" id="shipperid" value="<%=emp.getEmployeeId()      %>">
         <div class="topnav" >  
             <a> <i class="fas fa-sign-out-alt"></i></a>
             <a style="margin-right: 23.5%;font-family: Showcard Gothic,serif;width: 30%">Shipping Order</a>
@@ -58,7 +60,7 @@
                     <p id="time">???</p>
                 </div>
                 <div class="dashbosr" >
-                    <p style="font-family: sans-serif"> Nhân viên đang đăng nhập : <%=me.getEmployeeName()     %></p>
+                    <p style="font-family: sans-serif"> Nhân viên đang đăng nhập : <%=emp.getEmployeeName()     %></p>
                 </div>
                 <div class="dashbosl" id='employeetag' >
                     <p >My Order<button class="minibtn" id="btnAdd" onclick="miniTable('myordertable','btnAdd')">-</button></p>                    

@@ -252,6 +252,31 @@ $(document).ready(function(){
              closeForm('formwait');
         });
     });
+    $('#bankpage').click(function(){
+        openForm('formwait');
+        $("#home").load( "bank.jsp #bank", function() {
+             startTime();
+             closeForm('formwait');
+             $('#bankrefresh').click(function(){
+                $("#bankdiv").load( "bank.jsp #banktable",function(){
+                    $('#banktable').tablePagination({
+                        perPage: 7,
+                        initPage:1,                      
+                        showAllButton:false
+                    });
+                    emptable_count=1;
+                    $("button[id|='bank_edit']").click(function() {
+                        var textval = $(this).closest('tr').find('td').eq(0).text();
+                        openForm('bankform');
+                        document.getElementById("bank-id").value=textval;
+                        document.getElementById("bank-money").value=0;
+                    });
+                    
+                });
+            });
+            clickme('bankrefresh');
+        });
+    });
     $('#editorder_status').click(function(){
         $.ajax({
             type: "post",
@@ -331,6 +356,33 @@ $(document).ready(function(){
                 console.log(error);
             }
         });
+    });
+    $('#bank_add_money').click(function (){
+        openForm('formwait');
+        $.ajax({
+            type: "post",
+            url: "ajax/customer/ajax-bank-customer.jsp", //this is my servlet
+            data: {
+                CID: $('#bank-id').val(),
+                money: $('#bank-money').val() 
+            },
+            success: function ( response ){   
+                //handleData(response);
+                var success = $($.parseHTML(response)).filter("#sqlmsg").html();
+                console.log(success); // div#success
+                closeForm('formwait');
+                alert(success);
+                clickme("bankrefresh");
+            },
+            error: function(xhr, textStatus, error){
+                console.log(xhr.statusText);
+                console.log(textStatus);
+                console.log(error);
+            }
+        });
+    });
+    $('#logoutbut').click(function (){
+        location.href = "logout";
     });
     clickme('propage');
 });

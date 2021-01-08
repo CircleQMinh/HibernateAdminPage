@@ -134,6 +134,9 @@
         </style>
     </head>
     <body >
+        <c:if test="${(sessionScope.account==null)}">
+            <c:redirect url="/Dn-Dky-QMk/login.jsp"></c:redirect>
+        </c:if>
         <div class="header">
             <div class="container">
                 <div class="navbar">

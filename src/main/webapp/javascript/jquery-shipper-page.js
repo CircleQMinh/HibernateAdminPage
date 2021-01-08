@@ -26,6 +26,9 @@ $(document).ready(function(){
                             console.log(success); // div#success
                             closeForm('formwait');
                             alert(success);
+                            clickme('myorder-refresh');
+                            clickme('new-order-refresh');
+                            clickme('old-order-refresh');
                         },
                         error: function(xhr, textStatus, error){
                             console.log(xhr.statusText);
@@ -51,6 +54,9 @@ $(document).ready(function(){
                             console.log(success); // div#success
                             closeForm('formwait');
                             alert(success);
+                            clickme('myorder-refresh');
+                            clickme('new-order-refresh');
+                            clickme('old-order-refresh');
                         },
                         error: function(xhr, textStatus, error){
                             console.log(xhr.statusText);
@@ -83,6 +89,9 @@ $(document).ready(function(){
                             var success =  $($.parseHTML(response)).filter("#sqlmsg").html(); 
                             console.log(success); // div#success
                             alert(success);
+                            clickme('myorder-refresh');
+                            clickme('new-order-refresh');
+                            clickme('old-order-refresh');
                         },
                         error: function(xhr, textStatus, error){
                             console.log(xhr.statusText);

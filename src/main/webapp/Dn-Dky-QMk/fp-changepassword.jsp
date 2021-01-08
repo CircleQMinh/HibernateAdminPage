@@ -1,7 +1,7 @@
 <%-- 
     Document   : changepassword
     Created on : Dec 26, 2020, 1:00:12 PM
-    Author     : Nhat Minh
+    Author     : Asus
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

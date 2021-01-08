@@ -72,7 +72,6 @@
             }
             if(errorsql=="")
             { 
-
                 try {
                     AccountDao.editAccEmp(id, pass);
                     errorsql="Chỉnh sửa tài khoản thành công";
@@ -83,8 +82,7 @@
                     errorsql=String.valueOf(e);
                     errorsql="Không thành công";
                 }
-            }
-            
+            }  
         %>
         <p id="msg">
             <%=id%>

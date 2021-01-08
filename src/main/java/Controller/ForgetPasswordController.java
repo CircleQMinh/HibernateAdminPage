@@ -19,7 +19,7 @@ import Model.Account;
 
 /**
  *
- * @author Nhat Minh
+ * @author Asus
  */
 
 public class ForgetPasswordController extends HttpServlet {
@@ -58,9 +58,9 @@ public class ForgetPasswordController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //uri
+        //Uri
         String uri = request.getRequestURI();       
-        //set errors
+        //Set errors
         String emailError="";
         String otpError="";
         String passwordError="";
@@ -111,10 +111,10 @@ public class ForgetPasswordController extends HttpServlet {
     }
 
     public String sendOTP(String email, HttpSession session) {
-        //create OTP digits
+        //Create OTP digits
         int otp = new Random().nextInt(999999);
         System.out.println(otp + "email:" + email);       
-        //send OTP digits
+        //Send OTP digits
         String msgContent = "Your OTP code =" + otp;
         boolean flag = this.sendEmailService.sendEmail("OTP Confirmation code from TEAM16", email, msgContent); //(subject,to,content)
         if (flag) {
@@ -125,11 +125,9 @@ public class ForgetPasswordController extends HttpServlet {
 
     }
 
-
-
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    }
 
 }

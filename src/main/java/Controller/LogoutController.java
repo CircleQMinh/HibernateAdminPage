@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 import Model.Account;
 /**
  *
- * @author Nhat Minh
+ * @author Asus
  */
 public class LogoutController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -52,7 +52,6 @@ public class LogoutController extends HttpServlet {
         }
     }
 
-    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -60,6 +59,6 @@ public class LogoutController extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    }
 
 }

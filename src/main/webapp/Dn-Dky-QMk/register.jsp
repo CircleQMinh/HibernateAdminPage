@@ -1,7 +1,7 @@
 <%-- 
     Document   : register
     Created on : Dec 21, 2020, 10:14:11 AM
-    Author     : Nhat Minh
+    Author     : Asus
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -37,8 +37,6 @@
                 color: #9b9b9b;
                 line-height: 1.5;
             }
-
-            /* ///// inputs /////*/
 
             input:focus ~ label, textarea:focus ~ label, input:valid ~ label, textarea:valid ~ label {
                 font-size: 0.75em;
@@ -182,7 +180,7 @@
 
             </div>
         </div>
-        <!-- end header -->       
+     
         <form action="register" method="post" style="background: radial-gradient(#fff,#ffd6d6)">
             <div class="container">
                 <div class="row">

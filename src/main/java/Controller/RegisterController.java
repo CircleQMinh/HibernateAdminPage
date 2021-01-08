@@ -21,7 +21,7 @@ import Model.Customer;
 
 /**
  *
- * @author Nhat Minh
+ * @author Asus
  */
 public class RegisterController extends HttpServlet {
 
@@ -38,6 +38,7 @@ public class RegisterController extends HttpServlet {
         dp.forward(request, response);
     }
 
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -45,17 +46,20 @@ public class RegisterController extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
         String url = "";
-        //account
+        
+        //Account
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String email = request.getParameter("email");
         String confirmPassword = request.getParameter("confirmPassword");
         String[] agree = request.getParameterValues("agreeTerms");
-        //customer information
+        
+        //Customer information
         String name = request.getParameter("cusName");
         String address = request.getParameter("cusAddress");
         String phone = request.getParameter("cusPhone");
         String sex = request.getParameter("cusGender");
+        
         //Errors
         String emailError = "";
         String usernameError = "";
@@ -64,7 +68,7 @@ public class RegisterController extends HttpServlet {
         String confirmPasswordError = "";
         String agreeError = "";
 
-        //validate
+        //Validate
         Pattern phonePattern = Pattern.compile("\\d{10}");
         Matcher phoneMatcher = phonePattern.matcher(phone);
         if (agree==null) 
@@ -97,14 +101,15 @@ public class RegisterController extends HttpServlet {
         System.out.println(name+" "+address+" "+phone+" "+email+" "+sex);
         if (url.equals("/Dn-Dky-QMk/register.jsp")) 
         {
-            //user's input
+            //User's input
             request.setAttribute("username", username);
             request.setAttribute("name", name);
             request.setAttribute("email", email);
             request.setAttribute("phone", phone);
             request.setAttribute("address", address);
             request.setAttribute("gender", sex);
-            //errors
+            
+            //Errors
             request.setAttribute("usernameError", usernameError);
             request.setAttribute("passwordError", passwordError);
             request.setAttribute("confirmPasswordError", confirmPasswordError);

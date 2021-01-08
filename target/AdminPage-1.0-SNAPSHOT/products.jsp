@@ -86,8 +86,8 @@
                     <ul id="MenuItems">
                         <li><a href="index.jsp">Home</a></li>
                         <li><a href="products.jsp">Products</a></li>
-                        <li><a href="">About</a></li>
-                        <li><a href="">Blog</a></li>
+                        <li><a href="aboutus.jsp">About</a></li>
+                        <li><a href="myblog.jsp">Blog</a></li>
                         <li><a href="customer-account.jsp">Account</a></li>
                         <c:choose>
                             <c:when test="${sessionScope.account==null}" >
@@ -121,7 +121,10 @@
         <div class="small-container">
             <div class="row row-2">
                 <h2>All Products</h2>
-                <input type="text" placeholder="Search" class="txtSearch">
+                <form action="SearchProduct" method="get">
+                    <input type="text" name="search-product" placeholder="Search" class="txtSearch">
+                    <input type="submit" class="btn" value="Tìm">
+                </form>
                 <select name="" id="">
                     <option value="">Default Shorting</option>
                     <option value="">Short by price</option>
@@ -131,7 +134,11 @@
                 </select>
             </div>
             <%
-                List<Product> prd = ProductDao.getAllPro();
+                List<Product> prd = null;
+                prd = (ArrayList<Product>)request.getAttribute("prd");
+                if(prd==null){
+                prd = ProductDao.getAllPro();
+                }
             %>
             <input type="hidden" id="total_prd" value="<%= prd.size()%>">
             <%

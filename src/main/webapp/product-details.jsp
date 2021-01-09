@@ -72,7 +72,7 @@
         </div>
         <!-- Single product details -->
         <div class="small-container single-product">
-            <form class="row" name="product_detail" method="post" action="CartServlet">
+            <form class="row" name="product_detail" id="product_detail">
                 <div class="col-2">
                     <img src="<%= prd.getPicture()%>" width="100%">
                 </div>
@@ -84,7 +84,7 @@
                     <input type="hidden" name="prdName_item" value="<%= prd.getProductName()%>"><!-- comment -->
                     <input type="hidden" name="prdPrice_item" value="<%= prd.getPrice()%>"><!-- comment -->
                     <input type="hidden" name="action" value="add">
-                    <input type="submit" value="Thêm vào giỏ hàng" onclick="add_to_cart(<%= prd.getProductId()%>, '<%= prd.getProductName()%>',<%= prd.getPrice()%>)" class="btn">
+                    <input type="button" id="add_sp" value="Thêm vào giỏ hàng" onclick="add_to_cart(<%= prd.getProductId()%>, '<%= prd.getProductName()%>',<%= prd.getPrice()%>)" class="btn">
                     <h3>Product Details <i class="fa fa-indent" ></i></h3>
                     <h4><%= prd.getProductDescription()%> </h4>
 
@@ -107,7 +107,7 @@
                 <div class="row">
                     <% if(i<prds.size()) { Product prdsss = ProductDao.getPro(prds.get(i).getId()); 
                     %>
-                    <form class="col-4 contentProduct" name="product"  action="CartServlet" method="post">
+                    <form class="col-4 contentProduct" id="product_detail_show" name="product">
                         <div class="" onclick="location.assign('product-details.jsp?prdID_item=<%= prdsss.getProductId() %>');">
                             <img src="<%= prdsss.getPicture() %>" alt="">
                             <h4><%= prdsss.getProductName() %></h4>
@@ -125,12 +125,12 @@
                             <input type="hidden" name="action" value="add">
                         </div> 
                         <div class="overlay">
-                            <input type="submit" value="Thêm vào giỏ hàng" onclick="add_to_cart(<%= prdsss.getProductId() %>,'<%= prdsss.getProductName() %>',<%= prdsss.getPrice() %>)" class="btn">
+                            <input type="button" value="Thêm vào giỏ hàng" id="add_item" onclick="add_to_cart(<%= prdsss.getProductId() %>,'<%= prdsss.getProductName() %>',<%= prdsss.getPrice() %>)" class="btn">
                         </div>
                     </form><% } i++;%>
                     <% if(i<prds.size()) { Product prdsss = ProductDao.getPro(prds.get(i).getId()); 
                     %>
-                    <form class="col-4 contentProduct" name="product"  action="CartServlet" method="post">
+                    <form class="col-4 contentProduct" name="product" id="product_detail_show">
                         <div class="" onclick="location.assign('product-details.jsp?prdID_item=<%= prdsss.getProductId() %>');">
                             <img src="<%= prdsss.getPicture() %>" alt="">
                             <h4><%= prdsss.getProductName() %></h4>
@@ -148,12 +148,12 @@
                             <input type="hidden" name="action" value="add">
                         </div> 
                         <div class="overlay">
-                            <input type="submit" value="Thêm vào giỏ hàng" onclick="add_to_cart(<%= prdsss.getProductId() %>,'<%= prdsss.getProductName() %>',<%= prdsss.getPrice() %>)" class="btn">
+                            <input type="button" value="Thêm vào giỏ hàng" id="add_item" onclick="add_to_cart(<%= prdsss.getProductId() %>,'<%= prdsss.getProductName() %>',<%= prdsss.getPrice() %>)" class="btn">
                         </div>
                     </form><% } i++;%>
                     <% if(i<prds.size()) { Product prdsss = ProductDao.getPro(prds.get(i).getId()); 
                     %>
-                    <form class="col-4 contentProduct" name="product"  action="CartServlet" method="post">
+                    <form class="col-4 contentProduct" name="product" id="product_detail_show">
                         <div class="" onclick="location.assign('product-details.jsp?prdID_item=<%= prdsss.getProductId() %>');">
                             <img src="<%= prdsss.getPicture() %>" alt="">
                             <h4><%= prdsss.getProductName() %></h4>
@@ -171,12 +171,12 @@
                             <input type="hidden" name="action" value="add">
                         </div> 
                         <div class="overlay">
-                            <input type="submit" value="Thêm vào giỏ hàng" onclick="add_to_cart(<%= prdsss.getProductId() %>,'<%= prdsss.getProductName() %>',<%= prdsss.getPrice() %>)" class="btn">
+                            <input type="button" value="Thêm vào giỏ hàng" id="add_item" onclick="add_to_cart(<%= prdsss.getProductId() %>,'<%= prdsss.getProductName() %>',<%= prdsss.getPrice() %>)" class="btn">
                         </div>
                     </form><% } i++;%>
                     <% if(i<prds.size()) { Product prdsss = ProductDao.getPro(prds.get(i).getId()); 
                     %>
-                    <form class="col-4 contentProduct" name="product"  action="CartServlet" method="post">
+                    <form class="col-4 contentProduct" name="product" id="product_detail_show">
                         <div class="" onclick="location.assign('product-details.jsp?prdID_item=<%= prdsss.getProductId() %>');">
                             <img src="<%= prdsss.getPicture() %>" alt="">
                             <h4><%= prdsss.getProductName() %></h4>
@@ -194,7 +194,7 @@
                             <input type="hidden" name="action" value="add">
                         </div> 
                         <div class="overlay">
-                            <input type="submit" value="Thêm vào giỏ hàng" onclick="add_to_cart(<%= prdsss.getProductId() %>,'<%= prdsss.getProductName() %>',<%= prdsss.getPrice() %>)" class="btn">
+                            <input type="button" value="Thêm vào giỏ hàng" id="add_item" onclick="add_to_cart(<%= prdsss.getProductId() %>,'<%= prdsss.getProductName() %>',<%= prdsss.getPrice() %>)" class="btn">
                         </div>
                     </form><% }%>         
                 </div>
@@ -265,3 +265,32 @@
         </script>
     </body>
 </html>
+<script>
+    
+    $(function(){
+            $("#add_sp").click(function () {
+            var postData = $("#product_detail").serialize();
+            $.ajax({
+                type: "POST",
+                url: "ajax/customerpage/ajax_add_item.jsp",
+                data: postData,
+                success: function ( response ) {
+                    alert("Thêm thành công");
+                }  
+            });
+        });
+ 
+            $("input[id|='add_item']").click( function(){
+                var postData = $(this).closest('div').closest('form').serialize();
+                 $.ajax({
+                    type: "POST",
+                    url: "ajax/customerpage/ajax_add_item.jsp",
+                    data: postData,
+                    success: function ( response ) {
+                        alert("Thêm thành công");
+                    }  
+                });
+            });
+    });
+    
+</script>

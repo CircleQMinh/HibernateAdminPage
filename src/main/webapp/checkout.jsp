@@ -4,6 +4,10 @@
     Author     : ASUS
 --%>
 
+<%@page import="Model.CartItem"%>
+<%@page import="java.util.List"%>
+<%@page import="Model.Cart"%>
+<%@page import="Service.CartService"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -21,9 +25,14 @@
     <c:if test="${(sessionScope.account==null)}">
         <c:redirect url="login"></c:redirect>
     </c:if>
+    <%
+        if (session.getAttribute("cart")!=null){
+                Cart cart=(Cart)session.getAttribute("cart");
+                List<CartItem> listItems = cart.getItems(); 
+        %>
     <div class="container">
         <div class="header">
-            <h2>Nhập thông tin khách hàng : </h2>
+            <h2>Nhập thông tin nhận hàng : </h2>
         </div>
         <form id="form" class="form" method="get" action="SaveOrder">
             <div class="form-control">
@@ -61,9 +70,16 @@
                 <i class="fas fa-exclamation-circle"></i>
                 <small>Error message</small>
             </div>
-            
+            <div class="form-control">
+                <label for="amount">Số tiền</label>
+                <input class="form-control" data-val="true" data-val-number="The field Amount must be a number." data-val-required="The Amount field is required." id="amount" max="100000000" min="1" name="amount" type="number" value="<%= CartService.getTotalCost(listItems)%>" />
+            </div>
+            <div class="form-control">
+                <label for="OrderDescription">Nội dung thanh toán</label>
+                <textarea class="form-control" cols="20" id="vnp_OrderInfo" name="vnp_OrderInfo" rows="2">Thanh toan don hang</textarea>
+            </div>
             <div>
-                <input type="submit" class="btn" id="check_out_btn" onclick="alert('sdssdsdd'); " value="Send"  >
+                <input type="submit" class="btn" id="check_out_btn" onclick="alert('Xác nhận thanh toán'); " value="Send"  >
             </div>
         </form>
     </div>
@@ -96,10 +112,15 @@
                     setSuccessFor(AddressShip);
         }
         if(PhoneShipValue === '') {
-                    setErrorFor(PhoneShip, 'SĐT nhận hàng không được để trống');
-                    temp=temp+1;
-            } else {
-                    setSuccessFor(PhoneShip);
+		setErrorFor(PhoneShip, 'Số điện thoại nhận hàng không được để trống');
+	} else if(PhoneShipValue.length>10){
+		setErrorFor(PhoneShip, 'Vui lòng nhập SĐT nhận hàng có 10 số');
+	}else if(PhoneShipValue.length<10){
+		setErrorFor(PhoneShip, 'Vui lòng nhập SĐT nhận hàng có 10 số');
+	}else if(isNaN(PhoneShipValue)){
+		setErrorFor(PhoneShip, 'Vui lòng chỉ nhập  số');
+	}else {
+		setSuccessFor(PhoneShip);
         }
         if(DateValue === '') {
                     setErrorFor(DateShip, 'Ngày nhận hàng không được để trống');

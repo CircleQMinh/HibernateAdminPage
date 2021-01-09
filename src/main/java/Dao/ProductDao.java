@@ -47,6 +47,29 @@ public class ProductDao {
         }
         return pro;
     }
+    public static List<Product> getProSearch(String text){
+        Transaction transaction = null;
+        List < Product > listOfpro = null;
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session session = sessionFactory.openSession();
+        try{
+            // start a transaction
+            transaction = session.beginTransaction();
+            // get an user object
+            text = "%" + text + "%";
+            String query = "select s from Product s where s.productName like :text";
+            listOfpro = session.createQuery(query).setParameter("text", text).list();
+
+            // commit transaction
+            transaction.commit();session.close();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();session.close();
+            }
+        }
+        System.out.println("Load duoc so product: " + listOfpro.size());
+        return listOfpro;
+    }
     public static Unapprovedproduct getUnPro(int id) {
 
         Transaction transaction = null;

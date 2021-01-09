@@ -54,7 +54,8 @@ public class SaveOrder extends HttpServlet {
         String phone  = request.getParameter("PhoneShip");
         String email = request.getParameter("EmailShip");
         /* Customer saved in Session  --- demo 10 */
-        Customer csm = CustomerDAO.getCus(10);
+        Customer csm = (Customer) session.getAttribute("userInfo");
+        System.out.println(csm.toString());
         Order ord = new Order();
         Date orderDate = new Date();
         ord.setRequiredDate(dateship);
@@ -65,11 +66,12 @@ public class SaveOrder extends HttpServlet {
         ord.setOrderPhone(phone);
         ord.setOrderEmail(email);
         ord.setCustomer(csm);
+        ord.setPaymentType("cash");
         OrderDAO.saveOrder(ord);
         int csmid = csm.getCustomerId();
         int status = 5;
         /* Cutomer saved in Session  */
-        Order ordcsm = OrderDAO.getOrderByStatus(5, 10);
+        Order ordcsm = OrderDAO.getOrderByStatus(status, csmid);
         Cart cart = (Cart)session.getAttribute("cart");
         List<CartItem> cit = cart.getItems();
         for(int i=0;i<cit.size();i++){

@@ -311,7 +311,7 @@
                                 <p>Vui lòng điền email của bạn vào đây</p>
                                 <form action="#" method="POST">
                                     <input class="form-control" type="email" placeholder="Email" required="">
-                                    <input class="form-control" type="submit" value="Subscribe">
+                                    <input class="form-control" type="submit"  value="Subscribe">
                                 </form>
                             </div>
 

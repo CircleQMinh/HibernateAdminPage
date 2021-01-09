@@ -15,6 +15,7 @@ and open the template in the editor.
 }
 body{
     font-family: 'Poppins', sans-serif;
+    position: relative;
 }
 .navbar{
     display: flex;
@@ -452,6 +453,30 @@ th:last-child{
 .btn-tt{
     position: relative;
     justify-content: end;
+}
+.choose-payment-method{
+    position: absolute;
+    background-color: #D3D3D3;
+    top: 10%;
+    left: 20%;
+    transition: opacity 0.5s linear;
+    align-items: center;
+    border-radius: 30px;
+    padding: 20px 20px;
+}
+#exit-payment{
+    padding: 5px 10px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+#exit-payment:hover{
+    opacity: 0.75;
+}
+.payment-method{
+    margin: 10px;
+}
+.cart-quantity{
+    width: auto;
 }
 /*---------------- media for menu -----------*/
 @media screen and (max-width:1000px){

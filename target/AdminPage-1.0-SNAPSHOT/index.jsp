@@ -33,7 +33,7 @@
                         <li><a href="index.jsp">Home</a></li>
                         <li><a href="products.jsp">Products</a></li>
                         <li><a href="aboutus.jsp">About</a></li>
-                        <li><a href="">Blog</a></li>
+                        <li><a href="myblog.jsp">Blog</a></li>
                         <li><a href="customer-account.jsp">Account</a></li>
                         <c:choose>
                             <c:when test="${sessionScope.account==null}" >
@@ -100,13 +100,12 @@
             for (int i=0;i<prds.size();i++) {
             %>
             <div class="row">
-                <% if(i<prds.size()) { Product prd = ProductDao.getPro(prds.get(i).getId()); 
-                System.out.println(prd.toString());
+                <% if(i<prds.size()) { Product prdsss = ProductDao.getPro(prds.get(i).getId()); 
                 %>
                 <form class="col-4 contentProduct" name="product"  action="CartServlet" method="post">
-                    <div class="" onclick="location.assign('product-details.jsp?prdID_item=<%= prd.getProductId() %>');">
-                        <img src="<%= prd.getPicture() %>" alt="">
-                        <h4><%= prd.getProductName() %></h4>
+                    <div class="" onclick="location.assign('product-details.jsp?prdID_item=<%= prdsss.getProductId() %>');">
+                        <img src="<%= prdsss.getPicture() %>" alt="">
+                        <h4><%= prdsss.getProductName() %></h4>
                         <div class="rating">
                             <i class="fa fa-star" ></i>
                             <i class="fa fa-star" ></i>
@@ -114,21 +113,22 @@
                             <i class="fa fa-star" ></i>
                             <i class="fa fa-star-o" ></i>
                         </div>
-                        <p><%= prd.getPrice() %></p>
-                        <input type="hidden" name="prdID_item" value="<%= prd.getProductId()%>"><!-- comment -->
-                        <input type="hidden" name="prdName_item" value="<%= prd.getProductName()%>"><!-- comment -->
-                        <input type="hidden" name="prdPrice_item" value="<%= prd.getPrice()%>"><!-- comment -->
+                        <p><%= prdsss.getPrice() %></p>
+                        <input type="hidden" name="prdID_item" value="<%= prdsss.getProductId()%>"><!-- comment -->
+                        <input type="hidden" name="prdName_item" value="<%= prdsss.getProductName()%>"><!-- comment -->
+                        <input type="hidden" name="prdPrice_item" value="<%= prdsss.getPrice()%>"><!-- comment -->
                         <input type="hidden" name="action" value="add">
                     </div> 
                     <div class="overlay">
-                        <input type="submit" value="Thêm vào giỏ hàng" onclick="add_to_cart(<%= prd.getProductId() %>,'<%= prd.getProductName() %>',<%= prd.getPrice() %>)" class="btn">
+                        <input type="submit" value="Thêm vào giỏ hàng" onclick="add_to_cart(<%= prdsss.getProductId() %>,'<%= prdsss.getProductName() %>',<%= prdsss.getPrice() %>)" class="btn">
                     </div>
                 </form><% } i++;%>
-                <% if(i<prds.size()) { Product prd = ProductDao.getPro(prds.get(i).getId()); %>
+                <% if(i<prds.size()) { Product prdsss = ProductDao.getPro(prds.get(i).getId()); 
+                %>
                 <form class="col-4 contentProduct" name="product"  action="CartServlet" method="post">
-                    <div class="" onclick="location.assign('product-details.jsp?prdID_item=<%= prd.getProductId() %>');">
-                        <img src="<%= prd.getPicture() %>" alt="">
-                        <h4><%= prd.getProductName() %></h4>
+                    <div class="" onclick="location.assign('product-details.jsp?prdID_item=<%= prdsss.getProductId() %>');">
+                        <img src="<%= prdsss.getPicture() %>" alt="">
+                        <h4><%= prdsss.getProductName() %></h4>
                         <div class="rating">
                             <i class="fa fa-star" ></i>
                             <i class="fa fa-star" ></i>
@@ -136,43 +136,22 @@
                             <i class="fa fa-star" ></i>
                             <i class="fa fa-star-o" ></i>
                         </div>
-                        <p><%= prd.getPrice() %></p>
-                        <input type="hidden" name="prdID_item" value="<%= prd.getProductId()%>"><!-- comment -->
-                        <input type="hidden" name="prdName_item" value="<%= prd.getProductName()%>"><!-- comment -->
-                        <input type="hidden" name="prdPrice_item" value="<%= prd.getPrice()%>"><!-- comment -->
+                        <p><%= prdsss.getPrice() %></p>
+                        <input type="hidden" name="prdID_item" value="<%= prdsss.getProductId()%>"><!-- comment -->
+                        <input type="hidden" name="prdName_item" value="<%= prdsss.getProductName()%>"><!-- comment -->
+                        <input type="hidden" name="prdPrice_item" value="<%= prdsss.getPrice()%>"><!-- comment -->
                         <input type="hidden" name="action" value="add">
                     </div> 
                     <div class="overlay">
-                        <input type="submit" value="Thêm vào giỏ hàng" onclick="add_to_cart(<%= prd.getProductId() %>,'<%= prd.getProductName() %>',<%= prd.getPrice() %>)" class="btn">
-                    </div>
-                </form><% } i++;%> 
-                <% if(i<prds.size()) { Product prd = ProductDao.getPro(prds.get(i).getId()); %>
-                <form class="col-4 contentProduct" name="product"  action="CartServlet" method="post">
-                    <div class="" onclick="location.assign('product-details.jsp?prdID_item=<%= prd.getProductId() %>');">
-                        <img src="<%= prd.getPicture() %>" alt="">
-                        <h4><%= prd.getProductName() %></h4>
-                        <div class="rating">
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star-o" ></i>
-                        </div>
-                        <p><%= prd.getPrice() %></p>
-                        <input type="hidden" name="prdID_item" value="<%= prd.getProductId()%>"><!-- comment -->
-                        <input type="hidden" name="prdName_item" value="<%= prd.getProductName()%>"><!-- comment -->
-                        <input type="hidden" name="prdPrice_item" value="<%= prd.getPrice()%>"><!-- comment -->
-                        <input type="hidden" name="action" value="add">
-                    </div> 
-                    <div class="overlay">
-                        <input type="submit" value="Thêm vào giỏ hàng" onclick="add_to_cart(<%= prd.getProductId() %>,'<%= prd.getProductName() %>',<%= prd.getPrice() %>)" class="btn">
+                        <input type="submit" value="Thêm vào giỏ hàng" onclick="add_to_cart(<%= prdsss.getProductId() %>,'<%= prdsss.getProductName() %>',<%= prdsss.getPrice() %>)" class="btn">
                     </div>
                 </form><% } i++;%>
-                <% if(i<prds.size()) { Product prd = ProductDao.getPro(prds.get(i).getId()); %>
+                <% if(i<prds.size()) { Product prdsss = ProductDao.getPro(prds.get(i).getId()); 
+                %>
                 <form class="col-4 contentProduct" name="product"  action="CartServlet" method="post">
-                    <div class="" onclick="location.assign('product-details.jsp?prdID_item=<%= prd.getProductId() %>');">
-                        <img src="<%= prd.getPicture() %>" alt="">
-                        <h4><%= prd.getProductName() %></h4>
+                    <div class="" onclick="location.assign('product-details.jsp?prdID_item=<%= prdsss.getProductId() %>');">
+                        <img src="<%= prdsss.getPicture() %>" alt="">
+                        <h4><%= prdsss.getProductName() %></h4>
                         <div class="rating">
                             <i class="fa fa-star" ></i>
                             <i class="fa fa-star" ></i>
@@ -180,16 +159,39 @@
                             <i class="fa fa-star" ></i>
                             <i class="fa fa-star-o" ></i>
                         </div>
-                        <p><%= prd.getPrice() %></p>
-                        <input type="hidden" name="prdID_item" value="<%= prd.getProductId()%>"><!-- comment -->
-                        <input type="hidden" name="prdName_item" value="<%= prd.getProductName()%>"><!-- comment -->
-                        <input type="hidden" name="prdPrice_item" value="<%= prd.getPrice()%>"><!-- comment -->
+                        <p><%= prdsss.getPrice() %></p>
+                        <input type="hidden" name="prdID_item" value="<%= prdsss.getProductId()%>"><!-- comment -->
+                        <input type="hidden" name="prdName_item" value="<%= prdsss.getProductName()%>"><!-- comment -->
+                        <input type="hidden" name="prdPrice_item" value="<%= prdsss.getPrice()%>"><!-- comment -->
                         <input type="hidden" name="action" value="add">
                     </div> 
                     <div class="overlay">
-                        <input type="submit" value="Thêm vào giỏ hàng" onclick="add_to_cart(<%= prd.getProductId() %>,'<%= prd.getProductName() %>',<%= prd.getPrice() %>)" class="btn">
+                        <input type="submit" value="Thêm vào giỏ hàng" onclick="add_to_cart(<%= prdsss.getProductId() %>,'<%= prdsss.getProductName() %>',<%= prdsss.getPrice() %>)" class="btn">
                     </div>
-                </form><% } %>            
+                </form><% } i++;%>
+                <% if(i<prds.size()) { Product prdsss = ProductDao.getPro(prds.get(i).getId()); 
+                %>
+                <form class="col-4 contentProduct" name="product"  action="CartServlet" method="post">
+                    <div class="" onclick="location.assign('product-details.jsp?prdID_item=<%= prdsss.getProductId() %>');">
+                        <img src="<%= prdsss.getPicture() %>" alt="">
+                        <h4><%= prdsss.getProductName() %></h4>
+                        <div class="rating">
+                            <i class="fa fa-star" ></i>
+                            <i class="fa fa-star" ></i>
+                            <i class="fa fa-star" ></i>
+                            <i class="fa fa-star" ></i>
+                            <i class="fa fa-star-o" ></i>
+                        </div>
+                        <p><%= prdsss.getPrice() %></p>
+                        <input type="hidden" name="prdID_item" value="<%= prdsss.getProductId()%>"><!-- comment -->
+                        <input type="hidden" name="prdName_item" value="<%= prdsss.getProductName()%>"><!-- comment -->
+                        <input type="hidden" name="prdPrice_item" value="<%= prdsss.getPrice()%>"><!-- comment -->
+                        <input type="hidden" name="action" value="add">
+                    </div> 
+                    <div class="overlay">
+                        <input type="submit" value="Thêm vào giỏ hàng" onclick="add_to_cart(<%= prdsss.getProductId() %>,'<%= prdsss.getProductName() %>',<%= prdsss.getPrice() %>)" class="btn">
+                    </div>
+                </form><% }%>         
             </div>
         <%if(i==3) break;%>
         <% }

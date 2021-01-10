@@ -29,23 +29,23 @@
     <body>
         <div class="divchua" id="customer">
             <div class="dashbo" id="d1">
-                <p>Customer</p>
+                <p>Khách hàng</p>
             </div>
             <div class="dashbosr" >
                 <p id="time">???</p>
             </div>
             <div class="dashbosl"  >
-                 <p >Customer<button class="minibtn" id="btncus" onclick="miniTable('customertable','btnCus')">-</button></p>                    
+                 <p >Khách hàng<button class="minibtn" id="btncus" onclick="miniTable('customertable','btnCus')">-</button></p>                    
             </div>
             <div class="searhbar">
-            <button class="btn" onclick="openForm('form10');FillForm10();"><i class="fas fa-user-plus"></i></button>
+            <button class="btn" onclick="openForm('form10');"><i class="fas fa-user-plus"></i></button>
             <button class="btn" id="customerrefresh" value="Refresh"><i class="fas fa-sync" ></i></button> 
             <input id="cussearchbar" type="text" class="myInput" onkeyup="FilterTable('tablecus','cussearchbar','customerrefresh','cusselect')" placeholder="Search for names.." title="Type in a name">
             <select class="myselect" id="cusselect">
-                <option value="0" >CID</option>
-                <option value="1" selected>Name</option>
+                <option value="0" >ID</option>
+                <option value="1" selected>Tên</option>
                 <option value="3" >Email</option>
-                <option value="4" >Phone</option>
+                <option value="4" >Điện thoại</option>
                 <option value="5" >Add</option>
             </select>
             </div>
@@ -54,12 +54,12 @@
             <div id="customertable" class="divtable">                    
                 <table id="tablecus" class="tabledis">
                     <tr>
-                        <th>CID</th>
-                        <th>Name</th>
-                        <th>Address</th>
-                        <th>Phone</th>
+                        <th>ID</th>
+                        <th>Tên</th>
+                        <th>Địa chỉ</th>
+                        <th>Điện thoại</th>
                         <th>Email</th> 
-                        <th>Sex</th> 
+                        <th>Giới tính</th> 
                         <th colspan="2">Option</th>
                     </tr>
                     <%               

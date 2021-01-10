@@ -32,13 +32,13 @@
     <body>
         <div class="divchua" id="account">
             <div class="dashbo" id="d1">
-                <p>Account</p>
+                <p>Tài khoản</p>
             </div>
             <div class="dashbosr" >
                 <p id="time">???</p>
             </div>
             <div class="dashbosl"  >
-                 <p >Employee Account<button class="minibtn" id="btnacc" onclick="miniTable('acctable','btnacc')">-</button></p>                    
+                 <p >Tài khoản nhân viên<button class="minibtn" id="btnacc" onclick="miniTable('acctable','btnacc')">-</button></p>                    
             </div>   
             <div class="searhbar">
                 <button class="btn" id="accrefresh" value="Refresh"><i class="fas fa-sync" ></i></button> 
@@ -47,7 +47,7 @@
                     <option value="0" >ID</option>
                     <option value="1" selected>UserName</option>
                     <option value="3">UserID</option>
-                    <option value="4">Name</option>
+                    <option value="4">Tên</option>
                 </select>
             </div>
             <div id="acctable" class="divtable">                    
@@ -57,8 +57,8 @@
                         <th>User-Name</th>
                         <th>Password</th>
                         <th>User-ID</th>
-                        <th>Name</th>
-                        <th>Sex</th>
+                        <th>Tên</th>
+                        <th>Giới tính</th>
                         <th colspan="2">Option</th>
                     </tr>
                     <%               
@@ -88,25 +88,25 @@
                 </table>
             </div>
             <div class="dashbosl"  >
-                 <p >Create Employee Account<button class="minibtn" id="btnempnoacc" onclick="miniTable('empnoacctable','btnempnoacc')">-</button></p>                    
+                 <p >Tạo tài khoản nhân viên<button class="minibtn" id="btnempnoacc" onclick="miniTable('empnoacctable','btnempnoacc')">-</button></p>                    
             </div>   
             <div class="searhbar">
                 <button class="btn" id="empnoaccrefresh" value="Refresh"><i class="fas fa-sync" ></i></button> 
                 <input id="empnoaccsearchbar" type="text" class="myInput" onkeyup="FilterTable('tableempnoacc','empnoaccsearchbar','empnoaccrefresh','empnoaccselect')" placeholder="Search for names.." title="Type in a name">
                 <select class="myselect" id="empnoaccselect">
                     <option value="0" >ID</option>
-                    <option value="1" selected>Name</option>
+                    <option value="1" selected>Tên</option>
                 </select>
             </div>
             <div id="empnoacctable" class="divtable">                    
                 <table id="tableempnoacc" class="tabledis">
                     <tr>
                         <th>ID</th>
-                        <th>Name</th>
-                        <th>Sex</th>
+                        <th>Tên</th>
+                        <th>Giới tính</th>
                         <th>E-mail</th>
-                        <th>Phone</th>
-                        <th>Address</th>
+                        <th>Điện thoại</th>
+                        <th>Địa chỉ</th>
                         <th colspan="1">Option</th>
                     </tr>
                     <%               
@@ -135,7 +135,7 @@
                 </table>
             </div>
             <div class="dashbosl"  >
-                 <p >Customer Account<button class="minibtn" id="btnacccus" onclick="miniTable('acccustable','btnacccus')">-</button></p>                    
+                 <p >Tài khoản khách hàng<button class="minibtn" id="btnacccus" onclick="miniTable('acccustable','btnacccus')">-</button></p>                    
             </div>   
             <div class="searhbar">
                 <button class="btn" id="acccusrefresh" value="Refresh"><i class="fas fa-sync" ></i></button> 
@@ -143,7 +143,7 @@
                 <select class="myselect" id="acccusselect">
                     <option value="0" >ID</option>
                     <option value="1" selected>User-Name</option>
-                    <option value="4" selected>Name</option>
+                    <option value="4" selected>Tên</option>
                 </select>
             </div>
             <div id="acccustable" class="divtable">                    
@@ -153,11 +153,11 @@
                         <th>User-Name</th>
                         <th>Password</th>
                         <th>User-ID</th>
-                        <th>Name</th>
-                        <th>Sex</th>
+                        <th>Tên</th>
+                        <th>Giới tính</th>
                         <th>Email</th>
-                        <th>Phone</th>
-                        <th>Address</th>
+                        <th>Điện thoại</th>
+                        <th>Địa chỉ</th>
                         <th colspan="1">Option</th>
                     </tr>
                     <%               

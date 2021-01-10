@@ -24,13 +24,19 @@
         <script src="javascript/jquery-shipper-page.js" type="text/javascript"></script>
         <script src="javascript/jquery.tablePagination.js" type="text/javascript"></script>
         <link href='https://fonts.googleapis.com/css?family=Fredoka One' rel='stylesheet'>
+         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
         <!------------------------------------------>
-        <title>Shipper Page</title>
+        <title>Shipper</title>
         
     </head>
     <body>
         <c:if test="${(sessionScope.account==null) || (sessionScope.account.type=='customer')}">
             <c:redirect url="login-employee"></c:redirect>
+        </c:if>
+         <c:if test="${(sessionScope.account==null) || (sessionScope.account.type=='admin')}">
+            <c:redirect url="index.jsp"></c:redirect>
         </c:if>
         <%
                 Employee emp = (Employee)request.getSession().getAttribute("userInfo");
@@ -43,14 +49,33 @@
         <input type="hidden" id="shipperid" value="<%=emp.getEmployeeId()      %>">
         <div class="topnav" >  
             <a> <i class="fas fa-sign-out-alt"></i></a>
-            <a style="margin-right: 23.5%;font-family: Showcard Gothic,serif;width: 30%">Shipping Order</a>
+            <a style="margin-right: 23.5%;font-family: Showcard Gothic,serif;width: 30%">Trang Shipper</a>
         </div>
-        <nav>
+<!--        <nav>
             <button title="Visit Dashboard" id="dashboard"><i class="fas fa-home"></i></button>
             <button title="View Account"  id = 'acc-setting'><i class="fas fa-key"></i></button>
             <button title="View Order" id = 'order-view'><i class="fas fa-tasks"></i></button>
             <button title="Logout" ><i class="fas fa-sign-out-alt"></i></button>
-        </nav>
+        </nav>-->
+        <div id="viewport">
+            <div id="sidebar">
+                <header>
+                    <a href="#" onclick="MenuOPCS()"><i class="fas fa-angle-double-left" id="icon-nav"></i></a>
+                </header>
+                <ul class="nav" id="navlist" >
+                    <li>
+                        <a href="#" id="my-acc">
+                            <i class="fas fa-home"></i> My info
+                        </a>
+                    </li>
+                    <li>
+                        <a href="logout">
+                            <i class="fas fa-sign-out-alt"></i> Đăng xuất
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
         <div class="divcontent" id="home" > 
             <div class="divchua" id="employee">
                 <div class="dashbo" id="d1">
@@ -63,7 +88,7 @@
                     <p style="font-family: sans-serif"> Nhân viên đang đăng nhập : <%=emp.getEmployeeName()     %></p>
                 </div>
                 <div class="dashbosl" id='employeetag' >
-                    <p >My Order<button class="minibtn" id="btnAdd" onclick="miniTable('myordertable','btnAdd')">-</button></p>                    
+                    <p >Đơn hàng đang giao<button class="minibtn" id="btnAdd" onclick="miniTable('myordertable','btnAdd')">-</button></p>                    
                 </div>
                 <div class="searhbar">
                     <button class="btn" id="myorder-refresh" value="Refresh"><i class="fas fa-sync" ></i></button> 
@@ -76,12 +101,12 @@
                     <table id="tablemyorder" class="tabledis">
                         <tr>
                             <th>OrderID</th>
-                            <th>Customer Name</th>
-                            <th>Order Date</th>
-                            <th>Required Date</th>
-                            <th>Address</th>
-                            <th>Phone</th>
-                            <th >Product Info</th>
+                            <th>Tên khách</th>
+                            <th>Ngày đặt</th>
+                            <th>Ngày yêu cầu</th>
+                            <th>Địa chỉ</th>
+                            <th>Điện thoại</th>
+                            <th >DS sản phẩm</th>
                             <th colspan="2">Option</th>
                         </tr>
                         <%               
@@ -139,7 +164,7 @@
                     <!------------------------------------------------------------------------------------------>
                 
                 <div class="dashbosl" id='employeetag' >
-                    <p >List of Order<button class="minibtn" id="btnAd" onclick="miniTable('ordertable','btnAd')">-</button></p>                    
+                    <p >Đơn hàng có thể nhận<button class="minibtn" id="btnAd" onclick="miniTable('ordertable','btnAd')">-</button></p>                    
                 </div>
                 <div class="searhbar">
                     <button class="btn" id="new-order-refresh" value="Refresh"><i class="fas fa-sync" ></i></button> 
@@ -152,12 +177,12 @@
                     <table id="tableorder" class="tabledis">
                         <tr>
                             <th>OrderID</th>
-                            <th>Customer Name</th>
-                            <th>Order Date</th>
-                            <th>Required Date</th>
-                            <th>Address</th>
-                            <th>Phone</th>
-                            <th colspan="1">Product Info</th>
+                            <th>Tên khách</th>
+                            <th>Ngày đặt</th>
+                            <th>Ngày yêu cầu</th>
+                            <th>Địa chỉ</th>
+                            <th>Điện thoại</th>
+                            <th colspan="1">DS sản phẩm</th>
                             <th>Option</th>
                         </tr>
                         <%               
@@ -214,7 +239,7 @@
                 </div> 
                     <!----------------------------------------------------------------------------------->
                 <div class="dashbosl" id='employeetag' >
-                    <p >Order History<button class="minibtn" id="btnAddd" onclick="miniTable('orderhistable','btnAddd')">-</button></p>                    
+                    <p >Lịch sử giao hàng<button class="minibtn" id="btnAddd" onclick="miniTable('orderhistable','btnAddd')">-</button></p>                    
                 </div>
                 <div class="searhbar">
                     <button class="btn" id="old-order-refresh" value="Refresh"><i class="fas fa-sync" ></i></button> 
@@ -227,13 +252,13 @@
                     <table id="tablehisorder" class="tabledis">
                         <tr>
                             <th>OrderID</th>
-                            <th>Customer Name</th>
-                            <th>Order Date</th>
-                            <th>Required Date</th>
-                            <th>Shipped Date</th>
-                            <th>Address</th>
-                            <th>Phone</th>
-                            <th colspan="1">Product Info</th>
+                            <th>Tên khách</th>
+                            <th>Ngày đặt</th>
+                            <th>Ngày yêu cầu</th>
+                            <th>Ngày giao</th>
+                            <th>Địa chỉ</th>
+                            <th>Điện thoại</th>
+                            <th colspan="1">DS sản phẩm</th>
                         </tr>
                         <%               
                         try {          

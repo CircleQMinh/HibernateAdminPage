@@ -29,13 +29,13 @@
     <body>        
         <div class="divchua" id="bank">
             <div class="dashbo" id="d1">
-                <p>Banking</p>
+                <p>Nạp tiền</p>
             </div>
             <div class="dashbosr" >
                 <p id="time">???</p>
             </div>
             <div class="dashbosl" id='employeetag' >
-                <p >Banking<button class="minibtn" id="btnbk" onclick="miniTable('bankdiv','btnbk')">-</button></p>                    
+                <p >Nạp tiền<button class="minibtn" id="btnbk" onclick="miniTable('bankdiv','btnbk')">-</button></p>                    
             </div>
             <div class="searhbar">
                 <!--quan trọng-->
@@ -44,7 +44,7 @@
             <input id="banksearchbar" type="text" class="myInput" onkeyup="FilterTable('banktable','banksearchbar','bankrefresh','bankselect')" placeholder="Search for names.." title="Type in a name">
             <select class="myselect" id="bankselect">
                 <option value="0" >ID</option>
-                <option value="1" selected>Name</option>
+                <option value="1" selected>Tên</option>
             </select>
             </div>
 
@@ -52,12 +52,12 @@
                 <table id="banktable" class="tabledis">
                     <tr>
                         <th>ID</th>
-                        <th>Name</th>
-                        <th>Sex</th>
+                        <th>Tên</th>
+                        <th>Giới tính</th>
                         <th>E-mail</th>
-                        <th>Phone</th>
-                        <th>Address</th> 
-                        <th>Money</th>
+                        <th>Điện thoại</th>
+                        <th>Địa chỉ</th> 
+                        <th>Số dư tài khoản</th>
                         <th >Option</th>
                     </tr>
                     <%               

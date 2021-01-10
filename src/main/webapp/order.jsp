@@ -23,13 +23,13 @@
     <body>
         <div class="divchua" id="order">
             <div class="dashbo" id="d1">
-                <p>Order</p>
+                <p>Đơn hàng</p>
             </div>
             <div class="dashbosr" >
                 <p id="time">???</p>
             </div>
             <div class="dashbosl" id='employeetag' >
-                <p >Unchecked Order <button class="minibtn" id="btnUnck" onclick="miniTable('ordertable','btnUnck')">-</button></p>                    
+                <p >Đơn hàng chưa duyệt <button class="minibtn" id="btnUnck" onclick="miniTable('ordertable','btnUnck')">-</button></p>                    
             </div>
             <div class="searhbar">
                 <button class="btn" id="orderrefresh" value="Refresh"><i class="fas fa-sync" ></i></button> 
@@ -41,13 +41,13 @@
                 <table id="tableorder" class="tabledis">
                     <tr>
                         <th>OrderID</th>
-                        <th>Customer Name</th>
-                        <th>Order Date</th>
-                        <th>Required Date</th>
-                        <th>Address</th>
-                        <th>Phone</th>
-                        <th>Payment Method</th>
-                        <th>Order Info</th>
+                        <th>Tên khách</th>
+                        <th>Ngày đặt</th>
+                        <th>Ngày yêu cầu</th>
+                        <th>Địa chỉ</th>
+                        <th>Điện thoại</th>
+                        <th>Thanh toán</th>
+                        <th>DS sản phẩm</th>
                         <th colspan="2">Option</th>
                     </tr>
                     <%               
@@ -107,7 +107,7 @@
                 
 <!----------------------------------------------------------------------------------------------------------------->
             <div class="dashbosl" id='employeetag' >
-                <p >Checked Order <button class="minibtn" id="btnCk" onclick="miniTable('ordertableCk','btnCk')">-</button></p>                    
+                <p >Đơn hàng đã duyệt<button class="minibtn" id="btnCk" onclick="miniTable('ordertableCk','btnCk')">-</button></p>                    
             </div>
             <div class="searhbar">
                 <button class="btn" id="orderrefreshCk" value="Refresh"><i class="fas fa-sync" ></i></button> 
@@ -119,13 +119,13 @@
                 <table id="tableorderCk" class="tabledis">
                     <tr>
                         <th>OrderID</th>
-                        <th>Customer Name</th>
-                        <th>Order Date</th>
-                        <th>Required Date</th>
-                        <th>Address</th>
-                        <th>Phone</th>
-                        <th>Payment Method</th>
-                        <th>Order Info</th>
+                        <th>Tên khách</th>
+                        <th>Ngày đặt</th>
+                        <th>Ngày yêu cầu</th>
+                        <th>Địa chỉ</th>
+                        <th>Điện thoại</th>
+                        <th>Thanh toán</th>
+                        <th>DS sản phẩm</th>
                         <th colspan="2">Option</th>
                     </tr>
                     <%               
@@ -187,7 +187,7 @@
 
 <!----------------------------------------------------------------------------------------------------------------->
             <div class="dashbosl" id='employeetag' >
-                <p >Delivering Order <button class="minibtn" id="btnDv" onclick="miniTable('ordertableDv','btnDv')">-</button></p>                    
+                <p >Đơn hàng đang giao<button class="minibtn" id="btnDv" onclick="miniTable('ordertableDv','btnDv')">-</button></p>                    
             </div>
             <div class="searhbar">
                 <button class="btn" id="orderrefreshDv" value="Refresh"><i class="fas fa-sync" ></i></button> 
@@ -199,14 +199,14 @@
                 <table id="tableorderDv" class="tabledis">
                     <tr>
                         <th>OrderID</th>
-                        <th>Customer Name</th>
-                        <th>Order Date</th>
-                        <th>Required Date</th>
-                        <th>Address</th>
-                        <th>Phone</th>
-                        <th>Payment Method</th>
-                        <th>Shipper Name</th>
-                        <th>Order Info</th>
+                        <th>Tên khách</th>
+                        <th>Ngày đặt</th>
+                        <th>Ngày yêu cầu</th>
+                        <th>Địa chỉ</th>
+                        <th>Điện thoại</th>
+                        <th>Thanh toán</th>
+                        <th>Tên Shipper</th>
+                        <th>DS sản phẩm</th>
                         <th>Option</th>
                     </tr>
                     <%               
@@ -262,7 +262,7 @@
                 </table>
             </div>
             <div class="dashbosl" id='employeetag' >
-                <p >Order History <button class="minibtn" id="btnHis" onclick="miniTable('ordertableHis','btnHis')">-</button></p>                    
+                <p >Lịch sử giao hàng<button class="minibtn" id="btnHis" onclick="miniTable('ordertableHis','btnHis')">-</button></p>                    
             </div>
             <div class="searhbar">
                 <button class="btn" id="orderrefreshHis" value="Refresh"><i class="fas fa-sync" ></i></button> 
@@ -274,15 +274,15 @@
                 <table id="tableorderHis" class="tabledis">
                     <tr>
                         <th>OrderID</th>
-                        <th>Customer Name</th>
-                        <th>Order Date</th>
-                        <th>Required Date</th>
-                        <th>Shipped Date</th>
-                        <th>Address</th>
-                        <th>Phone</th>
-                        <th>Payment Method</th>
-                        <th>Shipper Name</th>
-                        <th>Order Info</th>
+                        <th>Tên khách</th>
+                        <th>Ngày đặt</th>
+                        <th>Ngày yêu cầu</th>
+                        <th>Ngày giao</th>
+                        <th>Địa chỉ</th>
+                        <th>Điện thoại</th>
+                        <th>Thanh toán</th>
+                        <th>Tên Shipper</th>
+                        <th>DS sản phẩm</th>
                         <th>Option</th>
                     </tr>
                     <%               

@@ -1,92 +1,11 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
 
-  
-/*  .container {
-    background: #b2c8cf;
-    min-height: 100vh;
-    font-family: Montserrat, sans-serif;
-  }
-  
-*/  nav a {
-      font-size: 40px;
-      color: #fff;
-      text-decoration: none;
-      padding: 20px;
-      text-align: center;
-  }
-   nav button {
-      font-size: 24px;
-      color: #422C73;
-      text-decoration: none;
-      padding: 20px;
-      text-align: center;
-      background-color: #333;
-       border: 0;
-        background: none;
-        box-shadow: none;
-        border-radius: 0px;
-  }
-  nav {
-      position: fixed;
-      left: 0;
-      z-index: 50;
-      display: flex;
-      justify-content: space-around;
-      flex-direction: column;
-      height: 100vh;
-      background: #b4b4de;
-      width: 7%;
-      border: 3px #333 solid;
-  }
-  
-  section {
-      position: absolute;
-      top: 0;
-      height: 100vh;
-      width: 0;
-      opacity: 0;
-      transition: all ease-in .5s;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #b4b4de;
-  } /*
-  
-  section h1 {
-      color: #fff;
-      font-size: 50px;
-      text-transform: uppercase;
-      opacity: 0;
-  }
-  
-   Styles applied on trigger 
-  section:target {
-      opacity: 1;
-      position: absolute;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 10;
-      margin-top: 50px;
-  }
-  
-  section:target h1 {
-      opacity: 0;
-      animation: 2s ;
-  }*/
-  
-/* --------------------------------------------------------------- */
+
   .topnav {
   overflow: hidden;
-  background-color:  #b4b4de;
+  background-color:  #263238;
   width: 100%;
   position: fixed;
-  height: 8%;
+  height: 52px;
   border: 4px #333 solid;
 }
 
@@ -121,9 +40,9 @@
   color: white;
 }
 .divcontent{
-    margin-left: 7%;
+    margin-left: 12%;
     border: 1px black solid;
-    width: 93%;
+    width: 88%;
     display: block;
 }
 
@@ -133,8 +52,8 @@
 /*    border: 1px black solid;*/
     flex-wrap:wrap;    
     width: 100%;
-    background-color: #869e8d;
-    margin-top: 5%;
+    background-color: #5d7987;
+    margin-top: 52px;
 }
 .divcon{
     width: 49.8%;
@@ -155,7 +74,7 @@
     background-color: turquoise;
 }
 .dashbo{
-    font-family: Fredoka One;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 40px;
     width: 100%;
     height: 10%;
@@ -165,17 +84,18 @@
 
 }
 .dashbosr{
-    font-family: Fredoka One;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
    font-size: 20px;
    width: 100%;
    height: 50%;
    background-color: #bacbcf;
    text-align: right;
    margin-bottom: 1%;   
+   padding-top: 5px;
 }
 
 .dashbosl{
-    font-family: Fredoka One;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
    font-size: 20px;
    width: 100%;
    height: 50%;
@@ -212,14 +132,14 @@ html {
 
 .card{
     display: inline-block;
-    width: 31.3%;
+    width: 22.7%;
     height: 50%;
-    color:white;
+    color:  #333;
     padding: 30px;
     text-align: center;
-    background-color: #444;
+    background-color: #bacbcf;
     border: 3px red solid;
-    font-family: Fredoka One;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     margin-right: 1%;
     margin-left: 1%;
     margin-bottom: 1%;
@@ -241,6 +161,11 @@ html {
     background-color: #444;
     color: white;
     cursor: pointer;
+}
+.card:hover{
+    background-color: #5d7987;
+    color: white;
+    
 }
 .card a:hover{
     background-color: #c7fcd6;
@@ -270,7 +195,7 @@ html {
 .tabledis th{
     padding-top: 12px;
     padding-bottom: 12px;
-    text-align: left;
+    text-align: center;
     background-color: #4CAF50;
     color: white;
 }
@@ -347,7 +272,7 @@ font-family: Arial, Helvetica, sans-serif;
 font-size: 12px;
 display: none;
 position: fixed;
-bottom: 3%;
+bottom: 1%;
 right: 2%;
 border: 3px solid #f1f1f1;
 z-index: 9;
@@ -424,7 +349,7 @@ opacity: 0.8;
 .tablePagination {
     margin-top: 1em;
     right:5%;
-    font-family: Fredoka One;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 20px;
     width: 100%;
     background-color: #bacbcf;
@@ -497,8 +422,8 @@ border: 5px solid #f1f1f1;
     height: 50px;
 }
 .productimgupload{
-    width: 100px;
-    height: 100px;
+    width: 50px;
+    height: 50px;
 }
 
 .divformupanh {
@@ -546,4 +471,72 @@ font-family: Arial, Helvetica, sans-serif;
 .divformupanh h1 {
 text-align:center;
 font-size:18px;
+}
+
+#viewport {
+  padding-left: 250px;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#content {
+  width: 100%;
+  position: relative;
+  margin-right: 0;
+}
+
+/* Sidebar Styles */
+
+#sidebar {
+  z-index: 1000;
+  position: fixed;
+  left: 250px;
+  width: 12%;
+  height: 100%;
+  margin-left: -250px;
+  overflow-y: auto;
+  background: #37474F;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#sidebar header {
+  background-color: #263238;
+  font-size: 20px;
+  line-height: 52px;
+  text-align: center;
+}
+
+#sidebar header a {
+  color: #fff;
+  display: block;
+  text-decoration: none;
+}
+
+#sidebar header a:hover {
+  color: #fff;
+}
+
+
+#sidebar .nav a{
+  background: none;
+  border-bottom: 1px solid #455A64;
+  color: #CFD8DC;
+  font-size: 14px;
+  padding: 16px 24px;
+  text-align: start;
+}
+
+#sidebar .nav a:hover{
+  background: none;
+  color: #2dd827;
+}
+
+#sidebar .nav a i{
+  margin-right: 16px;
+  width: auto;
 }

@@ -98,6 +98,11 @@ p{
     border: none;
     outline: none;
 }
+.btn:hover{
+    cursor:pointer;
+}
+
+
 
 .header{
     background: radial-gradient(#fff,#ffd6d6);
@@ -477,6 +482,27 @@ th:last-child{
 }
 .cart-quantity{
     width: auto;
+}
+#prdQuantity_item{
+    width: 100px;
+    display: block;
+    height: 35px;
+    font-size: 25px;
+}
+.imgcard{
+    
+}
+.cart-day-ne{
+    position: relative;
+    
+}
+.cart-day-ne span{
+    position: absolute;
+    top: -11px;
+    left: 22px;
+    background: #ffffff;
+    color: red;
+    padding: 2px;
 }
 /*---------------- media for menu -----------*/
 @media screen and (max-width:1000px){

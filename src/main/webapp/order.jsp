@@ -65,30 +65,7 @@
                                 <td><%= ord.getOrderPhone() %></td>
                                 <td><%= ord.getPaymentType()            %></td>
                                 <td>
-                                    <table class="tablediss">
-                                        <%
-                                            try 
-                                            {
-                                                int j=0;
-                                                List<?> prolist = OrderDAO.getProductListofOrder(ord.getOrderId());
-                                                while(j<prolist.size())
-                                                {
-                                                    Object[] row = (Object[])prolist.get(j);
-                                                %>
-                                                <tr>
-                                                    <td><%=row[1]%></td>
-                                                    <td><img src="<%=row[3]%>" class="productimg"></td>
-                                                    <td><%=row[4]%></td>
-                                                    <%j++;%>
-                                                </tr>
-                                                <% }
-                                            }
-                                            catch(Exception e)
-                                            {
-
-                                            }
-                                        %>
-                                    </table>
+                                    <button class="btn" id="ord_info"><i class="fas fa-gifts"></i></button>
                                 </td>
                                 <td><button class="btn" id="ord_edit"><i class="fas fa-edit"></i></button></td>
                                 <td><button id ="ord_del" class="btn" style=" background-color: red;"><i class="fa fa-trash"></i></button></td>
@@ -143,30 +120,7 @@
                                 <td><%= ord.getOrderPhone() %></td>
                                 <td><%= ord.getPaymentType()            %></td>
                                 <td>
-                                    <table class="tablediss">
-                                        <%
-                                            try 
-                                            {
-                                                int j=0;
-                                                List<?> prolist = OrderDAO.getProductListofOrder(ord.getOrderId());
-                                                while(j<prolist.size())
-                                                {
-                                                    Object[] row = (Object[])prolist.get(j);
-                                                %>
-                                                <tr>
-                                                    <td><%=row[1]%></td>
-                                                    <td><img src="<%=row[3]%>" class="productimg"></td>
-                                                    <td><%=row[4]%></td>
-                                                    <%j++;%>
-                                                </tr>
-                                                <% }
-                                            }
-                                            catch(Exception e)
-                                            {
-
-                                            }
-                                        %>
-                                    </table>
+                                    <button class="btn" id="ord_info_Ck"><i class="fas fa-gifts"></i></button>
                                 </td>
                                 <td><button class="btn" id="ord_edit_Ck"><i class="fas fa-edit"></i></button></td>
                                 <td><button id ="ord_del_Ck" class="btn" style=" background-color: red;"><i class="fa fa-trash"></i></button></td>
@@ -225,30 +179,7 @@
                                 <td><%= ord.getPaymentType()            %></td>
                                 <td><%= emp.getEmployeeName() %></td>
                                 <td>
-                                    <table class="tablediss">
-                                        <%
-                                            try 
-                                            {
-                                                int j=0;
-                                                List<?> prolist = OrderDAO.getProductListofOrder(ord.getOrderId());
-                                                while(j<prolist.size())
-                                                {
-                                                    Object[] row = (Object[])prolist.get(j);
-                                                %>
-                                                <tr>
-                                                    <td><%=row[1]%></td>
-                                                    <td><img src="<%=row[3]%>" class="productimg"></td>
-                                                    <td><%=row[4]%></td>
-                                                    <%j++;%>
-                                                </tr>
-                                                <% }
-                                            }
-                                            catch(Exception e)
-                                            {
-
-                                            }
-                                        %>
-                                    </table>
+                                    <button class="btn" id="ord_info_Dv"><i class="fas fa-gifts"></i></button>
                                 </td>
                                 <td><button id ="ord_del_Dv" class="btn" style=" background-color: red;"><i class="fa fa-trash"></i></button></td>
                             </tr>                   
@@ -302,30 +233,7 @@
                                 <td><%= ord.getPaymentType()            %></td>
                                 <td><%= emp.getEmployeeName() %></td>
                                 <td>
-                                    <table class="tablediss">
-                                        <%
-                                            try 
-                                            {
-                                                int j=0;
-                                                List<?> prolist = OrderDAO.getProductListofOrder(ord.getOrderId());
-                                                while(j<prolist.size())
-                                                {
-                                                    Object[] row = (Object[])prolist.get(j);
-                                                %>
-                                                <tr>
-                                                    <td><%=row[1]%></td>
-                                                    <td><img src="<%=row[3]%>" class="productimg"></td>
-                                                    <td><%=row[4]%></td>
-                                                    <%j++;%>
-                                                </tr>
-                                                <% }
-                                            }
-                                            catch(Exception e)
-                                            {
-
-                                            }
-                                        %>
-                                    </table>
+                                    <button class="btn" id="ord_info_His"><i class="fas fa-gifts"></i></button>
                                 </td>
                                 <td><button id ="ord_del_His" class="btn" style=" background-color: red;"><i class="fa fa-trash"></i></button></td>
                             </tr>                   

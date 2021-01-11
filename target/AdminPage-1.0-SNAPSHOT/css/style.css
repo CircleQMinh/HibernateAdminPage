@@ -489,6 +489,21 @@ th:last-child{
     height: 35px;
     font-size: 25px;
 }
+.imgcard{
+    
+}
+.cart-day-ne{
+    position: relative;
+    
+}
+.cart-day-ne span{
+    position: absolute;
+    top: -11px;
+    left: 22px;
+    background: #ffffff;
+    color: red;
+    padding: 2px;
+}
 /*---------------- media for menu -----------*/
 @media screen and (max-width:1000px){
     nav ul li .btn-login,nav ul li .btn-register{

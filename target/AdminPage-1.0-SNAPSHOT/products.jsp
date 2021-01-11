@@ -113,7 +113,7 @@
                         </c:choose>
                     </ul>
                 </nav>
-                <a href="cart.jsp" ><img src="images/cart.png" width="30px" height="30px" class="imgcard"><span class="cart-item" >(0)</span></a>
+                <a href="cart.jsp" class="cart-day-ne"><img src="images/cart.png" width="30px" height="30px" class="imgcard"><span class="cart-item" >0</span></a>
                 <img src="images/menu.png" class="menu-icon" onclick="menutoggle()">
             </div>
         </div>
@@ -125,13 +125,6 @@
                     <input type="text" name="search-product" placeholder="Search" class="txtSearch">
                     <input type="submit" class="btn" value="Tìm">
                 </form>
-                <select name="" id="">
-                    <option value="">Default Shorting</option>
-                    <option value="">Short by price</option>
-                    <option value="">Short by popularity</option>
-                    <option value="">Short by rating</option>
-                    <option value="">Short by sale</option>
-                </select>
             </div>
             <%
                 List<Product> prd = null;

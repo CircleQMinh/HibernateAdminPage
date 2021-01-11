@@ -331,6 +331,7 @@ function MenuOPCS()
     {
         document.getElementById('navlist').style.display='none';
         document.getElementById('sidebar').style.background='000';
+        document.getElementById("sidebar").style.height='52px';
         document.getElementById('home').style.width='100%';
         document.getElementById('home').style.marginLeft ='0%';
         document.getElementById("icon-nav").className ='fas fa-angle-double-right';
@@ -339,6 +340,7 @@ function MenuOPCS()
     else{
         document.getElementById('navlist').style.display='block';
         document.getElementById('sidebar').style.background='#37474F';
+        document.getElementById("sidebar").style.height='100%';
         document.getElementById('home').style.width='88%';
         document.getElementById('home').style.marginLeft ='12%';
         document.getElementById("icon-nav").className ='fas fa-angle-double-left';

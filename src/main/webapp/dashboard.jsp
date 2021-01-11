@@ -61,7 +61,7 @@
     <c:if test="${(sessionScope.account==null) || !(sessionScope.account.type=='admin')}">
         <c:redirect url="login-admin"></c:redirect>
     </c:if>
-        <div class="topnav" >
+        <div class="topnav" style="z-index: 0;">
             
             <a href="logout"> <i class="fas fa-sign-out-alt"></i></a>
             <a style="margin-right: 23.5%;font-family: Showcard Gothic,serif;width: 30%">Administrator </a>
@@ -82,7 +82,7 @@
         <div id="viewport">
             <div id="sidebar">
                 <header>
-                    <a href="#" onclick="MenuOPCS()"><i class="fas fa-angle-double-left" id="icon-nav"></i></a>
+                    <a href="#" onclick="MenuOPCS()" id="menu-nav"><i class="fas fa-angle-double-left" id="icon-nav"></i></a>
                 </header>
                 <ul class="nav" id="navlist" >
                     <li>
@@ -440,6 +440,9 @@
                 <button type="button" id="bank_add_money"><strong>Add</strong></button>   
                 <button type="button" style="background-color: red;" onclick="closeForm('bankform')" ><strong>Close</strong></button>        
             </form>  
+        </div>
+        <div class="divorderinfo" id="order-info-form" >
+
         </div>
 <!--        // thông báo tải trang -->
         <div class="divwait" id="formwait" >

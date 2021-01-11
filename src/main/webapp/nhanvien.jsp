@@ -213,6 +213,9 @@
                 <button type="button" style="background-color: red;" onclick="closeForm('bankform')" ><strong>Close</strong></button>        
             </form>  
         </div>
+        <div class="divorderinfo" id="order-info-form" >
+
+        </div>
         <div class="divwait" id="formwait" >
 
         </div>

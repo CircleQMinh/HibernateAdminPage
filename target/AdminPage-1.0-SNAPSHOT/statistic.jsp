@@ -51,14 +51,14 @@
             <div class="dashbosl"  >
                 <p >Statistic<button class="minibtn" id="btnacc" onclick="miniTable('statable','btnacc')">-</button></p>                    
             </div>
-            <div class="divtable" style="margin-bottom:  2%;">  
+            <div class="divtable" style="margin-bottom:  2%;margin-left: 2%;">  
                 <label ><strong>From</strong></label>
                 <input type="date" id="from-date" value="2020-01-01">
                 <label ><strong>To</strong></label>
                 <input type="date" id="to-date">
                 <button class="btn" id="reload-sta">Reload</button>
             </div>
-            <div class="divtable" id="sta-gra" style="background-color: #4CAF50;border: 2px #000 solid">
+            <div class="divtable" id="sta-gra" style="background-color: #4CAF50;border: 2px #000 solid;margin-left: 2%">
                 
             </div>
             <div id="statable" class="divtable" style="display: none;">  

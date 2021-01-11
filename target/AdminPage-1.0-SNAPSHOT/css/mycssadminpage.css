@@ -52,7 +52,7 @@
 /*    border: 1px black solid;*/
     flex-wrap:wrap;    
     width: 100%;
-    background-color: #5d7987;
+    background-color: #7ca7eb;
     margin-top: 52px;
 }
 .divcon{
@@ -62,7 +62,7 @@
     margin:1px;
 }
 #d1{
-   background-color: #bacbcf;;
+   background-color: #e1eaf7;;
 }
 #d2{
     background-color:#F2E527;
@@ -78,7 +78,7 @@
     font-size: 40px;
     width: 100%;
     height: 10%;
-    background-color: #bacbcf;
+    background-color: #e1eaf7;
     text-align: center;
     margin-bottom: 1%;
 
@@ -88,7 +88,7 @@
    font-size: 20px;
    width: 100%;
    height: 50%;
-   background-color: #bacbcf;
+   background-color: #e1eaf7;
    text-align: right;
    margin-bottom: 1%;   
    padding-top: 5px;
@@ -99,7 +99,7 @@
    font-size: 20px;
    width: 100%;
    height: 50%;
-   background-color: #bacbcf;
+   background-color: #e1eaf7;
    text-align: left;
    margin-bottom: 1%;   
    padding-left: 20px;
@@ -137,7 +137,7 @@ html {
     color:  #333;
     padding: 30px;
     text-align: center;
-    background-color: #bacbcf;
+    background-color: #e1eaf7;
     border: 3px red solid;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     margin-right: 1%;
@@ -163,7 +163,7 @@ html {
     cursor: pointer;
 }
 .card:hover{
-    background-color: #5d7987;
+    background-color: #7ca7eb;
     color: white;
     
 }
@@ -178,7 +178,7 @@ html {
 /*-------------------------------------------------------------------*/
 
 .tabledis{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     border-collapse: collapse;
     width: 100%;
     margin-left: 1%;
@@ -236,7 +236,7 @@ html {
     font-size: 20px;
     height: 5%;
     width: 5%;
-    background-color: #bacbcf;; 
+    background-color: #e1eaf7;; 
     border: none;
     text-align: right;
     padding: 2px 6px;
@@ -268,7 +268,7 @@ html {
 /*------------------------------------------------------*/
 .divform {
 justify-content: center;
-font-family: Arial, Helvetica, sans-serif;
+font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 font-size: 12px;
 display: none;
 position: fixed;
@@ -276,7 +276,7 @@ bottom: 1%;
 right: 2%;
 border: 3px solid #f1f1f1;
 z-index: 9;
-background-color: #adaaa1;
+background-color: #7ca7eb;
 max-width: 40%;
 }
 .divform form {
@@ -310,7 +310,7 @@ margin: 10px 0;
 border: none;
 cursor: grab;
 width: 48%;
-font-family: Arial, Helvetica, sans-serif;
+font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 .divform h1 {
 text-align:center;
@@ -352,7 +352,7 @@ opacity: 0.8;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 20px;
     width: 100%;
-    background-color: #bacbcf;
+    background-color: #e1eaf7;
     text-align: center;
     padding-left: 20px;
     display: inline;
@@ -381,7 +381,7 @@ opacity: 0.8;
 
 .divwait {
 justify-content: center;
-font-family: Arial, Helvetica, sans-serif;
+font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 font-size: 12px;
 display: none;
 position: fixed;
@@ -403,7 +403,7 @@ animation: spin 2s linear infinite;
 
 .divupanh {
 justify-content: center;
-font-family: Arial, Helvetica, sans-serif;
+font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 font-size: 12px;
 display: none;
 position: fixed;
@@ -411,7 +411,7 @@ bottom:3%;
 right: 37%;
 border: 3px solid #f1f1f1;
 z-index: 9;
-background-color: #adaaa1;
+background-color: #7ca7eb;
 max-width: 40%;
 }
 .divupanh form {
@@ -428,11 +428,11 @@ border: 5px solid #f1f1f1;
 
 .divformupanh {
 justify-content: center;
-font-family: Arial, Helvetica, sans-serif;
+font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 font-size: 12px;
 border: 3px solid #f1f1f1;
 z-index: 9;
-background-color: #adaaa1;
+background-color: #7ca7eb;
 display: inline-block;
 }
 .divformupanh form {
@@ -466,7 +466,7 @@ margin: 10px 0;
 border: none;
 cursor: grab;
 width: 48%;
-font-family: Arial, Helvetica, sans-serif;
+font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 .divformupanh h1 {
 text-align:center;
@@ -539,4 +539,22 @@ font-size:18px;
 #sidebar .nav a i{
   margin-right: 16px;
   width: auto;
+}
+
+.divorderinfo {
+justify-content: center;
+font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+font-size: 17px;
+display: none;
+position: fixed;
+bottom: 1%;
+right: 2%;
+border: 3px solid #f1f1f1;
+z-index: 9;
+background-color: #7ca7eb;
+max-width: 40%;
+min-width: 30%;
+overflow-y: scroll;
+max-height: 80%;
+    
 }

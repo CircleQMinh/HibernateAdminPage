@@ -494,9 +494,32 @@ $(document).ready(function(){
                 $('#orderrefresh').click(function(){ 
                     $('#ordertable').load("order.jsp #tableorder",function(){
                         $('#tableorder').tablePagination({
-                            perPage:10,
+                            perPage:7,
                             showAllButton:true
                         });
+                        $("button[id|='ord_info'").click(function(){
+                            openForm('formwait');
+                            var id =$(this).closest('tr').find('td').eq(0).text();
+                            $.ajax({
+                                type: "post",
+                                url: "ajax/order/ajax-view-order-info.jsp", //this is my servlet
+                                data: {
+                                    ID:id               
+                                },
+                                success: function ( response ){   
+                                    //handleData(response);
+                                    var success =  $($.parseHTML(response)).filter("#info").html();
+                                    $("#order-info-form").html(success);closeForm('formwait');
+                                },
+                                error: function(xhr, textStatus, error){
+                                    console.log(xhr.statusText);
+                                    console.log(textStatus);
+                                    console.log(error);
+                                    console.log("Fail");closeForm('formwait');
+                                }
+                            });
+                             openForm("order-info-form");
+                        }); 
                         $("button[id|='ord_edit'").click(function(){
                             openForm("updateOrder");
                             var order_edit_id =$(this).closest('tr').find('td').eq(0).text();
@@ -538,9 +561,32 @@ $(document).ready(function(){
                 $('#orderrefreshCk').click(function(){ 
                     $('#ordertableCk').load("order.jsp #tableorderCk",function(){
                         $('#tableorderCk').tablePagination({
-                            perPage:10,
+                            perPage:7,
                             showAllButton:true
                         });
+                        $("button[id|='ord_info_Ck'").click(function(){
+                            openForm('formwait');
+                            var id =$(this).closest('tr').find('td').eq(0).text();
+                            $.ajax({
+                                type: "post",
+                                url: "ajax/order/ajax-view-order-info.jsp", //this is my servlet
+                                data: {
+                                    ID:id               
+                                },
+                                success: function ( response ){   
+                                    //handleData(response);
+                                    var success =  $($.parseHTML(response)).filter("#info").html();
+                                    $("#order-info-form").html(success);closeForm('formwait');
+                                },
+                                error: function(xhr, textStatus, error){
+                                    console.log(xhr.statusText);
+                                    console.log(textStatus);
+                                    console.log(error);
+                                    console.log("Fail");closeForm('formwait');
+                                }
+                            });
+                             openForm("order-info-form");
+                        }); 
                         $("button[id|='ord_edit_Ck'").click(function(){
                             openForm("updateOrder");
                             var order_edit_id =$(this).closest('tr').find('td').eq(0).text();
@@ -582,9 +628,32 @@ $(document).ready(function(){
                 $('#orderrefreshDv').click(function(){ 
                     $('#ordertableDv').load("order.jsp #tableorderDv",function(){
                         $('#tableorderDv').tablePagination({
-                            perPage:10,
+                            perPage:7,
                             showAllButton:true
-                        });                 
+                        });
+                        $("button[id|='ord_info_Dv'").click(function(){
+                            openForm('formwait');
+                            var id =$(this).closest('tr').find('td').eq(0).text();
+                            $.ajax({
+                                type: "post",
+                                url: "ajax/order/ajax-view-order-info.jsp", //this is my servlet
+                                data: {
+                                    ID:id               
+                                },
+                                success: function ( response ){   
+                                    //handleData(response);
+                                    var success =  $($.parseHTML(response)).filter("#info").html();
+                                    $("#order-info-form").html(success);closeForm('formwait');
+                                },
+                                error: function(xhr, textStatus, error){
+                                    console.log(xhr.statusText);
+                                    console.log(textStatus);
+                                    console.log(error);
+                                    console.log("Fail");closeForm('formwait');
+                                }
+                            });
+                             openForm("order-info-form");
+                        }); 
                         $("button[id|='ord_del_Dv']").click(function(){
                           if (confirm('Xóa hóa đơn khỏi database?')) {
                                 $(this).closest('tr').find('td').eq(0).each(function() {
@@ -620,9 +689,32 @@ $(document).ready(function(){
                 $('#orderrefreshHis').click(function(){ 
                     $('#ordertableHis').load("order.jsp #tableorderHis",function(){
                         $('#tableorderHis').tablePagination({
-                            perPage:10,
+                            perPage:7,
                             showAllButton:true
-                        });                 
+                        });   
+                        $("button[id|='ord_info_His'").click(function(){
+                            openForm('formwait');
+                            var id =$(this).closest('tr').find('td').eq(0).text();
+                            $.ajax({
+                                type: "post",
+                                url: "ajax/order/ajax-view-order-info.jsp", //this is my servlet
+                                data: {
+                                    ID:id               
+                                },
+                                success: function ( response ){   
+                                    //handleData(response);
+                                    var success =  $($.parseHTML(response)).filter("#info").html();
+                                    $("#order-info-form").html(success);closeForm('formwait');
+                                },
+                                error: function(xhr, textStatus, error){
+                                    console.log(xhr.statusText);
+                                    console.log(textStatus);
+                                    console.log(error);
+                                    console.log("Fail");closeForm('formwait');
+                                }
+                            });
+                             openForm("order-info-form");
+                        }); 
                         $("button[id|='ord_del_His']").click(function(){
                           if (confirm('Xóa hóa đơn khỏi database?')) {
                                 $(this).closest('tr').find('td').eq(0).each(function() {
@@ -1064,6 +1156,7 @@ $(document).ready(function(){
     
    
 });
+
 
 
 // hàm ghi lại trang đang xem

@@ -11,63 +11,40 @@
 <head>  
 <meta name="viewport" content="width=device-width, initial-scale=1">  
 <title> Login </title>  
-<link rel="stylesheet" href="css/login.css">
+<link rel="stylesheet" href="<c:url value="/Dn-Dky-QMk/style-login.css"></c:url>"> 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>   
-Body {  
-  font-family: 'Poppins', sans-serif;  
-  background: linear-gradient(to right,#ff105fad,#0681ff5e);  
-}  
-button {   
-        background-color: #924caf87;   
-        width: 100%;  
-        color: black;   
-        padding: 15px 100px;   
-        margin: 10px 0px;   
-        border: none;   
-        cursor: pointer;   
-        border-radius: 2px;
-         }   
- form {   
-        border: 0px solid #f1f1f1;   
-        padding: 0px 500px;
-        
-    }   
- input[type=text], input[type=password] {   
-        width: 100%;   
-        margin: 8px 0;  
-        padding: 12px 20px;   
-        display: inline-block;   
-        border: 2px solid green;   
-        box-sizing: border-box;   
-    }  
- button:hover {   
-        opacity: 0.7;   
-    }   
-  .cancelbtn {   
-        width: auto;   
-        padding: 10px 18px;  
-        margin: 10px 5px;  
-    }   
-        
-     
- .container {   
-        padding: 25px;   
-        background-color: lightblue;  
-    }   
-</style>   
-</head>    
-<body>    
-    <center> <h1> Employee </h1> </center>   
-    <form  id="login" method="POST" action="login-employee">  
-        <div class="container">   
-            <label>Username : ${usernameError}</label>   
-            <input type="text" placeholder="Enter Username" name="username" value="${username}" required>
-            <label>Password : ${passwordError}</label>   
-            <input type="password" placeholder="Enter Password" name="password"  required> 
-            <button type="submit" >LOGIN</button>   
-            <a href="<c:url value="/forget-password"></c:url>" style="color: #333">Forgot your password?</a> 
-        </div>   
-    </form>     
-</body>     
+</head> 
+ <body>
+	
+	<div class="box">
+	
+		<div class="inner-box">
+		
+			<form action="login-employee" method="POST" id="login">
+			
+			<h2>Login</h2>
+			
+                        <input type="text" name="username" placeholder="Username" value="${username}"required><br>
+                        ${usernameError}                      
+			<input type="password" name="password" placeholder="Password" required>
+			${passwordError}
+			<p>
+			
+			<!--<input type="checkbox"><span> Keep me Signed In</span>-->
+			
+			<span class="forgot"><a href="forget-password">Forgot Password?</a></span>
+			
+			</p>
+			
+			<input type="submit" value="Login">
+			
+			<p style="text-align:center;">
+				<span>Not a member? </span><a class="link" href="register">Sign Up</a>
+			</p>
+			
+			</form>
+		
+		</div>
+	</div>
+    </body>
 </html>  

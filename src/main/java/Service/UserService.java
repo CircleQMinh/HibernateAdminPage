@@ -11,7 +11,7 @@ import Model.Account;import Model.Customer;
  * @author ASUS
  */
 public class UserService {
-    	private AccountDao accountDAO =new AccountDao();
+    private AccountDao accountDAO =new AccountDao();
     private CustomerDAO customerDAO=new CustomerDAO();
 	public Account getAccountByUsername(String username)
     {

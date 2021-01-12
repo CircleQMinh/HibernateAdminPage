@@ -42,7 +42,7 @@
         
         <input type="hidden" id="shipperid" value="<%=emp.getEmployeeId()      %>">
         <div class="topnav" >  
-            <a> <i class="fas fa-sign-out-alt"></i></a>
+            <a href="logout"> <i class="fas fa-sign-out-alt"></i></a>
             <a style="margin-right: 23.5%;font-family: Showcard Gothic,serif;width: 30%">Shipping Order</a>
         </div>
         <nav>

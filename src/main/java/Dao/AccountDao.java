@@ -504,4 +504,24 @@ public class AccountDao {
             return false;
         }
     }    
+    public static void updateAdmin(Admin adm)
+    {
+         Transaction transaction = null;
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session session = sessionFactory.openSession();
+        try  {
+            // start a transaction
+            transaction = session.beginTransaction();
+            // save the student object
+            session.update(adm);
+            // commit transaction
+            transaction.commit();
+            session.close();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+                session.close();
+            }
+        }
+    }
 }

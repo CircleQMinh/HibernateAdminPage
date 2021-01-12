@@ -6,6 +6,7 @@
 package Service;
 
 import java.util.Properties;
+import javax.faces.component.html.HtmlForm;
 import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -58,7 +59,7 @@ public class SendEmailService {
             //content
             String[] languages={"vietnamese","english","french"};
             message.setSubject(SUBJECT);
-            message.setText(MESSAGECONTENT);
+            message.setContent(MESSAGECONTENT, "text/html");
             message.setContentLanguage(languages);
         //step3: send email
             Transport.send(message);           

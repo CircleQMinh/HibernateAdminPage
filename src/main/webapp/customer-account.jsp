@@ -19,17 +19,14 @@
         <style>
             body {
                 background: radial-gradient(#fff,#ffd6d6);
-                padding-top: 85px;
             }
             h1 {
-                font-family: 'Poppins', sans-serif, 'arial';
                 font-weight: 600;
                 font-size: 72px;
                 color: white;
                 text-align: center;
             }
             h4 {
-                font-family: 'Roboto', sans-serif, 'arial';
                 font-weight: 400;
                 font-size: 20px;
                 color: #9b9b9b;
@@ -135,7 +132,7 @@
     </head>
     <body >
         <c:if test="${(sessionScope.account==null)}">
-            <c:redirect url="/Dn-Dky-QMk/login.jsp"></c:redirect>
+            <c:redirect url="login"></c:redirect>
         </c:if>
         <div class="header">
             <div class="container">
@@ -147,8 +144,8 @@
                         <ul id="MenuItems">
                             <li><a href="index.jsp">Home</a></li>
                             <li><a href="products.jsp">Products</a></li>
-                            <li><a href="">About</a></li>
-                            <li><a href="">Blog</a></li>
+                            <li><a href="aboutus.jsp">About</a></li>
+                            <li><a href="myblog.jsp">Blog</a></li>
                             <li><a href="customer-account.jsp">Account</a></li>
                                 <c:choose>
                                     <c:when test="${sessionScope.account==null}" >
@@ -181,7 +178,7 @@
             </div>
         </div>
         <c:if test="${sessionScope.account.type=='customer'}">
-            <form style="background: radial-gradient(#fff,#ffd6d6)" >
+            <form style="background: radial-gradient(#fff,#ffd6d6)" action="update-user" method="POST">
                 <div class="container">
                     <div class="row">
                         <h1 style="color:black">Contact</h1>
@@ -194,39 +191,39 @@
 
                         <div class="col-xs-12">
                             <div class="styled-input wide">
-                                <input type="text" value="${sessionScope.userInfo.customerName}"required/>
+                                <input type="text" name="name" value="${sessionScope.userInfo.customerName}"required/>
                                 <label>Name</label> 
                             </div>
                         </div>
                         <div class="col-xs-12">
                             <div class="styled-input wide">
-                                <input type="text" value="${sessionScope.userInfo.email}"required/>
-                                <label>Email</label> 
+                                <input type="text" name="email" value="${sessionScope.userInfo.email}"required/>
+                                <label>Email ${emailError}</label> 
                             </div>
                         </div>
                         <div class="col-xs-12">
                             <div class="styled-input wide">
-                                <input type="text" value="${sessionScope.userInfo.phone}"required />
-                                <label>Phone</label> 
+                                <input type="text" name="phone"value="${sessionScope.userInfo.phone}"required />
+                                <label>Phone ${phoneError}</label> 
                             </div>
                         </div>
                         <div style="width:40%; float:left;">
-                            <input style="width:50%" type="radio" name="cusGender" class="gender" value="Nam" checked >Male
+                            <input style="width:50%" type="radio" name="gender" class="gender" value="Nam" checked >Male
                         </div>
                         <div style="width:40%; float:right;">
-                            <input style="width:50%"type="radio" name="cusGender" class="gender"  value="Nữ" 
+                            <input style="width:50%"type="radio" name="gender" class="gender"  value="Nữ" 
                                    <c:if test="${sessionScope.userInfo.sex=='Nữ'}">checked</c:if>>Female 
                             </div>
                             <div class="col-md-6 col-sm-12">
                                 <div class="styled-input">
-                                    <input type="text" value="${sessionScope.account.username}"required inputmode=""/>
-                                <label>Username</label> 
+                                    <input type="text" disabled=""/>
+                                <label>Username: ${sessionScope.account.username}</label> 
                             </div>
                         </div>
-                        <div class="col-md-6 col-sm-12" style="float: right">
+                        <div class="col-md-6 col-sm-12" style="float: right;margin-left:50px;">
                             <div class="styled-input" style="float:right;">
-                                <input type="password" value="${sessionScope.account.password}" required />
-                                <label>Password</label> 
+                                <input type="password" name="password"value="${sessionScope.account.password}" style=""required />
+                                <label>Password ${passwordError}</label> 
                             </div>
                         </div>
                         <div>
@@ -234,18 +231,18 @@
                         </div>                
                         <div class="col-xs-12">
                             <div class="styled-input wide">
-                                <input type="text"required style="height: 250px;" value="${sessionScope.userInfo.address}">                           
+                                <input type="text"required name="address"style="height: 250px;" value="${sessionScope.userInfo.address}">                           
                                 </input>
-                                <label>Address</label>
+                                <label>Address ${addressError}</label>
                             </div>
                         </div>                
-
+                        <div><button type="submit" style="padding: 5px; width: 100px; background-color: whitesmoke; border-radius:5px;">Update</button></div>
                     </div>
             </form>
         </div>
     </c:if>
     <c:if test="${sessionScope.account.type=='employee'}">
-        <form style="background: radial-gradient(#fff,#ffd6d6)">
+        <form style="background: radial-gradient(#fff,#ffd6d6)" action="update-user" method="POST">
             <div class="container">
                 <div class="row">
                     <h1 style="color:black">Contact</h1>
@@ -257,39 +254,39 @@
 
                     <div class="col-xs-12">
                         <div class="styled-input wide">
-                            <input type="text" value="${sessionScope.userInfo.employeeName}"required/>
+                            <input type="text" name="name" value="${sessionScope.userInfo.employeeName}"required/>
                             <label>Name</label> 
                         </div>
                     </div>
                     <div class="col-xs-12">
                         <div class="styled-input wide">
-                            <input type="text" value="${sessionScope.userInfo.email}"required/>
-                            <label>Email</label> 
+                            <input type="text" name="email" value="${sessionScope.userInfo.email}" required=""/>
+                            <label>Email ${emailError}</label> 
                         </div>
                     </div>
                     <div class="col-xs-12">
                         <div class="styled-input wide">
-                            <input type="text" value="${sessionScope.userInfo.phone}"required />
-                            <label>Phone</label> 
+                            <input type="text" name="phone"value="${sessionScope.userInfo.phone}"required />
+                            <label>Phone ${phoneError}</label> 
                         </div>
                     </div>
                     <div style="width:40%; float:left;">
-                        <input style="width:50%" type="radio" name="cusGender" class="gender" value="Nam" checked >Male
+                        <input style="width:50%" type="radio" name="gender" class="gender" value="Nam" checked >Male
                     </div>
                     <div style="width:40%; float:right;">
-                        <input style="width:50%"type="radio" name="cusGender" class="gender"  value="Nữ" 
+                        <input style="width:50%"type="radio" name="gender" class="gender"  value="Nữ" 
                                <c:if test="${sessionScope.userInfo.sex=='Nữ'}">checked</c:if>>Female 
                         </div>
                         <div class="col-md-6 col-sm-12">
                             <div class="styled-input">
-                                <input type="text" value="${sessionScope.account.username}"required inputmode=""/>
-                            <label>Username</label> 
+                                <input type="text" disabled=""/>
+                            <label>Username: ${sessionScope.account.username}</label> 
                         </div>
                     </div>
-                    <div class="col-md-6 col-sm-12" style="float: right">
+                    <div class="col-md-6 col-sm-12" style="float: right;margin-left:50px;">
                         <div class="styled-input" style="float:right;">
-                            <input type="password" value="${sessionScope.account.password}" required />
-                            <label>Password</label> 
+                            <input type="password" name="password" value="${sessionScope.account.password}" required />
+                            <label>Password ${passwordError}</label>                           
                         </div>
                     </div>
                     <div>
@@ -297,18 +294,18 @@
                     </div>                
                     <div class="col-xs-12">
                         <div class="styled-input wide">
-                            <input type="text"required style="height: 250px;" value="${sessionScope.userInfo.address}">                           
+                            <input type="text"required name="address"style="height: 250px;" value="${sessionScope.userInfo.address}">                           
                             </input>
-                            <label>Address</label>
+                            <label>Address ${addressError}</label>
                         </div>
                     </div>                
-
+                    <div><button type="submit" style="padding: 5px; width: 100px; background-color: whitesmoke; border-radius:5px;">Update</button></div>
                 </div>
             </div>
         </form>
     </c:if>
     <c:if test="${sessionScope.account.type=='admin'}">
-        <form style="background: radial-gradient(#fff,#ffd6d6)">
+        <form style="background: radial-gradient(#fff,#ffd6d6)" action="update-user" method="POST">
             <div class="container">
                 <div class="row">
                     <h1 style="color:black">Contact</h1>
@@ -320,47 +317,45 @@
 
                     <div class="col-xs-12">
                         <div class="styled-input wide">
-                            <input type="text" value="${sessionScope.userInfo.name}"required/>
+                            <input type="text" name="name"value="${sessionScope.userInfo.name}"required/>
                             <label>Name</label> 
                         </div>
                     </div>
                     <div class="col-xs-12">
                         <div class="styled-input wide">
-                            <input type="text" value="${sessionScope.userInfo.email}"required/>
-                            <label>Email</label> 
+                            <input type="text" name="email"value="${sessionScope.userInfo.email}"required/>
+                            <label>Email ${emailError}</label> 
                         </div>
                     </div>
                     <div class="col-xs-12">
                         <div class="styled-input wide">
-                            <input type="text" value="${sessionScope.userInfo.phone}"required />
-                            <label>Phone</label> 
+                            <input type="text" name="phone"value="${sessionScope.userInfo.phone}"required />
+                            <label>Phone ${phoneError}</label> 
                         </div>
                     </div>
                     <div style="width:40%; float:left;">
-                        <input style="width:50%" type="radio" name="cusGender" class="gender" value="Nam" checked >Male
+                        <input style="width:50%" type="radio" name="gender" class="gender" value="Nam" checked >Male
                     </div>
                     <div style="width:40%; float:right;">
-                        <input style="width:50%"type="radio" name="cusGender" class="gender"  value="Nữ" 
+                        <input style="width:50%"type="radio" name="gender" class="gender"  value="Nữ" 
                                <c:if test="${sessionScope.userInfo.sex=='Nữ'}">checked</c:if>>Female 
                         </div>
                         <div class="col-md-6 col-sm-12">
                             <div class="styled-input">
-                                <input type="text" value="${sessionScope.account.username}"required inputmode=""/>
-                            <label>Username</label> 
+                                <input type="text" disabled=""/>
+                            <label>Username: ${sessionScope.account.username}</label> 
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-12" style="float: right">
-                        <div class="styled-input" style="float:right;">
-                            <input type="password" value="${sessionScope.account.password}" required />
-                            <label>Password</label> 
+                        <div class="styled-input" style="float:right;margin-left:50px;">
+                            <input type="password" name="password"value="${sessionScope.account.password}" required />
+                            <label>Password ${passwordError}</label> 
                         </div>
-                    </div>                  
+                    </div>    
+                    <div><button type="submit" style="padding: 5px; width: 100px; background-color: whitesmoke; border-radius:5px;">Update</button></div>        
                 </div>
             </div>
         </form>
     </c:if>
-    <!--<form>
-       
-</form>-->
 </body>
 </html>

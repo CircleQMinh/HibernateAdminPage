@@ -10,6 +10,7 @@ C:\Users\ASUS.LAPTOP-O687HM47\Desktop\New folder\TMDT2\src\main\java\Model\Reven
 C:\Users\ASUS.LAPTOP-O687HM47\Desktop\New folder\TMDT2\src\main\java\Hibernate\HibernateUtil.java
 C:\Users\ASUS.LAPTOP-O687HM47\Desktop\New folder\TMDT2\src\main\java\Service\UserService.java
 C:\Users\ASUS.LAPTOP-O687HM47\Desktop\New folder\TMDT2\src\main\java\Controller\SearchProduct.java
+C:\Users\ASUS.LAPTOP-O687HM47\Desktop\New folder\TMDT2\src\main\java\Dao\AdminDAO.java
 C:\Users\ASUS.LAPTOP-O687HM47\Desktop\New folder\TMDT2\src\main\java\Dao\StatisticDao.java
 C:\Users\ASUS.LAPTOP-O687HM47\Desktop\New folder\TMDT2\src\main\java\Controller\EmployeeAdd.java
 C:\Users\ASUS.LAPTOP-O687HM47\Desktop\New folder\TMDT2\src\main\java\Service\CartService.java
@@ -20,6 +21,7 @@ C:\Users\ASUS.LAPTOP-O687HM47\Desktop\New folder\TMDT2\src\main\java\Dao\Dashboa
 C:\Users\ASUS.LAPTOP-O687HM47\Desktop\New folder\TMDT2\src\main\java\Dao\ProductDao.java
 C:\Users\ASUS.LAPTOP-O687HM47\Desktop\New folder\TMDT2\src\main\java\Dao\EmployeeDao.java
 C:\Users\ASUS.LAPTOP-O687HM47\Desktop\New folder\TMDT2\src\main\java\Controller\RemoveCartItem.java
+C:\Users\ASUS.LAPTOP-O687HM47\Desktop\New folder\TMDT2\src\main\java\Controller\NewPassword.java
 C:\Users\ASUS.LAPTOP-O687HM47\Desktop\New folder\TMDT2\src\main\java\Controller\RegisterController.java
 C:\Users\ASUS.LAPTOP-O687HM47\Desktop\New folder\TMDT2\src\main\java\Dao\CustomerDAO.java
 C:\Users\ASUS.LAPTOP-O687HM47\Desktop\New folder\TMDT2\src\main\java\Dao\CategoryDao.java
@@ -27,6 +29,7 @@ C:\Users\ASUS.LAPTOP-O687HM47\Desktop\New folder\TMDT2\src\main\java\Model\Blog.
 C:\Users\ASUS.LAPTOP-O687HM47\Desktop\New folder\TMDT2\src\main\java\Model\Cart.java
 C:\Users\ASUS.LAPTOP-O687HM47\Desktop\New folder\TMDT2\src\main\java\Model\Orderdetail.java
 C:\Users\ASUS.LAPTOP-O687HM47\Desktop\New folder\TMDT2\src\main\java\Service\SendEmailService.java
+C:\Users\ASUS.LAPTOP-O687HM47\Desktop\New folder\TMDT2\src\main\java\Controller\NewInfo.java
 C:\Users\ASUS.LAPTOP-O687HM47\Desktop\New folder\TMDT2\src\main\java\Model\Order.java
 C:\Users\ASUS.LAPTOP-O687HM47\Desktop\New folder\TMDT2\src\main\java\Model\Product.java
 C:\Users\ASUS.LAPTOP-O687HM47\Desktop\New folder\TMDT2\src\main\java\Model\OrderdetailId.java

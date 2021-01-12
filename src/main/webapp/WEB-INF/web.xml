@@ -36,6 +36,14 @@
         <servlet-name>VNPayServlet</servlet-name>
         <servlet-class>Controller.VNPayServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>NewPassword</servlet-name>
+        <servlet-class>Controller.NewPassword</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>NewInfo</servlet-name>
+        <servlet-class>Controller.NewInfo</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PutServletHere</servlet-name>
         <url-pattern>/PutServletHere</url-pattern>
@@ -103,6 +111,14 @@
     <servlet-mapping>
         <servlet-name>VNPayServlet</servlet-name>
         <url-pattern>/VNPayServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewPassword</servlet-name>
+        <url-pattern>/NewPassword</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewInfo</servlet-name>
+        <url-pattern>/NewInfo</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

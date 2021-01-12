@@ -60,7 +60,7 @@
                 </header>
                 <ul class="nav" id="navlist" >
                     <li>
-                        <a href="#" id="my-acc">
+                        <a href="account-info.jsp" id="my-acc">
                             <i class="fas fa-home"></i> My info
                         </a>
                     </li>

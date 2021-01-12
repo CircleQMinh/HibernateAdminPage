@@ -7,6 +7,7 @@ Dao\CategoryDao.class
 ConfigVNPay\Config.class
 Model\Revenue.class
 Dao\DashboardDao.class
+Controller\NewInfo.class
 Dao\StatisticDao.class
 Model\Cart.class
 Dao\EmployeeDao.class
@@ -17,6 +18,7 @@ Dao\OrderdetailDAO.class
 Controller\SearchProduct.class
 Dao\BlogDao.class
 Model\Employee.class
+Controller\NewPassword.class
 Service\SendEmailService$1.class
 Dao\AccountDao.class
 Model\OrderdetailId.class
@@ -32,6 +34,7 @@ Model\Admin.class
 Controller\EmployeeAdd.class
 Model\Product.class
 Dao\OrderDAO.class
+Dao\AdminDAO.class
 Controller\ForgetPasswordController.class
 Dao\ProductDao.class
 Service\SendEmailService.class

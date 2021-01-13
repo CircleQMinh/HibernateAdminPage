@@ -20,7 +20,7 @@ import javax.servlet.jsp.PageContext;
 
 /**
  *
- * @author Nhat Minh
+ * @author Asus
  */
 public class LoginController extends HttpServlet {    
 
@@ -31,7 +31,7 @@ public class LoginController extends HttpServlet {
             throws ServletException, IOException {
         String page = "";
         HttpSession session = request.getSession();
-        if (session.getAttribute("account") == null) // nếu session đang ko có account
+        if (session.getAttribute("account") == null) // nếu session đang không có account
         {
             if (request.getRequestURI().endsWith("admin")) {
                 page = "/Dn-Dky-QMk/loginadmin.jsp";
@@ -73,9 +73,9 @@ public class LoginController extends HttpServlet {
                 try {                    
                     Account account = userService.getAccountByUsername(userName);
 
-                    if (account != null) //có tồn tại username
+                    if (account != null) //tồn tại username
                     {   
-                        if (account.getPassword().equals(password)) // đúng password
+                        if (account.getPassword().equals(password)) //đúng password
                         {
                             Object userInfo=Object.class;
                             if(account.getType().equals("customer"))
@@ -93,7 +93,7 @@ public class LoginController extends HttpServlet {
                             url = "/Dn-Dky-QMk/login.jsp";
                         }
                     } 
-                    else // ko tồn tại username
+                    else //ko tồn tại username
                     {
                         userNameError = "Username Not Found";
                         url = "/Dn-Dky-QMk/login.jsp";
@@ -105,7 +105,7 @@ public class LoginController extends HttpServlet {
         } 
         else if(uri.endsWith("employee")) 
         {
-             if (userName.equals("") || password.equals("")) // empty tk or mk
+             if (userName.equals("") || password.equals("")) // empty tai khoan or mat khau
             {
                 if (userName.equals("")) {
                     userNameError = "Username must not be empty";

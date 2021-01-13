@@ -1,7 +1,7 @@
 <%-- 
     Document   : register
     Created on : Dec 21, 2020, 10:14:11 AM
-    Author     : Asus
+    Author     : ASUS
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

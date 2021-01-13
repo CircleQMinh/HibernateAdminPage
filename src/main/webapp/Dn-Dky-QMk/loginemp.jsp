@@ -1,7 +1,7 @@
 <%-- 
-    Document   : adminlogin
+    Document   : emplogin
     Created on : Dec 19, 2020, 1:35:28 PM
-    Author     : Asus
+    Author     : ASUS
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

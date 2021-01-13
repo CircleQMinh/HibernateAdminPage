@@ -79,7 +79,6 @@
                     errorsql="Tạo không thành công";
                 }
             }
-
         %>
         <p id="sqlmsg"> <%=errorsql%></p>
         <p id="msg">

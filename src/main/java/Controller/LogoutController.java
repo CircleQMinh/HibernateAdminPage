@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 import Model.Account;
 /**
  *
- * @author Asus
+ * @author AsuS
  */
 public class LogoutController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)

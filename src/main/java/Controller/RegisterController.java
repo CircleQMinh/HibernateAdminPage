@@ -87,7 +87,7 @@ public class RegisterController extends HttpServlet {
             phoneError = "Phone number must be 10 digits";
             url = "/Dn-Dky-QMk/register.jsp";
         }
-        if (userService.getAccountByUsername(username) != null) //chưa có gmail nào đăng ký
+        if (userService.getAccountByUsername(username) != null) //Chưa có Gmail nào đăng ký tài khoản
         {
             usernameError = "Username already existed";
             url = "/Dn-Dky-QMk/register.jsp";

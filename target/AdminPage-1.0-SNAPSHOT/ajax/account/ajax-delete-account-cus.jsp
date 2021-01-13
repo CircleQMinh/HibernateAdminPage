@@ -77,7 +77,5 @@
         %>
         <p id="sqlmsg"> <%=errorsql%></p>
         <p id="msg"> <%=errorsql%> <%=ID%> <%=UID%></p>
-        
-        
     </body>
 </html>

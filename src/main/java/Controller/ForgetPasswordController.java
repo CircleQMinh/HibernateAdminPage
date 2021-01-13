@@ -19,7 +19,7 @@ import Model.Account;
 
 /**
  *
- * @author Asus
+ * @author AsuS
  */
 
 public class ForgetPasswordController extends HttpServlet {

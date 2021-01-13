@@ -1,3 +1,9 @@
+<%-- 
+    Document   : forgetpassword
+    Created on : Dec 26, 2020, 1:01:23 PM
+    Author     : ASUS
+--%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>

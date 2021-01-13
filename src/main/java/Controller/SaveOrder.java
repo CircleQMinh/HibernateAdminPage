@@ -23,6 +23,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -86,7 +87,9 @@ public class SaveOrder extends HttpServlet {
         ordcsm.setStatus(1);
         System.out.println(ordcsm);
         OrderDAO.updateEmp(ordcsm);
-        response.sendRedirect(request.getContextPath() + "/products.jsp");
+        request.setAttribute("status_pay", "success");
+        RequestDispatcher dp=getServletContext().getRequestDispatcher("/receipt.jsp");
+        dp.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

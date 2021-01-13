@@ -36,41 +36,44 @@
         <div class="container">
             <div class="navbar">
                     <div class="gogo">
-                        <img src="images/logo-default.jpg" width="125px" alt="">
-                    </div>
-                    <nav>
-                        <ul id="MenuItems">
-                            <li><a href="index.jsp">Home</a></li>
-                            <li><a href="products.jsp">Products</a></li>
-                            <li><a href="aboutus.jsp">About</a></li>
-                            <li><a href="myblog.jsp">Blog</a></li>
-                            <li><a href="customer-account.jsp">Account</a></li>
-                            <c:choose>
-                                <c:when test="${sessionScope.account==null}" >
-                                    <li><a href="login" class="btn-login">Log In</a></li>
-                                    <li><a href="register" class="btn-register">Register</a></li>
-                                </c:when>
-                                <c:otherwise>
-                                    <c:choose>
-                                        <c:when test="${sessionScope.account.type=='customer'}">
-                                            <li><a href="" class="btn-login"><c:out value="${sessionScope.userInfo.customerName}"/></a></li>
-                                            <li><a href="logout" class="btn-register">Logout</a></li>
-                                        </c:when>
-                                        <c:when test="${sessionScope.account.type=='employee'}">
-                                            <li><a href="" class="btn-login"><c:out value="${sessionScope.userInfo.employeeName}"/></a></li>                                   
-                                            <li><a href="logout" class="btn-register">Logout</a></li>
-                                        </c:when>  
-                                        <c:otherwise>
-                                             <li><a href="" class="btn-login"><c:out value="${sessionScope.userInfo.name}"/></a></li>
-                                              <li><a href="logout" class="btn-register">Logout</a></li>
-                                        </c:otherwise>
-                                    </c:choose>
-                                </c:otherwise>
-                            </c:choose>
-                        </ul>
-                    </nav>
-                    <a href="cart.jsp"><img src="images/cart.png" width="30px" height="30px" class="imgcard"></a>
-                    <img src="images/menu.png" class="menu-icon" onclick="menutoggle()">
+                    <img src="images/logo-default.jpg" width="125px" alt=""/>
+                </div>
+                <nav>
+                    <ul id="MenuItems">
+                        <li><a href="index.jsp">Home</a></li>
+                        <li><a href="products.jsp">Products</a></li>
+                        <li><a href="aboutus.jsp">About</a></li>
+                        <li><a href="myblog.jsp">Blog</a></li>
+                        <li><a href="customer-account.jsp">Account</a></li>
+                        <c:choose>
+                            <c:when test="${sessionScope.account==null}" >
+                                <li><a href="login" class="btn-login">Log In</a></li>
+                                <li><a href="register" class="btn-register">Register</a></li>
+                            </c:when>
+                            <c:otherwise>
+                                <c:choose>
+                                    <c:when test="${sessionScope.account.type=='customer'}">
+                                        <li><a href="" class="btn-login"><c:out value="${sessionScope.userInfo.customerName}"/></a></li>
+                                        <li><a href="logout" class="btn-register">Logout</a></li>
+                                    </c:when>
+                                    <c:when test="${sessionScope.account.type=='employee'}">
+                                        <li><a href="" class="btn-login"><c:out value="${sessionScope.userInfo.employeeName}"/></a></li>                                   
+                                        <li><a href="logout" class="btn-register">Logout</a></li>
+                                    </c:when>  
+                                    <c:otherwise>
+                                         <li><a href="" class="btn-login"><c:out value="${sessionScope.userInfo.name}"/></a></li>
+                                          <li><a href="logout" class="btn-register">Logout</a></li>
+                                    </c:otherwise>
+                                </c:choose>
+                            </c:otherwise>
+                        </c:choose>
+                    </ul>
+                </nav>
+                <a href="cart.jsp" class="cart-day-ne">
+                    <img src="images/cart.png" width="30px" height="30px" class="imgcard">
+                    <span class="cart-item" >0</span>
+                </a><!-- comment -->
+                <img src="images/menu.png" class="menu-icon" onclick="menutoggle()">
             </div>
         </div>
         <script>
@@ -242,10 +245,10 @@
                         location.assign('checkout-vnpay.jsp');
                     }
                     if(a.value == 'paypal'){
-                        location.assign('');
+                        location.assign('checkout-paypal.jsp');
                     }
                     if(a.value == 'team16-acc'){
-                        location.assign('');
+                        location.assign('checkout-app.jsp');
                     }
                 }
                 

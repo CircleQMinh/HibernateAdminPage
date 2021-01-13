@@ -58,7 +58,7 @@
             </div>
             <div class="form-control">
                 <label for="username">Ngày nhận hàng:</label>
-                <input type="date" placeholder="Trường ĐH SPKT TPHCM" name="DateShip" id="DateShip"/>
+                <input type="date" placeholder="Trường ĐH SPKT TPHCM" name="DateShip" id="DateShip" value="<%= String.valueOf(java.time.LocalDate.now()) %>"/>
                 <i class="fas fa-check-circle"></i>
                 <i class="fas fa-exclamation-circle"></i>
                 <small>Error message</small>
@@ -72,7 +72,7 @@
             </div>
             <div class="form-control">
                 <label for="amount">Số tiền</label>
-                <input class="form-control" data-val="true" data-val-number="The field Amount must be a number." data-val-required="The Amount field is required." id="amount" max="100000000" min="1" name="amount" type="number" value="<%= CartService.getTotalCost(listItems)%>" />
+                <input class="form-control" data-val="true" data-val-number="The field Amount must be a number." data-val-required="The Amount field is required." id="amount" max="100000000" min="1" name="vnp_Amount" type="number" value="<%= CartService.getTotalCost(listItems)%>" />
             </div>
             <div class="form-control">
                 <label for="OrderDescription">Nội dung thanh toán</label>
@@ -83,6 +83,7 @@
             </div>
         </form>
     </div>
+            <% } %>
 </body>
 </html>
 <script>

@@ -143,7 +143,7 @@ public class VNPayServlet extends HttpServlet {
         String vnp_TransactionNo = vnp_TxnRef;
         String vnp_hashSecret = Config.vnp_HashSecret;
 
-        int amount = Integer.parseInt(req.getParameter("amount")) * 100;
+        int amount = Integer.parseInt(req.getParameter("vnp_Amount")) * 100;
         Map<String, String> vnp_Params = new HashMap<>();
         vnp_Params.put("vnp_Version", vnp_Version);
         vnp_Params.put("vnp_Command", vnp_Command);
@@ -214,6 +214,7 @@ public class VNPayServlet extends HttpServlet {
             Logger.getLogger(VNPayServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         Gson gson = new Gson();
+        req.setAttribute("status_pay", "success");
         resp.getWriter().write(gson.toJson(job));
     }
 

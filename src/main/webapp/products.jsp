@@ -80,7 +80,7 @@
         <div class="container">
             <div class="navbar">
                 <div class="gogo">
-                    <img src="images/logo-default.jpg" width="125px" alt="">
+                    <img src="images/logo-default.jpg" width="125px" alt=""/>
                 </div>
                 <nav>
                     <ul id="MenuItems">
@@ -113,7 +113,10 @@
                         </c:choose>
                     </ul>
                 </nav>
-                <a href="cart.jsp" class="cart-day-ne"><img src="images/cart.png" width="30px" height="30px" class="imgcard"><span class="cart-item" >0</span></a>
+                <a href="cart.jsp" class="cart-day-ne">
+                    <img src="images/cart.png" width="30px" height="30px" class="imgcard">
+                    <span class="cart-item" >0</span>
+                </a><!-- comment -->
                 <img src="images/menu.png" class="menu-icon" onclick="menutoggle()">
             </div>
         </div>

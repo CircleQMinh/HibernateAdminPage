@@ -156,7 +156,7 @@
             <div class="container">
                 <div class="navbar">
                     <div class="gogo">
-                        <img src="images/logo-default.jpg" width="125px" alt=""/>
+                        <img src="images/logo-default.png" width="125px" alt=""/>
                     </div>
                     <nav>
                         <ul id="MenuItems">

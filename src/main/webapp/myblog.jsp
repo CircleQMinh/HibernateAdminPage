@@ -22,7 +22,7 @@
         <div class="container">
             <div class="navbar">
                 <div class="gogo">
-                    <img src="images/logo-default.jpg" width="70" height="70
+                    <img src="images/logo-default.png" width="70" height="70
                     " alt=""/>
                 </div>
                 <nav>

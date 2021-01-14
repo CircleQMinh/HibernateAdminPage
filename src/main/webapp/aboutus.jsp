@@ -21,20 +21,17 @@
         <div class="container">
             <div class="navbar">
                 <div class="gogo">
-                    <img src="images/logo-default.jpg" width="125px" alt=""/>
+                    <img src="images/logo-default.png" width="125px" alt=""/>
                 </div>
                 <nav>
                     <ul id="MenuItems">
                         <li><a href="index.jsp">Trang chủ</a></li>
                         <li><a href="products.jsp">Sản phẩm</a></li>
-                        <li><a href="">Liên hệ</a></li>
-                        <li><a href="myblog.html">Blog</a></li>
-                        <li><a href="">Tài khoản</a></li>
-                        <li><a href="" class="btn-login">Đăng nhập</a></li>
-                        <li><a href="" class="btn-register">Đăng ký</a></li>
+                        <li><a href="aboutus.jsp">Liên hệ</a></li>
+                        <li><a href="myblog.jsp">Blog</a></li>                        
                     </ul>
                 </nav>
-                <a href="cart.jsp"><img src="images/cart.png" width="30px" height="30px" class="imgcard"></a>
+                
                 <img src="images/menu.png" class="menu-icon" onclick="menutoggle()">
             </div>
             <div class="row">

@@ -20,13 +20,14 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="js/cart.js" type="text/javascript"></script>
+    <link rel="shortcut icon" href="./images/virus_covid_corona_hand_drug_icon_141740.ico" type="image/x-icon">
 </head>
 <body>
     <div class="header">
         <div class="container">
             <div class="navbar">
                 <div class="gogo">
-                    <img src="images/logo-default.jpg" width="125px" alt=""/>
+                    <img src="images/logo-default.png" width="125px" alt=""/>
                 </div>
                 <nav>
                     <ul id="MenuItems">

@@ -23,6 +23,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -54,7 +55,8 @@ public class SaveOrder extends HttpServlet {
         String phone  = request.getParameter("PhoneShip");
         String email = request.getParameter("EmailShip");
         /* Customer saved in Session  --- demo 10 */
-        Customer csm = CustomerDAO.getCus(10);
+        Customer csm = (Customer) session.getAttribute("userInfo");
+        System.out.println(csm.toString());
         Order ord = new Order();
         Date orderDate = new Date();
         ord.setRequiredDate(dateship);
@@ -65,11 +67,12 @@ public class SaveOrder extends HttpServlet {
         ord.setOrderPhone(phone);
         ord.setOrderEmail(email);
         ord.setCustomer(csm);
+        ord.setPaymentType("cash");
         OrderDAO.saveOrder(ord);
         int csmid = csm.getCustomerId();
         int status = 5;
         /* Cutomer saved in Session  */
-        Order ordcsm = OrderDAO.getOrderByStatus(5, 10);
+        Order ordcsm = OrderDAO.getOrderByStatus(status, csmid);
         Cart cart = (Cart)session.getAttribute("cart");
         List<CartItem> cit = cart.getItems();
         for(int i=0;i<cit.size();i++){
@@ -84,7 +87,9 @@ public class SaveOrder extends HttpServlet {
         ordcsm.setStatus(1);
         System.out.println(ordcsm);
         OrderDAO.updateEmp(ordcsm);
-        response.sendRedirect(request.getContextPath() + "/products.jsp");
+        request.setAttribute("status_pay", "success");
+        RequestDispatcher dp=getServletContext().getRequestDispatcher("/receipt.jsp");
+        dp.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

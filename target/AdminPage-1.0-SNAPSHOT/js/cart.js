@@ -54,12 +54,12 @@ function updateCart()
     if(cart===null || cart.length===0)
     {
         console.log("cart empity");
-        $(".cart-item").html("(0)");
+        $(".cart-item").html("0");
     }
     else
     {
         console.log(cart);
-        $(".cart-item").html("("+ cart.length +")");
+        $(".cart-item").html(cart.length);
         /*let table ="<table><tr><th>Product</th><th>Quantity</th><th>SubTotal</th></tr>"
             ;
         cart.map((item)=>{

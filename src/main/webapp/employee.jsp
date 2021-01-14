@@ -24,18 +24,18 @@
         <script src="https://canvasjs.com/assets/script/canvasjs.min.js" type="text/javascript"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="javascript/jquery.tablePagination.js" type="text/javascript"></script>
-        <title>Employee Page</title>
+        <title>Nhân viên Page</title>
     </head>
     <body>
         <div class="divchua" id="employee">
             <div class="dashbo" id="d1">
-                <p>Employee</p>
+                <p>Nhân viên</p>
             </div>
             <div class="dashbosr" >
                 <p id="time">???</p>
             </div>
             <div class="dashbosl" id='employeetag' >
-                <p >Employee<button class="minibtn" id="btnAd" onclick="miniTable('employeetable','btnAd')">-</button></p>                    
+                <p >Nhân viên<button class="minibtn" id="btnAd" onclick="miniTable('employeetable','btnAd')">-</button></p>                    
             </div>   
 
             <div class="searhbar">
@@ -46,7 +46,7 @@
             <input id="empsearchbar" type="text" class="myInput" onkeyup="FilterTable('tableemp','empsearchbar','employeerefresh','empselect')" placeholder="Search for names.." title="Type in a name">
             <select class="myselect" id="empselect">
                 <option value="0" >EID</option>
-                <option value="1" selected>Name</option>
+                <option value="1" selected>Tên</option>
                 <option value="3" >Email</option>
                 <option value="4" >Phone</option>
                 <option value="5" >Add</option>
@@ -57,13 +57,13 @@
                 <table id="tableemp" class="tabledis">
                     <tr>
                         <th>EID</th>
-                        <th>Name</th>
-                        <th>Sex</th>
+                        <th>Tên</th>
+                        <th>Giới tính</th>
                         <th>E-mail</th>
-                        <th>Phone</th>
-                        <th>Address</th> 
-                        <th>Salary</th>
-                        <th>Paycheck</th>
+                        <th>Điện thoại</th>
+                        <th>Địa chỉ</th> 
+                        <th>Lương</th>
+                        <th>Ngày lãnh lương</th>
                         <th colspan="2">Option</th>
                     </tr>
                     <%               
@@ -95,25 +95,25 @@
                 </table>
             </div>
              <div class="dashbosl" >
-                <p id='paychecktag'>Attendance<button class="minibtn" id="btnpay" onclick="miniTable('att-table','btnpay')">-</button></p>
+                <p id='paychecktag'>Điểm danh - Chấm công<button class="minibtn" id="btnpay" onclick="miniTable('att-table','btnpay')">-</button></p>
             </div>
             <div class="searhbar">
                 <button class="btn" id="att-refresh" value="Refresh"><i class="fas fa-sync" ></i></button> 
                 <input id="empattsearchbar" type="text" class="myInput" onkeyup="FilterTable('empatt1','empattsearchbar','att-refresh','empselect2')" placeholder="Search for names.." title="Type in a name">
                 <select class="myselect" id="empselect2">
-                    <option value="0" >EID</option>
-                    <option value="1" selected>Name</option>
+                    <option value="0" >ID</option>
+                    <option value="1" selected>Tên</option>
                 </select>
             </div>    
             <div id="att-table" class="divtable">
                 <table id="empatt1" class="tabledis">
                     <tr>
-                        <th >EID</th>
-                        <th >Name</th>
-                        <th>Salary</th>
-                        <th>Paycheck</th>
-                        <th>Works Day</th>
-                        <th>Last Attendance</th>
+                        <th >ID</th>
+                        <th >Tên</th>
+                        <th>Lương</th>
+                        <th>Ngày lãnh lương</th>
+                        <th>Ngày công</th>
+                        <th>Ngày cuối đi làm</th>
                         <th colspan="3">Option</th>
                     </tr>
                     <%               

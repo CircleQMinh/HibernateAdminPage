@@ -24,6 +24,38 @@
         <servlet-name>LogoutController</servlet-name>
         <servlet-class>Controller.LogoutController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SearchProduct</servlet-name>
+        <servlet-class>Controller.SearchProduct</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RemoveCartItem</servlet-name>
+        <servlet-class>Controller.RemoveCartItem</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VNPayServlet</servlet-name>
+        <servlet-class>Controller.VNPayServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>NewPassword</servlet-name>
+        <servlet-class>Controller.NewPassword</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>NewInfo</servlet-name>
+        <servlet-class>Controller.NewInfo</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AppPayServlet</servlet-name>
+        <servlet-class>Controller.AppPayServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AuthorizePaymentServlet</servlet-name>
+        <servlet-class>Controller.paypal.AuthorizePaymentServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ExecutePaymentServlet</servlet-name>
+        <servlet-class>Controller.paypal.ExecutePaymentServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PutServletHere</servlet-name>
         <url-pattern>/PutServletHere</url-pattern>
@@ -81,9 +113,44 @@
         <url-pattern>/logout</url-pattern>
         <url-pattern>/update-user</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchProduct</servlet-name>
+        <url-pattern>/SearchProduct</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RemoveCartItem</servlet-name>
+        <url-pattern>/RemoveCartItem</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VNPayServlet</servlet-name>
+        <url-pattern>/VNPayServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewPassword</servlet-name>
+        <url-pattern>/NewPassword</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewInfo</servlet-name>
+        <url-pattern>/NewInfo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AppPayServlet</servlet-name>
+        <url-pattern>/AppPayServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AuthorizePaymentServlet</servlet-name>
+        <url-pattern>/AuthorizePaymentServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ExecutePaymentServlet</servlet-name>
+        <url-pattern>/ExecutePaymentServlet</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
 </web-app>

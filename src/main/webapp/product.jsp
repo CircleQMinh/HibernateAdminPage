@@ -27,18 +27,18 @@
         <script src="https://canvasjs.com/assets/script/canvasjs.min.js" type="text/javascript"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="javascript/jquery.tablePagination.js" type="text/javascript"></script>
-        <title>Product Page</title>
+        <title>Sản phẩm Page</title>
     </head>
     <body>
         <div class="divchua" id="product">
             <div class="dashbo" id="d1">
-                <p>Product</p>
+                <p>Sản phẩm</p>
             </div>
             <div class="dashbosr" >
                 <p id="time">???</p>
             </div>
             <div class="dashbosl"  >
-                 <p >Product<button class="minibtn" id="btnpro" onclick="miniTable('producttable','btnpro')">-</button></p>                    
+                 <p >Sản phẩm<button class="minibtn" id="btnpro" onclick="miniTable('producttable','btnpro')">-</button></p>                    
             </div>   
             <div class="searhbar">
                 <button class="btn" onclick="openForm('form7open');FillForm7();"><i class="fas fa-plus"></i></button>
@@ -46,20 +46,20 @@
                 <input id="prosearchbar" type="text" class="myInput" onkeyup="FilterTable('tablepro','prosearchbar','productrefresh','proselect')" placeholder="Search for names.." title="Type in a name">
                 <select class="myselect" id="proselect">
                     <option value="0" >ID</option>
-                    <option value="1" selected>Name</option>
+                    <option value="1" selected>Tên</option>
                 </select>
             </div>
             <div id="producttable" class="divtable">                    
                 <table id="tablepro" class="tabledis">
                     <tr>
                         <th>ID</th>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Price</th>
-                        <th>Quantity</th> 
-                        <th>Category</th> 
-                        <th>Picture</th>
-                        <th>Date Added</th>
+                        <th>Tên</th>
+                        <th>Mô tả</th>
+                        <th>Giá</th>
+                        <th>Số lượng</th> 
+                        <th>Loại</th> 
+                        <th>Hình ảnh</th>
+                        <th>Ngày thêm</th>
                         <th colspan="2">Option</th>
                     </tr>
                     <%               
@@ -91,27 +91,27 @@
                 </table>
             </div>
             <div class="dashbosl"  >
-                 <p > Unapprovedproduct <button class="minibtn" id="btnunpro" onclick="miniTable('unproducttable','btnunpro')">-</button></p>                    
+                 <p > Sản phẩm chưa duyệt <button class="minibtn" id="btnunpro" onclick="miniTable('unproducttable','btnunpro')">-</button></p>                    
             </div>   
             <div class="searhbar">
                 <button class="btn" id="unproductrefresh" value="Refresh"><i class="fas fa-sync" ></i></button> 
                 <input id="unprosearchbar" type="text" class="myInput" onkeyup="FilterTable('tableunpro','unprosearchbar','unproductrefresh','unproselect')" placeholder="Search for names.." title="Type in a name">
                 <select class="myselect" id="unproselect">
                     <option value="0" >ID</option>
-                    <option value="1" selected>Name</option>
+                    <option value="1" selected>Tên</option>
                 </select>
             </div>
             <div id="unproducttable" class="divtable">                    
                 <table id="tableunpro" class="tabledis">
                     <tr>
                         <th>ID</th>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Price</th>
-                        <th>Quantity</th> 
-                        <th>Category</th> 
-                        <th>Picture</th>
-                        <th>Date Added</th>
+                        <th>Tên</th>
+                        <th>Mô tả</th>
+                        <th>Giá</th>
+                        <th>Số lượng</th> 
+                        <th>Loại</th> 
+                        <th>Hình ảnh</th>
+                        <th>Ngày thêm</th>
                         <th colspan="1">Option</th>
                     </tr>
                     <%               

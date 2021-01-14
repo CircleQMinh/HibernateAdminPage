@@ -1,92 +1,11 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
 
-  
-/*  .container {
-    background: #b2c8cf;
-    min-height: 100vh;
-    font-family: Montserrat, sans-serif;
-  }
-  
-*/  nav a {
-      font-size: 40px;
-      color: #fff;
-      text-decoration: none;
-      padding: 20px;
-      text-align: center;
-  }
-   nav button {
-      font-size: 24px;
-      color: #422C73;
-      text-decoration: none;
-      padding: 20px;
-      text-align: center;
-      background-color: #333;
-       border: 0;
-        background: none;
-        box-shadow: none;
-        border-radius: 0px;
-  }
-  nav {
-      position: fixed;
-      left: 0;
-      z-index: 50;
-      display: flex;
-      justify-content: space-around;
-      flex-direction: column;
-      height: 100vh;
-      background: #b4b4de;
-      width: 7%;
-      border: 3px #333 solid;
-  }
-  
-  section {
-      position: absolute;
-      top: 0;
-      height: 100vh;
-      width: 0;
-      opacity: 0;
-      transition: all ease-in .5s;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #b4b4de;
-  } /*
-  
-  section h1 {
-      color: #fff;
-      font-size: 50px;
-      text-transform: uppercase;
-      opacity: 0;
-  }
-  
-   Styles applied on trigger 
-  section:target {
-      opacity: 1;
-      position: absolute;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 10;
-      margin-top: 50px;
-  }
-  
-  section:target h1 {
-      opacity: 0;
-      animation: 2s ;
-  }*/
-  
-/* --------------------------------------------------------------- */
+
   .topnav {
   overflow: hidden;
-  background-color:  #b4b4de;
+  background-color:  #263238;
   width: 100%;
   position: fixed;
-  height: 8%;
+  height: 52px;
   border: 4px #333 solid;
 }
 
@@ -121,9 +40,9 @@
   color: white;
 }
 .divcontent{
-    margin-left: 7%;
+    margin-left: 12%;
     border: 1px black solid;
-    width: 93%;
+    width: 88%;
     display: block;
 }
 
@@ -133,8 +52,8 @@
 /*    border: 1px black solid;*/
     flex-wrap:wrap;    
     width: 100%;
-    background-color: #869e8d;
-    margin-top: 5%;
+    background-color: #7ca7eb;
+    margin-top: 52px;
 }
 .divcon{
     width: 49.8%;
@@ -143,7 +62,7 @@
     margin:1px;
 }
 #d1{
-   background-color: #bacbcf;;
+   background-color: #e1eaf7;;
 }
 #d2{
     background-color:#F2E527;
@@ -155,31 +74,32 @@
     background-color: turquoise;
 }
 .dashbo{
-    font-family: Fredoka One;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 40px;
     width: 100%;
     height: 10%;
-    background-color: #bacbcf;
+    background-color: #e1eaf7;
     text-align: center;
     margin-bottom: 1%;
 
 }
 .dashbosr{
-    font-family: Fredoka One;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
    font-size: 20px;
    width: 100%;
    height: 50%;
-   background-color: #bacbcf;
+   background-color: #e1eaf7;
    text-align: right;
    margin-bottom: 1%;   
+   padding-top: 5px;
 }
 
 .dashbosl{
-    font-family: Fredoka One;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
    font-size: 20px;
    width: 100%;
    height: 50%;
-   background-color: #bacbcf;
+   background-color: #e1eaf7;
    text-align: left;
    margin-bottom: 1%;   
    padding-left: 20px;
@@ -212,14 +132,14 @@ html {
 
 .card{
     display: inline-block;
-    width: 31.3%;
+    width: 22.7%;
     height: 50%;
-    color:white;
+    color:  #333;
     padding: 30px;
     text-align: center;
-    background-color: #444;
+    background-color: #e1eaf7;
     border: 3px red solid;
-    font-family: Fredoka One;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     margin-right: 1%;
     margin-left: 1%;
     margin-bottom: 1%;
@@ -242,6 +162,11 @@ html {
     color: white;
     cursor: pointer;
 }
+.card:hover{
+    background-color: #7ca7eb;
+    color: white;
+    
+}
 .card a:hover{
     background-color: #c7fcd6;
     color: black;
@@ -253,7 +178,7 @@ html {
 /*-------------------------------------------------------------------*/
 
 .tabledis{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     border-collapse: collapse;
     width: 100%;
     margin-left: 1%;
@@ -270,7 +195,7 @@ html {
 .tabledis th{
     padding-top: 12px;
     padding-bottom: 12px;
-    text-align: left;
+    text-align: center;
     background-color: #4CAF50;
     color: white;
 }
@@ -311,7 +236,7 @@ html {
     font-size: 20px;
     height: 5%;
     width: 5%;
-    background-color: #bacbcf;; 
+    background-color: #e1eaf7;; 
     border: none;
     text-align: right;
     padding: 2px 6px;
@@ -343,15 +268,15 @@ html {
 /*------------------------------------------------------*/
 .divform {
 justify-content: center;
-font-family: Arial, Helvetica, sans-serif;
+font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 font-size: 12px;
 display: none;
 position: fixed;
-bottom: 3%;
+bottom: 1%;
 right: 2%;
 border: 3px solid #f1f1f1;
 z-index: 9;
-background-color: #adaaa1;
+background-color: #7ca7eb;
 max-width: 40%;
 }
 .divform form {
@@ -385,7 +310,7 @@ margin: 10px 0;
 border: none;
 cursor: grab;
 width: 48%;
-font-family: Arial, Helvetica, sans-serif;
+font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 .divform h1 {
 text-align:center;
@@ -424,10 +349,10 @@ opacity: 0.8;
 .tablePagination {
     margin-top: 1em;
     right:5%;
-    font-family: Fredoka One;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 20px;
     width: 100%;
-    background-color: #bacbcf;
+    background-color: #e1eaf7;
     text-align: center;
     padding-left: 20px;
     display: inline;
@@ -456,7 +381,7 @@ opacity: 0.8;
 
 .divwait {
 justify-content: center;
-font-family: Arial, Helvetica, sans-serif;
+font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 font-size: 12px;
 display: none;
 position: fixed;
@@ -478,7 +403,7 @@ animation: spin 2s linear infinite;
 
 .divupanh {
 justify-content: center;
-font-family: Arial, Helvetica, sans-serif;
+font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 font-size: 12px;
 display: none;
 position: fixed;
@@ -486,7 +411,7 @@ bottom:3%;
 right: 37%;
 border: 3px solid #f1f1f1;
 z-index: 9;
-background-color: #adaaa1;
+background-color: #7ca7eb;
 max-width: 40%;
 }
 .divupanh form {
@@ -497,17 +422,17 @@ border: 5px solid #f1f1f1;
     height: 50px;
 }
 .productimgupload{
-    width: 100px;
-    height: 100px;
+    width: 50px;
+    height: 50px;
 }
 
 .divformupanh {
 justify-content: center;
-font-family: Arial, Helvetica, sans-serif;
+font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 font-size: 12px;
 border: 3px solid #f1f1f1;
 z-index: 9;
-background-color: #adaaa1;
+background-color: #7ca7eb;
 display: inline-block;
 }
 .divformupanh form {
@@ -541,9 +466,142 @@ margin: 10px 0;
 border: none;
 cursor: grab;
 width: 48%;
-font-family: Arial, Helvetica, sans-serif;
+font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 .divformupanh h1 {
 text-align:center;
 font-size:18px;
+}
+
+#viewport {
+  padding-left: 250px;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#content {
+  width: 100%;
+  position: relative;
+  margin-right: 0;
+}
+
+/* Sidebar Styles */
+
+#sidebar {
+  z-index: 1000;
+  position: fixed;
+  left: 250px;
+  width: 12%;
+  height: 100%;
+  margin-left: -250px;
+  overflow-y: auto;
+  background: #37474F;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#sidebar header {
+  background-color: #263238;
+  font-size: 20px;
+  line-height: 52px;
+  text-align: center;
+}
+
+#sidebar header a {
+  color: #fff;
+  display: block;
+  text-decoration: none;
+}
+
+#sidebar header a:hover {
+  color: #fff;
+}
+
+
+#sidebar .nav a{
+  background: none;
+  border-bottom: 1px solid #455A64;
+  color: #CFD8DC;
+  font-size: 14px;
+  padding: 16px 24px;
+  text-align: start;
+}
+
+#sidebar .nav a:hover{
+  background: none;
+  color: #2dd827;
+}
+
+#sidebar .nav a i{
+  margin-right: 16px;
+  width: auto;
+}
+
+.divorderinfo {
+justify-content: center;
+font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+font-size: 17px;
+display: none;
+position: fixed;
+bottom: 1%;
+right: 2%;
+border: 3px solid #f1f1f1;
+z-index: 9;
+background-color: #7ca7eb;
+max-width: 40%;
+min-width: 30%;
+overflow-y: scroll;
+max-height: 80%;
+    
+}
+
+.myarticle{
+    border: 2px black solid;
+    margin-left:  3%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    padding: 1%;
+    width: 50%;
+}
+.myarticle-title{
+    margin-left:  3%;
+}
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background: radial-gradient(#fff,#ffd6d6);
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 30%; /* Could be more or less, depending on screen size */
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }

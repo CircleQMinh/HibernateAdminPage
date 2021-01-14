@@ -1,3 +1,4 @@
+<%@page import="java.util.List"%>
 <%@ page import="Model.*" %>
 <%@ page import="Dao.*" %><%--
     Document   : product-details
@@ -71,25 +72,19 @@
         </div>
         <!-- Single product details -->
         <div class="small-container single-product">
-            <form class="row" name="product_detail" method="post" action="CartServlet">
+            <form class="row" name="product_detail" id="product_detail">
                 <div class="col-2">
                     <img src="<%= prd.getPicture()%>" width="100%">
                 </div>
                 <div class="col-2">
-                    <p>Home / Dược liệu</p>
+                    <p>Trang chủ / Dược liệu</p>
                     <h1><%= prd.getProductName()%></h1>
                     <h4><%= prd.getPrice()%> Đồng/kg</h4>
-                    <input  type="number" name="prdQuantity_item" value="1">
-                    <select>
-                        <option value="">Đơn vị</option>
-                        <option value="">Kg</option>
-                        <option value="">Tạ</option>
-                    </select>
                     <input type="hidden" name="prdID_item" value="<%= prd.getProductId()%>"><!-- comment -->
                     <input type="hidden" name="prdName_item" value="<%= prd.getProductName()%>"><!-- comment -->
                     <input type="hidden" name="prdPrice_item" value="<%= prd.getPrice()%>"><!-- comment -->
                     <input type="hidden" name="action" value="add">
-                    <input type="submit" value="Thêm vào giỏ hàng" onclick="add_to_cart(<%= prd.getProductId()%>, '<%= prd.getProductName()%>',<%= prd.getPrice()%>)" class="btn">
+                    <input type="button" id="add_sp" value="Thêm vào giỏ hàng" onclick="add_to_cart(<%= prd.getProductId()%>, '<%= prd.getProductName()%>',<%= prd.getPrice()%>)" class="btn">
                     <h3>Product Details <i class="fa fa-indent" ></i></h3>
                     <h4><%= prd.getProductDescription()%> </h4>
 
@@ -99,73 +94,118 @@
         <!------- view more ------>
         <div class="small-container">
             <div class="row row-2">
-                <h2>Related Products</h2>
-                <p>View more</p>
+                <h2>Sản phẩm nổi bật</h2>
+                <p>Xem thêm</p>
             </div>
         </div>
         <div class="small-container">
-            <div class="row">
-                <div class="col-4">
-                    <img src="images/prd4.jpg" alt="">
-                    <div class="overlay">
-                        <input type="button" value="Thêm vào giỏ hàng" class="btn">
-                    </div>
-                    <h4>Thuốc A</h4>
-                    <div class="rating">
-                        <i class="fa fa-star" ></i>
-                        <i class="fa fa-star" ></i>
-                        <i class="fa fa-star" ></i>
-                        <i class="fa fa-star" ></i>
-                        <i class="fa fa-star-o" ></i>
-                    </div>
-                    <p>$50.00</p>
+                <%
+                try{
+                List<FeaProduct> prds = ProductDao.getFeaturedProduct();
+                for (int i=0;i<prds.size();i++) {
+                %>
+                <div class="row">
+                    <% if(i<prds.size()) { Product prdsss = ProductDao.getPro(prds.get(i).getId()); 
+                    %>
+                    <form class="col-4 contentProduct" id="product_detail_show" name="product">
+                        <div class="" onclick="location.assign('product-details.jsp?prdID_item=<%= prdsss.getProductId() %>');">
+                            <img src="<%= prdsss.getPicture() %>" alt="">
+                            <h4><%= prdsss.getProductName() %></h4>
+                            <div class="rating">
+                                <i class="fa fa-star" ></i>
+                                <i class="fa fa-star" ></i>
+                                <i class="fa fa-star" ></i>
+                                <i class="fa fa-star" ></i>
+                                <i class="fa fa-star-o" ></i>
+                            </div>
+                            <p><%= prdsss.getPrice() %></p>
+                            <input type="hidden" name="prdID_item" value="<%= prdsss.getProductId()%>"><!-- comment -->
+                            <input type="hidden" name="prdName_item" value="<%= prdsss.getProductName()%>"><!-- comment -->
+                            <input type="hidden" name="prdPrice_item" value="<%= prdsss.getPrice()%>"><!-- comment -->
+                            <input type="hidden" name="action" value="add">
+                        </div> 
+                        <div class="overlay">
+                            <input type="button" value="Thêm vào giỏ hàng" id="add_item" onclick="add_to_cart(<%= prdsss.getProductId() %>,'<%= prdsss.getProductName() %>',<%= prdsss.getPrice() %>)" class="btn">
+                        </div>
+                    </form><% } i++;%>
+                    <% if(i<prds.size()) { Product prdsss = ProductDao.getPro(prds.get(i).getId()); 
+                    %>
+                    <form class="col-4 contentProduct" name="product" id="product_detail_show">
+                        <div class="" onclick="location.assign('product-details.jsp?prdID_item=<%= prdsss.getProductId() %>');">
+                            <img src="<%= prdsss.getPicture() %>" alt="">
+                            <h4><%= prdsss.getProductName() %></h4>
+                            <div class="rating">
+                                <i class="fa fa-star" ></i>
+                                <i class="fa fa-star" ></i>
+                                <i class="fa fa-star" ></i>
+                                <i class="fa fa-star" ></i>
+                                <i class="fa fa-star-o" ></i>
+                            </div>
+                            <p><%= prdsss.getPrice() %></p>
+                            <input type="hidden" name="prdID_item" value="<%= prdsss.getProductId()%>"><!-- comment -->
+                            <input type="hidden" name="prdName_item" value="<%= prdsss.getProductName()%>"><!-- comment -->
+                            <input type="hidden" name="prdPrice_item" value="<%= prdsss.getPrice()%>"><!-- comment -->
+                            <input type="hidden" name="action" value="add">
+                        </div> 
+                        <div class="overlay">
+                            <input type="button" value="Thêm vào giỏ hàng" id="add_item" onclick="add_to_cart(<%= prdsss.getProductId() %>,'<%= prdsss.getProductName() %>',<%= prdsss.getPrice() %>)" class="btn">
+                        </div>
+                    </form><% } i++;%>
+                    <% if(i<prds.size()) { Product prdsss = ProductDao.getPro(prds.get(i).getId()); 
+                    %>
+                    <form class="col-4 contentProduct" name="product" id="product_detail_show">
+                        <div class="" onclick="location.assign('product-details.jsp?prdID_item=<%= prdsss.getProductId() %>');">
+                            <img src="<%= prdsss.getPicture() %>" alt="">
+                            <h4><%= prdsss.getProductName() %></h4>
+                            <div class="rating">
+                                <i class="fa fa-star" ></i>
+                                <i class="fa fa-star" ></i>
+                                <i class="fa fa-star" ></i>
+                                <i class="fa fa-star" ></i>
+                                <i class="fa fa-star-o" ></i>
+                            </div>
+                            <p><%= prdsss.getPrice() %></p>
+                            <input type="hidden" name="prdID_item" value="<%= prdsss.getProductId()%>"><!-- comment -->
+                            <input type="hidden" name="prdName_item" value="<%= prdsss.getProductName()%>"><!-- comment -->
+                            <input type="hidden" name="prdPrice_item" value="<%= prdsss.getPrice()%>"><!-- comment -->
+                            <input type="hidden" name="action" value="add">
+                        </div> 
+                        <div class="overlay">
+                            <input type="button" value="Thêm vào giỏ hàng" id="add_item" onclick="add_to_cart(<%= prdsss.getProductId() %>,'<%= prdsss.getProductName() %>',<%= prdsss.getPrice() %>)" class="btn">
+                        </div>
+                    </form><% } i++;%>
+                    <% if(i<prds.size()) { Product prdsss = ProductDao.getPro(prds.get(i).getId()); 
+                    %>
+                    <form class="col-4 contentProduct" name="product" id="product_detail_show">
+                        <div class="" onclick="location.assign('product-details.jsp?prdID_item=<%= prdsss.getProductId() %>');">
+                            <img src="<%= prdsss.getPicture() %>" alt="">
+                            <h4><%= prdsss.getProductName() %></h4>
+                            <div class="rating">
+                                <i class="fa fa-star" ></i>
+                                <i class="fa fa-star" ></i>
+                                <i class="fa fa-star" ></i>
+                                <i class="fa fa-star" ></i>
+                                <i class="fa fa-star-o" ></i>
+                            </div>
+                            <p><%= prdsss.getPrice() %></p>
+                            <input type="hidden" name="prdID_item" value="<%= prdsss.getProductId()%>"><!-- comment -->
+                            <input type="hidden" name="prdName_item" value="<%= prdsss.getProductName()%>"><!-- comment -->
+                            <input type="hidden" name="prdPrice_item" value="<%= prdsss.getPrice()%>"><!-- comment -->
+                            <input type="hidden" name="action" value="add">
+                        </div> 
+                        <div class="overlay">
+                            <input type="button" value="Thêm vào giỏ hàng" id="add_item" onclick="add_to_cart(<%= prdsss.getProductId() %>,'<%= prdsss.getProductName() %>',<%= prdsss.getPrice() %>)" class="btn">
+                        </div>
+                    </form><% }%>         
                 </div>
-                <div class="col-4">
-                    <img src="images/prd5.jpg" alt="">
-                    <div class="overlay">
-                        <input type="button" value="Thêm vào giỏ hàng" class="btn">
-                    </div>
-                    <h4>Thuốc A</h4>
-                    <div class="rating">
-                        <i class="fa fa-star" ></i>
-                        <i class="fa fa-star" ></i>
-                        <i class="fa fa-star" ></i>
-                        <i class="fa fa-star" ></i>
-                        <i class="fa fa-star-o" ></i>
-                    </div>
-                    <p>$50.00</p>
-                </div>
-                <div class="col-4">
-                    <img src="images/prd6.jpg" alt="">
-                    <div class="overlay">
-                        <input type="button" value="Thêm vào giỏ hàng" class="btn">
-                    </div>
-                    <h4>Thuốc A</h4>
-                    <div class="rating">
-                        <i class="fa fa-star" ></i>
-                        <i class="fa fa-star" ></i>
-                        <i class="fa fa-star" ></i>
-                        <i class="fa fa-star" ></i>
-                        <i class="fa fa-star-o" ></i>
-                    </div>
-                    <p>$50.00</p>
-                </div>
-                <div class="col-4">
-                    <img src="images/prd7.jpg" alt="">
-                    <div class="overlay">
-                        <input type="button" value="Thêm vào giỏ hàng" class="btn">
-                    </div>
-                    <h4>Thuốc A</h4>
-                    <div class="rating">
-                        <i class="fa fa-star" ></i>
-                        <i class="fa fa-star" ></i>
-                        <i class="fa fa-star" ></i>
-                        <i class="fa fa-star-half-o" ></i>
-                        <i class="fa fa-star-o" ></i>
-                    </div>
-                    <p>$50.00</p>
-                </div>
-            </div>
+            <%if(i==3) break;%>
+            <% }
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+            %>
         </div>
         <!--------- footer  --------->
         <div class="footer">
@@ -225,3 +265,32 @@
         </script>
     </body>
 </html>
+<script>
+    
+    $(function(){
+            $("#add_sp").click(function () {
+            var postData = $("#product_detail").serialize();
+            $.ajax({
+                type: "POST",
+                url: "ajax/customerpage/ajax_add_item.jsp",
+                data: postData,
+                success: function ( response ) {
+                    alert("Thêm thành công");
+                }  
+            });
+        });
+ 
+            $("input[id|='add_item']").click( function(){
+                var postData = $(this).closest('div').closest('form').serialize();
+                 $.ajax({
+                    type: "POST",
+                    url: "ajax/customerpage/ajax_add_item.jsp",
+                    data: postData,
+                    success: function ( response ) {
+                        alert("Thêm thành công");
+                    }  
+                });
+            });
+    });
+    
+</script>

@@ -323,3 +323,27 @@ function SetDateToday(name){
     today = yyyy+'-'+mm+'-'+dd;
     document.getElementById(name).value = today;
 }
+ var menu = 1;
+
+function MenuOPCS()
+{
+    if(menu===1)
+    {
+        document.getElementById('navlist').style.display='none';
+        document.getElementById('sidebar').style.background='000';
+        document.getElementById("sidebar").style.height='52px';
+        document.getElementById('home').style.width='100%';
+        document.getElementById('home').style.marginLeft ='0%';
+        document.getElementById("icon-nav").className ='fas fa-angle-double-right';
+        menu=0;
+    }
+    else{
+        document.getElementById('navlist').style.display='block';
+        document.getElementById('sidebar').style.background='#37474F';
+        document.getElementById("sidebar").style.height='100%';
+        document.getElementById('home').style.width='88%';
+        document.getElementById('home').style.marginLeft ='12%';
+        document.getElementById("icon-nav").className ='fas fa-angle-double-left';
+        menu=1;
+    }
+}

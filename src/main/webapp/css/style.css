@@ -15,6 +15,7 @@ and open the template in the editor.
 }
 body{
     font-family: 'Poppins', sans-serif;
+    position: relative;
 }
 .navbar{
     display: flex;
@@ -97,6 +98,11 @@ p{
     border: none;
     outline: none;
 }
+.btn:hover{
+    cursor:pointer;
+}
+
+
 
 .header{
     background: radial-gradient(#fff,#ffd6d6);
@@ -452,6 +458,51 @@ th:last-child{
 .btn-tt{
     position: relative;
     justify-content: end;
+}
+.choose-payment-method{
+    position: absolute;
+    background-color: #D3D3D3;
+    top: 10%;
+    left: 20%;
+    transition: opacity 0.5s linear;
+    align-items: center;
+    border-radius: 30px;
+    padding: 20px 20px;
+}
+#exit-payment{
+    padding: 5px 10px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+#exit-payment:hover{
+    opacity: 0.75;
+}
+.payment-method{
+    margin: 10px;
+}
+.cart-quantity{
+    width: auto;
+}
+#prdQuantity_item{
+    width: 100px;
+    display: block;
+    height: 35px;
+    font-size: 25px;
+}
+.imgcard{
+    
+}
+.cart-day-ne{
+    position: relative;
+    
+}
+.cart-day-ne span{
+    position: absolute;
+    top: -11px;
+    left: 22px;
+    background: #ffffff;
+    color: red;
+    padding: 2px;
 }
 /*---------------- media for menu -----------*/
 @media screen and (max-width:1000px){

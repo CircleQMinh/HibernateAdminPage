@@ -11,7 +11,7 @@
     <head>
         <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DONG Store</title>
+    <title>Blog </title>
     <link href="css/style1.css" rel="stylesheet" type="text/css"/>
     <script src="https://kit.fontawesome.com/384d09a31e.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -31,30 +31,30 @@
                         <li><a href="products.jsp">Products</a></li>
                         <li><a href="aboutus.jsp">About</a></li>
                         <li><a href="myblog.jsp">Blog</a></li>
-                        <li><a href="customer-account.jsp">Account</a></li>
+                        <li><a href="account-info.jsp">Account</a></li>
                         <c:choose>
-                                    <c:when test="${sessionScope.account==null}" >
-                                    <li><a href="login" class="btn-login">Log In</a></li>
-                                    <li><a href="register" class="btn-register">Register</a></li>
+                            <c:when test="${sessionScope.account==null}" >
+                                <li><a href="login" class="btn-login">Log In</a></li>
+                                <li><a href="register" class="btn-register">Register</a></li>
+                            </c:when>
+                            <c:otherwise>
+                                <c:choose>
+                                    <c:when test="${sessionScope.account.type=='customer'}">
+                                        <li><a href="account-info.jsp" class="btn-login"><c:out value="${sessionScope.userInfo.customerName}"/></a></li>
+                                        <li><a href="logout" class="btn-register">Logout</a></li>
                                     </c:when>
+                                    <c:when test="${sessionScope.account.type=='employee'}">
+                                        <li><a href="account-info.jsp" class="btn-login"><c:out value="${sessionScope.userInfo.employeeName}"/></a></li>                                   
+                                        <li><a href="logout" class="btn-register">Logout</a></li>
+                                    </c:when>  
                                     <c:otherwise>
-                                        <c:choose>
-                                            <c:when test="${sessionScope.account.type=='customer'}">
-                                            <li><a href="" class="btn-login"><c:out value="${sessionScope.userInfo.customerName}"/></a></li>
-                                            <li><a href="logout" class="btn-register">Logout</a></li>
-                                            </c:when>
-                                            <c:when test="${sessionScope.account.type=='employee'}">
-                                            <li><a href="" class="btn-login"><c:out value="${sessionScope.userInfo.employeeName}"/></a></li>                                   
-                                            <li><a href="logout" class="btn-register">Logout</a></li>
-                                            </c:when>  
-                                            <c:otherwise>
-                                            <li><a href="" class="btn-login"><c:out value="${sessionScope.userInfo.name}"/></a></li>
-                                            <li><a href="logout" class="btn-register">Logout</a></li>
-                                            </c:otherwise>
-                                        </c:choose>
+                                         <li><a href="account-info.jsp" class="btn-login"><c:out value="${sessionScope.userInfo.name}"/></a></li>
+                                          <li><a href="logout" class="btn-register">Logout</a></li>
                                     </c:otherwise>
                                 </c:choose>
-                        <li><a href="cart.jsp"><img src="images/cart.png" width="30px" height="30px" class="imgcard" ></a></li>
+                            </c:otherwise>
+                        </c:choose>
+
                         
                     </ul>
                 </nav>
@@ -62,9 +62,9 @@
             </div>
             <div class="row">
                 <div class="col-2">
-                    <h1>Lorem ipsum dolor sit amet.</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<br> Nobis ut minus numquam reiciendis modi consequuntur mollitia quo sapiente suscipit animi cum <br>tempore recusandae facilis assumenda iusto a sunt, iure officiis.</p>
-                    <button value="Explore Now" class="btn">Explore Now &#10132;</button>
+                    <h1>Chào mừng đến với TEAM16</h1>
+                    <p>Hãy đăng kí ngay hôm nay<br>Để nhận được những ưu đãi siêu khủng từ chúng tôi......</p>
+                    <button value="Explore Now" class="btn">Khám phá ngay &#10132;</button>
                 </div>
                 <div class="col-2">
                     <img src="images/prd8.png" alt="">
@@ -332,7 +332,7 @@
                                 <p>Vui lòng điền email của bạn vào đây</p>
                                 <form action="#" method="POST">
                                     <input class="form-control" type="email" placeholder="Email" required="">
-                                    <input class="form-control" type="submit" value="Subscribe">
+                                    <input class="form-control" type="submit"  value="Subscribe">
                                 </form>
                             </div>
 
@@ -438,7 +438,7 @@
                                 <div class="blog-grids row mb-3">
                                     <!--thẻ div chứa ảnh minh họa-->
                                     <div class="col-md-5 blog-grids-left">
-                                        <a href="#">
+                                        <a href="blog/blog2.jsp">
                                             <img src="images/om2.jpg" class="img-fluid" alt="">
                                         </a>
                                     </div>

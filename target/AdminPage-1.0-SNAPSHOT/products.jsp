@@ -80,14 +80,14 @@
         <div class="container">
             <div class="navbar">
                 <div class="gogo">
-                    <img src="images/logo-default.jpg" width="125px" alt="">
+                    <img src="images/logo-default.jpg" width="125px" alt=""/>
                 </div>
                 <nav>
                     <ul id="MenuItems">
                         <li><a href="index.jsp">Home</a></li>
                         <li><a href="products.jsp">Products</a></li>
-                        <li><a href="">About</a></li>
-                        <li><a href="">Blog</a></li>
+                        <li><a href="aboutus.jsp">About</a></li>
+                        <li><a href="myblog.jsp">Blog</a></li>
                         <li><a href="customer-account.jsp">Account</a></li>
                         <c:choose>
                             <c:when test="${sessionScope.account==null}" >
@@ -113,7 +113,10 @@
                         </c:choose>
                     </ul>
                 </nav>
-                <a href="cart.jsp" ><img src="images/cart.png" width="30px" height="30px" class="imgcard"><span class="cart-item" >(0)</span></a>
+                <a href="cart.jsp" class="cart-day-ne">
+                    <img src="images/cart.png" width="30px" height="30px" class="imgcard">
+                    <span class="cart-item" >0</span>
+                </a><!-- comment -->
                 <img src="images/menu.png" class="menu-icon" onclick="menutoggle()">
             </div>
         </div>
@@ -121,17 +124,17 @@
         <div class="small-container">
             <div class="row row-2">
                 <h2>All Products</h2>
-                <input type="text" placeholder="Search" class="txtSearch">
-                <select name="" id="">
-                    <option value="">Default Shorting</option>
-                    <option value="">Short by price</option>
-                    <option value="">Short by popularity</option>
-                    <option value="">Short by rating</option>
-                    <option value="">Short by sale</option>
-                </select>
+                <form action="SearchProduct" method="get">
+                    <input type="text" name="search-product" placeholder="Search" class="txtSearch">
+                    <input type="submit" class="btn" value="Tìm">
+                </form>
             </div>
             <%
-                List<Product> prd = ProductDao.getAllPro();
+                List<Product> prd = null;
+                prd = (ArrayList<Product>)request.getAttribute("prd");
+                if(prd==null){
+                prd = ProductDao.getAllPro();
+                }
             %>
             <input type="hidden" id="total_prd" value="<%= prd.size()%>">
             <%
@@ -153,7 +156,7 @@
                 for (int i = 0; i < prd.size(); i++) {%>
             <div class="row">
                 <% if (i < prd.size()) {%>
-                <form class="col-4 contentProduct" name="product"  action="CartServlet" method="post">
+                <form class="col-4 contentProduct" name="product">
                     <div class="" onclick="location.assign('product-details.jsp?prdID_item=<%= prd.get(i).getProductId()%>');">
                         <img src="<%= prd.get(i).getPicture()%>" alt="">
                         <h4><%= prd.get(i).getProductName()%></h4>
@@ -171,12 +174,12 @@
                         <input type="hidden" name="action" value="add">
                     </div> 
                     <div class="overlay">
-                        <input type="submit" value="Thêm vào giỏ hàng" onclick="add_to_cart(<%= prd.get(i).getProductId()%>, '<%= prd.get(i).getProductName()%>',<%= prd.get(i).getPrice()%>)" class="btn">
+                        <input type="button" id="add_item" value="Thêm vào giỏ hàng" onclick="add_to_cart(<%= prd.get(i).getProductId()%>, '<%= prd.get(i).getProductName()%>',<%= prd.get(i).getPrice()%>)" class="btn">
                     </div>
                 </form><% }
                     i++;%>
                 <% if (i < prd.size()) {%>
-                <form class="col-4 contentProduct" name="product"  action="CartServlet" method="post">
+                <form class="col-4 contentProduct" name="product">
                     <div class="" onclick="location.assign('product-details.jsp?prdID_item=<%= prd.get(i).getProductId()%>');">
                         <img src="<%= prd.get(i).getPicture()%>" alt="">
                         <h4><%= prd.get(i).getProductName()%></h4>
@@ -194,12 +197,12 @@
                         <input type="hidden" name="action" value="add">
                     </div> 
                     <div class="overlay">
-                        <input type="submit" value="Thêm vào giỏ hàng" onclick="add_to_cart(<%= prd.get(i).getProductId()%>, '<%= prd.get(i).getProductName()%>',<%= prd.get(i).getPrice()%>)" class="btn">
+                        <input type="button" id="add_item" value="Thêm vào giỏ hàng" onclick="add_to_cart(<%= prd.get(i).getProductId()%>, '<%= prd.get(i).getProductName()%>',<%= prd.get(i).getPrice()%>)" class="btn">
                     </div>
                 </form><% }
-                    i++;%>  
+                    i++;%>
                 <% if (i < prd.size()) {%>
-                <form class="col-4 contentProduct" name="product"  action="CartServlet" method="post">
+                <form class="col-4 contentProduct" name="product">
                     <div class="" onclick="location.assign('product-details.jsp?prdID_item=<%= prd.get(i).getProductId()%>');">
                         <img src="<%= prd.get(i).getPicture()%>" alt="">
                         <h4><%= prd.get(i).getProductName()%></h4>
@@ -217,12 +220,12 @@
                         <input type="hidden" name="action" value="add">
                     </div> 
                     <div class="overlay">
-                        <input type="submit" value="Thêm vào giỏ hàng" onclick="add_to_cart(<%= prd.get(i).getProductId()%>, '<%= prd.get(i).getProductName()%>',<%= prd.get(i).getPrice()%>)" class="btn">
+                        <input type="button" id="add_item" value="Thêm vào giỏ hàng" onclick="add_to_cart(<%= prd.get(i).getProductId()%>, '<%= prd.get(i).getProductName()%>',<%= prd.get(i).getPrice()%>)" class="btn">
                     </div>
                 </form><% }
-                    i++;%>  
+                    i++;%>
                 <% if (i < prd.size()) {%>
-                <form class="col-4 contentProduct" name="product"  action="CartServlet" method="post">
+                <form class="col-4 contentProduct" name="product">
                     <div class="" onclick="location.assign('product-details.jsp?prdID_item=<%= prd.get(i).getProductId()%>');">
                         <img src="<%= prd.get(i).getPicture()%>" alt="">
                         <h4><%= prd.get(i).getProductName()%></h4>
@@ -240,9 +243,9 @@
                         <input type="hidden" name="action" value="add">
                     </div> 
                     <div class="overlay">
-                        <input type="submit" value="Thêm vào giỏ hàng" onclick="add_to_cart(<%= prd.get(i).getProductId()%>, '<%= prd.get(i).getProductName()%>',<%= prd.get(i).getPrice()%>)" class="btn">
+                        <input type="button" id="add_item" value="Thêm vào giỏ hàng" onclick="add_to_cart(<%= prd.get(i).getProductId()%>, '<%= prd.get(i).getProductName()%>',<%= prd.get(i).getPrice()%>)" class="btn">
                     </div>
-                </form><% }%> 
+                </form><% } %>
             </div>
             <% }
                 } catch (Exception e) {
@@ -311,3 +314,18 @@
         </script>
     </body>
 </html>
+<script>
+    $(function(){
+            $("input[id|='add_item']").click( function(){
+                var postData = $(this).closest('div').closest('form').serialize();
+                 $.ajax({
+                    type: "POST",
+                    url: "ajax/customerpage/ajax_add_item.jsp",
+                    data: postData,
+                    success: function ( response ) {
+                        alert("Thêm thành công");
+                    }  
+                });
+            });
+    });
+</script>

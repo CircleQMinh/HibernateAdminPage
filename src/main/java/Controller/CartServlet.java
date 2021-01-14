@@ -93,7 +93,7 @@ public class CartServlet extends HttpServlet {
                 }
                 // Xu li khac
             }
-            response.sendRedirect(request.getContextPath() + "/products.jsp");
+           response.sendRedirect(request.getContextPath() + "/products.jsp");
         } catch (NumberFormatException e) {
             e.printStackTrace();
         }

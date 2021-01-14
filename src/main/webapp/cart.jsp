@@ -32,17 +32,18 @@
     <script src="js/cart.js" type="text/javascript"></script>
 </head>
 <body>
-    <div class="container">
-        <div class="navbar">
-                <div class="gogo">
-                    <img src="images/logo-default.jpg" width="125px" alt="">
+    <div id="page">
+        <div class="container">
+            <div class="navbar">
+                    <div class="gogo">
+                    <img src="images/logo-default.jpg" width="125px" alt=""/>
                 </div>
                 <nav>
                     <ul id="MenuItems">
                         <li><a href="index.jsp">Home</a></li>
                         <li><a href="products.jsp">Products</a></li>
-                        <li><a href="">About</a></li>
-                        <li><a href="">Blog</a></li>
+                        <li><a href="aboutus.jsp">About</a></li>
+                        <li><a href="myblog.jsp">Blog</a></li>
                         <li><a href="customer-account.jsp">Account</a></li>
                         <c:choose>
                             <c:when test="${sessionScope.account==null}" >
@@ -68,118 +69,146 @@
                         </c:choose>
                     </ul>
                 </nav>
-                <a href="cart.jsp"><img src="images/cart.png" width="30px" height="30px" class="imgcard"></a>
+                <a href="cart.jsp" class="cart-day-ne">
+                    <img src="images/cart.png" width="30px" height="30px" class="imgcard">
+                    <span class="cart-item" >0</span>
+                </a><!-- comment -->
                 <img src="images/menu.png" class="menu-icon" onclick="menutoggle()">
+            </div>
         </div>
-    </div>
-    <script>
-        updateCart();
-    </script>
-    <!------- cart item ------>
-    <div class="small-container cart-page">
-        <%
-            if(session.getAttribute("cart")==null) {
-        %>
-            <h4>Không có sản phẩm nào trong giỏ hàng!!!</h4>
-        <% } %>
-        <%
-        if (session.getAttribute("cart")!=null){
-        %>
-        <table class='tbl-cart-item'>
-            <tr>
-                <th>Product</th>
-                <th>Quantity</th>
-                <th>SubTotal</th>
-            </tr>
-            <% 
-                
-                Cart cart = (Cart)session.getAttribute("cart");
-                List<CartItem> listItems = cart.getItems();     
-                for (int i=0;i<listItems.size();i++)
-                    { 
-System.out.println(listItems.get(i).toString());%>
-                    <tr>
-                        <td>
-                            <div class="cart-info">
-                                <img src="<%= listItems.get(i).getPictureString()%>" alt="">
-                                <div>
-                                    <p><%= listItems.get(i).getProductName()%></p>
-                                    <small>Price: <%= listItems.get(i).getPrice()%></small>
-                                    <a href="">Remove</a>
+        <script>
+            updateCart();
+        </script>
+        <!------- cart item ------>
+        <div class="small-container cart-page">
+            <%
+                if(session.getAttribute("cart")==null) {
+            %>
+                <h4>Không có sản phẩm nào trong giỏ hàng!!!</h4>
+            <% } %>
+            <%
+            if (session.getAttribute("cart")!=null){
+                Cart cart=(Cart)session.getAttribute("cart");
+            %>
+            <table class='tbl-cart-item'>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>SubTotal</th>
+                </tr>
+                <% 
+                    List<CartItem> listItems = cart.getItems();     
+                    for (int i=0;i<listItems.size();i++)
+                        { 
+                        System.out.println(listItems.get(i).toString());%>
+                        <tr>
+                            <td>
+                                <div class="cart-info">
+                                    <img src="<%= listItems.get(i).getPictureString()%>" alt="">
+                                    <div>
+                                        <p><%= listItems.get(i).getProductName()%></p>
+                                        <small>Price: <%= listItems.get(i).getPrice()%></small>
+                                        <a href="RemoveCartItem?prd_id=<%= listItems.get(i).getProductID() %>">Remove</a>
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
-                        <td><input type="number" value="<%= listItems.get(i).getQuantity() %>"></td>
-                        <td><%= CartService.getCost(listItems.get(i))  %></td>
-                    </tr>
-            <%}%>
+                            </td>
+                            <td><input class="cart-quantity" type="number" value="<%= listItems.get(i).getQuantity() %>"></td>
+                            <td><%= CartService.getCost(listItems.get(i))  %></td>
+                        </tr>
+                <%} %>
 
-        </table>
-        <div class="total-price">
-            <table>
-                <tr>
-                    <td>Subtotal</td>
-                    <td><%= CartService.getTotalCost(listItems)%></td>
-                </tr>
-                <tr>
-                    <td>Tax</td>
-                    <td>50.000</td>
-                </tr>
-                <tr>
-                    <td>Total</td>
-                    <td><%= CartService.getTotalCost(listItems)%></td>
-                </tr>
             </table>
-        </div>
-        <form class="row">
-            <a href="checkout.jsp" class="btn btn-tt">Thanh toán</a>
-        </form>
-        <% } %>
-    </div>
-
-    <!--------- footer  --------->
-    <div class="footer">
-        <div class="container">
+            <div class="total-price">
+                <table>
+                    <tr>
+                        <td>Subtotal</td>
+                        <td><%= CartService.getTotalCost(listItems)%></td>
+                    </tr>
+                    <tr>
+                        <td>Tax</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>Total</td>
+                        <td><%= CartService.getTotalCost(listItems)%></td>
+                    </tr>
+                </table>
+            </div>
             <div class="row">
-                <div class="footer-col-1">
-                    <h3>Dowload Our App</h3>
-                    <p>Download App for Android and ios mobie phone</p>
-                    <div class="app-logo">
-                        <img src="images/playstore.png" alt="">
-                        <img src="images/appstore.png" alt="">
+                <button id="btn-tt" class="btn btn-tt">Thanh toán</button>
+            </div>
+            <%  }%>
+        </div>
+
+        <!--------- footer  --------->
+        <div class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-col-1">
+                        <h3>Dowload Our App</h3>
+                        <p>Download App for Android and ios mobie phone</p>
+                        <div class="app-logo">
+                            <img src="images/playstore.png" alt="">
+                            <img src="images/appstore.png" alt="">
+                        </div>
+                    </div>
+                    <div class="footer-col-2">
+                        <img src="images/logo4.png" alt="">
+                        <p>Our Purpose Is To Sustainably Make the Pleasure and
+                            Benefits of Sports Accessible to the Many
+                        </p>
+
+                    </div>
+                    <div class="footer-col-3">
+                        <h3>Userful Links</h3>
+                        <ul>
+                            <li>Khoa Phan</li>
+                            <li>Minh Mâm</li>
+                            <li>Đông Thân</li>
+                            <li>Nhật Minh</li>
+                        </ul>
+                    </div>
+                    <div class="footer-col-3">
+                        <h3>Follow us</h3>
+                        <ul>
+                            <li>Coupns</li>
+                            <li>Blog Post</li>
+                            <li>Instagram</li>
+                            <li>Youtube</li>
+                        </ul>
                     </div>
                 </div>
-                <div class="footer-col-2">
-                    <img src="images/logo4.png" alt="">
-                    <p>Our Purpose Is To Sustainably Make the Pleasure and
-                        Benefits of Sports Accessible to the Many
-                    </p>
-
-                </div>
-                <div class="footer-col-3">
-                    <h3>Userful Links</h3>
-                    <ul>
-                        <li>Khoa Phan</li>
-                        <li>Minh Mâm</li>
-                        <li>Đông Thân</li>
-                        <li>Nhật Minh</li>
-                    </ul>
-                </div>
-                <div class="footer-col-3">
-                    <h3>Follow us</h3>
-                    <ul>
-                        <li>Coupns</li>
-                        <li>Blog Post</li>
-                        <li>Instagram</li>
-                        <li>Youtube</li>
-                    </ul>
-                </div>
+                <hr>
+                <p class="copyright">Copyright 2020 - DongThan</p>
             </div>
-            <hr>
-            <p class="copyright">Copyright 2020 - DongThan</p>
         </div>
     </div>
-    <!---- Toggle Menu ------>
+    <div class="choose-payment-method" id="choose-payment-method" style="display: none;">
+        <h3>Chọn phương thức thanh toán      <button id="exit-payment" ><i class="fa fa-times" aria-hidden="true"></i></button></h3>
+        <hr>
+        <div>
+            <input type="radio" name="payment-method" class="payment-method" value="cash">
+            <span>Tiền mặt (Thanh toán khi nhận hàng)</span>
+        </div>
+        <div>
+            <input type="radio" name="payment-method" class="payment-method" value="team16-acc">
+            <span>Tài khoản team 16</span>
+        </div>
+        <div>
+            <input type="radio" name="payment-method" class="payment-method" value="vnpay">
+            <span>Thanh toán qua VNPay</span>
+        </div>
+        <div>
+            <input type="radio" name="payment-method" class="payment-method" value="paypal">
+            <span>Thanh toán qua Paypal</span>
+        </div>
+        <button class="btn " id="btn-pay" >OK</button>
+    </div>
+    
+</body>
+
+</html>
+<!---- Toggle Menu ------>
     <script>
         var MenuItems = document.getElementById("MenuItems");
         MenuItems.style.maxHeight="0px";
@@ -195,6 +224,36 @@ System.out.println(listItems.get(i).toString());%>
                 MenuItems.style.maxHeight="0px"
             }
         }
+        $(function(){
+           $('#btn-tt').click(function(){
+               $('#choose-payment-method').show();
+               document.getElementById("page").style.opacity = "0.5";
+           }); 
+           $('#exit-payment').click(function(){
+               $('#choose-payment-method').hide();
+               document.getElementById("page").style.opacity = "1";
+           });
+           $('#btn-pay').click(function(){
+               var list = document.getElementsByName("payment-method");
+                for(i=0;i<list.length;i++){
+                var a = list[i];
+                if(a.checked === true){
+                    if(a.value == 'cash'){
+                        location.assign('checkout.jsp');
+                    }
+                    if(a.value == 'vnpay'){
+                        location.assign('checkout-vnpay.jsp');
+                    }
+                    if(a.value == 'paypal'){
+                        location.assign('checkout-paypal.jsp');
+                    }
+                    if(a.value == 'team16-acc'){
+                        location.assign('checkout-app.jsp');
+                    }
+                }
+                
+            }
+           });
+           
+        });
     </script>
-</body>
-</html>

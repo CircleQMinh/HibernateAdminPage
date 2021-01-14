@@ -25,13 +25,13 @@
                 </div>
                 <nav>
                     <ul id="MenuItems">
-                        <li><a href="index.jsp">Home</a></li>
-                        <li><a href="products.jsp">Products</a></li>
-                        <li><a href="">About</a></li>
+                        <li><a href="index.jsp">Trang chủ</a></li>
+                        <li><a href="products.jsp">Sản phẩm</a></li>
+                        <li><a href="">Liên hệ</a></li>
                         <li><a href="myblog.html">Blog</a></li>
-                        <li><a href="">Account</a></li>
-                        <li><a href="" class="btn-login">Log In</a></li>
-                        <li><a href="" class="btn-register">Register</a></li>
+                        <li><a href="">Tài khoản</a></li>
+                        <li><a href="" class="btn-login">Đăng nhập</a></li>
+                        <li><a href="" class="btn-register">Đăng ký</a></li>
                     </ul>
                 </nav>
                 <a href="cart.jsp"><img src="images/cart.png" width="30px" height="30px" class="imgcard"></a>
@@ -39,9 +39,9 @@
             </div>
             <div class="row">
                 <div class="col-2">
-                    <h1>Lorem ipsum dolor sit amet.</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<br> Nobis ut minus numquam reiciendis modi consequuntur mollitia quo sapiente suscipit animi cum <br>tempore recusandae facilis assumenda iusto a sunt, iure officiis.</p>
-                    <button value="Explore Now" class="btn">Explore Now &#10132;</button>
+                    <h1>Lorem ipsum cà rốt</h1>
+                    <p>Giảm giá mạnh cho cà rốt Lorem ipsum.<br> Đối với chúng tôi mà nói như một người kém khôn ngoan sẽ không bao giờ từ chối một số loại kết quả từ sự yếu kém của tâm trí khi nó nhận được <br>chấp nhận dễ dàng chỉ mất một chút thời gian.</p>
+                    <button value="Explore Now" class="btn">Khám phá ngay &#10132;</button>
                 </div>
                 <div class="col-2">
                     <img src="images/prd8.png" alt="">
@@ -53,7 +53,7 @@
     <div class="about">
         <section>
             <div class="container">
-                <h1 class="heading">Meet The Team</h1>
+                <h1 class="heading">Liên hệ chi tiết</h1>
                 <div class="card-wrapper">
     
                     <div class="card">

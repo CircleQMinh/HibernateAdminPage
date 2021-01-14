@@ -68,29 +68,29 @@
                     </div>
                     <nav>
                         <ul id="MenuItems">
-                            <li><a href="index.jsp">Home</a></li>
-                            <li><a href="products.jsp">Products</a></li>
-                            <li><a href="aboutus.jsp">About</a></li>
+                            <li><a href="index.jsp">Trang chủ</a></li>
+                            <li><a href="products.jsp">Sản phẩm</a></li>
+                            <li><a href="aboutus.jsp">Liên hệ</a></li>
                             <li><a href="myblog.jsp">Blog</a></li>
-                            <li><a href="account-info.jsp">Account</a></li>
+                            <li><a href="account-info.jsp">Tài khoản</a></li>
                                 <c:choose>
                                     <c:when test="${sessionScope.account==null}" >
-                                    <li><a href="login" class="btn-login">Log In</a></li>
-                                    <li><a href="register" class="btn-register">Register</a></li>
+                                    <li><a href="login" class="btn-login">Đăng nhập</a></li>
+                                    <li><a href="register" class="btn-register">Đăng ký</a></li>
                                     </c:when>
                                     <c:otherwise>
                                         <c:choose>
                                             <c:when test="${sessionScope.account.type=='customer'}">
                                             <li><a href="account-info.jsp" class="btn-login"><c:out value="${sessionScope.userInfo.customerName}"/></a></li>
-                                            <li><a href="logout" class="btn-register">Logout</a></li>
+                                            <li><a href="logout" class="btn-register">Đăng xuất</a></li>
                                             </c:when>
                                             <c:when test="${sessionScope.account.type=='employee'}">
                                             <li><a href="account-info.jsp" class="btn-login"><c:out value="${sessionScope.userInfo.employeeName}"/></a></li>                                   
-                                            <li><a href="logout" class="btn-register">Logout</a></li>
+                                            <li><a href="logout" class="btn-register">Đăng xuất</a></li>
                                             </c:when>  
                                             <c:otherwise>
                                             <li><a href="account-info.jsp" class="btn-login"><c:out value="${sessionScope.userInfo.name}"/></a></li>
-                                            <li><a href="logout" class="btn-register">Logout</a></li>
+                                            <li><a href="logout" class="btn-register">Đăng xuất</a></li>
                                             </c:otherwise>
                                         </c:choose>
                                     </c:otherwise>
@@ -104,7 +104,7 @@
             </div>
         </div>
     <c:if test="${sessionScope.account.type=='customer'}">
-        <h4 class="myarticle-title">My info</h4>
+        <h4 class="myarticle-title">Thông tin của tôi</h4>
         <article class="myarticle">
             <p>Tên : ${sessionScope.userInfo.customerName}</p>
             <p>Email : ${sessionScope.userInfo.email}</p>
@@ -113,7 +113,7 @@
             <p>Giới tính : ${sessionScope.userInfo.sex}</p>
             <p>Tài khoản : ${sessionScope.userInfo.money} </p>
         </article>
-        <h4 class="myarticle-title">Option</h4>
+        <h4 class="myarticle-title">Tùy chọn</h4>
         <button class="btn" onclick="openForm('Modal-password')" style="margin-left: 3%">Thay đổi mật khẩu</button>
         <button class="btn" onclick="openForm('Modal-info')">Thay đổi thông tin</button>
         <div id="Modal-password" class="modal">

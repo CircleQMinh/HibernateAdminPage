@@ -30,29 +30,29 @@
                 </div>
                 <nav>
                     <ul id="MenuItems">
-                        <li><a href="index.jsp">Home</a></li>
-                        <li><a href="products.jsp">Products</a></li>
-                        <li><a href="aboutus.jsp">About</a></li>
+                        <li><a href="index.jsp">Trang chủ</a></li>
+                        <li><a href="products.jsp">Sản phẩm</a></li>
+                        <li><a href="aboutus.jsp">Liên Hệ</a></li>
                         <li><a href="myblog.jsp">Blog</a></li>
-                        <li><a href="account-info.jsp">Account</a></li>
+                        <li><a href="account-info.jsp">Tài khoản</a></li>
                         <c:choose>
                             <c:when test="${sessionScope.account==null}" >
-                                <li><a href="login" class="btn-login">Log In</a></li>
-                                <li><a href="register" class="btn-register">Register</a></li>
+                                <li><a href="login" class="btn-login">Đăng nhập</a></li>
+                                <li><a href="register" class="btn-register">Đăng ký</a></li>
                             </c:when>
                             <c:otherwise>
                                 <c:choose>
                                     <c:when test="${sessionScope.account.type=='customer'}">
                                         <li><a href="account-info.jsp" class="btn-login"><c:out value="${sessionScope.userInfo.customerName}"/></a></li>
-                                        <li><a href="logout" class="btn-register">Logout</a></li>
+                                        <li><a href="logout" class="btn-register">Đăng xuất</a></li>
                                     </c:when>
                                     <c:when test="${sessionScope.account.type=='employee'}">
                                         <li><a href="account-info.jsp" class="btn-login"><c:out value="${sessionScope.userInfo.employeeName}"/></a></li>                                   
-                                        <li><a href="logout" class="btn-register">Logout</a></li>
+                                        <li><a href="logout" class="btn-register">Đăng xuất</a></li>
                                     </c:when>  
                                     <c:otherwise>
                                          <li><a href="account-info.jsp" class="btn-login"><c:out value="${sessionScope.userInfo.name}"/></a></li>
-                                          <li><a href="logout" class="btn-register">Logout</a></li>
+                                          <li><a href="logout" class="btn-register">Đăng xuất</a></li>
                                     </c:otherwise>
                                 </c:choose>
                             </c:otherwise>
@@ -331,8 +331,7 @@
             <div class="row">
                 <div class="col-3">
                     <i class="fa fa-quote-left"></i>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    Ullam hic dignissimos quisquam sed provident ab dolorum .</p>
+                    <p>Lương y như từ mẫu</p>
                     <i class="fa fa-quote-right"></i>
                     <div class="rating">
                         <i class="fa fa-star" ></i>
@@ -341,13 +340,12 @@
                         <i class="fa fa-star-half-o" ></i>
                         <i class="fa fa-star-o" ></i>
                     </div>
-                    <img src="images/exclusive.jpg" alt="">
-                    <h3>Giáo sư Kiều Xuân Vinh</h3>
+                    <img src="images/HCM.jpg" alt="">
+                    <h3>Chủ tịch Hồ Chí Minh</h3>
                 </div>
                 <div class="col-3">
                     <i class="fa fa-quote-left"></i>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    Ullam hic dignissimos quisquam sed provident ab dolorum .</p>
+                    <p>Chính sức khỏe mới là sự giàu có thực sự, không phải vàng và bạc</p>
                     <i class="fa fa-quote-right"></i>
                     <div class="rating">
                         <i class="fa fa-star" ></i>
@@ -356,13 +354,12 @@
                         <i class="fa fa-star-half-o" ></i>
                         <i class="fa fa-star-o" ></i>
                     </div>
-                    <img src="images/exclusive.jpg" alt="">
-                    <h3>Giáo sư Kiều Xuân Vinh</h3>
+                    <img src="images/Benjamin Franklin.jpg" alt="">
+                    <h3>Benjamin Franklin</h3>
                 </div>
                 <div class="col-3">
                     <i class="fa fa-quote-left"></i>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    Ullam hic dignissimos quisquam sed provident ab dolorum .</p>
+                    <p>Sức khỏe tốt và trí tuệ minh mẫn là hai điều hạnh phúc nhất của cuộc đời</p>
                     <i class="fa fa-quote-right"></i>
                     <div class="rating">
                         <i class="fa fa-star" ></i>
@@ -371,8 +368,8 @@
                         <i class="fa fa-star-half-o" ></i>
                         <i class="fa fa-star-o" ></i>
                     </div>
-                    <img src="images/exclusive.jpg" alt="">
-                    <h3>Giáo sư Kiều Xuân Vinh</h3>
+                    <img src="images/Mark Twain.jpg" alt="">
+                    <h3>Mark Twain</h3>
                 </div>
             </div>
         </div>

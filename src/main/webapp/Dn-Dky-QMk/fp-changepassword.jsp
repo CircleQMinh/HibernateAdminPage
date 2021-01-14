@@ -15,10 +15,10 @@
     </head>
     <body style=" background: linear-gradient(to right,#ffad063b,#ff105fb0);font-family: 'Poppins', sans-serif;">
     <center>
-        <h1 style="margin-top: 200px;">Update Password</h1>
+        <h1 style="margin-top: 200px;">Thay đổi mật khẩu</h1>
         <form method="POST" action="change-password">
-            New Password : <input name="newPassword" placeholder="Please Enter" > <br>
-            <button type="submit" style="width: 100px;background-color: whitesmoke  ;border-radius: 3px;font-family:'Poppins' " >Change</button>
+            Mật khẩu mới : <input name="newPassword" placeholder="Please Enter" > <br>
+            <button type="submit" style="width: 100px;background-color: whitesmoke  ;border-radius: 3px;font-family:'Poppins' " >Thay đổi</button>
         </form
     </center>
     </body>

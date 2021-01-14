@@ -65,9 +65,9 @@ button {
         <div class="container">   
             <label>Username : ${usernameError}</label>   
             <input type="text" placeholder="Enter Username" name="username" value="${username}" required>
-            <label>Password : ${passwordError}</label>   
+            <label>Mật khẩu : ${passwordError}</label>   
             <input type="password" placeholder="Enter Password" name="password"  required> 
-            <button type="submit" >LOGIN</button>   
+            <button type="submit" >Đăng nhập</button>   
             <a href="<c:url value="/forget-password"></c:url>" style="color: #333">Forgot your password?</a> 
         </div>   
     </form>     

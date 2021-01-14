@@ -62,11 +62,11 @@ button {
     <form  id="login" method="POST" action="login-employee">  
         <div class="container">   
             <label>Username : ${usernameError}</label>   
-            <input type="text" placeholder="Enter Username" name="username" value="${username}" required>
+            <input type="text" placeholder="Username" name="username" value="${username}" required>
             <label>Password : ${passwordError}</label>   
-            <input type="password" placeholder="Enter Password" name="password"  required> 
+            <input type="password" placeholder="Mật khẩu" name="password"  required> 
             <button type="submit" >LOGIN</button>   
-            <a href="<c:url value="/forget-password"></c:url>" style="color: #333">Forgot your password?</a> 
+            <a href="<c:url value="/forget-password"></c:url>" style="color: #333">Quên mật khẩu?</a> 
         </div>   
     </form>     
 </body>     

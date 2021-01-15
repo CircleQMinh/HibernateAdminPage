@@ -32,10 +32,10 @@
 </body>
     <!--<body style=" background: linear-gradient(to right,#ffad063b,#ff105fb0);font-family: 'Poppins', sans-serif;">
     <center>
-        <h1 style="margin-top: 200px;">Submit Your Email</h1>
+        <h1 style="margin-top: 200px;">Vui lòng nhập Email của bạn</h1>
     <form method="POST" action="send-otp">
-            Email address: <input name="email" placeholder="" value="${email}"><br> ${emailError} <br>
-            <button type="submit" style="width: 100px;background-color: whitesmoke  ;border-radius: 3px;font-family:'Poppins' " >Submit</button>
+            Email: <input name="email" placeholder="" value="${email}"><br> ${emailError} <br>
+            <button type="submit" style="width: 100px;background-color: whitesmoke  ;border-radius: 3px;font-family:'Poppins' " >Xác nhận</button>
         </form>
     </center>
 </body>-->

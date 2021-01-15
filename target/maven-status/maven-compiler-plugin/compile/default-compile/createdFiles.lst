@@ -1,6 +1,7 @@
 Model\Orderdetail.class
 Controller\LogoutController.class
 Dao\CustomerDAO.class
+Controller\paypal\AuthorizePaymentServlet.class
 Model\Unapprovedproduct.class
 Controller\SaveOrder.class
 Dao\CategoryDao.class
@@ -22,12 +23,16 @@ Controller\NewPassword.class
 Service\SendEmailService$1.class
 Dao\AccountDao.class
 Model\OrderdetailId.class
+Controller\paypal\ExecutePaymentServlet.class
 Controller\RegisterController.class
 Controller\CartServlet.class
+Service\PaymentServices.class
 Model\Order.class
 Controller\RemoveCartItem.class
 Model\Blog.class
+Model\OrderPaypal.class
 Service\CartService.class
+Controller\AppPayServlet.class
 Service\UserService.class
 Controller\PutServletHere.class
 Model\Admin.class

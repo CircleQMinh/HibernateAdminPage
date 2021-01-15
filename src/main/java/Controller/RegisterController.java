@@ -65,14 +65,14 @@ public class RegisterController extends HttpServlet {
             if (userService.getAccountByEmail(email) == null) 
             {                
                 session.setAttribute("userEmail", email);
-                String otpCode=sendOTP(email, session); 
+                String otpCode="1";//sendOTP(email, session); 
                 session.setAttribute("otpCode", otpCode);
                 RequestDispatcher dp=getServletContext().getRequestDispatcher("/Dn-Dky-QMk/register.jsp");
                 dp.forward(request, response);
             }            
             else 
             {
-                emailError="Email Already Assigned For Another Account!";
+                emailError="Email đã được đăng ký!";
                 request.setAttribute("emailError", emailError);
                 request.setAttribute("email", email);
                 RequestDispatcher dp=getServletContext().getRequestDispatcher("/Dn-Dky-QMk/register-sendotp.jsp");
@@ -107,37 +107,61 @@ public class RegisterController extends HttpServlet {
             //validate
             Pattern phonePattern = Pattern.compile("\\d{10}");
             Matcher phoneMatcher = phonePattern.matcher(phone);
+            String tiengVietcodau = "ẮẰẲẴẶĂẤẦẨẪẬÂÁÀÃẢẠĐẾỀỂỄỆÊÉÈẺẼẸÍÌỈĨỊỐỒỔỖỘÔỚỜỞỠỢƠÓÒÕỎỌỨỪỬỮỰƯÚÙỦŨỤÝỲỶỸỴ ";
+            Pattern tiengVietPattern =Pattern.compile("(?:[" + tiengVietcodau + "])+",
+                    Pattern.CANON_EQ |
+                    Pattern.CASE_INSENSITIVE |
+                    Pattern.UNICODE_CASE);
+            Matcher usernameMatcher=tiengVietPattern.matcher(username);
+            Matcher passwordMatcher=tiengVietPattern.matcher(password);
+            if(usernameMatcher.find(0))
+            {
+                usernameError="Tài khoản chỉ gồm chữ cái không dấu và số";
+                url = "/Dn-Dky-QMk/register.jsp";
+            }
+            if(passwordMatcher.find(0))
+            {
+                passwordError="Mật khẩu chỉ gồm chữ cái không dấu và số";
+                url = "/Dn-Dky-QMk/register.jsp";
+            }
+            /*Pattern p=Pattern.compile("[^A-Za-z0-9]");
+            Matcher usernameMatcher=p.matcher(username);
+            Matcher passwordMatcher=p.matcher(password);
+            if(!usernameMatcher.find(0))
+            {
+                usernameError="Tài khoản phải là chữ cái và số";
+                url = "/Dn-Dky-QMk/register.jsp";
+            }
+            if(!passwordMatcher.find(0))
+            {
+                passwordError="Mật khẩu phải là chữ cái và số";
+                url = "/Dn-Dky-QMk/register.jsp";
+            }*/
             if (agree==null) 
             {
-                agreeError = "Must agree to terms and conditions to continue";
+                agreeError = "Cần đồng ý điều kiện và điều khoản sử dụng";
                 url = "/Dn-Dky-QMk/register.jsp";
             }
             if (!password.equals(confirmPassword)) 
             {
-                confirmPasswordError = "Not match with your password";
+                confirmPasswordError = "Không khớp với mật khẩu";
                 url = "/Dn-Dky-QMk/register.jsp";
             }
-
             if (!phoneMatcher.matches()) 
             {
-                phoneError = "Phone number must be 10 digits";
+                phoneError = "SĐT là 10 kí tự số";
                 url = "/Dn-Dky-QMk/register.jsp";
             }
             if (userService.getAccountByUsername(username) != null) //chưa có gmail nào đăng ký
             {
-                usernameError = "Username already existed";
+                usernameError = "Tài khoản đã tồn tại";
                 url = "/Dn-Dky-QMk/register.jsp";
             }
             if(!otp.equals(OTPcode))
             {
-                otpError="Incorrect! Please check again!";
+                otpError="Sai mã! Xin hãy kiểm tra lại email!";
                 url = "/Dn-Dky-QMk/register.jsp";
             }
-            /*if (userService.getAccountByEmail(email) != null) 
-            {
-                emailError = "Email already assigned";
-                url = "/Dn-Dky-QMk/register.jsp";
-            }*/
             if (url.equals("/Dn-Dky-QMk/register.jsp")) 
             {
                 //user's input
@@ -146,6 +170,7 @@ public class RegisterController extends HttpServlet {
                 request.setAttribute("phone", phone);
                 request.setAttribute("address", address);
                 request.setAttribute("gender", sex);
+                request.setAttribute("otp",otp);
                 //errors
                 request.setAttribute("usernameError", usernameError);
                 request.setAttribute("passwordError", passwordError);
@@ -170,7 +195,7 @@ public class RegisterController extends HttpServlet {
                                 +"<center><i>We will keep you up to date with our latest products and promotions!</i><center> \n"
                                 +"<center>If you need any assistance please contact us at ...</center>\n "
                                 +"<center><h4>Sincerely Team16STORE</h4></center>";
-                sendEmailService.sendEmail("Thanks for signing up", email, thanksMes);
+                //sendEmailService.sendEmail("Thanks for signing up", email, thanksMes);
                 url="/Dn-Dky-QMk/thanks.jsp";
                 session.invalidate();
                 RequestDispatcher dp = getServletContext().getRequestDispatcher(url);

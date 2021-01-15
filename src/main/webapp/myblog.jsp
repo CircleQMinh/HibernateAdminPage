@@ -27,29 +27,29 @@
                 </div>
                 <nav>
                     <ul id="MenuItems">
-                        <li><a href="index.jsp">Home</a></li>
-                        <li><a href="products.jsp">Products</a></li>
-                        <li><a href="aboutus.jsp">About</a></li>
+                        <li><a href="index.jsp">Trang chủ</a></li>
+                        <li><a href="products.jsp">Sản phẩm</a></li>
+                        <li><a href="aboutus.jsp">Liên hệ</a></li>
                         <li><a href="myblog.jsp">Blog</a></li>
-                        <li><a href="account-info.jsp">Account</a></li>
+                        <li><a href="account-info.jsp">Tài khoản</a></li>
                         <c:choose>
                             <c:when test="${sessionScope.account==null}" >
-                                <li><a href="login" class="btn-login">Log In</a></li>
-                                <li><a href="register" class="btn-register">Register</a></li>
+                                <li><a href="login" class="btn-login">Đăng nhập</a></li>
+                                <li><a href="register" class="btn-register">Đăng ký</a></li>
                             </c:when>
                             <c:otherwise>
                                 <c:choose>
                                     <c:when test="${sessionScope.account.type=='customer'}">
                                         <li><a href="account-info.jsp" class="btn-login"><c:out value="${sessionScope.userInfo.customerName}"/></a></li>
-                                        <li><a href="logout" class="btn-register">Logout</a></li>
+                                        <li><a href="logout" class="btn-register">Đăng xuất</a></li>
                                     </c:when>
                                     <c:when test="${sessionScope.account.type=='employee'}">
                                         <li><a href="account-info.jsp" class="btn-login"><c:out value="${sessionScope.userInfo.employeeName}"/></a></li>                                   
-                                        <li><a href="logout" class="btn-register">Logout</a></li>
+                                        <li><a href="logout" class="btn-register">Đăng xuất</a></li>
                                     </c:when>  
                                     <c:otherwise>
                                          <li><a href="account-info.jsp" class="btn-login"><c:out value="${sessionScope.userInfo.name}"/></a></li>
-                                          <li><a href="logout" class="btn-register">Logout</a></li>
+                                          <li><a href="logout" class="btn-register">Đăng xuất</a></li>
                                     </c:otherwise>
                                 </c:choose>
                             </c:otherwise>
@@ -117,7 +117,7 @@
                                         <p class="card-text">Gừng có vị cay, tính ấm vào 3 kinh vị, phế, tỳ nhưng ít ai biết được những công dụng của gừng cũng như trà của nó. Hôm nay chúng tôi sẽ giúp mọi người trả lời câu hỏi trà gừng có tác dụng gì?</p>
                                         <!--Nút đọc tiếp-->
                                         <div class="read inner mt-4">
-                                            <a href="blog1.jsp" class="btn btn-sm animated-button victoria-two">Read More</a>
+                                            <a href="blog1.jsp" class="btn btn-sm animated-button victoria-two">Chi tiết</a>
                                         </div>
                                     </div>
 
@@ -155,7 +155,7 @@
                                     <p class="card-text">Mùa đông là thời điểm mọi người rất dễ bị cảm lạnh, cảm cúm, nhất là đối với trẻ nhỏ. Bài viết sau đây sẽ giúp bạn có cách chữa cảm lạnh, cảm cúm không cần dùng thuốc rất hiệu quả và bổ ích.</p>
                                     <!--Nút đọc tiếp-->
                                     <div class="read inner mt-4">
-                                        <a href="blog2.jsp" class="btn btn-sm animated-button victoria-two">Read More</a>
+                                        <a href="blog2.jsp" class="btn btn-sm animated-button victoria-two">Chi tiết</a>
                                     </div>
                                 </div>
 
@@ -193,7 +193,7 @@
                                     <p class="card-text">Trong lịch sử y dược ngàn năm dân tộc Việt Nam đã sinh thành và nuôi dưỡng những vị danh y kiệt xuất, có những đóng góp và cống hiến lớn lao với cộng đồng mà ngành y dược nước nhà sử sách vẫn còn in những dấu son vàng.Vậy chúng ta cùng tìm hiểu xem 7 danh y nổi tiếng của nước Việt Nam là ai nhé</p>
                                     <!--Nút đọc tiếp-->
                                     <div class="read inner mt-4">
-                                        <a href="blog3.jsp" class="btn btn-sm animated-button victoria-two">Read More</a>
+                                        <a href="blog3.jsp" class="btn btn-sm animated-button victoria-two">Chi tiết</a>
                                     </div>
                                 </div>
 
@@ -231,7 +231,7 @@
                                     <p class="card-text">Mùa hè đến, thời tiết nắng nóng làm cơ thể chúng ta mệt mỏi, rã rời, sức đề kháng giảm sút nên rất dễ bị cảm nắng, say nắng nóng… bổ sung vitamin từ các loại rau tươi, quả chín sẽ giúp cơ thể tăng sức đề kháng chống lại bệnh tật... Vậy nên ăn quả gì, uống nước gì tốt trong ngày hè?</p>
                                     <!--Nút đọc tiếp-->
                                     <div class="read inner mt-4">
-                                        <a href="blog4.jsp" class="btn btn-sm animated-button victoria-two">Read More</a>
+                                        <a href="blog4.jsp" class="btn btn-sm animated-button victoria-two">Chi tiết</a>
                                     </div>
                                 </div>
 
@@ -269,7 +269,7 @@
                                     <p class="card-text">Trong thời kỳ mang thai,nhu cầu dinh dưỡng của bà bầu vô cùng quan trọng bởi nó cung cấp chất dinh dưỡng cho cả mẹ và bé. Tuy nhiên,chế độ ăn sau sinh cho sản phụ cũng quan trọng không kém. Nó giúp cho cơ thể người mẹ nhanh chóng được phục hồi, đồng thời cung cấp năng lượng và chất dinh dưỡng cần thiết để chăm sóc, nuôi dưỡng trẻ.</p>
                                     <!--Nút đọc tiếp-->
                                     <div class="read inner mt-4">
-                                        <a href="blog5.jsp" class="btn btn-sm animated-button victoria-two">Read More</a>
+                                        <a href="blog5.jsp" class="btn btn-sm animated-button victoria-two">Chi tiết</a>
                                     </div>
                                 </div>
 
@@ -307,7 +307,7 @@
                                     <p class="card-text">Để chữa bệnh suy thận hiệu quả, bạn cần phát hiện bệnh sớm và sử dụng đúng thuốc. Bìa viết hôm nay, Thuốc Nam Đông Thân xin chia sẻ bài thuốc nam chữa suy thận hiệu quả và rất đơn giản. Mời các bạn tìm hiểu bài viết dưới đây để có thể nắm rõ hơn về cách chữa suy thận bằng thuốc nam hiệu quả.Hi vọng bài viết sẽ giúp bạn chữa bệnh hiệu quả</p>
                                     <!--Nút đọc tiếp-->
                                     <div class="read inner mt-4">
-                                        <a href="blog6.jsp" class="btn btn-sm animated-button victoria-two">Read More</a>
+                                        <a href="blog6.jsp" class="btn btn-sm animated-button victoria-two">Chi tiết</a>
                                     </div>
                                 </div>
 

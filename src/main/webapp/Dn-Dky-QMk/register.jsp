@@ -30,13 +30,14 @@
                     <div>
                         <input type="radio" name="cusGender" value="Nam" checked> Male
                         <input type="radio" name="cusGender" value="Nữ" <c:if test="${gender=='Nữ'}">checked</c:if>>Female
-                        <input type="text" name="otp" style="width: 150px; margin-left: 81px;" placeholder="Your OTP Code"><small style="float:right">${otpError}</small><br>
+                        <input type="text" name="otp" value="${otp}" style="width: 150px; margin-left: 81px;" placeholder="Your OTP Code"><small style="float:right">${otpError}</small><br>
                     </div>
                         <input type="email" name="email" placeholder="Email Address" required="" value="${sessionScope.userEmail}" disabled=""><br>
                     <div>    
-                        <input type="password" name="password" placeholder="Password" style="width:40%;"required=""><small>${passwordError}</small>
+                        <input type="password" name="password" placeholder="Password" style="width:40%;"required="">
                         <input type="password" name="confirmPassword" placeholder="Confirm Password" style="width:40%;float:right;" required="">
                         <small><center>${confirmPasswordError}</center></small><br>
+                        <small><center>${passwordError}</center></small>
                     </div>
                         <input type="text" name="cusAddress" style="height: 150px;" placeholder="Address" value="${address}"><small>${addressError}</small><br>
                         <input type="checkbox" name="agreeTerms"style="color: red"><span>Agree to terms and conditions</span>
@@ -69,13 +70,13 @@
                         <div class="col-md-6 col-sm-12" style="float: left">
                             <div class="styled-input" style="float:right;">
                                 <input type="password" name="password" required />
-                                <label>Password ${passwordError}</label> 
+                                <label>Mật khẩu ${passwordError}</label> 
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-12" style="float: right">
                             <div class="styled-input" style="float:right;">
                                 <input type="password" name="confirmPassword" required />
-                                <label>Confirm Password ${confirmPasswordError}</label> 
+                                <label>Xác nhận mật khẩu ${confirmPasswordError}</label> 
                             </div>
                         </div>
                     </div>
@@ -83,7 +84,7 @@
                     <div class="col-xs-12">
                         <div class="styled-input wide">
                             <input type="text" name="cusName" value="${name}"required/> 
-                            <label>Name</label> 
+                            <label>Tên</label> 
                         </div>
                     </div>
                     <div class="col-xs-12">
@@ -95,31 +96,31 @@
                     <div class="col-xs-12">
                         <div class="styled-input wide">
                             <input type="text" name="cusPhone" value="${phone}"required /> 
-                            <label>Phone ${phoneError}</label> 
+                            <label>Điện thoại ${phoneError}</label> 
                         </div>
                     </div>
                         <div style="width:40%; float:left;">
-                            <input type="radio" name="cusGender" class="gender"  value="Nam" checked ><center>Male</center>
+                            <input type="radio" name="cusGender" class="gender"  value="Nam" checked ><center>Nam</center>
                         </div>
                         <div style="width:40%; float:right;">
                             <input type="radio" name="cusGender" class="gender"  value="Nữ" 
-        <c:if test="${gender=='Nữ'}">checked</c:if>><center>Female</center>
-</div>                         
-<div class="col-xs-12">
-<div class="styled-input wide">
- <input type="text" name="cusAddress" value="${address}" style="height: 250px;"required >
- <label>Address</label> 
+                                   <c:if test="${gender=='Nữ'}">checked</c:if>><center>Nữ</center>
+                        </div>                         
+                    <div class="col-xs-12">
+                        <div class="styled-input wide">
+                            <input type="text" name="cusAddress" value="${address}" style="height: 250px;"required >
+                            <label>Địa chỉ</label> 
 
-</div>
-</div>                
+                        </div>
+                    </div>                
 
-<div class="col-xs-12">
-<input type="checkbox" name="agreeTerms"style="color: red">
-<center>Agree to terms and conditions</center><br> 
-<center>${agreeError}</center><br>        
-<center> <button type="submit "class="btn-lrg submit-btn">Register</button>    </center>    
-</div>         
-</div>
-</form>-->
+                    <div class="col-xs-12">
+                        <input type="checkbox" name="agreeTerms"style="color: red">
+                        <center>Đồng ý với các điều khoản và điều kiện</center><br> 
+                        <center>${agreeError}</center><br>        
+                        <center> <button type="submit "class="btn-lrg submit-btn">Đăng ký</button>    </center>    
+                    </div>         
+                </div>
+        </form>
     </body>
 </html>

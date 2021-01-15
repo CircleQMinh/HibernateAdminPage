@@ -89,13 +89,13 @@ public class LoginController extends HttpServlet {
                             session.setAttribute("userInfo", userInfo);
                             url = "/index.jsp";
                         } else {
-                            passwordError = "Wrong Password";
+                            passwordError = "Sai mật khẩu";
                             url = "/Dn-Dky-QMk/login.jsp";
                         }
                     } 
                     else // ko tồn tại username
                     {
-                        userNameError = "Username Not Found";
+                        userNameError = "Không có tài khoản";
                         url = "/Dn-Dky-QMk/login.jsp";
                     }                    
                 } catch (Exception e) {
@@ -132,12 +132,12 @@ public class LoginController extends HttpServlet {
                             session.setAttribute("userInfo", userInfo);
                             url="/nhanvien.jsp";
                         } else {
-                            passwordError = "Wrong Password";
+                            passwordError = "Sai mật khẩu";
                             url = "/Dn-Dky-QMk/loginemp.jsp";
                         }
                     } else // ko tồn tại username
                     {
-                        userNameError = "Username Not Found";
+                        userNameError = "Không có tài khoản";
                         url = "/Dn-Dky-QMk/loginemp.jsp";
                     }                    
                 } catch (Exception e) {
@@ -170,12 +170,12 @@ public class LoginController extends HttpServlet {
                             session.setAttribute("userInfo", userInfo);
                             url="/dashboard.jsp";
                         } else {
-                            passwordError = "Wrong Password";
+                            passwordError = "Sai mật khẩu";
                             url = "/Dn-Dky-QMk/loginadmin.jsp";
                         }
                     } else // ko tồn tại username
                     {
-                        userNameError = "Username Not Found";
+                        userNameError = "Không có tài khoản";
                         url = "/Dn-Dky-QMk/loginadmin.jsp";
                     }                    
                 } catch (Exception e) {

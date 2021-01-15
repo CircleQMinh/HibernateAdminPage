@@ -139,12 +139,12 @@
                 <p>Thay đổi info</p>
                 <form id="new-info" action="NewInfo" method="post">
                     <input type="hidden" value="customer" name="type">
-                    <p>Tên :</p>
+                    <p> Tên :</p>
                     <input type="text" name="name" value="${sessionScope.userInfo.customerName}" required="true">
-                    <p>Điện thoại : </p>
-                    <input type="text" name="phone" value="${sessionScope.userInfo.email}" required="true">
                     <p> Email : </p>
-                    <input type="text" name="email" value="${sessionScope.userInfo.phone}" required="true">
+                    <input type="text" name="email" value="${sessionScope.userInfo.email}" required="true">
+                    <p> Điện thoại : </p>
+                    <input type="text" name="phone" value="${sessionScope.userInfo.phone}" required="true">
                     <p> Địa chỉ : </p>
                     <input type="text" name="address" value="${sessionScope.userInfo.address}" required="true">
                     <p> Giới  tính</p>
@@ -193,12 +193,12 @@
                 <p>Thay đổi info</p>
                 <form id="new-info" action="NewInfo" method="post">
                     <input type="hidden" value="employee" name="type">
-                    <p>Tên :</p>
+                    <p> Tên :</p>
                     <input type="text" name="name" value="${sessionScope.userInfo.employeeName}" required="true">
-                    <p>Điện thoại : </p>
-                    <input type="text" name="phone" value="${sessionScope.userInfo.email}" required="true">
                     <p> Email : </p>
-                    <input type="text" name="email" value="${sessionScope.userInfo.phone}" required="true">
+                    <input type="text" name="email" value="${sessionScope.userInfo.email}" required="true">
+                    <p> Điện thoại : </p>
+                    <input type="text" name="phone" value="${sessionScope.userInfo.phone}" required="true">
                     <p> Địa chỉ : </p>
                     <input type="text" name="address" value="${sessionScope.userInfo.address}" required="true">
                     <p> Giới  tính</p>
@@ -247,12 +247,12 @@
                 <form id="new-info" action="NewInfo" method="post">
                     <input type="hidden" value="admin" name="type">
                     <input type="hidden" value="admin" name="address">
-                    <p>Tên :</p>
+                    <p> Tên :</p>
                     <input type="text" name="name" value="${sessionScope.userInfo.name}" required="true">
-                    <p>Điện thoại : </p>
-                    <input type="text" name="phone" value="${sessionScope.userInfo.email}" required="true">
                     <p> Email : </p>
-                    <input type="text" name="email" value="${sessionScope.userInfo.phone}" required="true">
+                    <input type="text" name="email" value="${sessionScope.userInfo.email}" required="true">
+                    <p> Điện thoại :</p>
+                    <input type="text" name="phone" value="${sessionScope.userInfo.phone}" required="true">
                     <p> Giới  tính</p>
                     <select name="sex" id="sex">
                         <option selected value="1">Nam</option>

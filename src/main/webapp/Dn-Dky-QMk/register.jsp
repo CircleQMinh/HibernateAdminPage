@@ -10,180 +10,49 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Home | Register</title>
-        <link rel="stylesheet" href="css/style.css">
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="js/cart.js" type="text/javascript"></script>    
-        <style>
-            body {
-                background: radial-gradient(#fff,#ffd6d6);
-                padding-top: 85px;
-            }
+        <title> Home | Register</title>
+        <link rel="stylesheet" href="<c:url value="/Dn-Dky-QMk/style-login.css"></c:url>"> 
+            <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script src="js/cart.js" type="text/javascript"></script>    
+        </head>
+        <body>
+            <div class="box">
 
-            h1 {
-                font-family: 'Poppins', sans-serif, 'arial';
-                font-weight: 600;
-                font-size: 72px;
-                color: white;
-                text-align: center;
-            }
+                <div class="inner-box">
 
-            h4 {
-                font-family: 'Roboto', sans-serif, 'arial';
-                font-weight: 400;
-                font-size: 20px;
-                color: #9b9b9b;
-                line-height: 1.5;
-            }
-
-            /* ///// inputs /////*/
-
-            input:focus ~ label, textarea:focus ~ label, input:valid ~ label, textarea:valid ~ label {
-                font-size: 0.75em;
-                color: #999;
-                top: -5px;
-                -webkit-transition: all 0.225s ease;
-                transition: all 0.225s ease;
-            }
-
-            .styled-input {
-                float: left;
-                width: 293px;
-                margin: 1rem 0;
-                position: relative;
-                border-radius: 4px;
-            }
-
-            @media only screen and (max-width: 768px){
-                .styled-input {
-                    width:100%;
-                }
-            }
-
-            .styled-input label {
-                color: #999;
-                padding: 1.3rem 30px 1rem 30px;
-                position: absolute;
-                top: 10px;
-                left: 0;
-                -webkit-transition: all 0.25s ease;
-                transition: all 0.25s ease;
-                pointer-events: none;
-            }
-
-            .styled-input.wide { 
-                width: 650px;
-                max-width: 100%;
-            }
-
-            input,
-            textarea {
-                padding: 30px;
-                border: 0;
-                width: 100%;
-                font-size: 1rem;
-                background-color: #2d2d2d;
-                color: white;
-                border-radius: 4px;
-            }
-
-            input:focus,
-            textarea:focus { outline: 0; }
-
-            input:focus ~ span,
-            textarea:focus ~ span {
-                width: 100%;
-                -webkit-transition: all 0.075s ease;
-                transition: all 0.075s ease;
-            }
-
-            textarea {
-                width: 100%;
-                min-height: 15em;
-            }
-
-            .input-container {
-                width: 650px;
-                max-width: 100%;
-                margin: 20px auto 25px auto;
-            }
-
-            .submit-btn {
-                float: right;
-                padding: 7px 35px;
-                border-radius: 60px;
-                display: inline-block;
-                background-color: #4b8cfb;
-                color: white;
-                font-size: 18px;
-                cursor: pointer;
-                box-shadow: 0 2px 5px 0 rgba(0,0,0,0.06),
-                    0 2px 10px 0 rgba(0,0,0,0.07);
-                -webkit-transition: all 300ms ease;
-                transition: all 300ms ease;
-            }
-
-            .submit-btn:hover {
-                transform: translateY(1px);
-                box-shadow: 0 1px 1px 0 rgba(0,0,0,0.10),
-                    0 1px 1px 0 rgba(0,0,0,0.09);
-            }
-
-            @media (max-width: 768px) {
-                .submit-btn {
-                    width:100%;
-                    float: none;
-                    text-align:center;
-                }
-            }
-
-            input[type=checkbox] + label {
-                color: #ccc;
-                font-style: italic;
-            } 
-
-            input[type=checkbox]:checked + label {
-                color: #f00;
-                font-style: normal;
-            }
-        </style>
-    </head>
-    <body>
-        <!-- header -->
-        <div class="header">
-            <div class="container">
-                <div class="navbar">
-                    <div class="gogo">
-                        <img src="images/logo-default.jpg" width="125px" alt=""/>
+                <form action="register?action=add-user" method="post"> 
+                        <h2>Đăng ký</h2>
+                <input type="text" name="cusName" placeholder="Tên của bạn" required="" value="${name}"><br>
+                <input type="text" name="username" placeholder="Tài khoản" required="" value="${username}"><small>${usernameError}</small><br>
+                <input type="text" name="cusPhone" placeholder="SĐT" required="" value="${phone}"><small>${phoneError}</small><br>
+                    <div>
+                        <input type="radio" name="cusGender" value="Nam" checked> Nam
+                        <input type="radio" name="cusGender" value="Nữ" <c:if test="${gender=='Nữ'}">checked</c:if>>Nữ
+                        <input type="text" name="otp" value="${otp}" style="width: 150px; margin-left: 113px;" placeholder="Mã OTP:"><small style="float:right">${otpError}</small><br>
                     </div>
-                    <nav>
-                        <ul id="MenuItems">
-                            <li><a href="index.jsp">Trang chủ</a></li>
-                            <li><a href="products.jsp">Sản phẩm</a></li>
-                            <li><a href="">Liên hệ</a></li>
-                            <li><a href="">Blog</a></li>
-                            <li><a href="customer-account.jsp">Tài khoản</a></li>
-                            <c:choose>
-                                <c:when test="${sessionScope.account==null}" >
-                                    <li><a href="login" class="btn-login">Đăng nhập</a></li>
-                                    <li><a href="register" class="btn-register">Đăng ký</a></li>
-                                </c:when>
-                                <c:otherwise>
-                                    <li><a href="" class="btn-login"><c:out value="${sessionScope.account.username}"/></a></li>
-                                </c:otherwise>
-                            </c:choose>
-                        </ul>
-                    </nav>
-                    <a href="cart.jsp"><img src="images/cart.png" width="30px" height="30px" class="imgcard"></a>
-                    <img src="images/menu.png" class="menu-icon" onclick="menutoggle()">
-                </div>
+                        <input type="email" name="email" placeholder="Email:" required="" value="${sessionScope.userEmail}" disabled=""><br>
+                    <div>    
+                        <input type="password" name="password" placeholder="Mật khẩu" style="width:40%;"required="">
+                        <input type="password" name="confirmPassword" placeholder="Xác nhận mật khẩu" style="width:40%;float:right;" required="">
+                        <small><center>${confirmPasswordError}</center></small><br>
+                        <small><center>${passwordError}</center></small>
+                    </div>
+                        <input type="text" name="cusAddress" style="height: 150px;" placeholder="Địa chỉ" value="${address}"><small>${addressError}</small><br>
+                        <input type="checkbox" name="agreeTerms"style="color: red"><span>Tôi đồng ý với điều kiện và điều khoản sử dụng</span>
+                        <center><small>${agreeError}</small></center><br>                         
+                        <input type="submit" value="Đăng ký">
+                        <p style="text-align:center;">
+                            <span>Đã có tài khoản? </span><a class="link" href="login">Đăng nhập</a>
+                        </p>
+                </form>
+
 
             </div>
-        </div>
-        <!-- end header -->       
-        <form action="register" method="post" style="background: radial-gradient(#fff,#ffd6d6)">
+
+        </div>    
+        <!--<form action="register" method="post" style="background: radial-gradient(#fff,#ffd6d6)">
             <div class="container">
                 <div class="row">
                     <h1 style="text-align:center;color :red" >♥</h1>

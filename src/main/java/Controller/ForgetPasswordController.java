@@ -16,6 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import Service.UserService;import Service.SendEmailService;
 import Model.Account;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -77,7 +79,7 @@ public class ForgetPasswordController extends HttpServlet {
             }            
             else 
             {
-                emailError="No Email Found!";
+                emailError="Email không tồn tại!";
                 request.setAttribute("emailError", emailError);
                 request.setAttribute("email", email);
                 RequestDispatcher dp=getServletContext().getRequestDispatcher("/Dn-Dky-QMk/forgetpassword.jsp");
@@ -92,7 +94,7 @@ public class ForgetPasswordController extends HttpServlet {
                 response.sendRedirect(request.getContextPath()+"/change-password");
             else
             {
-                otpError="Incorrect code! Please check again!";
+                otpError="Sai mã! Xin hãy kiểm tra lại email!";
                 request.setAttribute("otpError", otpError);
                 RequestDispatcher dp=getServletContext().getRequestDispatcher("/Dn-Dky-QMk/fp-confirmotp.jsp");
                 dp.forward(request, response);
@@ -102,11 +104,27 @@ public class ForgetPasswordController extends HttpServlet {
         {
             String newPassword=request.getParameter("newPassword");
             String email=(String)(session.getAttribute("userEmail"));
-            Account account=userService.getAccountByEmail(email); 
-            account.setPassword(newPassword);
-            AccountDao.updateAcc(account);
-            session.invalidate();
-            response.sendRedirect(request.getContextPath()+"/login");
+            String tiengVietcodau = "ẮẰẲẴẶĂẤẦẨẪẬÂÁÀÃẢẠĐẾỀỂỄỆÊÉÈẺẼẸÍÌỈĨỊỐỒỔỖỘÔỚỜỞỠỢƠÓÒÕỎỌỨỪỬỮỰƯÚÙỦŨỤÝỲỶỸỴ ";
+            String url="";
+            Pattern tiengVietPattern =Pattern.compile("(?:[" + tiengVietcodau + "])+",
+                    Pattern.CANON_EQ |
+                    Pattern.CASE_INSENSITIVE |
+                    Pattern.UNICODE_CASE);
+            Matcher passwordMatcher=tiengVietPattern.matcher(newPassword);
+            if(passwordMatcher.find(0))
+            {
+                passwordError="Mật khẩu chỉ gồm chữ cái không dấu và số";
+                RequestDispatcher dp=getServletContext().getRequestDispatcher("/Dn-Dky-QMk/fp-changepassword.jsp");
+                dp.forward(request, response);
+            }
+            else
+            {
+                Account account=userService.getAccountByEmail(email); 
+                account.setPassword(newPassword);
+                AccountDao.updateAcc(account);
+                session.invalidate();
+                response.sendRedirect(request.getContextPath()+"/login");
+            }
         }
     }
 

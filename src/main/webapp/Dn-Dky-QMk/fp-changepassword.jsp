@@ -5,21 +5,31 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Find Password</title>
-        <link rel="stylesheet" href="css/login.css">
+        <title>Home | Find Password</title>
+        <link rel="stylesheet" href="<c:url value="/Dn-Dky-QMk/style-login.css"></c:url>"> 
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     </head>
-    <body style=" background: linear-gradient(to right,#ffad063b,#ff105fb0);font-family: 'Poppins', sans-serif;">
-    <center>
-        <h1 style="margin-top: 200px;">Thay đổi mật khẩu</h1>
-        <form method="POST" action="change-password">
-            Mật khẩu mới : <input name="newPassword" placeholder="Please Enter" > <br>
-            <button type="submit" style="width: 100px;background-color: whitesmoke  ;border-radius: 3px;font-family:'Poppins' " >Thay đổi</button>
-        </form
-    </center>
+    <body>
+        <div class="box">
+	
+		<div class="inner-box">
+		
+		<form action="change-password" method="POST">
+		
+		<h3>Hãy nhập mật khẩu mới.</h3>
+		<input type="text" name="newPassword" placeholder="Please Enter" required="">
+                <s>${passwordError}</s>
+		<input type="submit" value="Thay đổi">
+		
+		</form>
+		
+		</div>
+	
+	</div>
     </body>
 </html>

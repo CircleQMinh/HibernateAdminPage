@@ -114,7 +114,7 @@ public class ForgetPasswordController extends HttpServlet {
             if(passwordMatcher.find(0))
             {
                 passwordError="Mật khẩu chỉ gồm chữ cái không dấu và số";
-                RequestDispatcher dp=getServletContext().getRequestDispatcher("/Dn-Dky-QMk/change-password.jsp");
+                RequestDispatcher dp=getServletContext().getRequestDispatcher("/Dn-Dky-QMk/fp-changepassword.jsp");
                 dp.forward(request, response);
             }
             else

@@ -10,7 +10,7 @@
 <html>   
 <head>  
 <meta name="viewport" content="width=device-width, initial-scale=1">  
-<title> Login </title>  
+<title> Home | Login </title>  
 <link rel="stylesheet" href="<c:url value="/Dn-Dky-QMk/style-login.css"></c:url>"> 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>    
@@ -21,11 +21,11 @@
 		
 			<form action="login-employee" method="POST" id="login">
 			
-			<h2>Login</h2>
+			<h2>Đăng nhập</h2>
 			
-                        <input type="text" name="username" placeholder="Username" value="${username}"required><br>
+                        <input type="text" name="username" placeholder="Tài khoản" value="${username}"required><br>
                         ${usernameError}                      
-			<input type="password" name="password" placeholder="Password" required>
+			<input type="password" name="password" placeholder="Mật khẩu" required>
 			${passwordError}
 			<p>
 			
@@ -38,7 +38,7 @@
 			<input type="submit" value="Login">
 			
 			<p style="text-align:center;">
-				<span>Not a member? </span><a class="link" href="register">Sign Up</a>
+				<span>Chưa có tài khoản? </span><a class="link" href="register">Đăng ký</a>
 			</p>
 			
 			</form>

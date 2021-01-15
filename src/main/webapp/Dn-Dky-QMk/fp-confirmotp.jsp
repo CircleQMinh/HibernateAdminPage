@@ -4,7 +4,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Find Password</title>
+        <title>Home | Find Password</title>
         <link rel="stylesheet" href="<c:url value="/Dn-Dky-QMk/style-login.css"></c:url>"> 
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     </head>
@@ -16,8 +16,8 @@
 		
 		<form action="check-otp" method="POST">
 		
-		<h3>Enter Your OTP Code.</h3>
-		<input type="text" name="otp" placeholder="Your Code" required="">
+		<h3>Hãy nhập mã OTP của bạn.</h3>
+		<input type="text" name="otp" placeholder="Please Enter" required="">
                 <s>${otpError}</s>
 		<input type="submit" value="Submit">
 		

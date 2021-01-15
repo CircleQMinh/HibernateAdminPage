@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Home | Register</title>
+        <title> Home | Register</title>
         <link rel="stylesheet" href="<c:url value="/Dn-Dky-QMk/style-login.css"></c:url>"> 
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -23,8 +23,8 @@
 		
 		<form action="register?action=send-otp" method="POST">
 		
-		<h3>Enter Your Email Address.</h3>
-		<input type="email" name="email" placeholder="Email Address" required="">
+		<h3>Hãy nhập Email của bạn.</h3>
+		<input type="email" name="email" placeholder="Please Enter" required="">
                 <small>${emailError}</small>
 		
 		<input type="submit" value="Submit">

@@ -19,12 +19,12 @@
 	
 		<div class="inner-box">
 		
-		<h3>Thankyou for creating an account.</h3>
+		<h3>Chào mừng bạn tới shop của TEAM16.</h3>
 		
-		<p style="text-align:center;" >Please check your email again to confirm the registration.</p>
+		<p style="text-align:center;" >Hãy kiểm tra Email để xác nhận.</p>
 		
 		<p style="text-align:center;" >
-				<a class="link" href="login">Sign In Now</a>
+				<a class="link" href="login">Đăng nhập ngay</a>
 		</p>
 		
 		</div>

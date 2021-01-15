@@ -195,7 +195,7 @@ public class RegisterController extends HttpServlet {
                                 +"<center><i>We will keep you up to date with our latest products and promotions!</i><center> \n"
                                 +"<center>If you need any assistance please contact us at ...</center>\n "
                                 +"<center><h4>Sincerely Team16STORE</h4></center>";
-                //sendEmailService.sendEmail("Thanks for signing up", email, thanksMes);
+                sendEmailService.sendEmail("Thanks for signing up", email, thanksMes);
                 url="/Dn-Dky-QMk/thanks.jsp";
                 session.invalidate();
                 RequestDispatcher dp = getServletContext().getRequestDispatcher(url);

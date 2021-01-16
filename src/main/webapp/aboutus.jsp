@@ -15,6 +15,7 @@
     <link href="css/styleAbout.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/384d09a31e.js" crossorigin="anonymous"></script>
+    
 </head>
 <body>
     <div class="header">
@@ -39,8 +40,8 @@
             </div>
             <div class="row">
                 <div class="col-2">
-                    <h1>Lorem ipsum cà rốt</h1>
-                    <p>Giảm giá mạnh cho cà rốt Lorem ipsum.<br> Đối với chúng tôi mà nói như một người kém khôn ngoan sẽ không bao giờ từ chối một số loại kết quả từ sự yếu kém của tâm trí khi nó nhận được <br>chấp nhận dễ dàng chỉ mất một chút thời gian.</p>
+                    <h1>Chào mừng đến với TEAM16</h1>
+                    <p>Hãy đăng kí ngay hôm nay<br>Để nhận được những ưu đãi siêu khủng từ chúng tôi......</p>
                     <button value="Explore Now" class="btn">Khám phá ngay &#10132;</button>
                 </div>
                 <div class="col-2">
@@ -64,7 +65,7 @@
                         <p class="infor">
                             Sinh viên năm 3 trường ĐH Sư     Phạm Kỹ Thuật Thành Phố HCM
                         </p>
-                        <a href="#" class="btn">Contact</a>
+                        <a href="#" class="btn">Liên hệ</a>
                         <ul class="social-media">
                             <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
                             <li><a href="#"><i class="fab fa-twitter-square"></i></a></li>
@@ -81,7 +82,7 @@
                         <p class="infor">
                             Sinh viên năm 3 trường ĐH Sư   Phạm Kỹ Thuật Thành Phố HCM
                         </p>
-                        <a href="#" class="btn">Contact</a>
+                        <a href="#" class="btn">Liên hệ</a>
                         <ul class="social-media">
                             <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
                             <li><a href="#"><i class="fab fa-twitter-square"></i></a></li>
@@ -98,7 +99,7 @@
                         <p class="infor">
                             Sinh viên năm 3 trường ĐH Sư    Phạm Kỹ Thuật Thành Phố HCM
                         </p>
-                        <a href="#" class="btn">Contact</a>
+                        <a href="#" class="btn">Liên hệ</a>
                         <ul class="social-media">
                             <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
                             <li><a href="#"><i class="fab fa-twitter-square"></i></a></li>
@@ -115,7 +116,7 @@
                         <p class="infor">
                             Sinh viên năm 3 trường ĐH Sư   Phạm Kỹ Thuật Thành Phố HCM
                         </p>
-                        <a href="#" class="btn">Contact</a>
+                        <a href="#" class="btn">Liên hệ</a>
                         <ul class="social-media">
                             <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
                             <li><a href="#"><i class="fab fa-twitter-square"></i></a></li>
@@ -134,41 +135,50 @@
         <div class="container">
             <div class="row">
                 <div class="footer-col-1">
-                    <h3>Dowload Our App</h3>
-                    <p>Download App for Android and ios mobie phone</p>
+                    <h3>Liên hệ</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt" style="padding-right: 8.5px"></i> Địa chỉ: 1 Võ Văn Ngân, Linh Chiểu, Thủ Đức</li>
+                        <li><i class="fas fa-mobile-alt" style="padding-right: 9px"></i> Tel: 0909999999</li>
+                        <li><i class="fas fa-phone-alt" style="padding-right: 5px"></i> Phone: 082.686868</li>
+                        <li><i class="fas fa-fax" style="padding-right: 5px"></i> Fax: 024.3294.7979</li>
+                    </ul>
+                    </br>
+                    <h3>Ứng dụng trên điện thoại</h3>
                     <div class="app-logo">
                         <img src="images/playstore.png" alt="">
-                        <img src="images/appstore.png" alt="">
+                        <img src="images/appstore.png" alt="">           
                     </div>
                 </div>
                 <div class="footer-col-2">
-                    <img src="images/logo-default-2.jpg" alt=""/>
-                    <p>Our Purpose Is To Sustainably Make the Pleasure and
-                        Benefits of Sports Accessible to the Many
-                    </p>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.4972148751713!2d106.77022543613889!3d10.849736223750991!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175270ad28d48ab%3A0xa6c02de0a7c40d6c!2zVHLGsOG7nW5nIMSQ4bqhaSBI4buNYyBTxrAgUGjhuqFtIEvhu7kgVGh14bqtdCBUcC5IQ00!5e0!3m2!1svi!2s!4v1610775978281!5m2!1svi!2s" width="250" height="200" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe></li>
 
                 </div>
                 <div class="footer-col-3">
-                    <h3>Userful Links</h3>
-                    <ul>
-                        <li>Khoa Phan</li>
-                        <li>Minh Mâm</li>
-                        <li>Đông Thân</li>
-                        <li>Nhật Minh</li>
-                    </ul>
+                    <img src="images/logo-default-2.jpg" alt="" style="width: 180px"/>
+                    <p>Sức khỏe hôm nay - Hạnh phúc ngày mai  </p>
                 </div>
                 <div class="footer-col-3">
-                    <h3>Follow us</h3>
+                    <h3 style="padding-bottom: 8px">Theo dõi</h3>
                     <ul>
-                        <li>Coupns</li>
-                        <li>Blog Post</li>
-                        <li>Instagram</li>
-                        <li>Youtube</li>
+                        <li>
+                            
+                            <i class="fab fa-facebook-square fa-4x" style="padding: 10px"></i>
+                            <i class="fas fa-blog fa-4x" style="padding: 10px"></i>
+
+                        </li>
+         
+                        <li>
+                          
+                            <i class="fab fa-instagram-square fa-4x" style="padding: 10px"></i>
+                            <i class="fab fa-youtube fa-4x" style="padding: 10px"></i>
+ 
+                        </li>
                     </ul>
+                    
                 </div>
             </div>
             <hr>
-            <p class="copyright">Copyright 2020 - DongThan</p>
+            <p class="copyright">Copyright 2020 - Team16</p>
         </div>
     </div>
 </body>

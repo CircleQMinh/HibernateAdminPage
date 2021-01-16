@@ -44,7 +44,8 @@
                         <center><small>${agreeError}</small></center><br>                         
                         <input type="submit" value="Đăng ký">
                         <p style="text-align:center;">
-                            <span>Đã có tài khoản? </span><a class="link" href="login">Đăng nhập</a>
+                            <span>Đã có tài khoản? </span><a class="link" href="login">Đăng nhập</a><br>
+                            <a class="link" href="register">Quay lại</a>
                         </p>
                 </form>
 

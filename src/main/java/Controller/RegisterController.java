@@ -44,8 +44,8 @@ public class RegisterController extends HttpServlet {
         }
         else
         {
-            RequestDispatcher dp = getServletContext().getRequestDispatcher("/Dn-Dky-QMk/register.jsp");
-            dp.forward(request, response);
+            session.invalidate();
+            response.sendRedirect(request.getContextPath()+"/register");
         }
     }
 
@@ -89,7 +89,7 @@ public class RegisterController extends HttpServlet {
             String[] agree = request.getParameterValues("agreeTerms");
             String otp=request.getParameter("otp");
             String OTPcode=(String)session.getAttribute("otpCode");
-            String email = (String)session.getAttribute("userEmail");
+            String email= (String)session.getAttribute("userEmail");
 
             //customer information
             String name = request.getParameter("cusName");

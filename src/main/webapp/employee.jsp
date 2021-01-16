@@ -95,7 +95,7 @@
                 </table>
             </div>
              <div class="dashbosl" >
-                <p id='paychecktag'>Điểm danh - Chấm công<button class="minibtn" id="btnpay" onclick="miniTable('att-table','btnpay')">-</button></p>
+                <p id='paychecktag'>Điểm danh - Chấm công - Tính lương<button class="minibtn" id="btnpay" onclick="miniTable('att-table','btnpay')">-</button></p>
             </div>
             <div class="searhbar">
                 <button class="btn" id="att-refresh" value="Refresh"><i class="fas fa-sync" ></i></button> 

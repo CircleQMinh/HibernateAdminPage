@@ -44,8 +44,8 @@ public class RegisterController extends HttpServlet {
         }
         else
         {
-            RequestDispatcher dp = getServletContext().getRequestDispatcher("/Dn-Dky-QMk/register.jsp");
-            dp.forward(request, response);
+            session.invalidate();
+            response.sendRedirect(request.getContextPath()+"/register");
         }
     }
 

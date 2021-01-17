@@ -394,8 +394,29 @@ public class OrderDAO {
     }
     public static String returnDate(Date date)
     {
+        try{
         DateFormat df = new SimpleDateFormat("dd-MM-yyyy");          
         return df.format(date);
+        }
+        catch(Exception e){
+            return "...";
+        }
+    }
+    public static String returnStatus(int id)
+    {
+        if(id==1){
+            return "Chưa duyệt";
+        }
+        else if(id==2){
+            return "Đã duyệt";
+        }
+        else if(id==3){
+            return "Đang giao";
+        }
+        else if(id==4){
+            return "Đã giao";
+        }
+        return "Không xác định";
     }
     public static List < Object[] > getOrderDangGiao() {//join 2 bang lai voi nhau
 
@@ -444,5 +465,28 @@ public class OrderDAO {
             }
         }
         return listOfAcc;
+    }
+    
+    public static List < Order > getAllOrdersByUserID(int id) {
+
+        Transaction transaction = null;
+        List < Order > listOfOrders = null;
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session session = sessionFactory.openSession();
+        try  {
+            // start a transaction
+            transaction = session.beginTransaction();
+            // get an user object
+
+            listOfOrders = session.createQuery("from Order o where o.customer.customerId="+String.valueOf(id)+"  order by o.orderDate desc").list();
+
+            // commit transaction
+            transaction.commit();session.close();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();session.close();
+            }
+        }
+        return listOfOrders;
     }
 }

@@ -18,6 +18,7 @@
         <script src="https://canvasjs.com/assets/script/canvasjs.min.js" type="text/javascript"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="javascript/jquery.tablePagination.js" type="text/javascript"></script>
+        <script src="javascript/jquery.tableManager.js" type="text/javascript"></script>
         <title>Order Page</title>
     </head>
     <body>
@@ -31,7 +32,7 @@
             <div class="dashbosl" id='employeetag' >
                 <p >Đơn hàng chưa duyệt <button class="minibtn" id="btnUnck" onclick="miniTable('ordertable','btnUnck')">-</button></p>                    
             </div>
-            <div class="searhbar">
+            <div class="searhbar" id="searchbar-turn">
                 <button class="btn" id="orderrefresh" value="Refresh"><i class="fas fa-sync" ></i></button> 
             </div>
             <%
@@ -86,7 +87,7 @@
             <div class="dashbosl" id='employeetag' >
                 <p >Đơn hàng đã duyệt<button class="minibtn" id="btnCk" onclick="miniTable('ordertableCk','btnCk')">-</button></p>                    
             </div>
-            <div class="searhbar">
+            <div class="searhbar" id="searchbar-turn">
                 <button class="btn" id="orderrefreshCk" value="Refresh"><i class="fas fa-sync" ></i></button> 
             </div>
             <%
@@ -143,7 +144,7 @@
             <div class="dashbosl" id='employeetag' >
                 <p >Đơn hàng đang giao<button class="minibtn" id="btnDv" onclick="miniTable('ordertableDv','btnDv')">-</button></p>                    
             </div>
-            <div class="searhbar">
+            <div class="searhbar" id="searchbar-turn">
                 <button class="btn" id="orderrefreshDv" value="Refresh"><i class="fas fa-sync" ></i></button> 
             </div>
             <%
@@ -195,7 +196,7 @@
             <div class="dashbosl" id='employeetag' >
                 <p >Lịch sử giao hàng<button class="minibtn" id="btnHis" onclick="miniTable('ordertableHis','btnHis')">-</button></p>                    
             </div>
-            <div class="searhbar">
+            <div class="searhbar" id="searchbar-turn">
                 <button class="btn" id="orderrefreshHis" value="Refresh"><i class="fas fa-sync" ></i></button> 
             </div>
             <%

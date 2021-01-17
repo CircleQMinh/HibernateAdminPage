@@ -4,6 +4,10 @@
     Author     : Nhat Minh
 --%>
 
+<%@page import="Model.Customer"%>
+<%@page import="Model.Order"%>
+<%@page import="Dao.OrderDAO"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -29,19 +33,57 @@
                 width: 100%;
                 height: 100%;
             }
-            h1 {
+/*            h1 {
                 font-family: 'Poppins', sans-serif, 'arial';
                 font-weight: 600;
                 font-size: 72px;
                 color: white;
                 text-align: center;
-            }
+            }*/
             h4 {
                 font-family: 'Roboto', sans-serif, 'arial';
                 font-weight: 400;
                 font-size: 20px;
                 color: #9b9b9b;
                 line-height: 1.5;
+            }
+            .divorderinfo {
+            justify-content: center;
+            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+            font-size: 17px;
+            display: none;
+            position: fixed;
+            bottom: 1%;
+            right: 2%;
+            border: 3px solid #f1f1f1;
+            z-index: 9;
+            background-color: #7ca7eb;
+            max-width: 40%;
+            min-width: 30%;
+            overflow-y: scroll;
+            max-height: 80%;
+
+            }
+            .btn-000{
+            background-color: DodgerBlue;
+            border: none; 
+            color: white; 
+            padding: 12px 16px;
+            font-size: 12px; 
+            cursor: pointer;
+            margin-left: 1%;
+            margin-bottom: 1%;
+            float: left;
+            }
+            .dashbosr{
+                font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+               font-size: 20px;
+               width: 100%;
+               height: 50%;
+               background-color: #e1eaf7;
+               text-align: right;
+               margin-bottom: 1%;   
+               padding-top: 5px;
             }
         </style>
         
@@ -54,6 +96,30 @@
                   alert('<%=msg%>')  ;
                 <%}
             %>
+            $(document).ready(function(){
+                $("button[id|='ord_info'").click(function(){
+                    var id =$(this).closest('tr').find('td').eq(0).text();
+                    $.ajax({
+                        type: "post",
+                        url: "ajax/order/ajax-view-order-info.jsp", //this is my servlet
+                        data: {
+                            ID:id               
+                        },
+                        success: function ( response ){   
+                            //handleData(response);
+                            var success =  $($.parseHTML(response)).filter("#info").html();
+                            $("#order-info-form").html(success);
+                        },
+                        error: function(xhr, textStatus, error){
+                            console.log(xhr.statusText);
+                            console.log(textStatus);
+                            console.log(error);
+                            console.log("Fail");
+                        }
+                    });
+                     openForm("order-info-form");
+                }); 
+            });       
         </script>
     </head>
     <body >
@@ -104,6 +170,11 @@
             </div>
         </div>
     <c:if test="${sessionScope.account.type=='customer'}">
+        <%
+                Customer cus = (Customer)request.getSession().getAttribute("userInfo");
+                List<Order> listOfOrders = OrderDAO.getAllOrdersByUserID(cus.getCustomerId());
+        
+        %>
         <h4 class="myarticle-title">Thông tin của tôi</h4>
         <article class="myarticle">
             <p>Tên : ${sessionScope.userInfo.customerName}</p>
@@ -116,6 +187,55 @@
         <h4 class="myarticle-title">Tùy chọn</h4>
         <button class="btn" onclick="openForm('Modal-password')" style="margin-left: 3%">Thay đổi mật khẩu</button>
         <button class="btn" onclick="openForm('Modal-info')">Thay đổi thông tin</button>
+        <h4 class="myarticle-title">Lịch sử giao dịch</h4>
+        <div id="customerhistory" class="divtable">                    
+            <%
+                if(listOfOrders.size()!=0){
+            %>
+            <table id="tablehistory" class="tabledis">
+                <tr>
+                    <th>OrderID</th>
+                    <th>Tình trạng</th>
+                    <th>Ngày đặt</th>
+                    <th>Ngày yêu cầu</th>
+                    <th>Ngày nhận</th>
+                    <th>Thanh toán</th>
+                    <th>DS sản phẩm</th>
+                </tr>
+                <%               
+                try {          
+                        int i=0;
+                        while (i<listOfOrders.size()) {
+                        Order ord=listOfOrders.get(i);
+                        %>
+                        <tr>
+                            <td><%= ord.getOrderId() %></td>
+                            <td><%= OrderDAO.returnStatus(ord.getStatus())  %></td>
+                            <td><%= OrderDAO.returnDate(ord.getOrderDate()) %></td>
+                            <td><%= OrderDAO.returnDate(ord.getRequiredDate()) %></td>
+                            <td><%= OrderDAO.returnDate(ord.getShippedDate()) %></td>
+                            <td><%= ord.getPaymentType()            %></td>
+                            <td>
+                                <button class="btn-000" id="ord_info">Xem danh sách sản phẩm</button>
+                            </td>     
+                            <%i++;%>
+                        </tr>                   
+                        <%}
+                    }        
+                    catch (Exception e)
+                    {
+                        e.printStackTrace();
+                    }
+                %>
+                <%}else{%>
+                <div id="tablehistory">
+                   <div class="dashbo" id="d1">
+                        <p>Không có lịch sử được lưu lại</p>
+                    </div>
+                </div>
+                <%}%>
+            </table>
+        </div>
         <div id="Modal-password" class="modal">
             <div class="modal-content">
                 <span class="close" onclick="closeForm('Modal-password')">&times;</span>
@@ -264,6 +384,9 @@
         </div>
         
     </c:if>
+        <div class="divorderinfo" id="order-info-form" >
+
+        </div>
         <div class="footer">
             <div class="container">
                 <div class="row">

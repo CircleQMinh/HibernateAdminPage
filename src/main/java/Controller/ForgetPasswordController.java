@@ -104,7 +104,23 @@ public class ForgetPasswordController extends HttpServlet {
         {
             String newPassword=request.getParameter("newPassword");
             String email=(String)(session.getAttribute("userEmail"));
-            String tiengVietcodau = "ẮẰẲẴẶĂẤẦẨẪẬÂÁÀÃẢẠĐẾỀỂỄỆÊÉÈẺẼẸÍÌỈĨỊỐỒỔỖỘÔỚỜỞỠỢƠÓÒÕỎỌỨỪỬỮỰƯÚÙỦŨỤÝỲỶỸỴ ";
+            Pattern p=Pattern.compile("[a-zA-Z0-9]{1,45}");
+            Matcher pwMatcher=p.matcher(newPassword);
+            if(!pwMatcher.matches())
+            {
+                passwordError="Mật khẩu chỉ gồm tối đa 45 chữ cái và số";
+                request.setAttribute("passwordError", passwordError);
+                RequestDispatcher dp=getServletContext().getRequestDispatcher("/Dn-Dky-QMk/fp-changepassword.jsp");
+                dp.forward(request, response);
+            }else
+            {
+                Account account=userService.getAccountByEmail(email); 
+                account.setPassword(newPassword);
+                AccountDao.updateAcc(account);
+                session.invalidate();
+                response.sendRedirect(request.getContextPath()+"/login");
+            }
+            /*String tiengVietcodau = "ẮẰẲẴẶĂẤẦẨẪẬÂÁÀÃẢẠĐẾỀỂỄỆÊÉÈẺẼẸÍÌỈĨỊỐỒỔỖỘÔỚỜỞỠỢƠÓÒÕỎỌỨỪỬỮỰƯÚÙỦŨỤÝỲỶỸỴ ";
             String url="";
             Pattern tiengVietPattern =Pattern.compile("(?:[" + tiengVietcodau + "])+",
                     Pattern.CANON_EQ |
@@ -114,17 +130,10 @@ public class ForgetPasswordController extends HttpServlet {
             if(passwordMatcher.find(0))
             {
                 passwordError="Mật khẩu chỉ gồm chữ cái không dấu và số";
+                request.setAttribute("passwordError", passwordError);
                 RequestDispatcher dp=getServletContext().getRequestDispatcher("/Dn-Dky-QMk/fp-changepassword.jsp");
                 dp.forward(request, response);
-            }
-            else
-            {
-                Account account=userService.getAccountByEmail(email); 
-                account.setPassword(newPassword);
-                AccountDao.updateAcc(account);
-                session.invalidate();
-                response.sendRedirect(request.getContextPath()+"/login");
-            }
+            }*/
         }
     }
 

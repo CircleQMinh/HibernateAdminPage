@@ -46,7 +46,7 @@
                 <option value="1" selected>Tên</option>
                 <option value="3" >Email</option>
                 <option value="4" >Điện thoại</option>
-                <option value="5" >Add</option>
+                <option value="5" >Address</option>
             </select>
             </div>
             
@@ -60,7 +60,7 @@
                         <th>Điện thoại</th>
                         <th>Email</th> 
                         <th>Giới tính</th> 
-                        <th colspan="2">Option</th>
+                        <th colspan="3">Option</th>
                     </tr>
                     <%               
                     try {          
@@ -75,7 +75,7 @@
                                 <td><%=cus.getPhone()%></td>
                                 <td><%=cus.getEmail()%></td>
                                 <td><%=cus.getSex()%></td>
-                                
+                                <td><button class="btn" id="cus_history" style=" background-color: yellow;"><i class="fas fa-shopping-cart"></i></button></td>
                                 <td><button class="btn" id="cus_edit"><i class="fas fa-edit"></i></button></td>
                                 <td><button id ="cus_del" class="btn" style=" background-color: red;"><i class="fa fa-trash"></i></button></td>
                                 <%i++;%>
@@ -89,7 +89,14 @@
                     %>
                 </table>
             </div>
-                        
+            <div class="dashbosl"  >
+                 <p >Lịch sử đơn hàng<button class="minibtn" >-</button></p>                    
+            </div>      
+            <div id="customerhistory" class="divtable">                    
+                <table id="tablehistory" class="tabledis">
+                    
+                </table>
+            </div>
         </div>
         <script>  
             startTime();       

@@ -193,15 +193,36 @@ $(document).ready(function(){
                     custable_count=1;
                     $("button[id|='cus_edit']").click(function() {
                         openForm("form11");
-                        getId_custable(this);
-                        var cus_edit_cid=$(this).closest('tr').find('td').eq(0).text();
-                        var cus_edit_name=$(this).closest('tr').find('td').eq(1).text();
-                        var cus_edit_sex=$(this).closest('tr').find('td').eq(5).text();
-                        var cus_edit_email=$(this).closest('tr').find('td').eq(4).text();
-                        var cus_edit_phone=$(this).closest('tr').find('td').eq(3).text();
-                        var cus_edit_add=$(this).closest('tr').find('td').eq(2).text();                    
-//                        FillForm11(cus_edit_name,cus_edit_sex,cus_edit_email,cus_edit_phone,cus_edit_add,
-//                                cus_edit_cid);
+                        getId_custable(this);                   
+                    });
+                    $("button[id|='cus_history']").click(function() {
+                        $("#customerhistory").load("ajax/order/ajax-customer-history.jsp #tablehistory" , {
+                            ID:$(this).closest('tr').find('td').eq(0).text()
+                        },function(){
+                            $("button[id|='ord_info'").click(function(){
+                                openForm('formwait');
+                                var id =$(this).closest('tr').find('td').eq(0).text();
+                                $.ajax({
+                                    type: "post",
+                                    url: "ajax/order/ajax-view-order-info.jsp", //this is my servlet
+                                    data: {
+                                        ID:id               
+                                    },
+                                    success: function ( response ){   
+                                        //handleData(response);
+                                        var success =  $($.parseHTML(response)).filter("#info").html();
+                                        $("#order-info-form").html(success);closeForm('formwait');
+                                    },
+                                    error: function(xhr, textStatus, error){
+                                        console.log(xhr.statusText);
+                                        console.log(textStatus);
+                                        console.log(error);
+                                        console.log("Fail");closeForm('formwait');
+                                    }
+                                });
+                                 openForm("order-info-form");
+                            });
+                        });
                     });
                     $("button[id|='cus_del']").click(function() {
                         if (confirm('Xóa khách hàng khỏi database?')) {
@@ -751,6 +772,11 @@ $(document).ready(function(){
             clickme('orderrefreshCk');
             clickme('orderrefreshDv');
             clickme('orderrefreshHis');
+//            clickme('btnUnck');
+//            clickme('btnHis');
+//            clickme('btnCk');
+//            clickme('btnDv');
+            
             closeForm('formwait');
         });
     });

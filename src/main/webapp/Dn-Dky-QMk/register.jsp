@@ -45,7 +45,7 @@
                         <input type="submit" value="Đăng ký">
                         <p style="text-align:center;">
                             <span>Đã có tài khoản? </span><a class="link" href="login">Đăng nhập</a><br>
-                            <a href="register" class="link">Quay lại</a>
+                            <a class="link" href="register">Quay lại</a>
                         </p>
                 </form>
 

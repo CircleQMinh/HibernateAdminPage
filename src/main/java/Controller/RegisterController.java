@@ -89,7 +89,7 @@ public class RegisterController extends HttpServlet {
             String[] agree = request.getParameterValues("agreeTerms");
             String otp=request.getParameter("otp");
             String OTPcode=(String)session.getAttribute("otpCode");
-            String email = (String)session.getAttribute("userEmail");
+            String email= (String)session.getAttribute("userEmail");
 
             //customer information
             String name = request.getParameter("cusName");

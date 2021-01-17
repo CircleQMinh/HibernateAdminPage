@@ -44,8 +44,8 @@ public class RegisterController extends HttpServlet {
         }
         else
         {
-            RequestDispatcher dp = getServletContext().getRequestDispatcher("/Dn-Dky-QMk/register.jsp");
-            dp.forward(request, response);
+            session.invalidate();
+            response.sendRedirect(request.getContextPath()+"/register");
         }
     }
 
@@ -89,7 +89,7 @@ public class RegisterController extends HttpServlet {
             String[] agree = request.getParameterValues("agreeTerms");
             String otp=request.getParameter("otp");
             String OTPcode=(String)session.getAttribute("otpCode");
-            String email = (String)session.getAttribute("userEmail");
+            String email= (String)session.getAttribute("userEmail");
 
             //customer information
             String name = request.getParameter("cusName");
@@ -105,8 +105,23 @@ public class RegisterController extends HttpServlet {
             String agreeError = "";
             String otpError="";
             //validate
-            Pattern phonePattern = Pattern.compile("\\d{10}");
+            Pattern phonePattern = Pattern.compile("\\d{10,11}");
             Matcher phoneMatcher = phonePattern.matcher(phone);
+            
+            Pattern p=Pattern.compile("[a-zA-Z0-9]{1,45}");
+            Matcher tkMatcher=p.matcher(username);
+            Matcher pwMatcher=p.matcher(password);
+            if(!tkMatcher.matches())
+            {
+                usernameError="Tài khoản chỉ gồm tối đa 45 chữ cái và số";
+                url = "/Dn-Dky-QMk/register.jsp";
+            }
+            if(!pwMatcher.matches())
+            {
+                passwordError="Mật khẩu chỉ gồm tối đa 45 chữ cái và số";
+                url = "/Dn-Dky-QMk/register.jsp";
+            }
+            
             String tiengVietcodau = "ẮẰẲẴẶĂẤẦẨẪẬÂÁÀÃẢẠĐẾỀỂỄỆÊÉÈẺẼẸÍÌỈĨỊỐỒỔỖỘÔỚỜỞỠỢƠÓÒÕỎỌỨỪỬỮỰƯÚÙỦŨỤÝỲỶỸỴ ";
             Pattern tiengVietPattern =Pattern.compile("(?:[" + tiengVietcodau + "])+",
                     Pattern.CANON_EQ |
@@ -116,27 +131,14 @@ public class RegisterController extends HttpServlet {
             Matcher passwordMatcher=tiengVietPattern.matcher(password);
             if(usernameMatcher.find(0))
             {
-                usernameError="Tài khoản chỉ gồm chữ cái không dấu và số";
+                usernameError="Tài khoản chỉ gồm tối đa 45 chữ cái không dấu và số";
                 url = "/Dn-Dky-QMk/register.jsp";
             }
             if(passwordMatcher.find(0))
             {
-                passwordError="Mật khẩu chỉ gồm chữ cái không dấu và số";
+                passwordError="Mật khẩu chỉ gồm tối đa 45 chữ cái không dấu và số";
                 url = "/Dn-Dky-QMk/register.jsp";
             }
-            /*Pattern p=Pattern.compile("[^A-Za-z0-9]");
-            Matcher usernameMatcher=p.matcher(username);
-            Matcher passwordMatcher=p.matcher(password);
-            if(!usernameMatcher.find(0))
-            {
-                usernameError="Tài khoản phải là chữ cái và số";
-                url = "/Dn-Dky-QMk/register.jsp";
-            }
-            if(!passwordMatcher.find(0))
-            {
-                passwordError="Mật khẩu phải là chữ cái và số";
-                url = "/Dn-Dky-QMk/register.jsp";
-            }*/
             if (agree==null) 
             {
                 agreeError = "Cần đồng ý điều kiện và điều khoản sử dụng";
@@ -149,7 +151,7 @@ public class RegisterController extends HttpServlet {
             }
             if (!phoneMatcher.matches()) 
             {
-                phoneError = "SĐT là 10 kí tự số";
+                phoneError = "SĐT là 10 hoặc 11 kí tự số";
                 url = "/Dn-Dky-QMk/register.jsp";
             }
             if (userService.getAccountByUsername(username) != null) //chưa có gmail nào đăng ký

@@ -18,7 +18,7 @@
 		
 		<h3>Hãy nhập mã OTP của bạn.</h3>
 		<input type="text" name="otp" placeholder="Please Enter" required="">
-                <s>${otpError}</s>
+                <small>${otpError}</small>
 		<input type="submit" value="Submit">
 		
 		</form>

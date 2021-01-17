@@ -23,7 +23,7 @@
 		
 		<h3>Hãy nhập mật khẩu mới.</h3>
 		<input type="text" name="newPassword" placeholder="Please Enter" required="">
-                <s>${passwordError}</s>
+                <small>${passwordError}</small>
 		<input type="submit" value="Thay đổi">
 		
 		</form>

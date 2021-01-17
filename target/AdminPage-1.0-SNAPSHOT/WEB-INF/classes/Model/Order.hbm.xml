@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Jan 2, 2021 3:50:34 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated Jan 17, 2021 6:14:44 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="Model.Order" table="order" catalog="dbthuongmaidientu" optimistic-lock="version">
         <id name="orderId" type="java.lang.Integer">
@@ -40,6 +40,9 @@
         </property>
         <property name="paymentType" type="string">
             <column name="PaymentType" length="45" />
+        </property>
+        <property name="note" type="string">
+            <column name="Note" length="45" />
         </property>
         <set name="orderdetails" table="orderdetail" inverse="true" lazy="true" fetch="select">
             <key>

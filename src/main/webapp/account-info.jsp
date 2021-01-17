@@ -19,11 +19,18 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Customer Account</title>
-        <link rel="stylesheet" href="css/style.css">
+        
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://kit.fontawesome.com/e74f1447db.js" crossorigin="anonymous"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/styles/metro/notify-metro.css" />
         <script src="js/cart.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/mycssadminpage.css" type="text/css">
         <script src="javascript/adminpage.js" type="text/javascript"></script>
         <style>
@@ -96,6 +103,12 @@
                   alert('<%=msg%>')  ;
                 <%}
             %>
+                function notify() {
+                    $.notify("Hủy đơn hàng thành công", "success");
+                }
+                function notify_fail() {
+                    $.notify("Hủy đơn hàng thất bại", "success");
+                }
             $(document).ready(function(){
                 $("button[id|='ord_info'").click(function(){
                     var id =$(this).closest('tr').find('td').eq(0).text();
@@ -115,10 +128,38 @@
                             console.log(textStatus);
                             console.log(error);
                             console.log("Fail");
+                            notify_fail();
                         }
                     });
                      openForm("order-info-form");
-                }); 
+                });
+                $("button[id|='order-remove']").click(function(){
+                    if(confirm('bạn có chắc muốn hủy đơn hàng này?')){
+                        var id =$(this).closest('tr').find('td').eq(0).text();
+                        var temp=$(this).closest('tr').find('td');
+                        $.ajax({
+                        type: "post",
+                        url: "ajax/order/ajax-edit-ord.jsp", //this is my servlet
+                        data: {
+                            eid: id,
+                            status: 6
+                        },
+                        success: function ( response ){   
+                            //handleData(response);
+                            var success = $($.parseHTML(response)).filter("#sqlmsg").html();
+                            console.log(success); // div#success
+                            notify();
+                            temp.hide();
+                        },
+                        error: function(xhr, textStatus, error){
+                            console.log(xhr.statusText);
+                            console.log(textStatus);
+                            console.log(error);
+                        }
+                    });
+                    }
+                });
+                
             });       
         </script>
     </head>
@@ -201,6 +242,7 @@
                     <th>Ngày nhận</th>
                     <th>Thanh toán</th>
                     <th>DS sản phẩm</th>
+                    <th>Hủy đơn hàng</th>
                 </tr>
                 <%               
                 try {          
@@ -208,7 +250,7 @@
                         while (i<listOfOrders.size()) {
                         Order ord=listOfOrders.get(i);
                         %>
-                        <tr>
+                        <tr style="">
                             <td><%= ord.getOrderId() %></td>
                             <td><%= OrderDAO.returnStatus(ord.getStatus())  %></td>
                             <td><%= OrderDAO.returnDate(ord.getOrderDate()) %></td>
@@ -217,7 +259,8 @@
                             <td><%= ord.getPaymentType()            %></td>
                             <td>
                                 <button class="btn-000" id="ord_info">Xem danh sách sản phẩm</button>
-                            </td>     
+                            </td> 
+                            <td style="text-align:left;"><% if(ord.getStatus()!=4) {%><button class="btn" id="order-remove" style=" background-color: red;"><i class="fas fa-times"></i></button><% } %></td>
                             <%i++;%>
                         </tr>                   
                         <%}

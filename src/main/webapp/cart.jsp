@@ -25,10 +25,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cart - TEAM16 Store</title>
-    <link rel="stylesheet" href="css/style.css">
+    
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
     <script src="js/cart.js" type="text/javascript"></script>
 </head>
 <body>
@@ -84,61 +88,65 @@
         </script>
         <!------- cart item ------>
         <div class="small-container cart-page">
-            <%
-                if(session.getAttribute("cart")==null) {
-            %>
-                <h4>Không có sản phẩm nào trong giỏ hàng!!!</h4>
-            <% } %>
-            <%
-            if (session.getAttribute("cart")!=null){
-                Cart cart=(Cart)session.getAttribute("cart");
-            %>
-            <table class='tbl-cart-item'>
-                <tr>
-                    <th>Product</th>
-                    <th>Quantity</th>
-                    <th>SubTotal</th>
-                </tr>
-                <% 
-                    List<CartItem> listItems = cart.getItems();     
-                    for (int i=0;i<listItems.size();i++)
-                        { 
-                        System.out.println(listItems.get(i).toString());%>
+            <div class="row">
+                    <button type="button" onclick="location.assign('account-info.jsp?action=historyOrder');" class="btn btn-info">Lịch sử mua hàng</button>
+                    <%
+                        if(session.getAttribute("cart")==null) {
+                    %>
+                        <h4>Không có sản phẩm nào trong giỏ hàng!!!</h4>
+                    <% } %>
+                    <%
+                    if (session.getAttribute("cart")!=null){
+                        Cart cart=(Cart)session.getAttribute("cart");
+                    %>
+                    <table class='tbl-cart-item'>
                         <tr>
-                            <td>
-                                <div class="cart-info">
-                                    <img src="<%= listItems.get(i).getPictureString()%>" alt="">
-                                    <div>
-                                        <p><%= listItems.get(i).getProductName()%></p>
-                                        <small>Price: <%= listItems.get(i).getPrice()%></small>
-                                        <a href="RemoveCartItem?prd_id=<%= listItems.get(i).getProductID() %>">Remove</a>
-                                    </div>
-                                </div>
-                            </td>
-                            <td><input class="cart-quantity" type="number" value="<%= listItems.get(i).getQuantity() %>"></td>
-                            <td><%= CartService.getCost(listItems.get(i))  %></td>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>SubTotal</th>
                         </tr>
-                <%} %>
+                        <% 
+                            List<CartItem> listItems = cart.getItems();     
+                            for (int i=0;i<listItems.size();i++)
+                                { 
+                                System.out.println(listItems.get(i).toString());%>
+                                <tr>
+                                    <td>
+                                        <div class="cart-info">
+                                            <img src="<%= listItems.get(i).getPictureString()%>" alt="">
+                                            <div>
+                                                <p><%= listItems.get(i).getProductName()%></p>
+                                                <small>Price: <%= listItems.get(i).getPrice()%></small>
+                                                <a href="RemoveCartItem?prd_id=<%= listItems.get(i).getProductID() %>">Remove</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><input class="cart-quantity" type="number" value="<%= listItems.get(i).getQuantity() %>"></td>
+                                    <td><%= CartService.getCost(listItems.get(i))  %></td>
+                                </tr>
+                        <%} %>
 
-            </table>
-            <div class="total-price">
-                <table>
-                    <tr>
-                        <td>Subtotal</td>
-                        <td><%= CartService.getTotalCost(listItems)%></td>
-                    </tr>
-                    <tr>
-                        <td>Tax</td>
-                        <td>0</td>
-                    </tr>
-                    <tr>
-                        <td>Total</td>
-                        <td><%= CartService.getTotalCost(listItems)%></td>
-                    </tr>
-                </table>
+                    </table>
+            </div>
+                <div class="total-price">
+                    <table>
+                        <tr>
+                            <td>Subtotal</td>
+                            <td><%= CartService.getTotalCost(listItems)%></td>
+                        </tr>
+                        <tr>
+                            <td>Tax</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>Total</td>
+                            <td><%= CartService.getTotalCost(listItems)%></td>
+                        </tr>
+                    </table>
+                
             </div>
             <div class="row">
-                <button id="btn-tt" class="btn btn-tt">Thanh toán</button>
+                <button id="btn-tt" class="btn btn-tt" data-toggle="modal" data-target="#myModal">Thanh toán</button>
             </div>
             <%  }%>
         </div>
@@ -186,26 +194,54 @@
             </div>
         </div>
     </div>
-    <div class="choose-payment-method" id="choose-payment-method" style="display: none;">
-        <h3>Chọn phương thức thanh toán      <button id="exit-payment" ><i class="fa fa-times" aria-hidden="true"></i></button></h3>
-        <hr>
-        <div>
-            <input type="radio" name="payment-method" class="payment-method" value="cash">
-            <span>Tiền mặt (Thanh toán khi nhận hàng)</span>
+        <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Chọn phương thức thanh toán</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-sm-2">
+                                <input type="radio" class="form-control" name="payment-method" value="cash">
+                            </div>
+                            <label>Tiền mặt (Thanh toán khi nhận hàng)</label>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-2">
+                                <input type="radio" class="form-control" name="payment-method"  value="team16-acc">
+                            </div>
+                            <label>Tài khoản team 16</label>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-2">
+                                <input type="radio" class="form-control" name="payment-method" value="vnpay">
+                            </div>
+                            <label>Thanh toán qua VNPay</label>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-2">
+                                <input type="radio" class="form-control" name="payment-method"  value="paypal">
+                            </div>
+                            <label>Thanh toán qua Paypal</label>
+                        </div>
+                        <div class="form-group">        
+                          <div class="col-sm-offset-2 col-sm-10">
+                            <button type="button" id="btn-pay" class="btn btn-default">Submit</button>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button"  class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
         </div>
-        <div>
-            <input type="radio" name="payment-method" class="payment-method" value="team16-acc">
-            <span>Tài khoản team 16</span>
-        </div>
-        <div>
-            <input type="radio" name="payment-method" class="payment-method" value="vnpay">
-            <span>Thanh toán qua VNPay</span>
-        </div>
-        <div>
-            <input type="radio" name="payment-method" class="payment-method" value="paypal">
-            <span>Thanh toán qua Paypal</span>
-        </div>
-        <button class="btn " id="btn-pay" >OK</button>
     </div>
     
 </body>
@@ -228,14 +264,6 @@
             }
         }
         $(function(){
-           $('#btn-tt').click(function(){
-               $('#choose-payment-method').show();
-               document.getElementById("page").style.opacity = "0.5";
-           }); 
-           $('#exit-payment').click(function(){
-               $('#choose-payment-method').hide();
-               document.getElementById("page").style.opacity = "1";
-           });
            $('#btn-pay').click(function(){
                var list = document.getElementsByName("payment-method");
                 for(i=0;i<list.length;i++){

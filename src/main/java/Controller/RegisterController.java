@@ -65,7 +65,7 @@ public class RegisterController extends HttpServlet {
             if (userService.getAccountByEmail(email) == null) 
             {                
                 session.setAttribute("userEmail", email);
-                String otpCode="1";//sendOTP(email, session); 
+                String otpCode=sendOTP(email, session); 
                 session.setAttribute("otpCode", otpCode);
                 RequestDispatcher dp=getServletContext().getRequestDispatcher("/Dn-Dky-QMk/register.jsp");
                 dp.forward(request, response);

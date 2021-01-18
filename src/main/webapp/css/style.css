@@ -129,6 +129,11 @@ p{
     padding-left: 25px;
     padding-right: 25px;
 }
+.small-container-right{
+    max-width: 1080px;
+    margin: auto;
+    padding-right: 25px;
+}
 .col-4{
     position: relative;
     flex-basis: 25%;

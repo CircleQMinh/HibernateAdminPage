@@ -139,7 +139,7 @@
                         var temp=$(this).closest('tr').find('td');
                         $.ajax({
                         type: "post",
-                        url: "ajax/order/ajax-edit-ord.jsp", //this is my servlet
+                        url: "ajax/customerpage/ajax-edit-ord.jsp", //this is my servlet
                         data: {
                             eid: id,
                             status: 6

@@ -80,7 +80,7 @@
                 <div class="row mt-lg-5 mt-md-4 mt-4">
                     <div class="col-lg-8 left-blog-info text-left">
                         <div class="card">
-                            <a href="single.jsp">
+                            <a href="myblog.jsp">
 								<img src="images/tea2.jpg" class="img-fluid" alt="">
 							</a>
                             <div class="card-body">
@@ -100,7 +100,7 @@
 
                                 </ul>
                                 <h5 class="card-title ">
-                                    <a href="single.jsp">Trà gừng có tác dụng gì? 8 công dụng tuyệt vời của trà gừng</a>
+                                    <a href="myblog.jsp">Trà gừng có tác dụng gì? 8 công dụng tuyệt vời của trà gừng</a>
                                 </h5>
                                 <p class="mytext">Gừng có vị cay, tính ấm vào 3 kinh vị, phế, tỳ nhưng ít ai biết được những công dụng của gừng cũng như trà của nó. Hôm nay nongsansay.vn sẽ giúp mọi người trả lời câu hỏi trà gừng có tác dụng gì? Và chỉ ra 8 công dụng tuyệt vời từ trà gừng.</p>
                                 <br>

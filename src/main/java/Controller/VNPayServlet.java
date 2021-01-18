@@ -215,6 +215,8 @@ public class VNPayServlet extends HttpServlet {
         }
         Gson gson = new Gson();
         req.setAttribute("status_pay", "success");
+        HttpSession session = req.getSession();
+        session.removeAttribute("cart");
         resp.getWriter().write(gson.toJson(job));
     }
 

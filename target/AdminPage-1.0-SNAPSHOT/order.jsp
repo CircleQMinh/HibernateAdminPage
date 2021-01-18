@@ -42,12 +42,14 @@
                 <table id="tableorder" class="tabledis">
                     <tr>
                         <th>OrderID</th>
+                        <th>Trạng thái</th>
                         <th>Tên khách</th>
                         <th>Ngày đặt</th>
                         <th>Ngày yêu cầu</th>
                         <th>Địa chỉ</th>
                         <th>Điện thoại</th>
                         <th>Thanh toán</th>
+                        <th>Ghi chú</th>
                         <th>DS sản phẩm</th>
                         <th colspan="2">Option</th>
                     </tr>
@@ -59,12 +61,14 @@
                             %>
                             <tr>
                                 <td><%= ord.getOrderId() %></td>
+                                <td><%= OrderDAO.returnStatus(ord.getStatus()) %></td>
                                 <td><%= ord.getCustomer().getCustomerName()  %></td>
                                 <td><%= OrderDAO.returnDate(ord.getOrderDate()) %></td>
                                 <td><%= OrderDAO.returnDate(ord.getRequiredDate()) %></td>
                                 <td><%= ord.getOrderAdress() %></td>
                                 <td><%= ord.getOrderPhone() %></td>
                                 <td><%= ord.getPaymentType()            %></td>
+                                <td><%=OrderDAO.returnNote(ord.getNote())            %></td>
                                 <td>
                                     <button class="btn" id="ord_info"><i class="fas fa-gifts"></i></button>
                                 </td>
@@ -97,12 +101,14 @@
                 <table id="tableorderCk" class="tabledis">
                     <tr>
                         <th>OrderID</th>
+                        <th>Trạng thái</th>
                         <th>Tên khách</th>
                         <th>Ngày đặt</th>
                         <th>Ngày yêu cầu</th>
                         <th>Địa chỉ</th>
                         <th>Điện thoại</th>
                         <th>Thanh toán</th>
+                        <th>Ghi chú</th>
                         <th>DS sản phẩm</th>
                         <th colspan="2">Option</th>
                     </tr>
@@ -114,12 +120,14 @@
                             %>
                             <tr>
                                 <td><%= ord.getOrderId() %></td>
+                                <td><%= OrderDAO.returnStatus(ord.getStatus()) %></td>
                                 <td><%= ord.getCustomer().getCustomerName()  %></td>
                                 <td><%= OrderDAO.returnDate(ord.getOrderDate()) %></td>
                                 <td><%= OrderDAO.returnDate(ord.getRequiredDate()) %></td>
                                 <td><%= ord.getOrderAdress() %></td>
                                 <td><%= ord.getOrderPhone() %></td>
                                 <td><%= ord.getPaymentType()            %></td>
+                                <td><%=OrderDAO.returnNote(ord.getNote())            %></td>
                                 <td>
                                     <button class="btn" id="ord_info_Ck"><i class="fas fa-gifts"></i></button>
                                 </td>
@@ -154,12 +162,14 @@
                 <table id="tableorderDv" class="tabledis">
                     <tr>
                         <th>OrderID</th>
+                        <th>Trạng thái</th>
                         <th>Tên khách</th>
                         <th>Ngày đặt</th>
                         <th>Ngày yêu cầu</th>
                         <th>Địa chỉ</th>
                         <th>Điện thoại</th>
                         <th>Thanh toán</th>
+                        <th>Ghi chú</th>
                         <th>Tên Shipper</th>
                         <th>DS sản phẩm</th>
                         <th>Option</th>
@@ -172,12 +182,14 @@
                             %>
                             <tr>
                                 <td><%= ord.getOrderId() %></td>
+                                <td><%= OrderDAO.returnStatus(ord.getStatus()) %></td>
                                 <td><%= ord.getCustomer().getCustomerName()  %></td>
                                 <td><%= OrderDAO.returnDate(ord.getOrderDate()) %></td>
                                 <td><%= OrderDAO.returnDate(ord.getRequiredDate()) %></td>
                                 <td><%= ord.getOrderAdress() %></td>
                                 <td><%= ord.getOrderPhone() %></td>
                                 <td><%= ord.getPaymentType()            %></td>
+                                <td><%=OrderDAO.returnNote(ord.getNote())            %></td>
                                 <td><%= emp.getEmployeeName() %></td>
                                 <td>
                                     <button class="btn" id="ord_info_Dv"><i class="fas fa-gifts"></i></button>
@@ -206,6 +218,7 @@
                 <table id="tableorderHis" class="tabledis">
                     <tr>
                         <th>OrderID</th>
+                        <th>Trạng thái</th>
                         <th>Tên khách</th>
                         <th>Ngày đặt</th>
                         <th>Ngày yêu cầu</th>
@@ -213,6 +226,7 @@
                         <th>Địa chỉ</th>
                         <th>Điện thoại</th>
                         <th>Thanh toán</th>
+                        <th>Ghi chú</th>
                         <th>Tên Shipper</th>
                         <th>DS sản phẩm</th>
                         <th>Option</th>
@@ -225,6 +239,7 @@
                             %>
                             <tr>
                                 <td><%= ord.getOrderId() %></td>
+                                <td><%= OrderDAO.returnStatus(ord.getStatus()) %></td>
                                 <td><%= ord.getCustomer().getCustomerName()  %></td>
                                 <td><%= OrderDAO.returnDate(ord.getOrderDate()) %></td>
                                 <td><%= OrderDAO.returnDate(ord.getRequiredDate()) %></td>
@@ -232,6 +247,7 @@
                                 <td><%= ord.getOrderAdress() %></td>
                                 <td><%= ord.getOrderPhone() %></td>
                                 <td><%= ord.getPaymentType()            %></td>
+                                <td><%=OrderDAO.returnNote(ord.getNote())            %></td>
                                 <td><%= emp.getEmployeeName() %></td>
                                 <td>
                                     <button class="btn" id="ord_info_His"><i class="fas fa-gifts"></i></button>

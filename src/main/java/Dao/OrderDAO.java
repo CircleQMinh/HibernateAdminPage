@@ -142,7 +142,7 @@ public class OrderDAO {
             transaction = session.beginTransaction();
             // get an user object
 
-            listOfOrders = session.createQuery("from Order o where o.shipperId="+String.valueOf(id)+" and o.status=4").list();
+            listOfOrders = session.createQuery("from Order o where o.shipperId="+String.valueOf(id)+" and o.status=4 or o.shipperId="+String.valueOf(id)+" and o.status=6").list();
 
             // commit transaction
             transaction.commit();session.close();
@@ -416,7 +416,17 @@ public class OrderDAO {
         else if(id==4){
             return "Đã giao";
         }
+        else if(id==6){
+            return "Hủy";
+        }
         return "Không xác định";
+    }
+    public static String returnNote(String id)
+    {
+        if(id!=null){
+            return id;
+        }
+        return "Không có ghi chú";
     }
     public static List < Object[] > getOrderDangGiao() {//join 2 bang lai voi nhau
 
@@ -453,7 +463,7 @@ public class OrderDAO {
             transaction = session.beginTransaction();
             // get an user object
 
-            listOfAcc = session.createQuery("select o,e  from Order o,Employee e where o.status=4 and o.shipperId=e.id").list();
+            listOfAcc = session.createQuery("select o,e  from Order o,Employee e where o.status=4 and o.shipperId=e.id or o.status=6 and o.shipperId=e.id").list();
 
             // commit transaction
             transaction.commit();

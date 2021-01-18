@@ -20,13 +20,15 @@
             String errorsql = "";
             String eid=request.getParameter("eid").trim();
             String status = request.getParameter("status").trim();
+            String note = request.getParameter("note").trim();
             if(errorsql=="")
             {
                 try{
-                    int inteid=Integer.valueOf(eid);
-                    int intstt=Integer.valueOf(status);
-                    OrderDAO.editOrd(inteid, intstt);
-                    errorsql="Chỉnh sửa thành công";
+                    Order o =OrderDAO.getOrder(Integer.parseInt(eid));
+                    o.setNote(note);
+                    o.setStatus(Integer.parseInt(status));
+                    OrderDAO.updateEmp(o);
+                    errorsql="Thành công";
                 }
                 catch(Exception e)
                 {

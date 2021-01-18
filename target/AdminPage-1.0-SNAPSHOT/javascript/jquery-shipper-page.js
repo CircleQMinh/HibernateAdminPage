@@ -39,34 +39,35 @@ $(document).ready(function(){
                     });
                 }
             });
-            $("button[id|='order-remove']").click(function() {
-                if (confirm('Hủy dơn hàng?')) {
-                    openForm('formwait');
-                    $.ajax({
-                        type: "post",
-                        url: "ajax/order/ajax-delete-ord.jsp", //this is my servlet
-                        data: {
-                            EID:$(this).closest('tr').find('td').eq(0).text()
-                        },
-                        success: function ( response ){   
-                            //handleData(response);
-                            var success =  $($.parseHTML(response)).filter("#sqlmsg").html(); 
-                            console.log(success); // div#success
-                            closeForm('formwait');
-                            alert(success);
-                            clickme('myorder-refresh');
-                            clickme('new-order-refresh');
-                            clickme('old-order-refresh');
-                        },
-                        error: function(xhr, textStatus, error){
-                            console.log(xhr.statusText);
-                            console.log(textStatus);
-                            console.log(error);
-                            console.log("Fail");
-                        }
-                    });
-                }
+            $("button[id|='ord_info'").click(function(){
+                openForm('formwait');
+                var id =$(this).closest('tr').find('td').eq(0).text();
+                $.ajax({
+                    type: "post",
+                    url: "ajax/order/ajax-view-order-info.jsp", //this is my servlet
+                    data: {
+                        ID:id               
+                    },
+                    success: function ( response ){   
+                        //handleData(response);
+                        var success =  $($.parseHTML(response)).filter("#info").html();
+                        $("#order-info-form").html(success);closeForm('formwait');
+                    },
+                    error: function(xhr, textStatus, error){
+                        console.log(xhr.statusText);
+                        console.log(textStatus);
+                        console.log(error);
+                        console.log("Fail");closeForm('formwait');
+                    }
+                });
+                 openForm("order-info-form");
             });
+            $("button[id|='ord-remove'").click(function(){
+                openForm("deleteOrder");
+                var id =$(this).closest('tr').find('td').eq(0).text();
+                document.getElementById("orderid-edit").value =id;
+                document.getElementById("ordernote-edit").value ="Điền lý do hủy đơn hàng";
+            }); 
         });    
     });
     $('#new-order-refresh').click(function(){
@@ -102,6 +103,29 @@ $(document).ready(function(){
                     });
                 }
             });
+            $("button[id|='ord_info'").click(function(){
+                openForm('formwait');
+                var id =$(this).closest('tr').find('td').eq(0).text();
+                $.ajax({
+                    type: "post",
+                    url: "ajax/order/ajax-view-order-info.jsp", //this is my servlet
+                    data: {
+                        ID:id               
+                    },
+                    success: function ( response ){   
+                        //handleData(response);
+                        var success =  $($.parseHTML(response)).filter("#info").html();
+                        $("#order-info-form").html(success);closeForm('formwait');
+                    },
+                    error: function(xhr, textStatus, error){
+                        console.log(xhr.statusText);
+                        console.log(textStatus);
+                        console.log(error);
+                        console.log("Fail");closeForm('formwait');
+                    }
+                });
+                 openForm("order-info-form");
+            });
         });
     });
     $('#old-order-refresh').click(function(){
@@ -110,6 +134,50 @@ $(document).ready(function(){
                 perPage:10,
                 showAllButton:true
             });
+            $("button[id|='ord_info'").click(function(){
+                openForm('formwait');
+                var id =$(this).closest('tr').find('td').eq(0).text();
+                $.ajax({
+                    type: "post",
+                    url: "ajax/order/ajax-view-order-info.jsp", //this is my servlet
+                    data: {
+                        ID:id               
+                    },
+                    success: function ( response ){   
+                        //handleData(response);
+                        var success =  $($.parseHTML(response)).filter("#info").html();
+                        $("#order-info-form").html(success);closeForm('formwait');
+                    },
+                    error: function(xhr, textStatus, error){
+                        console.log(xhr.statusText);
+                        console.log(textStatus);
+                        console.log(error);
+                        console.log("Fail");closeForm('formwait');
+                    }
+                });
+                 openForm("order-info-form");
+            });
+        });
+    });
+    $('#editorder_status').click(function(){
+        $.ajax({
+            type: "post",
+            url: "ajax/shipper/ajax-shipper-ord-rev.jsp", //this is my servlet
+            data: {
+                id: $('#orderid-edit').val(),
+                note: $('#ordernote-edit').val(),
+            },
+            success: function ( response ){   
+                //handleData(response);
+                var success = $($.parseHTML(response)).filter("#sqlmsg").html();
+                console.log(success); // div#success
+                alert(success);
+            },
+            error: function(xhr, textStatus, error){
+                console.log(xhr.statusText);
+                console.log(textStatus);
+                console.log(error);
+            }
         });
     });
     clickme('myorder-refresh');

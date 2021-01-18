@@ -129,6 +129,11 @@
                         </a>
                     </li>
                     <li>
+                        <a href="account-info.jsp">
+                            <i class="fas fa-info"></i> My Info
+                        </a>
+                    </li>
+                    <li>
                         <a href="logout">
                             <i class="fas fa-sign-out-alt"></i> Đăng xuất
                         </a>
@@ -419,11 +424,13 @@
                 <br>
                 <label ><strong>Order ID</strong></label>
                 <input type="number" id="orderid-edit" name="wd"><br>
-                
+                <label ><strong>Ghi chú</strong></label>
+                <input type="text" id="ordernote-edit" name="wd"><br>
                 <label ><strong>Trạng thái</strong></label>
                 <select name="orderStatus" id="order-status">
                     <option selected value="1">Chưa duyệt</option>
                     <option value="2">Đã duyệt</option>
+                    <option value="6">Hủy</option>
                 </select><br>
                 <button type="button" id="editorder_status"><strong>Edit</strong></button>   
                 <button type="button" style="background-color: red;" onclick="closeForm('updateOrder')" ><strong>Close</strong></button>        

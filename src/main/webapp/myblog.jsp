@@ -149,7 +149,7 @@
                                     </ul>
                                     <!--Thanh tiêu đề-->
                                     <h5 class="card-title">
-                                        <a href="blog/blog2.jsp">Mẹo hay chữa cảm lạnh, cảm cúm mùa đông không cần dùng thuốc</a>
+                                        <a href="blog2.jsp">Mẹo hay chữa cảm lạnh, cảm cúm mùa đông không cần dùng thuốc</a>
                                     </h5>
                                     <!--Nội dung tóm tắt của blog-->
                                     <p class="card-text">Mùa đông là thời điểm mọi người rất dễ bị cảm lạnh, cảm cúm, nhất là đối với trẻ nhỏ. Bài viết sau đây sẽ giúp bạn có cách chữa cảm lạnh, cảm cúm không cần dùng thuốc rất hiệu quả và bổ ích.</p>

@@ -12,6 +12,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>DONG Store</title>
+        <script src="js/cart.js" type="text/javascript"></script>
         <link href="css/style1.css" rel="stylesheet" type="text/css"/>
         <script src="https://kit.fontawesome.com/384d09a31e.js" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">

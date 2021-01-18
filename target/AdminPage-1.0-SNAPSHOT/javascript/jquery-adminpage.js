@@ -544,8 +544,9 @@ $(document).ready(function(){
                         $("button[id|='ord_edit'").click(function(){
                             openForm("updateOrder");
                             var order_edit_id =$(this).closest('tr').find('td').eq(0).text();
-                            var order_edit_status=$(this).closest('tr').find('td').eq(5).text();
-                            FillFormUpdateOrder(order_edit_id,order_edit_status);
+                            var order_edit_status=$(this).closest('tr').find('td').eq(1).text();
+                             var note=$(this).closest('tr').find('td').eq(8).text();
+                            FillFormUpdateOrder(order_edit_id,order_edit_status,note);
                         });                    
                         $("button[id|='ord_del']").click(function(){
                           if (confirm('Xóa hóa đơn khỏi database?')) {
@@ -611,8 +612,9 @@ $(document).ready(function(){
                         $("button[id|='ord_edit_Ck'").click(function(){
                             openForm("updateOrder");
                             var order_edit_id =$(this).closest('tr').find('td').eq(0).text();
-                            var order_edit_status=$(this).closest('tr').find('td').eq(5).text();
-                            FillFormUpdateOrder(order_edit_id,order_edit_status);
+                            var order_edit_status=$(this).closest('tr').find('td').eq(1).text();
+                            var note=$(this).closest('tr').find('td').eq(8).text();
+                            FillFormUpdateOrder(order_edit_id,order_edit_status,note);
                         });                    
                         $("button[id|='ord_del_Ck']").click(function(){
                           if (confirm('Xóa hóa đơn khỏi database?')) {
@@ -1123,6 +1125,7 @@ $(document).ready(function(){
             url: "ajax/order/ajax-edit-ord.jsp", //this is my servlet
             data: {
                 eid: $('#orderid-edit').val(),
+                note: $('#ordernote-edit').val(),
                 status: $('#order-status').val()
             },
             success: function ( response ){   

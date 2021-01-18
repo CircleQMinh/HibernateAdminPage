@@ -1,13 +1,11 @@
 <%-- 
-    Document   : ajax-edit-ord
-    Created on : Dec 9, 2020, 9:39:04 PM
+    Document   : ajax-shipper-ord-rev
+    Created on : Jan 18, 2021, 5:13:35 PM
     Author     : ASUS
 --%>
-<%@page import="java.sql.Date"%>
-<%@page import="Model.*"%>
-<%@page import="Dao.*"%>
-<%@page import="java.util.regex.Matcher"%>
-<%@page import="java.util.regex.Pattern"%>
+
+<%@page import="Dao.OrderDAO"%>
+<%@page import="Model.Order"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -16,17 +14,16 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <%
+         <%
             String errorsql = "";
-            String eid=request.getParameter("eid").trim();
-            String status = request.getParameter("status").trim();
+            String id=request.getParameter("id").trim();
             String note = request.getParameter("note").trim();
             if(errorsql=="")
             {
                 try{
-                    Order o =OrderDAO.getOrder(Integer.parseInt(eid));
+                    Order o = OrderDAO.getOrder(Integer.parseInt(id));
+                    o.setStatus(6);
                     o.setNote(note);
-                    o.setStatus(Integer.parseInt(status));
                     OrderDAO.updateEmp(o);
                     errorsql="Thành công";
                 }
@@ -40,9 +37,7 @@
         <p id="sqlmsg"> <%=errorsql%></p>
         <div id="debug">
             <p><%=errorsql%></p>
-            <p><%=eid%></p>
-            <p><%=status%></p>
-
+            <p><%=id%></p>
         </div>
     </body>
 </html>

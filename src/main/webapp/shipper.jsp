@@ -101,11 +101,14 @@
                     <table id="tablemyorder" class="tabledis">
                         <tr>
                             <th>OrderID</th>
+                            <th>Trạng thái</th>
                             <th>Tên khách</th>
                             <th>Ngày đặt</th>
                             <th>Ngày yêu cầu</th>
                             <th>Địa chỉ</th>
                             <th>Điện thoại</th>
+                            <th>Thanh toán</th>
+                            <th>Ghi chú</th>
                             <th >DS sản phẩm</th>
                             <th colspan="2">Option</th>
                         </tr>
@@ -117,39 +120,19 @@
                                 %>
                                 <tr>
                                     <td><%= ord.getOrderId() %></td>
+                                    <td><%= OrderDAO.returnStatus(ord.getStatus()) %></td>
                                     <td><%= ord.getCustomer().getCustomerName()  %></td>
                                     <td><%= OrderDAO.returnDate(ord.getOrderDate()) %></td>
                                     <td><%= OrderDAO.returnDate(ord.getRequiredDate()) %></td>
                                     <td><%= ord.getOrderAdress() %></td>
                                     <td><%= ord.getOrderPhone() %></td>
+                                    <td><%= ord.getPaymentType()            %></td>
+                                <td><%=OrderDAO.returnNote(ord.getNote())            %></td>
                                     <td>
-                                        <table class="tablediss">
-                                            <%
-                                                try 
-                                                {
-                                                    int j=0;
-                                                    List<?> prolist = OrderDAO.getProductListofOrder(ord.getOrderId());
-                                                    while(j<prolist.size())
-                                                    {
-                                                        Object[] row = (Object[])prolist.get(j);
-                                                    %>
-                                                    <tr>
-                                                        <td><%=row[1]%></td>
-                                                        <td><img src="<%=row[3]%>" class="productimg"></td>
-                                                        <td><%=row[4]%></td>
-                                                        <%j++;%>
-                                                    </tr>
-                                                    <% }
-                                                }
-                                                catch(Exception e)
-                                                {
-                                                
-                                                }
-                                            %>
-                                        </table>
-                                    </td>
+                                    <button class="btn" id="ord_info"><i class="fas fa-gifts"></i></button>
+                                </td>
                                     <td><button class="btn" id="order-complete" style=" background-color: green;"><i class="fas fa-check"></i></button></td>
-                                    <td><button class="btn" id="order-remove" style=" background-color: red;"><i class="fas fa-times"></i></button></td>
+                                    <td><button class="btn" id="ord-remove" style=" background-color: red;"><i class="fas fa-times"></i></button></td>
                                     <%i++;%>
                                 </tr>                   
                                 <%}
@@ -177,11 +160,14 @@
                     <table id="tableorder" class="tabledis">
                         <tr>
                             <th>OrderID</th>
+                            <th>Trạng thái</th>
                             <th>Tên khách</th>
                             <th>Ngày đặt</th>
                             <th>Ngày yêu cầu</th>
                             <th>Địa chỉ</th>
                             <th>Điện thoại</th>
+                            <th>Thanh toán</th>
+                            <th>Ghi chú</th>
                             <th colspan="1">DS sản phẩm</th>
                             <th>Option</th>
                         </tr>
@@ -193,37 +179,17 @@
                                 %>
                                 <tr>
                                     <td><%= ord.getOrderId() %></td>
+                                    <td><%= OrderDAO.returnStatus(ord.getStatus()) %></td>
                                     <td><%= ord.getCustomer().getCustomerName()  %></td>
                                     <td><%= OrderDAO.returnDate(ord.getOrderDate()) %></td>
                                     <td><%= OrderDAO.returnDate(ord.getRequiredDate()) %></td>
                                     <td><%= ord.getOrderAdress() %></td>
-                                    <td><%= ord.getOrderPhone() %></td>    
+                                    <td><%= ord.getOrderPhone() %></td>   
+                                    <td><%= ord.getPaymentType()            %></td>
+                                <td><%=OrderDAO.returnNote(ord.getNote())            %></td>
                                     <td>
-                                        <table class="tablediss">
-                                            <%
-                                                try 
-                                                {
-                                                    int j=0;
-                                                    List<?> prolist = OrderDAO.getProductListofOrder(ord.getOrderId());
-                                                    while(j<prolist.size())
-                                                    {
-                                                        Object[] row = (Object[])prolist.get(j);
-                                                    %>
-                                                    <tr>
-                                                        <td><%=row[1]%></td>
-                                                        <td><img src="<%=row[3]%>" class="productimg"></td>
-                                                        <td><%=row[4]%></td>
-                                                        <%j++;%>
-                                                    </tr>
-                                                    <% }
-                                                }
-                                                catch(Exception e)
-                                                {
-                                                
-                                                }
-                                            %>
-                                        </table>
-                                    </td>
+                                    <button class="btn" id="ord_info"><i class="fas fa-gifts"></i></button>
+                                </td>
                                     
                                     <td><button class="btn" id="order-acc" style=" background-color: red;"><i class="fas fa-check"></i></button></td>                         
                                     <%i++;%>
@@ -252,12 +218,15 @@
                     <table id="tablehisorder" class="tabledis">
                         <tr>
                             <th>OrderID</th>
+                            <th>Trạng thái</th>
                             <th>Tên khách</th>
                             <th>Ngày đặt</th>
                             <th>Ngày yêu cầu</th>
                             <th>Ngày giao</th>
                             <th>Địa chỉ</th>
                             <th>Điện thoại</th>
+                            <th>Thanh toán</th>
+                            <th>Ghi chú</th>
                             <th colspan="1">DS sản phẩm</th>
                         </tr>
                         <%               
@@ -268,38 +237,18 @@
                                 %>
                                 <tr>
                                     <td><%= ord.getOrderId() %></td>
+                                    <td><%= OrderDAO.returnStatus(ord.getStatus()) %></td>
                                     <td><%= ord.getCustomer().getCustomerName()  %></td>
                                     <td><%= OrderDAO.returnDate(ord.getOrderDate()) %></td>
                                     <td><%= OrderDAO.returnDate(ord.getRequiredDate()) %></td>
                                     <td><%= OrderDAO.returnDate(ord.getShippedDate()) %></td>
                                     <td><%= ord.getOrderAdress() %></td>
                                     <td><%= ord.getOrderPhone() %></td>
+                                    <td><%= ord.getPaymentType()            %></td>
+                                <td><%=OrderDAO.returnNote(ord.getNote())            %></td>
                                     <td>
-                                        <table class="tablediss">
-                                            <%
-                                                try 
-                                                {
-                                                    int j=0;
-                                                    List<?> prolist = OrderDAO.getProductListofOrder(ord.getOrderId());
-                                                    while(j<prolist.size())
-                                                    {
-                                                        Object[] row = (Object[])prolist.get(j);
-                                                    %>
-                                                    <tr>
-                                                        <td><%=row[1]%></td>
-                                                        <td><img src="<%=row[3]%>" class="productimg"></td>
-                                                        <td><%=row[4]%></td>
-                                                        <%j++;%>
-                                                    </tr>
-                                                    <% }
-                                                }
-                                                catch(Exception e)
-                                                {
-                                                
-                                                }
-                                            %>
-                                        </table>
-                                    </td>                  
+                                    <button class="btn" id="ord_info"><i class="fas fa-gifts"></i></button>
+                                </td>              
                                     <%i++;%>
                                 </tr>                   
                                 <%}
@@ -315,6 +264,21 @@
         </div>
         <div class="divwait" id="formwait" >
 
+        </div>
+        <div class="divorderinfo" id="order-info-form" >
+
+        </div>
+        <div class="divform" id="deleteOrder" >
+            <form >
+                <h1>Hủy đơn hàng này</h1>
+                <br>
+                <label ><strong>Order ID</strong></label>
+                <input type="number" id="orderid-edit" name="wd"><br>
+                <label ><strong>Ghi chú</strong></label>
+                <input type="text" id="ordernote-edit" name="wd"><br>
+                <button type="button" id="editorder_status"><strong>Edit</strong></button>   
+                <button type="button" style="background-color: red;" onclick="closeForm('deleteOrder')" ><strong>Close</strong></button>        
+            </form>  
         </div>
         <script>
             startTime();

@@ -237,9 +237,10 @@ function FillFormempnoacc(id)
     document.getElementById("passagain-acc-empnoacc").value="";
     document.getElementById('id-acc-empnoacc').value=id;
 }
-function FillFormUpdateOrder(id,status)
+function FillFormUpdateOrder(id,status,note)
 {
     document.getElementById("orderid-edit").value =id;
+    document.getElementById("ordernote-edit").value =note;
     document.getElementById("order-status");
     if (status === "Đã duyệt"){
         document.getElementById("order-status").options.selectedIndex=1;

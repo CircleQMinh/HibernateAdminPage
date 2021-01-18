@@ -88,6 +88,7 @@ public class SaveOrder extends HttpServlet {
         System.out.println(ordcsm);
         OrderDAO.updateEmp(ordcsm);
         request.setAttribute("status_pay", "success");
+        session.removeAttribute("cart");
         RequestDispatcher dp=getServletContext().getRequestDispatcher("/receipt.jsp");
         dp.forward(request, response);
     }

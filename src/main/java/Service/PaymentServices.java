@@ -53,8 +53,8 @@ public class PaymentServices {
      
     private RedirectUrls getRedirectURLs() {
         RedirectUrls redirectUrls = new RedirectUrls();
-        redirectUrls.setCancelUrl("http://localhost:8080/AdminPage/index.jsp");
-        redirectUrls.setReturnUrl("http://localhost:8080/AdminPage/ExecutePaymentServlet");
+        redirectUrls.setCancelUrl("https://shop-online-18110.herokuapp.com/index.jsp");
+        redirectUrls.setReturnUrl("https://shop-online-18110.herokuapp.com/ExecutePaymentServlet");
 
         return redirectUrls;
     }

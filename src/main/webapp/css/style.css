@@ -49,6 +49,7 @@ nav ul li .btn-login,nav ul li .btn-register{
 a{
     text-decoration: none;
     color: #171824;
+     font-size: 22px;
 }
 p{
     color: #171824;
@@ -508,7 +509,7 @@ th:last-child{
     top: -16px;
     left: 27px;
     background-color: transparent;
-    color: red;
+    color: deepskyblue;
     padding: 2px;
 }
 /*---------------- media for menu -----------*/

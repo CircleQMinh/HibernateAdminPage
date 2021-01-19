@@ -11,7 +11,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>About Us</title>
     <link href="css/style.css" rel="stylesheet" type="text/css"/>
     <link href="css/styleAbout.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -59,10 +59,10 @@
                 <img src="images/menu.png" class="menu-icon" onclick="menutoggle()">
             </div>
             <div class="row">
-                <div class="col-2">
-                    <h1>Lorem ipsum cà rốt</h1>
-                    <p>Giảm giá mạnh cho cà rốt Lorem ipsum.<br> Đối với chúng tôi mà nói như một người kém khôn ngoan sẽ không bao giờ từ chối một số loại kết quả từ sự yếu kém của tâm trí khi nó nhận được <br>chấp nhận dễ dàng chỉ mất một chút thời gian.</p>
-                    <button value="Explore Now" class="btn">Khám phá ngay &#10132;</button>
+               <div class="col-2">
+                    <h1>Chào mừng đến với TEAM16</h1>
+                    <p>Hãy đăng kí ngay hôm nay<br>Để nhận được những ưu đãi siêu khủng từ chúng tôi......</p>
+                    <button value="Explore Now" class="btn " onclick="location.href='register'">Khám phá ngay &#10132;</button>
                 </div>
                 <div class="col-2">
                     <img src="images/prd8.png" alt="">
@@ -131,7 +131,7 @@
                     <div class="card">
                         <img src="images/tea1.jpg" alt="card background" class="card-img">
                         <img src="images/cat1.jpg" alt="profile image" class="profile-img">
-                        <h1>Vinh Kiều</h1>
+                        <h1>Nhật Minh</h1>
                         <p class="job-title">Business Analyst</p>
                         <p class="infor">
                             Sinh viên năm 3 trường ĐH Sư   Phạm Kỹ Thuật Thành Phố HCM

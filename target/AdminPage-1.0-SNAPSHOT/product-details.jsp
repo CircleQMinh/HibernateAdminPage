@@ -41,8 +41,8 @@
                     <ul id="MenuItems">
                         <li><a href="index.jsp">Trang chủ</a></li>
                         <li><a href="products.jsp">Sản phẩm</a></li>
-                        <li><a href="">Liên hệ</a></li>
-                        <li><a href="">Blog</a></li>
+                        <li><a href="aboutus.jsp">Liên hệ</a></li>
+                        <li><a href="myblog.jsp">Blog</a></li>
                         <li><a href="account-info.jsp">Tài khoản</a></li>
                         <c:choose>
                             <c:when test="${sessionScope.account==null}" >

@@ -14,7 +14,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="blog"
-    ,catalog="dbthuongmaidientu"
+    ,catalog="dut78p24cwsag570"
 )
 public class Blog  implements java.io.Serializable {
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
 <hibernate-reverse-engineering>
-  <schema-selection match-catalog="dbthuongmaidientu"/>
+  <schema-selection match-catalog="dut78p24cwsag570"/>
   <table-filter match-name="revenue"/>
   <table-filter match-name="customer"/>
   <table-filter match-name="unapprovedproduct"/>

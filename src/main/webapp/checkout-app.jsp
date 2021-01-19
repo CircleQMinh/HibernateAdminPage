@@ -34,7 +34,7 @@
         <div class="header">
             <h2>Nhập thông tin nhận hàng : </h2>
         </div>
-        <form id="form" class="form" method="get" action="AppPayServlet">
+        <form id="form" class="form" method="post" action="AppPayServlet">
             <div class="form-control">
                 <label for="username">Họ và tên người nhận: </label>
                 <input type="text" placeholder="Nguyễn Văn A" name="CustomerNameShip" id="CustomerNameShip" />
@@ -76,7 +76,7 @@
             </div>
             <div class="form-control">
                 <label for="OrderDescription">Nội dung thanh toán</label>
-                <textarea class="form-control" cols="20" id="vnp_OrderInfo" name="vnp_OrderInfo" rows="2">Thanh toan don hang</textarea>
+                <textarea class="form-control" cols="20" id="vnp_OrderInfo" name="vnp_OrderInfo" rows="2">Thanh toán đơn hàng...</textarea>
             </div>
             <div>
                 <input type="submit" class="btn" id="check_out_btn" onclick="alert('Xác nhận thanh toán'); " value="Send"  >

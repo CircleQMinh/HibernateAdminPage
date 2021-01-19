@@ -34,6 +34,10 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="css/style.css">
         <script src="js/cart.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="css/mycssadminpage.css" type="text/css">
+        <style>
+
+        </style>
     </head>
     <body>
         <%
@@ -101,72 +105,64 @@
                     </a><!-- comment -->
                     <img src="images/menu.png" class="menu-icon" onclick="menutoggle()">
                 </div>
-                <div class="row">
-                    <div class="col-2">
-                        <div class="header clearfix">
-                            <h3 class="text-muted">HÓA ĐƠN</h3>
-                        </div>
-                        <div class="table-responsive">
-                            <div class="form-group">
-                                <label >Người nhận:</label>
-                                <label><%=request.getParameter("CustomerNameShip")%></label>
-                            </div>  
-                            <div class="form-group">
-                                <label >Địa chỉ nhận hàng:</label>
-                                <label><%=request.getParameter("AddressShip")%></label>
-                            </div> 
-                            <div class="form-group">
-                                <label >Email: </label>
-                                <label><%=request.getParameter("EmailShip")%></label>
-                            </div> 
-                            <div class="form-group">
-                                <label >Mã đơn hàng:</label>
-                                <label><%=request.getParameter("vnp_TxnRef")%></label>
-                            </div>    
-                            <div class="form-group">
-                                <label >Số tiền:</label>
-                                <label><%=request.getParameter("vnp_Amount")%></label>
-                            </div>  
-                            <div class="form-group">
-                                <label >Nội dung thanh toán:</label>
-                                <label><%=request.getParameter("vnp_OrderInfo")%></label>
-                            </div>  
-                            <div class="form-group">
-                                <label >Thời gian thanh toán:</label>
-                                <label><%=request.getParameter("vnp_PayDate")%></label>
-                            </div> 
-                            <div class="form-group">
-                                <label >Kết quả:</label>
-                                <label>
-                                    <%
-                                        if(request.getAttribute("status_pay")!=null){
-                                            if (request.getAttribute("status_pay").equals("success")) {
-                                                    out.print("GD Thanh cong");
-                                                } else {
-                                                    out.print("GD Khong thanh cong");
-                                                }
-                                        }
-                                        else
-                                        {
-                                            if (signValue.equals(vnp_SecureHash)) {
-                                                if ("00".equals(request.getParameter("vnp_ResponseCode"))) {
-                                                    out.print("GD Thanh cong");
-                                                } else {
-                                                    out.print("GD Khong thanh cong");
-                                                }
+                <h4 class="myarticle-title">Thông tin hóa đơn</h4>
+                <article class="myarticle"> 
 
-                                            } else {
-                                                out.print("Chu ky khong hop le");
-                                            }
+                        <label >Người nhận:</label>
+                        <label><%=request.getParameter("CustomerNameShip")%></label>
+                        <br>
+                        <label >Địa chỉ nhận hàng:</label>
+                        <label><%=request.getParameter("AddressShip")%></label>
+                        <br>
+                        <label >Email: </label>
+                        <label><%=request.getParameter("EmailShip")%></label>
+                        <br>
+                        <%
+                            if(request.getParameter("vnp_TxnRef")!=null){%>
+                            <label >Mã đơn hàng:</label>
+                            <label><%=request.getParameter("vnp_TxnRef")%></label>
+                            <br>   
+                            <%}                       
+                        %>
+                        <label >Số tiền:</label>
+                        <label><%=request.getParameter("vnp_Amount")%></label>
+                        <br>
+                        <label >Nội dung thanh toán:</label>
+                        <label><%=request.getParameter("vnp_OrderInfo")%></label>
+                        <br>
+                        <%
+                            if(request.getParameter("vnp_PayDate")!=null){%>
+                            <label >Thời gian thanh toán:</label>
+                            <label><%=request.getParameter("vnp_PayDate")%></label>
+                            <br>   
+                            <%}                       
+                        %>
+                        <label >Kết quả:</label>
+                        <label>
+                            <%
+                                if(request.getAttribute("status_pay")!=null){
+                                    if (request.getAttribute("status_pay").equals("success")) {
+                                            out.print("Giao dịch Thành công - Cảm ơn quý khách");
+                                        } else {
+                                            out.print("Giao dịch Không thành công");
+                                        }
+                                }
+                                else
+                                {
+                                    if (signValue.equals(vnp_SecureHash)) {
+                                        if ("00".equals(request.getParameter("vnp_ResponseCode"))) {
+                                            out.print("Giao dịch Thành công - Cảm ơn quý khách");
+                                        } else {
+                                             out.print("Giao dịch Không thành công");
                                         }
 
-                                        
-                                    %></label>
-                            </div> 
-                        </div>
-                    </div>
-                    <div class="col-2">
-                        
+                                    } else {
+                                        out.print("Chữ ký không hợp lệ");
+                                    }
+                                }
+                            %>
+                        </label>
+                        </article> 
                     </div>
                 </div>
             </div>
@@ -217,6 +213,6 @@
 </html>
 <script>
     $(function(){
-       alert('Vui lòng kiểm tra email để xem chi tiết đơn hàng') 
+       alert('Đơn hàng đã được ghi lại , cửa hàng sẽ liên lạc với bạn để xác nhận việc đặt hàng') 
     });
 </script>

@@ -17,7 +17,7 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name="unapprovedproduct"
-    ,catalog="dbthuongmaidientu"
+    ,catalog="dut78p24cwsag570"
 )
 public class Unapprovedproduct  implements java.io.Serializable {
 

@@ -105,8 +105,8 @@
                     </a><!-- comment -->
                     <img src="images/menu.png" class="menu-icon" onclick="menutoggle()">
                 </div>
-                <h4 class="myarticle-title" style="background-color: wheat">Thông tin hóa đơn</h4>
-                <article class="myarticle"> 
+                <h4 class="myarticle-title" >Thông tin hóa đơn</h4>
+                <article class="myarticle" style="background-color: wheat"> 
 
                         <label >Người nhận:</label>
                         <label><%=request.getParameter("CustomerNameShip")%></label>
@@ -215,4 +215,19 @@
     $(function(){
        alert('Đơn hàng đã được ghi lại , cửa hàng sẽ liên lạc với bạn để xác nhận việc đặt hàng') 
     });
+//    <!---- Toggle Menu ------>
+//        var MenuItems = document.getElementById("MenuItems");
+//        MenuItems.style.maxHeight="0px";
+//        function menutoggle(){
+//            if(MenuItems.style.maxHeight=="0px")
+//            {
+//                MenuItems.style.maxHeight="250px";
+//                MenuItems.style.zIndex = "800"
+//                
+//            }
+//            else
+//            {
+//                MenuItems.style.maxHeight="0px"
+//            }
+//        }
 </script>

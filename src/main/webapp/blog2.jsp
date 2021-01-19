@@ -22,7 +22,8 @@
         <div class="container">
             <div class="navbar">
                 <div class="gogo">
-                    <img src="images/logo-default.jpg" width="70" height="70" alt=""/>
+                    <img src="images/logo-default.jpg" width="70" height="70
+                    " alt=""/>
                 </div>
                 <nav>
                     <ul id="MenuItems">
@@ -30,30 +31,30 @@
                         <li><a href="products.jsp">Sản phẩm</a></li>
                         <li><a href="aboutus.jsp">Liên hệ</a></li>
                         <li><a href="myblog.jsp">Blog</a></li>
-                        <li><a href="">Tài khoản</a></li>
+                        <li><a href="account-info.jsp">Tài khoản</a></li>
                         <c:choose>
-                                    <c:when test="${sessionScope.account==null}" >
-                                    <li><a href="login" class="btn-login">Đăng nhập</a></li>
-                                    <li><a href="register" class="btn-register">Đăng ký</a></li>
+                            <c:when test="${sessionScope.account==null}" >
+                                <li><a href="login" class="btn-login">Đăng nhập</a></li>
+                                <li><a href="register" class="btn-register">Đăng ký</a></li>
+                            </c:when>
+                            <c:otherwise>
+                                <c:choose>
+                                    <c:when test="${sessionScope.account.type=='customer'}">
+                                        <li><a href="account-info.jsp" class="btn-login"><c:out value="${sessionScope.userInfo.customerName}"/></a></li>
+                                        <li><a href="logout" class="btn-register">Đăng xuất</a></li>
                                     </c:when>
+                                    <c:when test="${sessionScope.account.type=='employee'}">
+                                        <li><a href="account-info.jsp" class="btn-login"><c:out value="${sessionScope.userInfo.employeeName}"/></a></li>                                   
+                                        <li><a href="logout" class="btn-register">Đăng xuất</a></li>
+                                    </c:when>  
                                     <c:otherwise>
-                                        <c:choose>
-                                            <c:when test="${sessionScope.account.type=='customer'}">
-                                            <li><a href="account-info.jsp" class="btn-login"><c:out value="${sessionScope.userInfo.customerName}"/></a></li>
-                                            <li><a href="logout" class="btn-register">Đăng xuất</a></li>
-                                            </c:when>
-                                            <c:when test="${sessionScope.account.type=='employee'}">
-                                            <li><a href="account-info.jsp" class="btn-login"><c:out value="${sessionScope.userInfo.employeeName}"/></a></li>                                   
-                                            <li><a href="logout" class="btn-register">Đăng xuất</a></li>
-                                            </c:when>  
-                                            <c:otherwise>
-                                            <li><a href="account-info.jsp" class="btn-login"><c:out value="${sessionScope.userInfo.name}"/></a></li>
-                                            <li><a href="logout" class="btn-register">Đăng xuất</a></li>
-                                            </c:otherwise>
-                                        </c:choose>
+                                         <li><a href="account-info.jsp" class="btn-login"><c:out value="${sessionScope.userInfo.name}"/></a></li>
+                                          <li><a href="logout" class="btn-register">Đăng xuất</a></li>
                                     </c:otherwise>
                                 </c:choose>
-                        <li><a href="cart.jsp"><img src="images/cart.png" width="30px" height="30px" class="imgcard" ></a></li>
+                            </c:otherwise>
+                        </c:choose>
+
                         
                     </ul>
                 </nav>
@@ -61,9 +62,9 @@
             </div>
             <div class="row">
                 <div class="col-2">
-                    <h1>Lorem ipsum cà rốt</h1>
-                    <p>Giảm giá mạnh cho cà rốt Lorem ipsum.<br> Đối với chúng tôi mà nói như một người kém khôn ngoan sẽ không bao giờ từ chối một số loại kết quả từ sự yếu kém của tâm trí khi nó nhận được <br>chấp nhận dễ dàng chỉ mất một chút thời gian.</p>
-                    <button value="Explore Now" class="btn">Khám phá ngay &#10132;</button>
+                    <h1>Chào mừng đến với TEAM16</h1>
+                    <p>Hãy đăng kí ngay hôm nay<br>Để nhận được những ưu đãi siêu khủng từ chúng tôi......</p>
+                    <button value="Explore Now" class="btn" onclick="location.href='register'">Khám phá ngay &#10132;</button>
                 </div>
                 <div class="col-2">
                     <img src="images/prd8.png" alt="">

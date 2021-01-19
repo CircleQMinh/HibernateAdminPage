@@ -38,6 +38,7 @@ public class LogoutController extends HttpServlet {
             {    
                 session.removeAttribute("account");
                 session.removeAttribute("userInfo");
+                session.removeAttribute("cart");
                 session.invalidate();
                 String url="";
                 if(account.getType().equals("customer"))

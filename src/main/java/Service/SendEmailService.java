@@ -23,7 +23,7 @@ public class SendEmailService {
     public boolean sendEmail(String SUBJECT,String TO,String MESSAGECONTENT)
     {
         boolean flag=false;
-        String from="minh15randommail@gmail.com";
+        String from="timelive.circleqm@gmail.com";
         //variable for gmail
         String host="smtp.googlemail.com";
         //System properties
@@ -42,7 +42,7 @@ public class SendEmailService {
         Session session= Session.getInstance(properties, new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication(){ // dùng để đăng nhập gmail
-                return new PasswordAuthentication("minh15randommail@gmail.com","Sphinxkbb4"); //check pls
+                return new PasswordAuthentication("timelive.circleqm@gmail.com","timelive@qm"); //check pls
             }
         });
         System.out.println("session getinstance ok");

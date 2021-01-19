@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import Dao.CustomerDAO;
 import Dao.OrderDAO;
 import Dao.OrderdetailDAO;
 import Dao.ProductDao;
@@ -48,6 +49,7 @@ public class AppPayServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ParseException {
         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
         Date dateship = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("DateShip"));
         String name = request.getParameter("CustomerNameShip");
@@ -88,6 +90,9 @@ public class AppPayServlet extends HttpServlet {
             ordcsm.setStatus(1);
             System.out.println(ordcsm);
             OrderDAO.updateEmp(ordcsm);
+            int cost = CartService.getTotalCost(cart.getItems());
+            csm.setMoney(csm.getMoney()-cost);
+            CustomerDAO.updateCus(csm);
             request.setAttribute("status_pay", "success");
             session.removeAttribute("cart");
         }

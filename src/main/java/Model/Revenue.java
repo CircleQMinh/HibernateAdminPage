@@ -17,7 +17,7 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name="revenue"
-    ,catalog="dbthuongmaidientu"
+    ,catalog="dut78p24cwsag570"
 )
 public class Revenue  implements java.io.Serializable {
 

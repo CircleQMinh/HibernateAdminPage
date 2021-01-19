@@ -25,6 +25,7 @@
                 try{
                     Order o =OrderDAO.getOrder(Integer.parseInt(eid));
                     o.setStatus(Integer.parseInt(status));
+                    o.setNote("Khách hủy đơn hàng");
                     OrderDAO.updateEmp(o);
                     errorsql="Thành công";
                 }

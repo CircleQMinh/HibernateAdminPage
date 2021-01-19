@@ -12,7 +12,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="admin"
-    ,catalog="dbthuongmaidientu"
+    ,catalog="dut78p24cwsag570"
 )
 public class Admin  implements java.io.Serializable {
 

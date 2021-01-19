@@ -23,7 +23,7 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name="order"
-    ,catalog="dbthuongmaidientu"
+    ,catalog="dut78p24cwsag570"
 )
 public class Order  implements java.io.Serializable {
 

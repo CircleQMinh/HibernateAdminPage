@@ -35,7 +35,7 @@
         <div class="container">
             <div class="navbar">
                 <div class="gogo">
-                    <img src="images/logo.png" width="125px" alt="">
+                    <img src="images/logo-default.jpg" width="125px" alt="">
                 </div>
                 <nav>
                     <ul id="MenuItems">
@@ -43,7 +43,7 @@
                         <li><a href="products.jsp">Sản phẩm</a></li>
                         <li><a href="">Liên hệ</a></li>
                         <li><a href="">Blog</a></li>
-                        <li><a href="customer-account.jsp">Tài khoản</a></li>
+                        <li><a href="account-info.jsp">Tài khoản</a></li>
                         <c:choose>
                             <c:when test="${sessionScope.account==null}" >
                                 <li><a href="login" class="btn-login">Đăng nhập</a></li>
@@ -52,15 +52,15 @@
                             <c:otherwise>
                                 <c:choose>
                                     <c:when test="${sessionScope.account.type=='customer'}">
-                                        <li><a href="" class="btn-login"><c:out value="${sessionScope.userInfo.customerName}"/></a></li>
+                                        <li><a href="account-info.jsp" class="btn-login"><c:out value="${sessionScope.userInfo.customerName}"/></a></li>
                                         <li><a href="logout" class="btn-register">Đăng xuất</a></li>
                                     </c:when>
                                     <c:when test="${sessionScope.account.type=='employee'}">
-                                        <li><a href="" class="btn-login"><c:out value="${sessionScope.userInfo.employeeName}"/></a></li>                                   
+                                        <li><a href="account-info.jsp" class="btn-login"><c:out value="${sessionScope.userInfo.employeeName}"/></a></li>                                   
                                         <li><a href="logout" class="btn-register">Đăng xuất</a></li>
                                     </c:when>  
                                     <c:otherwise>
-                                         <li><a href="" class="btn-login"><c:out value="${sessionScope.userInfo.name}"/></a></li>
+                                         <li><a href="account-info.jsp" class="btn-login"><c:out value="${sessionScope.userInfo.name}"/></a></li>
                                           <li><a href="logout" class="btn-register">Đăng xuất</a></li>
                                     </c:otherwise>
                                 </c:choose>

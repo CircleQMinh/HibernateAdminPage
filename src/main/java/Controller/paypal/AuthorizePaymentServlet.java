@@ -52,7 +52,7 @@ public class AuthorizePaymentServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ParseException {
-        response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("text/html;charset=UTF-8");request.setCharacterEncoding("UTF-8");
        //String product = request.getParameter("product");
        //Luu don
        HttpSession session = request.getSession();

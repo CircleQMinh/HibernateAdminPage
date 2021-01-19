@@ -18,7 +18,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="customer"
-    ,catalog="dbthuongmaidientu"
+    ,catalog="dut78p24cwsag570"
 )
 public class Customer  implements java.io.Serializable {
 
@@ -54,6 +54,7 @@ public class Customer  implements java.io.Serializable {
        this.phone = phone;
        this.email = email;
        this.sex = sex;
+       this.money=0;
     }
    public Customer(String customerName, String address, String phone, String email, String sex, Integer money, Set<Order> orders) {
        this.customerName = customerName;

@@ -18,7 +18,7 @@
     %>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Customer Account</title>
+        <title>Account Info</title>
         
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -34,12 +34,6 @@
         <link rel="stylesheet" href="css/mycssadminpage.css" type="text/css">
         <script src="javascript/adminpage.js" type="text/javascript"></script>
         <style>
-            body {
-                background: radial-gradient(#fff,#ffd6d6);
-                padding-top: 85px;
-                width: 100%;
-                height: 100%;
-            }
 /*            h1 {
                 font-family: 'Poppins', sans-serif, 'arial';
                 font-weight: 600;
@@ -134,29 +128,35 @@
                      openForm("order-info-form");
                 });
                 $("button[id|='order-remove']").click(function(){
-                    if(confirm('bạn có chắc muốn hủy đơn hàng này?')){
-                        var id =$(this).closest('tr').find('td').eq(0).text();
-                        var temp=$(this).closest('tr').find('td');
-                        $.ajax({
-                        type: "post",
-                        url: "ajax/customerpage/ajax-edit-ord.jsp", //this is my servlet
-                        data: {
-                            eid: id,
-                            status: 6
-                        },
-                        success: function ( response ){   
-                            //handleData(response);
-                            var success = $($.parseHTML(response)).filter("#sqlmsg").html();
-                            console.log(success); // div#success
-                            notify();
-                            temp.hide();
-                        },
-                        error: function(xhr, textStatus, error){
-                            console.log(xhr.statusText);
-                            console.log(textStatus);
-                            console.log(error);
+                    var ss =$(this).closest('tr').find('td').eq(1).text();
+                    if(ss=='Hủy'||ss=='Đã giao'){
+                        
+                    }
+                    else{
+                        if(confirm('bạn có chắc muốn hủy đơn hàng này?')){
+                            var id =$(this).closest('tr').find('td').eq(0).text();
+                            var temp=$(this).closest('tr').find('td');
+                            $.ajax({
+                            type: "post",
+                            url: "ajax/customerpage/ajax-edit-ord.jsp", //this is my servlet
+                            data: {
+                                eid: id,
+                                status: 6
+                            },
+                            success: function ( response ){   
+                                //handleData(response);
+                                var success = $($.parseHTML(response)).filter("#sqlmsg").html();
+                                console.log(success); // div#success
+                                notify();
+                                temp.hide();
+                            },
+                            error: function(xhr, textStatus, error){
+                                console.log(xhr.statusText);
+                                console.log(textStatus);
+                                console.log(error);
+                            }
+                        });
                         }
-                    });
                     }
                 });
                 
@@ -345,7 +345,7 @@
                     <input type="text" name="cur-pass" required="true">
                     <p>Mật khẩu mới : </p>
                     <input type="text" name="new-pass" required="true"><br>
-                    
+
                     <input type="submit" value="OK" class="btn" style="width: 100px">
                 </form>
             </div>

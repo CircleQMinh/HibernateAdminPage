@@ -3,7 +3,7 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated Dec 23, 2020 3:48:17 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="Model.Unapprovedproduct" table="unapprovedproduct" catalog="dbthuongmaidientu" optimistic-lock="version">
+    <class name="Model.Unapprovedproduct" table="unapprovedproduct" catalog="dut78p24cwsag570" optimistic-lock="version">
         <id name="productId" type="java.lang.Integer">
             <column name="ProductID" />
             <generator class="identity" />

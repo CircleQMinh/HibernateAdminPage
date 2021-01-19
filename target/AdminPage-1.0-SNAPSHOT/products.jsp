@@ -99,15 +99,15 @@
                             <c:otherwise>
                                 <c:choose>
                                     <c:when test="${sessionScope.account.type=='customer'}">
-                                        <li><a href="" class="btn-login"><c:out value="${sessionScope.userInfo.customerName}"/></a></li>
+                                        <li><a href="account-info.jsp" class="btn-login"><c:out value="${sessionScope.userInfo.customerName}"/></a></li>
                                         <li><a href="logout" class="btn-register">Đăng xuất</a></li>
                                     </c:when>
                                     <c:when test="${sessionScope.account.type=='employee'}">
-                                        <li><a href="" class="btn-login"><c:out value="${sessionScope.userInfo.employeeName}"/></a></li>                                   
+                                        <li><a href="account-info.jsp" class="btn-login"><c:out value="${sessionScope.userInfo.employeeName}"/></a></li>                                   
                                         <li><a href="logout" class="btn-register">Đăng xuất</a></li>
                                     </c:when>  
                                     <c:otherwise>
-                                         <li><a href="" class="btn-login"><c:out value="${sessionScope.userInfo.name}"/></a></li>
+                                         <li><a href="account-info.jsp" class="btn-login"><c:out value="${sessionScope.userInfo.name}"/></a></li>
                                           <li><a href="logout" class="btn-register">Đăng xuất</a></li>
                                     </c:otherwise>
                                 </c:choose>

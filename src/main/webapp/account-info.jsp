@@ -4,6 +4,7 @@
     Author     : Nhat Minh
 --%>
 
+<%@page import="Dao.CustomerDAO"%>
 <%@page import="Model.Customer"%>
 <%@page import="Model.Order"%>
 <%@page import="Dao.OrderDAO"%>
@@ -212,18 +213,19 @@
         </div>
     <c:if test="${sessionScope.account.type=='customer'}">
         <%
-                Customer cus = (Customer)request.getSession().getAttribute("userInfo");
+                Customer cu = (Customer)request.getSession().getAttribute("userInfo");
+                Customer cus=CustomerDAO.getCus(cu.getCustomerId());
                 List<Order> listOfOrders = OrderDAO.getAllOrdersByUserID(cus.getCustomerId());
         
         %>
         <h4 class="myarticle-title">Thông tin của tôi</h4>
         <article class="myarticle">
-            <p>Tên : ${sessionScope.userInfo.customerName}</p>
-            <p>Email : ${sessionScope.userInfo.email}</p>
-            <p>Điện thoại : ${sessionScope.userInfo.phone}</p>
-            <p>Địa chỉ : ${sessionScope.userInfo.address}</p>
-            <p>Giới tính : ${sessionScope.userInfo.sex}</p>
-            <p>Tài khoản : ${sessionScope.userInfo.money} </p>
+            <p>Tên : <%=cus.getCustomerName()                  %></p>
+            <p>Email : <%=cus.getEmail()                  %></p>
+            <p>Điện thoại : <%=cus.getPhone()                  %></p>
+            <p>Địa chỉ : <%=cus.getAddress()               %></p>
+            <p>Giới tính : <%=cus.getSex()                  %></p>
+            <p>Tài khoản : <%=cus.getMoney()                  %> </p>
         </article>
         <h4 class="myarticle-title">Tùy chọn</h4>
         <button class="btn" onclick="openForm('Modal-password')" style="margin-left: 3%">Thay đổi mật khẩu</button>
@@ -241,6 +243,7 @@
                     <th>Ngày yêu cầu</th>
                     <th>Ngày nhận</th>
                     <th>Thanh toán</th>
+                    <th>Ghi chú</th>
                     <th>DS sản phẩm</th>
                     <th>Hủy đơn hàng</th>
                 </tr>
@@ -257,6 +260,7 @@
                             <td><%= OrderDAO.returnDate(ord.getRequiredDate()) %></td>
                             <td><%= OrderDAO.returnDate(ord.getShippedDate()) %></td>
                             <td><%= ord.getPaymentType()            %></td>
+                            <td><%=OrderDAO.returnNote(ord.getNote())            %></td>
                             <td>
                                 <button class="btn-000" id="ord_info">Xem danh sách sản phẩm</button>
                             </td> 

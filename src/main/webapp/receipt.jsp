@@ -105,7 +105,7 @@
                     </a><!-- comment -->
                     <img src="images/menu.png" class="menu-icon" onclick="menutoggle()">
                 </div>
-                <h4 class="myarticle-title">Thông tin hóa đơn</h4>
+                <h4 class="myarticle-title" style="background-color: wheat">Thông tin hóa đơn</h4>
                 <article class="myarticle"> 
 
                         <label >Người nhận:</label>

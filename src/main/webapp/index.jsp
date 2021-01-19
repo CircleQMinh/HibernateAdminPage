@@ -71,7 +71,7 @@
                 <div class="col-2">
                     <h1>Chào mừng đến với TEAM16</h1>
                     <p>Hãy đăng kí ngay hôm nay<br>Để nhận được những ưu đãi siêu khủng từ chúng tôi......</p>
-                    <button value="Explore Now" class="btn">Khám phá ngay &#10132;</button>
+                    <button value="Explore Now" class="btn " onclick="location.href='register'">Khám phá ngay &#10132;</button>
                 </div>
                 <div class="col-2">
                     <img src="images/prd8.png" alt="">
@@ -312,21 +312,7 @@
         %>
     </div>
     <!----offer----->
-    <div class="offer">
-        <div class="small-container">
-            <div class="row">
-                <div class="col-2">
-                    <img src="https://res.cloudinary.com/dkmk9tdwx/image/upload/v1607530452/product/40_bkkg0s.jpg" class="offer-img" alt="">
-                </div>
-                <div class="col-2">
-                    <p>Thực phẩm chức năng</p>
-                    <h1>Poly VIETMEC</h1>
-                    <small>Hỗ trợ nhuận tràng, thông tiện, giảm táo bón.</small><br>
-                        <button value="Buy Now" onclick="location.assign('product-details.jsp?prdID_item=40');" class="btn">Mua ngay &#10132;</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    <h2 class="title" style="margin:10px">Câu nói hay</h2>
     <!-----testomonial-->
     <div class="testimonial">
         <div class="small-container">

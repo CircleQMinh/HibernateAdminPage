@@ -13,6 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog </title>
     <link href="css/style1.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="css/style.css">
     <script src="https://kit.fontawesome.com/384d09a31e.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -64,7 +65,7 @@
                 <div class="col-2">
                     <h1>Chào mừng đến với TEAM16</h1>
                     <p>Hãy đăng kí ngay hôm nay<br>Để nhận được những ưu đãi siêu khủng từ chúng tôi......</p>
-                    <button value="Explore Now" class="btn">Khám phá ngay &#10132;</button>
+                    <button value="Explore Now" class="btn" onclick="location.href='register'">Khám phá ngay &#10132;</button>
                 </div>
                 <div class="col-2">
                     <img src="images/prd8.png" alt="">
@@ -321,11 +322,6 @@
                     <!--Bên phải sẽ chưa thông tin đăng nhập, top các blog,...-->
                     <aside class = "col-lg-4 right-blog-con text-left" >
                         <div class="right-blog-info text-left">
-
-                            <div class="tech-btm"><!--LƯU Ý-->
-                                <img src="images/prd5.jpg" class="img-fluid" alt="">
-                            </div>
-
                             <!--Nơi đăng kí email để nhận thông báo về các bài blog mới nhất-->
                             <div class="tech-btm">
                                 <h4>Đăng kí để nhận những thông báo mới nhất</h4>

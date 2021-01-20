@@ -244,4 +244,28 @@ public class EmployeeDao {
             }
         }
     }
+    
+    public static List < Employee > getAllShipper() {
+
+        Transaction transaction = null;
+        List < Employee > listOfUser = null;
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session session = sessionFactory.openSession();
+        try {
+            // start a transaction
+            transaction = session.beginTransaction();
+            // get an user object
+
+            listOfUser = session.createQuery("Select distinct e from Employee e,Order o where o.shipperId=e.id").list();
+
+            // commit transaction
+            transaction.commit();session.close();
+            
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback(); session.close();
+            }
+        }
+        return listOfUser;
+    }
 }

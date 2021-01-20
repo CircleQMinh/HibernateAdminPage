@@ -499,4 +499,26 @@ public class OrderDAO {
         }
         return listOfOrders;
     }
+     public static List < Order > getAllOrdersByShipperID(int id) {
+
+        Transaction transaction = null;
+        List < Order > listOfOrders = null;
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session session = sessionFactory.openSession();
+        try  {
+            // start a transaction
+            transaction = session.beginTransaction();
+            // get an user object
+
+            listOfOrders = session.createQuery("from Order o where o.shipperId="+String.valueOf(id)+"  order by o.orderDate desc").list();
+
+            // commit transaction
+            transaction.commit();session.close();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();session.close();
+            }
+        }
+        return listOfOrders;
+    }
 }

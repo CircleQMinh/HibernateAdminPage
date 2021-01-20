@@ -770,10 +770,50 @@ $(document).ready(function(){
                         });
                     });
                 });
+                $('#orderrefreshShip').click(function(){ 
+                    $('#ordertableShip').load("order.jsp #tableorderShip",function(){
+                        $('#tableorderShip').tablePagination({
+                            perPage:7,
+                            showAllButton:true
+                        });
+                        $("button[id|='shipper_his']").click(function() {
+                            alert("aaa");
+                            $("#shipper_history").load("ajax/order/ajax-shipper-history.jsp #tablehistory" , {
+                                ID:$(this).closest('tr').find('td').eq(0).text()
+                            },function(){
+                                $("button[id|='ord_info'").click(function(){
+                                    openForm('formwait');
+                                    var id =$(this).closest('tr').find('td').eq(0).text();
+                                    $.ajax({
+                                        type: "post",
+                                        url: "ajax/order/ajax-view-order-info.jsp", //this is my servlet
+                                        data: {
+                                            ID:id               
+                                        },
+                                        success: function ( response ){   
+                                            //handleData(response);
+                                            var success =  $($.parseHTML(response)).filter("#info").html();
+                                            $("#order-info-form").html(success);closeForm('formwait');
+                                        },
+                                        error: function(xhr, textStatus, error){
+                                            console.log(xhr.statusText);
+                                            console.log(textStatus);
+                                            console.log(error);
+                                            console.log("Fail");closeForm('formwait');
+                                        }
+                                    });
+                                     openForm("order-info-form");
+                                });
+                            });
+                        });
+                    });
+                   
+                });
             clickme('orderrefresh');
             clickme('orderrefreshCk');
             clickme('orderrefreshDv');
             clickme('orderrefreshHis');
+            clickme('orderrefreshShip');
 //            clickme('btnUnck');
 //            clickme('btnHis');
 //            clickme('btnCk');
@@ -1160,6 +1200,30 @@ $(document).ready(function(){
                 closeForm('formwait');
                 alert(success);
                 clickme("bankrefresh");
+            },
+            error: function(xhr, textStatus, error){
+                console.log(xhr.statusText);
+                console.log(textStatus);
+                console.log(error);
+            }
+        });
+    });
+    
+    $('#rev_add_money').click(function (){
+        openForm('formwait');
+        $.ajax({
+            type: "post",
+            url: "ajax/statistic/ajax-rev-add.jsp", //this is my servlet
+            data: {
+                day: $('#add-rev-date').val(),
+                money: $('#rev-money').val() 
+            },
+            success: function ( response ){   
+                //handleData(response);
+                var success = $($.parseHTML(response)).filter("#sqlmsg").html();
+                console.log(success); // div#success
+                closeForm('formwait');
+                alert(success);
             },
             error: function(xhr, textStatus, error){
                 console.log(xhr.statusText);

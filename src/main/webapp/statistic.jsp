@@ -57,6 +57,7 @@
                 <label ><strong>To</strong></label>
                 <input type="date" id="to-date">
                 <button class="btn" id="reload-sta">Reload</button>
+                <button class="btn" id="reload-sta" onclick="openForm('revueform')">Add Revenue</button>
             </div>
             <div class="divtable" id="sta-gra" style="background-color: #4CAF50;border: 2px #000 solid;margin-left: 2%">
                 

@@ -264,6 +264,57 @@
                 </table>
             </div>
 <!--------------------------------------------------------------------------------------------------->
+            <div class="dashbosl" id='employeetag' >
+                <p >Thông tin shipper <button class="minibtn" id="btnShip" onclick="miniTable('ordertableShip','btnShip')">-</button></p>                    
+            </div>
+            <div class="searhbar" id="searchbar-turn">
+                <button class="btn" id="orderrefreshShip" value="Refresh"><i class="fas fa-sync" ></i></button> 
+            </div>
+            <%
+                List<Employee> shippers = EmployeeDao.getAllShipper();
+            %>
+            <div id="ordertableShip" class="divtable">                    
+                <table id="tableorderShip" class="tabledis">
+                    <tr>
+                        <th>ID</th>
+                        <th>Tên</th>
+                        <th>Giới tính</th>
+                        <th>E-mail</th>
+                        <th>Điện thoại</th>
+                        <th>Xem lịch sử</th>
+                    </tr>
+                    <%               
+                    try {          
+                            int i=0;
+                            while (i<shippers.size()) {
+                            Employee emp_temp=shippers.get(i);
+                            %>
+                            <tr>
+                                <td><%=emp_temp.getEmployeeId()%></td>
+                                <td><%=emp_temp.getEmployeeName()%></td>
+                                <td><%=emp_temp.getSex()%></td>
+                                <td><%=emp_temp.getEmail()%></td>
+                                <td><%=emp_temp.getPhone()%></td>  
+                                <td><button class="btn" id="shipper_his"><i class="fas fa-edit"></i></button></td>                     
+                                <%i++;%>
+                            </tr>                   
+                            <%}
+                        }        
+                        catch (Exception e)
+                        {
+                            e.printStackTrace();
+                        }
+                    %>
+                </table>
+            </div>
+            <div class="dashbosl"  >
+                 <p >Lịch sử giao hàng của shipper<button class="minibtn" >-</button></p>                    
+            </div>      
+            <div id="shipper_history" class="divtable">                    
+                <table id="tablehistory" class="tabledis">
+                    
+                </table>
+            </div>
         </div>
         <script>  
             startTime();       

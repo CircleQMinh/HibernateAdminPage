@@ -451,6 +451,21 @@
                 <button type="button" style="background-color: red;" onclick="closeForm('bankform')" ><strong>Close</strong></button>        
             </form>  
         </div>
+        <div class="divform" id="revueform" >
+            <form >
+                <h1>Lưu doanh thu</h1>
+                <br>
+                <label ><strong>ID </strong></label>
+                <input type="date" id="add-rev-date" name="wd" ><br>
+                
+                <label ><strong>Số tiền</strong></label>
+                <input type="number" id="rev-money" name="wd"><br>
+                
+                <br>
+                <button type="button" id="rev_add_money"><strong>Add</strong></button>   
+                <button type="button" style="background-color: red;" onclick="closeForm('revueform')" ><strong>Close</strong></button>        
+            </form>  
+        </div>
         <div class="divorderinfo" id="order-info-form" >
 
         </div>

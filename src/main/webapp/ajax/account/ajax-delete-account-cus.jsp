@@ -56,14 +56,14 @@
     </head>
     <body>
         <%
-            String errorsql="Hello";
+            String errorsql="";
             int ID = Integer.valueOf(request.getParameter("ID"));
             int UID = Integer.valueOf(request.getParameter("UID"));
             if(AccountDao.CheckCusInUse(UID))
             {
                 errorsql="Khách hàng đang trong giao dịch";
             }
-            if(errorsql=="")
+            else
             {
                 try {
                 AccountDao.deleteAccCus(ID, UID);

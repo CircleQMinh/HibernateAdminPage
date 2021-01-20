@@ -34,7 +34,6 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="css/style.css">
         <script src="https://kit.fontawesome.com/32884b7746.js" crossorigin="anonymous"></script>
-        <script src="js/cart.js" type="text/javascript"></script>
         <link rel="stylesheet" href="css/mycssadminpage.css" type="text/css">
         <style>
 
@@ -102,7 +101,19 @@
                     </nav>
                     <a href="cart.jsp" class="cart-day-ne">
                         <img src="images/cart.png" width="30px" height="30px" class="imgcard">
-                        <span class="cart-item" >0</span>
+                        <c:choose>
+                            <c:when test="${sessionScope.cart==null}" >
+                                    <span class="cart-item" id="cart-item">0</span>
+                            </c:when>
+                            <c:otherwise>
+                                <c:choose>
+                                    <c:when test="${sessionScope.cart!=null}">
+                                        <span class="cart-item" id="cart-item"><c:out value="${sessionScope.cart.items.size()}" ></c:out></span>
+                                    </c:when>
+
+                                </c:choose>
+                            </c:otherwise>
+                        </c:choose>
                     </a><!-- comment -->
                     <img src="images/menu.png" class="menu-icon" onclick="menutoggle()">
                 </div>
@@ -241,3 +252,17 @@
 //            }
 //        }
 </script>
+<script>
+        var MenuItems = document.getElementById("MenuItems");
+        MenuItems.style.maxHeight="0px";
+        function menutoggle(){
+            if(MenuItems.style.maxHeight=="0px")
+            {
+                MenuItems.style.maxHeight="250px"
+            }
+            else
+            {
+                MenuItems.style.maxHeight="0px"
+            }
+        }
+    </script>

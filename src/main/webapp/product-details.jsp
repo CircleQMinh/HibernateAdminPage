@@ -29,7 +29,6 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/styles/metro/notify-metro.css" />
-        <script src="js/cart.js" type="text/javascript"></script>
         <script src="https://kit.fontawesome.com/32884b7746.js" crossorigin="anonymous"></script>
     </head>
     <body>
@@ -69,7 +68,22 @@
                         </c:choose>
                     </ul>
                 </nav>
-                <a href="cart.jsp"><img src="images/cart.png" width="30px" height="30px" class="imgcard"></a>
+                <a href="cart.jsp" class="cart-day-ne">
+                    <img src="images/cart.png" width="30px" height="30px" class="imgcard">
+                    <c:choose>
+                        <c:when test="${sessionScope.cart==null}" >
+                                <span class="cart-item" id="cart-item">0</span>
+                        </c:when>
+                        <c:otherwise>
+                            <c:choose>
+                                <c:when test="${sessionScope.cart!=null}">
+                                    <span class="cart-item" id="cart-item"><c:out value="${sessionScope.cart.items.size()}" ></c:out></span>
+                                </c:when>
+                                
+                            </c:choose>
+                        </c:otherwise>
+                    </c:choose>
+                </a><!-- comment -->
                 <img src="images/menu.png" class="menu-icon" onclick="menutoggle()">
             </div>
         </div>
@@ -88,7 +102,7 @@
                     <input type="hidden" name="prdName_item" value="<%= prd.getProductName()%>"><!-- comment -->
                     <input type="hidden" name="prdPrice_item" value="<%= prd.getPrice()%>"><!-- comment -->
                     <input type="hidden" name="action" value="add">
-                    <input type="button" id="add_sp" value="Thêm vào giỏ hàng" onclick="add_to_cart(<%= prd.getProductId()%>, '<%= prd.getProductName()%>',<%= prd.getPrice()%>)" class="btn">
+                    <input type="button" id="add_sp" value="Thêm vào giỏ hàng"  class="btn">
                     <h3>Product Details <i class="fa fa-indent" ></i></h3>
                     <h4><%= prd.getProductDescription()%> </h4>
 
@@ -129,7 +143,7 @@
                             <input type="hidden" name="action" value="add">
                         </div> 
                         <div class="overlay">
-                            <input type="button" value="Thêm vào giỏ hàng" id="add_item" onclick="add_to_cart(<%= prdsss.getProductId() %>,'<%= prdsss.getProductName() %>',<%= prdsss.getPrice() %>)" class="btn">
+                            <input type="button" value="Thêm vào giỏ hàng" id="add_item"  class="btn">
                         </div>
                     </form><% } i++;%>
                     <% if(i<prds.size()) { Product prdsss = ProductDao.getPro(prds.get(i).getId()); 
@@ -152,7 +166,7 @@
                             <input type="hidden" name="action" value="add">
                         </div> 
                         <div class="overlay">
-                            <input type="button" value="Thêm vào giỏ hàng" id="add_item" onclick="add_to_cart(<%= prdsss.getProductId() %>,'<%= prdsss.getProductName() %>',<%= prdsss.getPrice() %>)" class="btn">
+                            <input type="button" value="Thêm vào giỏ hàng" id="add_item"  class="btn">
                         </div>
                     </form><% } i++;%>
                     <% if(i<prds.size()) { Product prdsss = ProductDao.getPro(prds.get(i).getId()); 
@@ -175,7 +189,7 @@
                             <input type="hidden" name="action" value="add">
                         </div> 
                         <div class="overlay">
-                            <input type="button" value="Thêm vào giỏ hàng" id="add_item" onclick="add_to_cart(<%= prdsss.getProductId() %>,'<%= prdsss.getProductName() %>',<%= prdsss.getPrice() %>)" class="btn">
+                            <input type="button" value="Thêm vào giỏ hàng" id="add_item"  class="btn">
                         </div>
                     </form><% } i++;%>
                     <% if(i<prds.size()) { Product prdsss = ProductDao.getPro(prds.get(i).getId()); 
@@ -198,7 +212,7 @@
                             <input type="hidden" name="action" value="add">
                         </div> 
                         <div class="overlay">
-                            <input type="button" value="Thêm vào giỏ hàng" id="add_item" onclick="add_to_cart(<%= prdsss.getProductId() %>,'<%= prdsss.getProductName() %>',<%= prdsss.getPrice() %>)" class="btn">
+                            <input type="button" value="Thêm vào giỏ hàng" id="add_item"  class="btn">
                         </div>
                     </form><% }%>         
                 </div>
@@ -284,25 +298,31 @@
     }
     $(function(){
             $("#add_sp").click(function () {
-            var postData = $("#product_detail").serialize();
-            $.ajax({
-                type: "POST",
-                url: "ajax/customerpage/ajax_add_item.jsp",
-                data: postData,
-                success: function ( response ) {
-                    notify();
-                }  
-            });
+                var postData = $("#product_detail").serialize();
+                var numItem = $('#cart-item').html();
+                console.log(numItem);
+                $.ajax({
+                    type: "POST",
+                    url: "ajax/customerpage/ajax_add_item.jsp",
+                    data: postData,
+                    success: function ( response ) {
+                        notify();
+                        $('#cart-item').html(Number(numItem) + 1);
+                    }  
+                });
         });
  
             $("input[id|='add_item']").click( function(){
                 var postData = $(this).closest('div').closest('form').serialize();
+                var numItem = $('#cart-item').html();
+                console.log(numItem);
                  $.ajax({
                     type: "POST",
                     url: "ajax/customerpage/ajax_add_item.jsp",
                     data: postData,
                     success: function ( response ) {
                         notify();
+                        $('#cart-item').html(Number(numItem) + 1);
                     }  
                 });
             });

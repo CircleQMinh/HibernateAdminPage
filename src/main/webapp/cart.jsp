@@ -33,7 +33,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/cart.js" type="text/javascript"></script>
     <script src="https://kit.fontawesome.com/32884b7746.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -79,14 +78,23 @@
                 </nav>
                 <a href="cart.jsp" class="cart-day-ne">
                     <img src="images/cart.png" width="30px" height="30px" class="imgcard">
-                    <span class="cart-item" >0</span>
+                    <c:choose>
+                        <c:when test="${sessionScope.cart==null}" >
+                                <span class="cart-item" id="cart-item">0</span>
+                        </c:when>
+                        <c:otherwise>
+                            <c:choose>
+                                <c:when test="${sessionScope.cart!=null}">
+                                    <span class="cart-item" id="cart-item"><c:out value="${sessionScope.cart.items.size()}" ></c:out></span>
+                                </c:when>
+                                
+                            </c:choose>
+                        </c:otherwise>
+                    </c:choose>
                 </a><!-- comment -->
                 <img src="images/menu.png" class="menu-icon" onclick="menutoggle()">
             </div>
         </div>
-        <script>
-            updateCart();
-        </script>
         <!------- cart item ------>
         <div class="small-container cart-page">
             <div class="row">
@@ -102,9 +110,9 @@
                     %>
                     <table class='tbl-cart-item'>
                         <tr>
-                            <th>Product</th>
-                            <th>Quantity</th>
-                            <th>SubTotal</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Số lượng</th>
+                            <th>Thành tiền</th>
                         </tr>
                         <% 
                             List<CartItem> listItems = cart.getItems();     
@@ -117,8 +125,8 @@
                                             <img src="<%= listItems.get(i).getPictureString()%>" alt="">
                                             <div>
                                                 <p><%= listItems.get(i).getProductName()%></p>
-                                                <small>Price: <%= listItems.get(i).getPrice()%></small>
-                                                <a href="RemoveCartItem?prd_id=<%= listItems.get(i).getProductID() %>">Remove</a>
+                                                <small>Giá: <%= listItems.get(i).getPrice()%></small>
+                                                <a href="RemoveCartItem?prd_id=<%= listItems.get(i).getProductID() %>">Xóa</a>
                                             </div>
                                         </div>
                                     </td>
@@ -132,15 +140,15 @@
                 <div class="total-price">
                     <table>
                         <tr>
-                            <td>Subtotal</td>
+                            <td>Thành tiền</td>
                             <td><%= CartService.getTotalCost(listItems)%></td>
                         </tr>
                         <tr>
-                            <td>Tax</td>
+                            <td>Thuế</td>
                             <td>0</td>
                         </tr>
                         <tr>
-                            <td>Total</td>
+                            <td>Tổng tiền</td>
                             <td><%= CartService.getTotalCost(listItems)%></td>
                         </tr>
                     </table>

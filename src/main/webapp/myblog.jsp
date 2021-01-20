@@ -60,6 +60,22 @@
                         
                     </ul>
                 </nav>
+                <a href="cart.jsp" class="cart-day-ne">
+                    <img src="images/cart.png" width="30px" height="30px" class="imgcard">
+                    <c:choose>
+                        <c:when test="${sessionScope.cart==null}" >
+                                <span class="cart-item" id="cart-item">0</span>
+                        </c:when>
+                        <c:otherwise>
+                            <c:choose>
+                                <c:when test="${sessionScope.cart!=null}">
+                                    <span class="cart-item" id="cart-item"><c:out value="${sessionScope.cart.items.size()}" ></c:out></span>
+                                </c:when>
+                                
+                            </c:choose>
+                        </c:otherwise>
+                    </c:choose>
+                </a><!-- comment -->
                 <img src="images/menu.png" class="menu-icon" onclick="menutoggle()">
             </div>
             <div class="row">
@@ -78,7 +94,7 @@
     <section class="our_blog py-lg-5 py-md-5 py-3">
         <div class="container">
             <div class="inner-sec py-lg-5  py-3">
-                <h3 class="tittle-wthree text-center mb-lg-5 mb-3">Our Blog</h3>
+                <h3 class="tittle-wthree text-center mb-lg-5 mb-3">Bài viết của chúng tôi</h3>
                 <div class="row mt-lg-5 mt-md-4 mt-4">
                     <!--Bên trái của màn hình sẽ chưa những nội dung tóm tắt của các thẻ blog-->
                     <div class = "col-lg-8 left-blog-info text-left">

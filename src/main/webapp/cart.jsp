@@ -34,6 +34,10 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <script src="https://kit.fontawesome.com/32884b7746.js" crossorigin="anonymous"></script>
+
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/styles/metro/notify-metro.css" />
+
 </head>
 <body>
     <c:if test="${(sessionScope.account==null) || (sessionScope.account.type=='admin') ||(sessionScope.account.type=='employee') }">
@@ -159,8 +163,7 @@
             </div>
             <%  }%>
         </div>
-
-        <!--------- footer  --------->
+    </div>
         <div class="footer">
         <div class="container">
             <div class="row">
@@ -211,7 +214,8 @@
             <p class="copyright">Copyright 2020 - Team16</p>
         </div>
     </div>
-    </div>
+        <!--------- footer  --------->
+
         <!-- Modal -->
     <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog">

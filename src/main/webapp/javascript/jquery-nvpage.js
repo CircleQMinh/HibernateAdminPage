@@ -105,8 +105,9 @@ $(document).ready(function(){
                         $("button[id|='ord_edit'").click(function(){
                             openForm("updateOrder");
                             var order_edit_id =$(this).closest('tr').find('td').eq(0).text();
-                            var order_edit_status=$(this).closest('tr').find('td').eq(5).text();
-                            FillFormUpdateOrder(order_edit_id,order_edit_status);
+                            var order_edit_status=$(this).closest('tr').find('td').eq(1).text();
+                             var note=$(this).closest('tr').find('td').eq(8).text();
+                            FillFormUpdateOrder(order_edit_id,order_edit_status,note);
                         });                    
                         $("button[id|='ord_del']").click(function(){
                           if (confirm('Xóa hóa đơn khỏi database?')) {
@@ -172,8 +173,9 @@ $(document).ready(function(){
                         $("button[id|='ord_edit_Ck'").click(function(){
                             openForm("updateOrder");
                             var order_edit_id =$(this).closest('tr').find('td').eq(0).text();
-                            var order_edit_status=$(this).closest('tr').find('td').eq(5).text();
-                            FillFormUpdateOrder(order_edit_id,order_edit_status);
+                            var order_edit_status=$(this).closest('tr').find('td').eq(1).text();
+                             var note=$(this).closest('tr').find('td').eq(8).text();
+                            FillFormUpdateOrder(order_edit_id,order_edit_status,note);
                         });                    
                         $("button[id|='ord_del_Ck']").click(function(){
                           if (confirm('Xóa hóa đơn khỏi database?')) {
@@ -329,6 +331,45 @@ $(document).ready(function(){
                         });
                     });
                 });
+                $('#orderrefreshShip').click(function(){ 
+                    $('#ordertableShip').load("order.jsp #tableorderShip",function(){
+                        $('#tableorderShip').tablePagination({
+                            perPage:7,
+                            showAllButton:true
+                        });
+                        $("button[id|='shipper_his']").click(function() {
+                            $("#shipper_history").load("ajax/order/ajax-shipper-history.jsp #tablehistory" , {
+                                ID:$(this).closest('tr').find('td').eq(0).text()
+                            },function(){
+                                $("button[id|='ord_info'").click(function(){
+                                    openForm('formwait');
+                                    var id =$(this).closest('tr').find('td').eq(0).text();
+                                    $.ajax({
+                                        type: "post",
+                                        url: "ajax/order/ajax-view-order-info.jsp", //this is my servlet
+                                        data: {
+                                            ID:id               
+                                        },
+                                        success: function ( response ){   
+                                            //handleData(response);
+                                            var success =  $($.parseHTML(response)).filter("#info").html();
+                                            $("#order-info-form").html(success);closeForm('formwait');
+                                        },
+                                        error: function(xhr, textStatus, error){
+                                            console.log(xhr.statusText);
+                                            console.log(textStatus);
+                                            console.log(error);
+                                            console.log("Fail");closeForm('formwait');
+                                        }
+                                    });
+                                     openForm("order-info-form");
+                                });
+                            });
+                        });
+                    });
+                   
+                });
+            clickme('orderrefreshShip');
             clickme('orderrefresh');
             clickme('orderrefreshCk');
             clickme('orderrefreshDv');
@@ -375,6 +416,7 @@ $(document).ready(function(){
             url: "ajax/order/ajax-edit-ord.jsp", //this is my servlet
             data: {
                 eid: $('#orderid-edit').val(),
+                note: $('#ordernote-edit').val(),
                 status: $('#order-status').val()
             },
             success: function ( response ){   
@@ -382,7 +424,6 @@ $(document).ready(function(){
                 var success = $($.parseHTML(response)).filter("#sqlmsg").html();
                 console.log(success); // div#success
                 alert(success);
-                clickme("orderrefresh");
             },
             error: function(xhr, textStatus, error){
                 console.log(xhr.statusText);

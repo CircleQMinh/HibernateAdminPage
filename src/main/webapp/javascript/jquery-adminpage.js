@@ -777,7 +777,6 @@ $(document).ready(function(){
                             showAllButton:true
                         });
                         $("button[id|='shipper_his']").click(function() {
-                            alert("aaa");
                             $("#shipper_history").load("ajax/order/ajax-shipper-history.jsp #tablehistory" , {
                                 ID:$(this).closest('tr').find('td').eq(0).text()
                             },function(){

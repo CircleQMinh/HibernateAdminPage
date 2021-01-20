@@ -48,6 +48,7 @@
                         <th>Ngày yêu cầu</th>
                         <th>Địa chỉ</th>
                         <th>Điện thoại</th>
+                        <th>Email</th>
                         <th>Thanh toán</th>
                         <th>Ghi chú</th>
                         <th>DS sản phẩm</th>
@@ -67,6 +68,7 @@
                                 <td><%= OrderDAO.returnDate(ord.getRequiredDate()) %></td>
                                 <td><%= ord.getOrderAdress() %></td>
                                 <td><%= ord.getOrderPhone() %></td>
+                                <td><%= ord.getOrderEmail() %></td>
                                 <td><%= ord.getPaymentType()            %></td>
                                 <td><%=OrderDAO.returnNote(ord.getNote())            %></td>
                                 <td>
@@ -107,6 +109,7 @@
                         <th>Ngày yêu cầu</th>
                         <th>Địa chỉ</th>
                         <th>Điện thoại</th>
+                        <th>Email</th>
                         <th>Thanh toán</th>
                         <th>Ghi chú</th>
                         <th>DS sản phẩm</th>
@@ -126,6 +129,7 @@
                                 <td><%= OrderDAO.returnDate(ord.getRequiredDate()) %></td>
                                 <td><%= ord.getOrderAdress() %></td>
                                 <td><%= ord.getOrderPhone() %></td>
+                                <td><%= ord.getOrderEmail() %></td>
                                 <td><%= ord.getPaymentType()            %></td>
                                 <td><%=OrderDAO.returnNote(ord.getNote())            %></td>
                                 <td>
@@ -168,6 +172,7 @@
                         <th>Ngày yêu cầu</th>
                         <th>Địa chỉ</th>
                         <th>Điện thoại</th>
+                        <th>Email</th>
                         <th>Thanh toán</th>
                         <th>Ghi chú</th>
                         <th>Tên Shipper</th>
@@ -188,6 +193,7 @@
                                 <td><%= OrderDAO.returnDate(ord.getRequiredDate()) %></td>
                                 <td><%= ord.getOrderAdress() %></td>
                                 <td><%= ord.getOrderPhone() %></td>
+                                <td><%= ord.getOrderEmail() %></td>
                                 <td><%= ord.getPaymentType()            %></td>
                                 <td><%=OrderDAO.returnNote(ord.getNote())            %></td>
                                 <td><%= emp.getEmployeeName() %></td>
@@ -225,6 +231,7 @@
                         <th>Ngày giao</th>
                         <th>Địa chỉ</th>
                         <th>Điện thoại</th>
+                        <th>Email</th>
                         <th>Thanh toán</th>
                         <th>Ghi chú</th>
                         <th>Tên Shipper</th>
@@ -246,6 +253,7 @@
                                 <td><%= OrderDAO.returnDate(ord.getShippedDate()) %></td>
                                 <td><%= ord.getOrderAdress() %></td>
                                 <td><%= ord.getOrderPhone() %></td>
+                                <td><%= ord.getOrderEmail() %></td>
                                 <td><%= ord.getPaymentType()            %></td>
                                 <td><%=OrderDAO.returnNote(ord.getNote())            %></td>
                                 <td><%= emp.getEmployeeName() %></td>

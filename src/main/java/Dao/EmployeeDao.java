@@ -233,6 +233,7 @@ public class EmployeeDao {
             Employee emp = session.get(Employee.class, id);
             session.createSQLQuery("delete from account a where a.Type='employee' and a.UserID=" +String.valueOf(id)).executeUpdate();
             if (emp != null) {
+                System.out.println("Có xóa nè");
                 session.delete(emp);
             }
 

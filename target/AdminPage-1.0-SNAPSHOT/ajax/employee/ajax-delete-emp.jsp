@@ -61,7 +61,8 @@
             try {
                 int id=Integer.valueOf(EID);
                 EmployeeDao.deleteEmp(id);
-                errorsql="Xóa thành công";
+                errorsql="Xóa nhân viên thành công";
+                System.out.println("Có xóa nè");
             }
             catch(Exception e){
                 errorsql="Xóa không thành công";

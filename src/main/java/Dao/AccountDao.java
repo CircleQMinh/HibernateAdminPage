@@ -259,11 +259,11 @@ public class AccountDao {
             }
         }
     }
-     public Account getAccountByUsername(String username) // all account 
+     public static Account getAccountByUsername(String username) // all account 
     {
         Transaction transaction = null;
         Account account = new Account();
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory =HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         try {
             System.out.print(username);
@@ -276,19 +276,17 @@ public class AccountDao {
             // commit transaction
             transaction.commit();
             session.close();
-            sessionFactory.close();
             return account;
         } catch (NoResultException nrs) {
             System.out.println("NoRS CustomerDAO getAccCusbyUsername exception");
             if (transaction != null) {
                 transaction.rollback();
                 session.close();
-                sessionFactory.close();
             }
             return null;
         }
     }
-    public Account getAccountByEmail(String email)
+    public static Account getAccountByEmail(String email)
     {
         if(getAccountCustomerByEmail(email)!=null)
             return getAccountCustomerByEmail(email);
@@ -298,11 +296,11 @@ public class AccountDao {
             return getAccountEmployeeByEmail(email);        
         return null;
     }
-    public Account getAccountAdminEmployeeByUsername(String username) //admin + employee account
+    public static Account getAccountAdminEmployeeByUsername(String username) //admin + employee account
     {
         Transaction transaction = null;
         Account account = new Account();
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         try {
             //begin transaction
@@ -314,22 +312,20 @@ public class AccountDao {
             //close transaction
             transaction.commit();
             session.close();
-            sessionFactory.close();
             return account;
         }catch (NoResultException e) {
             System.out.println("NoRS CustomerDAO getAccAdminbyUsername exception");
             if (transaction != null) {
                 transaction.rollback();
                 session.close();
-                sessionFactory.close();
             }
             return null;
         }
     }
-    public Account getAccountAdminByUsername(String username) {
+    public static Account getAccountAdminByUsername(String username) {
         Transaction transaction = null;
         Account account = new Account();
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         try {
             //begin transaction
@@ -341,24 +337,22 @@ public class AccountDao {
             //close transaction
             transaction.commit();
             session.close();
-            sessionFactory.close();
             return account;
         } catch (NoResultException e) {
             System.out.println("NoRS CustomerDAO getAccAdminbyUsername exception");
             if (transaction != null) {
                 transaction.rollback();
                 session.close();
-                sessionFactory.close();
             }
             return null;
         }
     }
-    public Account getAccountCustomerByEmail(String email)//chưa test
+    public static Account getAccountCustomerByEmail(String email)//chưa test
     {
         Transaction transaction = null;
         Account account = new Account();
         String hql = "";
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory =HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         try {
             transaction = session.beginTransaction();
@@ -368,23 +362,23 @@ public class AccountDao {
             Query<Account> query = session.createQuery(hql, Account.class);
             query.setParameter("email", email);
             account = query.uniqueResult();
-            transaction.commit();session.close();sessionFactory.close();
+            transaction.commit();session.close();
             if(account!=null)
                 return account;
         } catch (Exception e) {
             System.out.println("no customer email");
             if (transaction != null) {
-                transaction.rollback();session.close();sessionFactory.close();
+                transaction.rollback();session.close();
             }
         }        
         return null;
     }
-    public Account getAccountEmployeeByEmail(String email)
+    public static Account getAccountEmployeeByEmail(String email)
     {
         Transaction transaction = null;
         Account account = new Account();
         String hql = "";
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         try {
             transaction = session.beginTransaction();
@@ -394,23 +388,23 @@ public class AccountDao {
             Query<Account> query = session.createQuery(hql, Account.class);
             query.setParameter("email", email);
             account = query.uniqueResult();
-            transaction.commit();session.close();sessionFactory.close();
+            transaction.commit();session.close();
             if(account!=null)
                 return account;
         } catch (Exception e) {
             System.out.println("no employee email");
             if (transaction != null) {
-                transaction.rollback();session.close();sessionFactory.close();
+                transaction.rollback();session.close();
             }
         }
         return null;
     }
-    public Account getAccountAdminByEmail(String email)
+    public static Account getAccountAdminByEmail(String email)
     {
         Transaction transaction = null;
         Account account = new Account();
         String hql = "";
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         try {
             transaction = session.beginTransaction();
@@ -420,21 +414,21 @@ public class AccountDao {
             Query<Account> query = session.createQuery(hql, Account.class);
             query.setParameter("email", email);
             account = query.uniqueResult();
-            transaction.commit();session.close();sessionFactory.close();
+            transaction.commit();session.close();
             if(account!=null)
                 return account;
         } catch (Exception e) {
             System.out.println("no admin email");
             if (transaction != null) {
-                transaction.rollback();session.close();sessionFactory.close();
+                transaction.rollback();session.close();
             }
         }       
         return null;
     }
-    public Object getAccountInformation(Account acc) {
+    public static Object getAccountInformation(Account acc) {
         String role = acc.getType();
         Transaction transaction = null;
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory =HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         try {
             
@@ -447,7 +441,7 @@ public class AccountDao {
                 Query<Admin> query = session.createQuery(hql, Admin.class);
                 query.setParameter("username", acc.getUsername());
                 Admin adm = query.uniqueResult();
-                transaction.commit();session.close();sessionFactory.close();
+                transaction.commit();session.close();
                 return adm;         
             }
             else if(role.equals("employee"))
@@ -458,7 +452,7 @@ public class AccountDao {
                 Query<Employee> query = session.createQuery(hql, Employee.class);
                 query.setParameter("username", acc.getUsername());
                 Employee emp = query.uniqueResult();
-                transaction.commit();session.close();sessionFactory.close();               
+                transaction.commit();session.close();             
                 return emp;            
             }
             else if(role.equals("customer"))
@@ -469,20 +463,20 @@ public class AccountDao {
                 Query<Customer> query = session.createQuery(hql,Customer.class);
                 query.setParameter("username", acc.getUsername());
                 Customer cus = query.uniqueResult();
-                transaction.commit();session.close();sessionFactory.close();                
+                transaction.commit();session.close();              
                 return cus;          
             }
         } catch (Exception e) {
             if (transaction != null) {
-                transaction.rollback();session.close();sessionFactory.close();                
+                transaction.rollback();session.close();               
             }
             System.out.println("get account info exception");
         }
         return null;
     }
-    public boolean addAccount(Account acc) {
+    public static boolean addAccount(Account acc) {
         Transaction transaction = null;
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory =HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         try {
             // start a transaction
@@ -492,13 +486,11 @@ public class AccountDao {
             // commit transaction
             transaction.commit();
             session.close();
-            sessionFactory.close();
             return true;
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
                 session.close();
-                sessionFactory.close();
             }
             System.out.println("add account exception");
             return false;

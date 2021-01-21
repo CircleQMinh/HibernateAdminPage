@@ -173,10 +173,10 @@ public class CustomerDAO {
         }
     }
     ////////////////////////////
-    public boolean addCustomerInformation(Customer customer)
+    public static boolean addCustomerInformation(Customer customer)
     {
         Transaction transaction = null;
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory =HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         try 
         {
@@ -186,7 +186,7 @@ public class CustomerDAO {
             session.save(customer);
             System.out.println("save customer ok");
             //
-            transaction.commit();session.close();sessionFactory.close();
+            transaction.commit();session.close();
             return true;
         } 
         catch (Exception e) 
@@ -199,7 +199,7 @@ public class CustomerDAO {
     public boolean updateCustomerInformation(Customer customer)
     {
         Transaction transaction = null;
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         try 
         {
@@ -208,7 +208,7 @@ public class CustomerDAO {
             //add
             session.update(customer);
             //
-            transaction.commit();session.close();sessionFactory.close();
+            transaction.commit();session.close();
         } 
         catch (Exception e) 
         {
@@ -217,11 +217,11 @@ public class CustomerDAO {
         return false;
     }
     /////////////////////////////
-    public Customer getCustomerInformationByEmail(String email)
+    public static Customer getCustomerInformationByEmail(String email)
     {
         Transaction transaction = null;
         Customer  customer = null;
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory =  HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         try{
             System.out.print(email);
@@ -232,14 +232,14 @@ public class CustomerDAO {
             query.setParameter("email", email);
             customer=query.uniqueResult();
             // commit transaction
-            transaction.commit();session.close();sessionFactory.close();
+            transaction.commit();session.close();
             return customer;
         }
         catch(Exception e)
         {
             System.out.println("CustomerDAO getCusbyEmail exception");
             if (transaction != null) {
-                transaction.rollback();session.close();sessionFactory.close();
+                transaction.rollback();session.close();
             }
             return null;
         }               

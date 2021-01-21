@@ -11,39 +11,38 @@ import Model.Account;import Model.Customer;
  * @author ASUS
  */
 public class UserService {
-    private AccountDao accountDAO =new AccountDao();
-    private CustomerDAO customerDAO=new CustomerDAO();
+
 	public Account getAccountByUsername(String username)
     {
-        return accountDAO.getAccountByUsername(username);
+        return AccountDao.getAccountByUsername(username);
     }
     public Account getAccountAdminByUsername(String username)
     {
-        return accountDAO.getAccountAdminByUsername(username);
+        return AccountDao.getAccountAdminByUsername(username);
     }
 	public Account getAccountAdminEmployeeByUsername(String username)
     {
-        return accountDAO.getAccountAdminEmployeeByUsername(username);
+        return AccountDao.getAccountAdminEmployeeByUsername(username);
     }
     public Account getAccountByEmail(String email)
     {
-        return accountDAO.getAccountByEmail(email);
+        return AccountDao.getAccountByEmail(email);
     }
     public Object getAccountInformation(Account account)
     {
-        return accountDAO.getAccountInformation(account);
+        return AccountDao.getAccountInformation(account);
     }
     public boolean addAccount(Account acc)
     {
-        return accountDAO.addAccount(acc);
+        return AccountDao.addAccount(acc);
     }
     public boolean addCustomerInformation(Customer cus)
     {
-        return customerDAO.addCustomerInformation(cus);
+        return CustomerDAO.addCustomerInformation(cus);
     }
     public Customer  getCustomerInformationByEmail(String email)
     {
-        return customerDAO.getCustomerInformationByEmail(email);
+        return CustomerDAO.getCustomerInformationByEmail(email);
     }
     public boolean editAccount(Account acc)
     {

@@ -24,7 +24,7 @@ import javax.servlet.http.HttpServletRequest;
 public class Config {
 
     public static String vnp_PayUrl = "http://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-    public static String vnp_Returnurl = "https://shop-online-18110.herokuapp.com/receipt.jsp";
+    public static String vnp_Returnurl = "https://shop-online-18110.herokuapp.com/index.jsp";
     public static String vnp_TmnCode = "V0A4GQCF";
     public static String vnp_HashSecret = "CQWPCYYDWRGMVSRNJBXRSOFDJWVSFUHO";
     public static String vnp_apiUrl = "http://sandbox.vnpayment.vn/merchant_webapi/merchant.html";

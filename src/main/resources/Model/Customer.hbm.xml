@@ -3,7 +3,7 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated Jan 2, 2021 3:50:34 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="Model.Customer" table="customer" catalog="dut78p24cwsag570" optimistic-lock="version">
+    <class name="Model.Customer" table="customer" catalog="dbthuongmaidientu" optimistic-lock="version">
         <id name="customerId" type="java.lang.Integer">
             <column name="CustomerID" />
             <generator class="identity" />
